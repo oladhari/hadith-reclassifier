@@ -15,6 +15,18 @@ export async function GET(
   if (!item) return new Response("Not found", { status: 404 });
   const remoteBase = process.env.MEDIA_PUBLIC_BASE_URL?.replace(/\/$/, "");
   if (remoteBase) {
+    // Validate before redirecting: object stores differ in malformed-range handling.
+    const range = request.headers.get("range");
+    if (range) {
+      const match = /^bytes=(\d*)-(\d*)$/.exec(range);
+      let valid = Boolean(match && (match[1] || match[2]));
+      if (valid && match) {
+        const start = match[1] ? Number(match[1]) : Math.max(0, item.size - Number(match[2]));
+        const end = match[1] && match[2] ? Math.min(item.size - 1, Number(match[2])) : item.size - 1;
+        valid = Number.isSafeInteger(start) && Number.isSafeInteger(end) && start <= end && start < item.size;
+      }
+      if (!valid) return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${item.size}` } });
+    }
     const key = (objectKeys as Record<string, string>)[item.id];
     if (!key || !/^originals\/sha256\/[a-f0-9]{2}\/[a-f0-9]{64}$/.test(key))
       return new Response("Not found", { status: 404 });
