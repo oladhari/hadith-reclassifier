@@ -679,7 +679,7 @@ def export_portable(engine, directory):
         "schema_version": SCHEMA_VERSION,
         "private_tables_omitted": sorted(private_tables),
         "tables": {},
-        "storage": "R2 object keys are planned only. No cloud upload has occurred.",
+        "storage": "R2 location states are a snapshot: available means upload verified; planned objects are pending.",
     }
     with engine.connect() as conn:
         for table in s.metadata.sorted_tables:

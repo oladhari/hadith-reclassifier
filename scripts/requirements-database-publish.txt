@@ -1,0 +1,2 @@
+# Optional local migration dependency; use with requirements-research.txt.
+psycopg[binary]>=3.2,<4
