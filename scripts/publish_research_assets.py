@@ -102,6 +102,7 @@ def main():
         region_name="auto",
         config=Config(
             signature_version="s3v4",
+            max_pool_connections=max(10, args.workers * 3),
             s3={"addressing_style": "path"},
             request_checksum_calculation="when_required",
             response_checksum_validation="when_required",
