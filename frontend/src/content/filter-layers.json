@@ -1,0 +1,593 @@
+{
+  "key": "othmani-research",
+  "version": 2,
+  "title": "طبقات فحص الرواية وفق المنهج العثماني",
+  "status": "draft",
+  "description": "إطار بحثي يجعل صريح القرآن أصلًا مقدّمًا في فحص المتن، مع دراسة الأسانيد والطرق والألفاظ وتوثيق أسباب الترجيح.",
+  "layers": [
+    {
+      "code": "L01",
+      "key": "text_identity",
+      "title": "أصل النص والطبعة والترقيم",
+      "group": "تحرير الرواية",
+      "scope": "report",
+      "question": "هل نبحث النص نفسه في مصدره الصحيح؟",
+      "checks": [
+        "تثبيت المجموعة والكتاب والرقم والطبعة وموضع الرواية.",
+        "مقابلة النص بالأصل وتمييز خطأ النسخ والتفريغ من اختلاف الرواية.",
+        "تحديد جميع الأسانيد الواردة في المدخل دون حذف ألفاظه."
+      ],
+      "required_fields": [
+        "edition",
+        "reference",
+        "text_comparison",
+        "route_map_complete"
+      ],
+      "related_cases": [
+        "manuscripts"
+      ],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L02",
+      "key": "quran_explicit",
+      "title": "عرض المتن على صريح القرآن الكريم",
+      "group": "الأصل القرآني",
+      "scope": "report",
+      "priority": "highest",
+      "blocking": true,
+      "question": "هل يتعارض مدلول المتن مع نص قرآني صريح؟",
+      "checks": [
+        "إثبات نص الآية واسم السورة ورقمها ومقابلة الاقتباس بالمصحف.",
+        "تحديد العبارة المقابلة في الحديث ووجه التعارض بدقة.",
+        "عرض أي جمع أو تأويل مقترح مع دليله اللغوي والسياقي، وتمييزه من مجرد الاحتمال.",
+        "لا تُزال ملاحظة التعارض بتوثيق السند أو بدرجة رقمية، ولا باقتراح تفسير لم تُراجع حجته.",
+        "يبقى الاعتراض قائمًا عند اختلاف المراجعين أو نقص الأدلة، إلى أن تُحرر النتيجة وأسبابها."
+      ],
+      "required_fields": [
+        "quran_passages",
+        "hadith_clause",
+        "apparent_conflict",
+        "proposed_reconciliation",
+        "reconciliation_evidence",
+        "resolution_reason"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "blocking_review",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L03",
+      "key": "report_type",
+      "title": "نوع الخبر وحدود نسبته",
+      "group": "تحرير الرواية",
+      "scope": "report",
+      "question": "إلى من يُنسب هذا الكلام؟",
+      "checks": [
+        "تمييز المرفوع والموقوف والمقطوع.",
+        "فصل متن الرواية عن عنوان الباب وتعليق المصنف وحاشية المحقق.",
+        "تعيين الجزء الذي يُبحث حكمه إذا احتوت الصفحة أخبارًا متعددة."
+      ],
+      "required_fields": [
+        "attribution",
+        "report_type",
+        "text_boundaries"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L04",
+      "key": "narrator_identity",
+      "title": "تعيين الرواة والمشترك والمبهم",
+      "group": "فحص الإسناد",
+      "scope": "route",
+      "question": "هل عُيّن كل راوٍ في هذا الطريق تعيينًا صحيحًا؟",
+      "checks": [
+        "ضبط الأسماء والكنى والنسب وتمييز المتشابهين.",
+        "تسجيل المبهم والمجهول دون تخمين هويته.",
+        "ربط الحكم النقدي بالشخص المقصود والطبقة الصحيحة."
+      ],
+      "required_fields": [
+        "narrator_ids",
+        "aliases",
+        "identity_sources"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L05",
+      "key": "continuity",
+      "title": "الاتصال واللقاء وإمكان السماع",
+      "group": "فحص الإسناد",
+      "scope": "route",
+      "question": "هل ثبتت صلة كل راوٍ بمن روى عنه؟",
+      "checks": [
+        "جمع تواريخ الميلاد والوفاة والرحلات والإقامة.",
+        "تمييز المعاصرة وإمكان اللقاء وثبوت السماع.",
+        "تسجيل موضع الانقطاع المحتمل ودليله لكل حلقة."
+      ],
+      "required_fields": [
+        "chain_edges",
+        "dates",
+        "meeting_evidence"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L06",
+      "key": "tadlis",
+      "title": "التدليس وصيغ الأداء",
+      "group": "فحص الإسناد",
+      "scope": "route",
+      "question": "هل تؤثر صيغة النقل وحال الراوي في هذا الطريق؟",
+      "checks": [
+        "توثيق نسبة التدليس ومرتبته وأقوال النقاد فيه.",
+        "تحديد الصيغة الفعلية: حدثنا أو سمعت أو عن أو غيرها.",
+        "جمع التصريح بالسماع في الطرق الأخرى والتحقق من اتحاده مع الخبر."
+      ],
+      "required_fields": [
+        "narrator_tadlis",
+        "transmission_terms",
+        "explicit_hearing"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L07",
+      "key": "missing_links",
+      "title": "الإرسال والإبهام والسقط",
+      "group": "فحص الإسناد",
+      "scope": "route",
+      "question": "هل توجد واسطة محذوفة أو غير معينة؟",
+      "checks": [
+        "تمييز الإرسال والانقطاع والإعضال والتعليق.",
+        "تحديد موضع السقط بدل الحكم على السند بوصف عام.",
+        "مقارنة الطريق الموصول بما روي مرسلًا."
+      ],
+      "required_fields": [
+        "missing_edges",
+        "missing_narrators",
+        "connected_variants"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L08",
+      "key": "integrity",
+      "title": "العدالة وأقوال الجرح والتعديل",
+      "group": "فحص الإسناد",
+      "scope": "route",
+      "question": "ما النص النقدي الثابت في الراوي وما سياقه؟",
+      "checks": [
+        "حفظ لفظ الجرح أو التعديل واسم الناقد ومرجعه.",
+        "تمييز الجرح المفسر من المجمل والحكم العام من المقيد.",
+        "جمع الأقوال المخالفة وفحص أسباب اختلافها."
+      ],
+      "required_fields": [
+        "critic_statements",
+        "criticism_context",
+        "conflicting_judgments"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L09",
+      "key": "precision",
+      "title": "الضبط والاختلاط وتاريخ التحمّل",
+      "group": "فحص الإسناد",
+      "scope": "route",
+      "question": "هل ضبط الراوي هذا الخبر في الزمن والطريق المعنيين؟",
+      "checks": [
+        "بحث الحفظ والكتاب والأوهام والاختلاط.",
+        "تعيين زمن سماع التلميذ وحال الشيخ حينه.",
+        "تمييز رواية الراوي عن شيخ معين من حكمه العام."
+      ],
+      "required_fields": [
+        "precision_judgments",
+        "hearing_dates",
+        "teacher_specific_issues"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L10",
+      "key": "innovation_support",
+      "title": "الاعتقاد وصلة الرواية بالبدعة",
+      "group": "قواعد المنهج الخاصة",
+      "scope": "route",
+      "question": "هل تحققت شروط الاعتراض بكون الرواية تقوّي بدعة راويها؟",
+      "checks": [
+        "توثيق القول المنسوب إلى الراوي وألفاظ النقاد ومصادرها.",
+        "تمييز الداعية من غيره وتحديد صيغة القاعدة المختارة.",
+        "تحديد العبارة في المتن وشرح وجه تقويتها للاعتقاد المدعى.",
+        "جمع الاعتراضات على التطبيق؛ لا تكفي تسمية مذهبية أو مجرد فضيلة."
+      ],
+      "required_fields": [
+        "documented_belief",
+        "propagation_status",
+        "supporting_clause",
+        "support_reason",
+        "rule_citation"
+      ],
+      "related_cases": [
+        "innovation",
+        "love-and-faith"
+      ],
+      "source_media": [
+        195,
+        196
+      ],
+      "rule_status": "scope_pending",
+      "effect": "review_flag",
+      "requires_independent_support": true
+    },
+    {
+      "code": "L11",
+      "key": "project_narrator_selection",
+      "title": "شرط الانتقاء في الرواة الموصوفين بالتشيع",
+      "group": "قواعد المنهج الخاصة",
+      "scope": "route",
+      "question": "هل يمر هذا الطريق براوٍ ثبت وصفه بالتشيع في مصادر النقد؟",
+      "checks": [
+        "تعيين الراوي المقصود وربطه بموضعه في الإسناد.",
+        "توثيق لفظ الوصف وقائله ومصدره وسياق استعمال المصطلح.",
+        "يُسجّل الطريق ضمن المستبعد من انتقاء المشروع عند تحقق هذا الشرط.",
+        "تُبحث الطرق المستقلة الأخرى للرواية منفصلة عن هذا الطريق."
+      ],
+      "required_fields": [
+        "narrator_ids",
+        "documented_tashayyu",
+        "critic_text",
+        "term_context",
+        "route_position"
+      ],
+      "related_cases": [
+        "innovation",
+        "love-and-faith",
+        "kufan"
+      ],
+      "source_media": [],
+      "rule_status": "project_condition",
+      "effect": "selection_exclusion_flag",
+      "requires_independent_support": true,
+      "policy": {
+        "exclude_documented_tashayyu": true,
+        "scope": "specific_route",
+        "requires_verified_attribution": true
+      }
+    },
+    {
+      "code": "L12",
+      "key": "regional_corroboration",
+      "title": "الطريق الكوفي والأصل المدني",
+      "group": "قواعد المنهج الخاصة",
+      "scope": "route",
+      "question": "ما منشأ هذا الطريق وهل ثبت له أصل مدني مستقل؟",
+      "checks": [
+        "تمييز بلد الراوي عن بلد السماع ومنشأ الرواية ومدارها.",
+        "تحديد نطاق الشرط المقترح: أي أخبار وأي طبقة من الرواة؟",
+        "البحث عن الأصل المدني واستقلال إسناده واتحاد محل الاستشهاد.",
+        "غياب شاهد في البيانات المتاحة لا يثبت عدم وجوده في المصادر."
+      ],
+      "required_fields": [
+        "route_provenance",
+        "regional_scope",
+        "medinan_support",
+        "support_independence",
+        "search_coverage",
+        "rule_citation"
+      ],
+      "related_cases": [
+        "kufan"
+      ],
+      "source_media": [
+        344
+      ],
+      "rule_status": "scope_pending",
+      "effect": "review_flag",
+      "requires_independent_support": true
+    },
+    {
+      "code": "L13",
+      "key": "isolation",
+      "title": "التفرّد ومدار الإسناد",
+      "group": "مقارنة الطرق",
+      "scope": "report",
+      "question": "أين وقع التفرّد وهل تعددت المصادر أم الطرق؟",
+      "checks": [
+        "تحديد الراوي الذي تدور عليه الأسانيد.",
+        "تمييز نسخ الإسناد الواحد من طرق مستقلة.",
+        "دراسة التفرد في ضوء الطبقة والقرائن ونقد الأئمة."
+      ],
+      "required_fields": [
+        "route_graph",
+        "common_link",
+        "isolation_evidence"
+      ],
+      "related_cases": [
+        "ghadir"
+      ],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L14",
+      "key": "corroboration",
+      "title": "المتابعات والشواهد واستقلالها",
+      "group": "مقارنة الطرق",
+      "scope": "report",
+      "question": "هل الشواهد مستقلة وتؤيد اللفظ محل البحث؟",
+      "checks": [
+        "تمييز المتابعة من الشاهد وتعيين موضع الاتفاق.",
+        "فحص درجة ضعف كل طريق وسببها.",
+        "منع عدّ الفروع العائدة إلى أصل واحد تأييدًا مستقلًا."
+      ],
+      "required_fields": [
+        "supporting_routes",
+        "support_defects",
+        "independence_analysis",
+        "matched_clause"
+      ],
+      "related_cases": [
+        "ghadir",
+        "thaqalayn"
+      ],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L15",
+      "key": "variants",
+      "title": "اختلاف الألفاظ والزيادات والإدراج",
+      "group": "مقارنة الطرق",
+      "scope": "report",
+      "question": "أي لفظ هو محل النزاع ومن روى الزيادة؟",
+      "checks": [
+        "مقابلة ألفاظ الطرق والطبعات في جدول واحد.",
+        "تعيين ناقل الزيادة وطبقتها وعدم دمجها في جميع الروايات.",
+        "بحث احتمال الإدراج والتصحيف والنقل بالمعنى دون افتراضه مسبقًا."
+      ],
+      "required_fields": [
+        "variant_matrix",
+        "added_clause",
+        "variant_transmitters",
+        "edition_witnesses"
+      ],
+      "related_cases": [
+        "ammar",
+        "thaqalayn",
+        "manuscripts"
+      ],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L16",
+      "key": "attribution_conflict",
+      "title": "اختلاف الرفع والوقف والوصل والإرسال",
+      "group": "مقارنة الطرق",
+      "scope": "report",
+      "question": "هل نُسب الكلام إلى النبي في بعض الطرق دون غيرها؟",
+      "checks": [
+        "جمع المرفوع والموقوف والموصول والمرسل.",
+        "تحديد موضع الاختلاف وأصحابه وقرائن الترجيح.",
+        "تمييز تعدد الوقائع المحتمل من اضطراب النقل."
+      ],
+      "required_fields": [
+        "attribution_variants",
+        "route_comparison",
+        "critical_preference"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L17",
+      "key": "hidden_defects",
+      "title": "العلل ونقد الأئمة للرواية المعينة",
+      "group": "نقد الرواية",
+      "scope": "report",
+      "question": "هل ورد نقد متخصص لهذا الخبر رغم ظاهر سلامة إسناده؟",
+      "checks": [
+        "جمع ألفاظ النقاد في الخبر نفسه لا في رواته فقط.",
+        "تمييز كلام الناقد من تفسير الباحث لعبارته.",
+        "بيان العلة وموضعها ووجه تأثيرها في الطريق أو اللفظ."
+      ],
+      "required_fields": [
+        "report_specific_criticism",
+        "defect_location",
+        "critic_reasoning"
+      ],
+      "related_cases": [
+        "ghadir",
+        "kufan"
+      ],
+      "source_media": [
+        344
+      ],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L18",
+      "key": "matn",
+      "title": "المتن والسياق والدلالة",
+      "group": "نقد الرواية",
+      "scope": "report",
+      "question": "هل فُهم النص في سياقه وقورنت دلالته بما يستدل به؟",
+      "checks": [
+        "تحرير المعنى واللفظ المختلف عليه.",
+        "تحديد النص المقارن وثبوته ووجه التعارض المدعى.",
+        "بحث إمكان الجمع أو التخصيص أو اختلاف الحال قبل الترجيح.",
+        "فصل ثبوت الخبر عن تفسيره وعن الحكم على الأشخاص."
+      ],
+      "required_fields": [
+        "disputed_clause",
+        "context",
+        "comparison_texts",
+        "contradiction_reason",
+        "reconciliation"
+      ],
+      "related_cases": [
+        "love-and-faith",
+        "adult-nursing",
+        "uthman-shirt"
+      ],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L19",
+      "key": "chronology",
+      "title": "القرائن التاريخية والزمنية",
+      "group": "نقد الرواية",
+      "scope": "report",
+      "question": "هل تتسق تفاصيل الخبر مع الزمن والأشخاص والأماكن؟",
+      "checks": [
+        "توثيق تواريخ الوقائع من مصادر مستقلة.",
+        "تمييز الاستحالة الزمنية من الاحتمال أو سكوت المصادر.",
+        "عدم إسقاط دقة التاريخ على خبر لم تثبت ألفاظه بعد."
+      ],
+      "required_fields": [
+        "event_dates",
+        "independent_history",
+        "chronology_comparison"
+      ],
+      "related_cases": [
+        "uthman-siege",
+        "karbala"
+      ],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L20",
+      "key": "early_practice",
+      "title": "عمل الصحابة والتلقي المدني",
+      "group": "قواعد المنهج الخاصة",
+      "scope": "report",
+      "question": "ما العمل الثابت وهل يطابق الواقعة التي يُحتج به عليها؟",
+      "checks": [
+        "توثيق الممارسة أو القول والمخالفة دون ادعاء إجماع من السكوت.",
+        "تحديد نطاق حجية العمل ضمن المنهج المختار.",
+        "تمييز ترك العمل عن عدم بلوغ الخبر أو تأويله أو خصوصيته."
+      ],
+      "required_fields": [
+        "practice_reports",
+        "documented_dissent",
+        "practice_scope",
+        "rule_citation"
+      ],
+      "related_cases": [
+        "adult-nursing"
+      ],
+      "source_media": [
+        2380,
+        2381
+      ],
+      "rule_status": "scope_pending",
+      "effect": "review_flag",
+      "requires_independent_support": true
+    },
+    {
+      "code": "L21",
+      "key": "critical_disagreement",
+      "title": "موازنة أحكام النقاد وتحرير النسبة",
+      "group": "الترجيح والمراجعة",
+      "scope": "report",
+      "question": "هل نُقلت الأحكام بدقة وهل تناولت الطريق واللفظ نفسيهما؟",
+      "checks": [
+        "تمييز تبنّي القول من حكايته عن غيره.",
+        "فحص نطاق التصحيح أو التضعيف واختلاف طرق الخبر.",
+        "توثيق الخلاف وأسباب الترجيح وتاريخ القول إن ثبت."
+      ],
+      "required_fields": [
+        "attributed_judgments",
+        "judgment_scope",
+        "conflict_resolution"
+      ],
+      "related_cases": [
+        "ammar",
+        "innovation"
+      ],
+      "source_media": [
+        221,
+        195,
+        196
+      ],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    },
+    {
+      "code": "L22",
+      "key": "review",
+      "title": "الخلاصة المعلّلة والمراجعة",
+      "group": "الترجيح والمراجعة",
+      "scope": "report",
+      "question": "هل اكتمل ملف الأدلة وحدد نطاق النتيجة؟",
+      "checks": [
+        "تلخيص كل ملاحظة مع مصدرها والطريق أو اللفظ الذي تؤثر فيه.",
+        "تحديد ما إذا كان الحكم على طريق أو زيادة أو مجموع الخبر.",
+        "مراجعة النتيجة وتسجيل صاحبها وإصدار المنهج قبل اعتمادها للكتاب."
+      ],
+      "required_fields": [
+        "reasoned_summary",
+        "verdict_scope",
+        "review_record"
+      ],
+      "related_cases": [],
+      "source_media": [],
+      "rule_status": "workflow",
+      "effect": "review_flag",
+      "requires_independent_support": false
+    }
+  ]
+}

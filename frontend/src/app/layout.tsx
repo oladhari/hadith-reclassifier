@@ -1,53 +1,55 @@
 import type { Metadata } from "next";
-import { Noto_Naskh_Arabic, Noto_Sans_Arabic } from "next/font/google";
-import "./globals.css";
+import { Noto_Naskh_Arabic, IBM_Plex_Sans_Arabic } from "next/font/google";
 import Link from "next/link";
-import { BookOpen, Search, BarChart3, BookMarked } from "lucide-react";
-
-const notoNaskhArabic = Noto_Naskh_Arabic({
-  subsets: ["arabic"],
+import SiteHeader from "@/components/site-header";
+import "./globals.css";
+const serif = Noto_Naskh_Arabic({
+  subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arabic-serif",
 });
-
-const notoSansArabic = Noto_Sans_Arabic({
-  subsets: ["arabic"],
+const sans = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arabic-sans",
+  display: "swap",
 });
-
 export const metadata: Metadata = {
-  title: "الصحيح العثماني — إعادة تصنيف الحديث",
-  description: "نظام إعادة تصنيف الأحاديث النبوية بالذكاء الاصطناعي",
+  title: {
+    default: "موسوعة الرد على العباسيين | المصدر أولًا",
+    template: "%s | موسوعة الرد على العباسيين",
+  },
+  description:
+    "مكتبة بحثية وفق المنهج العثماني: مصادر مصوّرة، روايات وأسانيد، وملفات تقود من السؤال إلى الدليل. نسخة أولية قيد الإعداد.",
 };
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={`${notoSansArabic.className} ${notoNaskhArabic.variable} ${notoSansArabic.variable} bg-stone-50 text-stone-900 min-h-screen`}>
-        <header className="bg-emerald-900 text-white shadow-lg">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <BookOpen className="w-7 h-7" />
-              <div>
-                <div className="font-bold text-lg leading-tight">الصحيح العثماني</div>
-                <div className="text-emerald-300 text-xs">مشروع إعادة تصنيف الحديث</div>
-              </div>
-            </Link>
-            <nav className="flex items-center gap-6 text-sm">
-              <Link href="/search" className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
-                <Search className="w-4 h-4" /> البحث
-              </Link>
-              <Link href="/dashboard" className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
-                <BarChart3 className="w-4 h-4" /> لوحة التحكم
-              </Link>
-              <Link href="/sahih-othmani" className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
-                <BookMarked className="w-4 h-4" /> الصحيح العثماني
-              </Link>
-            </nav>
+      <body className={`${sans.variable} ${serif.variable}`}>
+        <a className="skip-link" href="#main">
+          انتقل إلى المحتوى
+        </a>
+        <SiteHeader />
+        <main id="main" className="shell main-content">
+          {children}
+        </main>
+        <footer className="site-footer">
+          <div className="shell footer-inner">
+            <div>
+              <strong>موسوعة الرد على العباسيين</strong>
+              <p>اقرأ الحُجّة. افتح المصدر. تتبّع الرواية.</p>
+            </div>
+            <div className="footer-links">
+              <Link href="/about">عن المشروع والتصحيحات</Link>
+              <Link href="/methodology">سياسة المراجعة</Link>
+            </div>
+            <small>النصّ في مصدره، والحجّة في سياقها.</small>
           </div>
-        </header>
-        <main className="max-w-7xl mx-auto px-4 py-8">{children}</main>
+        </footer>
       </body>
     </html>
   );

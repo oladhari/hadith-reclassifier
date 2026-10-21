@@ -1,0 +1,379 @@
+[
+  {
+    "slug": "ammar-addition",
+    "case_slug": "ammar",
+    "title": "رواية عمار: الزيادة واختلاف النقل",
+    "question": "أين ورد لفظ «تقتله الفئة الباغية»، وما صلته بالطريق والنسخة وعبارة الناقد؟",
+    "layer_keys": [
+      "text_identity",
+      "variants",
+      "attribution_conflict",
+      "hidden_defects",
+      "critical_disagreement"
+    ],
+    "source_media": [
+      373,
+      379,
+      1881,
+      221
+    ],
+    "checks": [
+      "مقارنة لفظ أبي سعيد في مواضع البخاري مع الطرق الأخرى.",
+      "مقابلة كلام فتح الباري وتحفة الأشراف بالأصل وتحديد المقصود بالإدراج.",
+      "توثيق هوية المخطوط وتاريخه ومقارنة شهوده؛ صورة ورقة وحدها لا تثبت ترتيب جميع النسخ."
+    ],
+    "corpus_candidates": [
+      {
+        "hadith_id": "620d7a38-5047-5992-b213-a845439586e9",
+        "collection": "abudawud",
+        "collection_title": "سنن أبي داود",
+        "number": "4901",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "f5d27e7f-8b17-5d12-a945-b867381c72cd",
+        "collection": "bukhari",
+        "collection_title": "صحيح البخاري",
+        "number": "447",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "31efcd18-c1cd-5caf-af7d-4f421c7d54dc",
+        "collection": "bukhari",
+        "collection_title": "صحيح البخاري",
+        "number": "2812",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "cc773256-3091-59aa-b71f-1754ba240001",
+        "collection": "tirmidhi",
+        "collection_title": "جامع الترمذي",
+        "number": "1574",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "5169d3e0-edea-55d0-b14d-65426d9393eb",
+        "collection": "tirmidhi",
+        "collection_title": "جامع الترمذي",
+        "number": "3800",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "89e45bd2-2c84-5def-9d44-2338f8ebf81e",
+        "collection": "ibnmajah",
+        "collection_title": "سنن ابن ماجه",
+        "number": "1355",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "acb2eeb2-fe50-5170-ab0a-e5a490a19035",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "309",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "3db6f859-bf03-5b95-b258-d2699f58d835",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "457",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "bc6be7f0-43cf-5641-802c-4847121dc50c",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "4678",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "41894d82-56fa-5aa0-8d4c-9e040db44aa5",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "7036",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "912232d4-34ac-5892-b56f-381430018a7a",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "7322",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "2307b61b-7cb8-5d1e-b04c-dc0cecf45d0a",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "7324",
+        "match_state": "text_candidate"
+      }
+    ]
+  },
+  {
+    "slug": "adult-nursing-quran",
+    "case_slug": "adult-nursing",
+    "title": "رضاع الكبير: المقارنة بالقرآن وآثار الرضاعة",
+    "question": "ما الآية التي يُحتج بها وما وجه دلالتها على اللفظ المعين من الرواية؟",
+    "layer_keys": [
+      "quran_explicit",
+      "matn",
+      "early_practice",
+      "corroboration"
+    ],
+    "source_media": [
+      2380,
+      2381
+    ],
+    "checks": [
+      "تثبيت النص القرآني والآية ووجه الاعتراض في سجل المقارنة.",
+      "فصل أثر عمر وقول ابن عمر عن رواية سالم.",
+      "عرض التفسير المقترح وحجته قبل تسجيل نتيجة المقارنة."
+    ],
+    "corpus_candidates": [
+      {
+        "hadith_id": "7f25b175-7bfa-59aa-a614-d512e1753fcd",
+        "collection": "abudawud",
+        "collection_title": "سنن أبي داود",
+        "number": "2061",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "60cbf460-a6fe-5678-9e6d-fd8d21c85c5a",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "3319",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "b30fec00-50b9-595a-a402-744b96c55a3f",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "3320",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "b7636fe9-145c-59a5-be78-5c03416c88cb",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "3321",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "e6c09284-ecd5-568a-92ee-06a7f5727f3c",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "3322",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "68b90c1b-8a5b-5c8b-a699-f1fc5035ecc2",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "3323",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "93f7782e-0715-52f4-8da3-3e4b73a3097f",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "3324",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "e429010b-6c82-5607-8188-1971692c587a",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "3325",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "7681529f-c3ec-5930-b960-d069b644036e",
+        "collection": "ibnmajah",
+        "collection_title": "سنن ابن ماجه",
+        "number": "1943",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "6f919ba4-f65c-5869-aaf1-15b1c9f94634",
+        "collection": "ibnmajah",
+        "collection_title": "سنن ابن ماجه",
+        "number": "1947",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "d986bfe6-a632-5e12-aea5-766bba2bc483",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "3600",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "2e0d3f99-d95f-5e43-a6d2-511a5b4e28eb",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "3601",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "bedee7ab-9615-5193-90c7-8612116978f4",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "3602",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "3a655046-c34d-5285-8b68-781cd3999d44",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "3603",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "fdadfc94-726d-557e-9610-c400f0866fa3",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "3604",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "a3bf2d7a-f552-5a0a-adc3-fd5cf7934647",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "3605",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "e52a4aca-4a4b-5e00-a239-39b41f996960",
+        "collection": "malik",
+        "collection_title": "الموطأ",
+        "number": "1278",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "f0d7fe52-7bd1-5d8e-80ca-f0aa69f620be",
+        "collection": "malik",
+        "collection_title": "الموطأ",
+        "number": "1284",
+        "match_state": "text_candidate"
+      }
+    ]
+  },
+  {
+    "slug": "love-and-faith",
+    "case_slug": "love-and-faith",
+    "title": "رواية المحبة والإيمان: اللفظ والإسناد",
+    "question": "كيف تُدرس دلالة الربط بالإيمان، وما الأدلة المحددة في رواة كل طريق؟",
+    "layer_keys": [
+      "quran_explicit",
+      "tadlis",
+      "innovation_support",
+      "project_narrator_selection",
+      "regional_corroboration",
+      "matn"
+    ],
+    "source_media": [],
+    "checks": [
+      "اعتماد اللفظ الموجود في النص الحديثي؛ ولفظ «منافق» لا يستبدل بلفظ «كافر».",
+      "تعيين الأعمش وعدي بن ثابت وغيرهما من الإسناد الفعلي وجمع أقوال النقاد.",
+      "فصل الاعتراض على الدلالة عن إثبات البدعة وعن اتصال الطريق."
+    ],
+    "corpus_candidates": [
+      {
+        "hadith_id": "ebad4605-fee9-5916-9b8d-252ea41f0290",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "5018",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "ac9342a4-5eb5-5ee0-bb48-263e8b6b684e",
+        "collection": "nasai",
+        "collection_title": "سنن النسائي",
+        "number": "5022",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "c0e379f0-10aa-52e3-a591-22ca8b03a447",
+        "collection": "tirmidhi",
+        "collection_title": "جامع الترمذي",
+        "number": "3736",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "2ac6ff8d-0a12-5d0c-b667-eb26b31bc5d2",
+        "collection": "ibnmajah",
+        "collection_title": "سنن ابن ماجه",
+        "number": "114",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "ed689096-e718-547b-a604-1eb9a206bed4",
+        "collection": "muslim",
+        "collection_title": "صحيح مسلم",
+        "number": "240",
+        "match_state": "text_candidate"
+      }
+    ]
+  },
+  {
+    "slug": "kufan-ghadir",
+    "case_slug": "kufan",
+    "title": "الطرق الكوفية: خبر الغدير نموذجًا",
+    "question": "أي طريق عُرض على الناقد، وما منشؤه وشواهده المستقلة؟",
+    "layer_keys": [
+      "regional_corroboration",
+      "isolation",
+      "corroboration",
+      "hidden_defects",
+      "project_narrator_selection"
+    ],
+    "source_media": [
+      32,
+      344
+    ],
+    "checks": [
+      "فحص عبارة النقد ومدى انطباقها على الطريق المعروض.",
+      "تمييز منشأ الرواية من مجرد نسبة بعض رواتها إلى بلد.",
+      "تسجيل نطاق البحث عن الأصل المدني والطرق المستقلة."
+    ],
+    "corpus_candidates": [
+      {
+        "hadith_id": "4a4c9b0a-4584-584d-845c-56b7aea5cdf1",
+        "collection": "tirmidhi",
+        "collection_title": "جامع الترمذي",
+        "number": "3713",
+        "match_state": "text_candidate"
+      },
+      {
+        "hadith_id": "7ac3fba5-4b99-577c-b019-c2c3ad1f5793",
+        "collection": "ibnmajah",
+        "collection_title": "سنن ابن ماجه",
+        "number": "121",
+        "match_state": "text_candidate"
+      }
+    ]
+  },
+  {
+    "slug": "narrator-selection",
+    "case_slug": "innovation",
+    "title": "توصيف الراوي وأثره في الانتقاء",
+    "question": "هل ثبت التوصيف في الراوي المعين وما أثره في هذا الطريق؟",
+    "layer_keys": [
+      "narrator_identity",
+      "integrity",
+      "innovation_support",
+      "project_narrator_selection",
+      "precision"
+    ],
+    "source_media": [
+      195,
+      196
+    ],
+    "checks": [
+      "تسجيل لفظ الناقد والكتاب والصفحة دون الاكتفاء بوصف في تعليق.",
+      "تمييز شرط الانتقاء الخاص بالمشروع من قاعدة ما يقوّي البدعة.",
+      "تتبع الراوي في الطرق بعد تثبيت هويته، ثم دراسة كل طريق مستقل."
+    ],
+    "corpus_candidates": []
+  }
+]

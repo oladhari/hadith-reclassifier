@@ -74,3 +74,17 @@ For frontend development, run `npm ci` and `npm run dev` in `frontend/`. `npm ru
 `.env`, environment variants, virtual environments, dependencies, build output, local data, and database artifacts are ignored by Git. `.env.example` contains configuration names without a real API key. The backend Docker build excludes environment files.
 
 PostgreSQL data persists in the `pg_data` Docker volume. Use `docker compose stop` or `docker compose down` to stop services while retaining that volume. Do not use `docker compose down -v` when preserving records. Back up your database before schema or deployment changes.
+
+## Arabic research website
+
+The public Arabic RTL edition provides topic dossiers, source scans, PDFs and video, a searchable library, and a reviewed-book workflow. It uses navy, ivory and copper with IBM Plex Sans Arabic and Noto Naskh Arabic. Public references open within the website.
+
+`/corpus` starts with collection inventory and actual review statistics. Narrations appear after an explicit search or status selection. Seven structured Arabic collections contain 36,390 records including repeated transmission routes. Musnad Ahmad scans are available, but a complete structured collection is not yet imported. Imported source grades are separate from project decisions; acceptance and book inclusion require recorded human review.
+
+The public research pages require no OpenAI key or backend service. The legacy experimental AI backend is separate. The 22-layer draft framework supports evidence-backed examination and a Quran-comparison gate; it does not automatically authenticate narrations. See [filter documentation](docs/hadith-filter-layers.md).
+
+The normalized local catalogue preserves originals and provenance, deduplicates objects, and generates public JSON projections. OCR text remains subject to verification. Video transcription and the editorial review interface remain future work. See [database documentation](docs/research-database.md).
+
+For local development, run `npm ci` and `npm run dev` in `frontend/`. Production builds prepare seven corpus files in the ignored `.corpus/` directory. Media can be served from the local archive or public object storage. See [hosting instructions](docs/hosting.md).
+
+Run `npm run lint`, `npm run build`, and, against a running edition, `npm run check:research` in `frontend/`. Set `RESEARCH_TEST_URL` to test another deployment. These checks do not call AI or mutate scholarly assessments.

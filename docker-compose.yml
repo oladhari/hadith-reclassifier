@@ -38,6 +38,11 @@ services:
       dockerfile: Dockerfile
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+      HADITH_DATA_DIR: /research/hadiths
+      TELEGRAM_ARCHIVE_DIR: /research/archive
+    volumes:
+      - ./data/hadiths:/research/hadiths:ro
+      - ../telegram-archive/kkee9938:/research/archive:ro
     ports:
       - "3000:3000"
     depends_on:

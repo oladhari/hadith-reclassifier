@@ -27,3 +27,4 @@ data/
 coverage/
 dist/
 *.tsbuildinfo
+.research-venv/

@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Track documented local configuration names, never credentials.
+!.env.example
+
+# Generated public corpus bundle, built locally or fetched during deployment.
+.corpus/

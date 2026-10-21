@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-10-21T03:44:35.771775+00:00",
+  "counts": {
+    "total": 36390,
+    "with_text": 35982,
+    "filtered": 0,
+    "in_book": 0,
+    "unreviewed": 36390,
+    "in_progress": 0,
+    "needs_review": 0,
+    "accepted": 0,
+    "rejected": 0
+  },
+  "collections": [
+    {
+      "slug": "bukhari",
+      "title": "صحيح البخاري",
+      "counts": {
+        "total": 7589,
+        "with_text": 7580,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 7589,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "muslim",
+      "title": "صحيح مسلم",
+      "counts": {
+        "total": 7563,
+        "with_text": 7360,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 7563,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "malik",
+      "title": "الموطأ",
+      "counts": {
+        "total": 1858,
+        "with_text": 1829,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 1858,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "abudawud",
+      "title": "سنن أبي داود",
+      "counts": {
+        "total": 5274,
+        "with_text": 5272,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 5274,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "tirmidhi",
+      "title": "جامع الترمذي",
+      "counts": {
+        "total": 3998,
+        "with_text": 3924,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 3998,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "nasai",
+      "title": "سنن النسائي",
+      "counts": {
+        "total": 5765,
+        "with_text": 5679,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 5765,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "ibnmajah",
+      "title": "سنن ابن ماجه",
+      "counts": {
+        "total": 4343,
+        "with_text": 4338,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 4343,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    }
+  ],
+  "records": {},
+  "missing_collections": [
+    {
+      "title": "مسند الإمام أحمد",
+      "note": "توجد صفحات مصوّرة للاستدلال؛ المجموعة الحديثية الكاملة غير مضافة بعد."
+    }
+  ]
+}

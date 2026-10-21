@@ -1,0 +1,9 @@
+{
+  "framework": "nextjs",
+  "headers": [{ "source": "/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }],
+  "redirects": [
+    { "source": "/dashboard", "destination": "/corpus", "permanent": false },
+    { "source": "/search", "destination": "/corpus", "permanent": false },
+    { "source": "/hadith/:id", "destination": "/corpus", "permanent": false }
+  ]
+}
