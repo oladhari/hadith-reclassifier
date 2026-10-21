@@ -1,3 +1,4 @@
+import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Original archival images are served without alteration. */
 import Link from "next/link";
 import {
@@ -7,8 +8,8 @@ import {
   ArrowUpLeft,
   Headphones,
 } from "lucide-react";
-import { archive, assetTitle, kindNames, fileSize } from "@/lib/archive";
-import { ar, sources, matches } from "@/lib/research";
+import { getArchive, assetTitle, kindNames, fileSize } from "@/lib/archive";
+import { ar, matches } from "@/lib/research";
 import { PageHeading } from "@/components/research-ui";
 export const metadata = { title: "مكتبة المصادر" };
 export default async function LibraryPage({
@@ -16,6 +17,8 @@ export default async function LibraryPage({
 }: {
   searchParams: Promise<{ kind?: string; page?: string; q?: string }>;
 }) {
+  const sources = await getBibliography();
+  const archive = await getArchive();
   const { kind = "", page = "1", q = "" } = await searchParams;
   const filtered = archive.filter(
     (a) =>

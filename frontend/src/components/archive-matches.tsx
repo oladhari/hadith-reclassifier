@@ -1,8 +1,9 @@
-import { archive } from "@/lib/archive";
+import { getArchive } from "@/lib/archive";
 import { publicEvidence } from "@/lib/public-evidence";
 import { MediaOriginal } from "./source-viewer";
 import type { MatchSet } from "@/lib/topics";
-export function ArchiveMatches({ baseURL }: { matches: MatchSet; page?: number; baseURL: string; extraIds?: number[] }) {
+export async function ArchiveMatches({ baseURL }: { matches: MatchSet; page?: number; baseURL: string; extraIds?: number[] }) {
+ const archive = await getArchive();
  const ids = publicEvidence(baseURL);
  return <section className="archive-index-panel" id="archive-matches"><h2>الأدلة وصفحات الكتب</h2>
  <p>اقرأ النص في صفحته، وميّز كلام المؤلف من تعليقات المحقق ووجه الاستدلال به.</p>

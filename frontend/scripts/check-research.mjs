@@ -135,6 +135,7 @@ await page(
   "/corpus?collection=not-a-collection&q=zzznomatch",
   "لم نجد نصًا مطابقًا",
 );
+await page("/corpus?q=" + encodeURIComponent("' OR 1=1 --"), "لم نجد نصًا مطابقًا");
 const methodology = await page("/methodology", "صريح القرآن الكريم هو الميزان الأول");
 assert.ok(methodology.includes("الاعتقاد وصلة الرواية بالبدعة"));
 assert.ok(methodology.includes("شرط الانتقاء في الرواة الموصوفين بالتشيع"));

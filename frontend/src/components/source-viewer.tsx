@@ -1,11 +1,12 @@
+import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Preserve the original source scan. */
 import Link from "next/link";
 import { EvidenceReading } from "./evidence-reading";
 import { kindNames, fileSize, type ArchiveItem } from "@/lib/archive";
 import { sourceFiles, sourceRecord, sourceTitle } from "@/lib/local-sources";
 import { evidenceLabels } from "@/lib/public-evidence";
-import { sources } from "@/lib/research";
-export function MediaOriginal({ item }: { item: ArchiveItem }) {
+export async function MediaOriginal({ item }: { item: ArchiveItem }) {
+  const sources = await getBibliography();
   const src = `/api/media/${item.id}`;
   return (
     <div className={`source-original ${item.kind}`}>
@@ -31,7 +32,7 @@ export function MediaOriginal({ item }: { item: ArchiveItem }) {
       ) : item.kind === "audio" ? (
         <audio controls preload="none" src={src} />
       ) : item.kind === "pdf" ? (
-        <iframe src={src} title={sourceTitle(item.id)} loading="lazy" />
+        <iframe src={src} title={await sourceTitle(item.id)} loading="lazy" />
       ) : (
         <p>الوثيقة متاحة للتنزيل وفتحها ببرنامجها المناسب.</p>
       )}
@@ -45,16 +46,17 @@ export function MediaOriginal({ item }: { item: ArchiveItem }) {
     </div>
   );
 }
-export function SourceBundle({
+export async function SourceBundle({
   id,
   expanded = true,
 }: {
   id: number;
   expanded?: boolean;
 }) {
-  const record = sourceRecord(id);
+  const sources = await getBibliography();
+  const record = await sourceRecord(id);
   if (!record) return null;
-  const files = sourceFiles(id);
+  const files = await sourceFiles(id);
   return (
     <article className="source-bundle" id={`source-${id}`}>
       <div className="source-bundle-heading">
@@ -65,7 +67,7 @@ export function SourceBundle({
               : "نقول تحتاج ربطًا بالأصل"}
           </span>
           <h3>
-            <Link href={`/sources/${id}`}>{sourceTitle(id)}</Link>
+            <Link href={`/sources/${id}`}>{await sourceTitle(id)}</Link>
           </h3>
         </div>
 

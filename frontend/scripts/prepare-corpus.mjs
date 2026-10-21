@@ -1,6 +1,10 @@
 // Prepare only public Arabic corpus files; credentials and research databases are never bundled.
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+if (process.env.RESEARCH_READ_DATABASE_URL) {
+  console.log("Using the hosted research database; corpus file preparation is unnecessary.");
+  process.exit(0);
+}
 const books = ["bukhari", "muslim", "malik", "abudawud", "tirmidhi", "nasai", "ibnmajah"];
 const output = path.resolve(".corpus");
 await mkdir(output, { recursive: true });

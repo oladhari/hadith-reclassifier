@@ -1,36 +1,50 @@
 import "server-only";
+import { unstable_cache } from "next/cache";
+import { cache } from "react";
+import { queryNeon, usesNeon } from "./neon";
 import data from "@/content/local-sources.json";
-import { archive, assetTitle, type ArchiveItem } from "./archive";
+import { getArchive, assetTitle, type ArchiveItem } from "./archive";
 import { evidenceLabels } from "./public-evidence";
 import { sources } from "./research";
+const liveBibliography = unstable_cache(async () => {
+  const rows = await queryNeon<{id:number;title:string;detail:string;quote:string}>("SELECT * FROM research.website_bibliography");
+  return Object.fromEntries(rows.map(({id,...source})=>[id,source]));
+}, ["neon-bibliography-v1"], { revalidate:60 });
+export const getBibliography = cache(async (): Promise<typeof sources> => usesNeon() ? liveBibliography() : sources);
 export type LocalSource = {
   id: number;
   date: string;
   files: number[];
   quotes: string[];
 };
-const records = data as Record<string, LocalSource>;
-export function sourceRecord(id: number) {
-  return records[String(id)];
+const liveSources = unstable_cache(async () => {
+  const rows = await queryNeon<LocalSource>("SELECT * FROM research.website_sources ORDER BY id");
+  return Object.fromEntries(rows.map(row=>[String(row.id),row]));
+}, ["neon-sources-v1"], { revalidate: 60 });
+const getSources = cache(async (): Promise<Record<string, LocalSource>> => usesNeon() ? liveSources() : data as Record<string, LocalSource>);
+export async function sourceRecord(id: number) {
+  return (await getSources())[String(id)];
 }
-export function sourceFiles(id: number): ArchiveItem[] {
-  return (sourceRecord(id)?.files || [])
+export async function sourceFiles(id: number): Promise<ArchiveItem[]> {
+  const archive = await getArchive();
+  return ((await sourceRecord(id))?.files || [])
     .map((fileId) => archive.find((file) => file.id === fileId))
     .filter((file): file is ArchiveItem => Boolean(file));
 }
-export function sourceTitle(id: number) {
-  const known = sources[id];
+export async function sourceTitle(id: number) {
+  const known = (await getBibliography())[id];
   if (known) return known.title;
   if (evidenceLabels[id]) return evidenceLabels[id];
-  const files = sourceFiles(id);
+  const files = await sourceFiles(id);
   return files[0]
     ? assetTitle(files[0])
     : "نصوص ومناقشات";
 }
-export function resolveSources(ids: number[]) {
+export async function resolveSources(ids: number[]) {
+  const records = await getSources();
   const seen = new Set<string>();
   return ids.filter((id) => {
-    const record = sourceRecord(id);
+    const record = records[String(id)];
     if (!record) return false;
     const key = record.files.length
       ? `files:${[...record.files].sort((a, b) => a - b).join(",")}`

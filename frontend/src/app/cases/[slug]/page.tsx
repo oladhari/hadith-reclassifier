@@ -1,8 +1,9 @@
+import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Original archival images are served without alteration. */
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpLeft, BookOpen } from "lucide-react";
-import { cases, sources } from "@/lib/research";
+import { cases } from "@/lib/research";
 import { caseMatches, topics } from "@/lib/topics";
 import { ArchiveMatches } from "@/components/archive-matches";
 import { CaseReading } from "@/components/evidence-reading";
@@ -25,6 +26,7 @@ export default async function CasePage({
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ page?: string }>;
 }) {
+  const sources = await getBibliography();
   const { slug } = await params;
   const { page = "1" } = await searchParams;
   const item = cases.find((c) => c.slug === slug);

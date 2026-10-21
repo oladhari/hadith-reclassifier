@@ -28,3 +28,6 @@ coverage/
 dist/
 *.tsbuildinfo
 .research-venv/
+
+# Source-controlled, credential-free website read models.
+!scripts/website-read-views.sql

@@ -3,13 +3,14 @@ import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import { Readable } from "node:stream";
 import path from "node:path";
-import { archive } from "@/lib/archive";
+import { getArchive } from "@/lib/archive";
 import objectKeys from "@/content/media-objects.json";
 export const runtime = "nodejs";
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  const archive = await getArchive();
   const { id } = await params;
   const item = archive.find((a) => String(a.id) === id);
   if (!item) return new Response("Not found", { status: 404 });
@@ -27,7 +28,7 @@ export async function GET(
       }
       if (!valid) return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${item.size}` } });
     }
-    const key = (objectKeys as Record<string, string>)[item.id];
+    const key = item.object_key || (objectKeys as Record<string, string>)[item.id];
     if (!key || !/^originals\/sha256\/[a-f0-9]{2}\/[a-f0-9]{64}$/.test(key))
       return new Response("Not found", { status: 404 });
     const remoteURL = `${remoteBase}/${key}`;

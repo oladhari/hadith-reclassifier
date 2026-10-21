@@ -1,26 +1,31 @@
+import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Original archival images are served without alteration. */
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EvidenceReading } from "@/components/evidence-reading";
 import { Download } from "lucide-react";
-import { archive, assetTitle, kindNames, fileSize } from "@/lib/archive";
-import { sources } from "@/lib/research";
+import { getArchive, assetTitle, kindNames, fileSize } from "@/lib/archive";
 import { PageHeading, StatusNote } from "@/components/research-ui";
+export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const archive = await getArchive();
   const { id } = await params;
+  const sources = await getBibliography();
   const item = archive.find((a) => String(a.id) === id);
-  return { title: item ? assetTitle(item) : "المادة غير موجودة" };
+  return { title: item ? sources[item.id]?.title || assetTitle(item) : "المادة غير موجودة" };
 }
 export default async function AssetPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const archive = await getArchive();
   const { id } = await params;
+  const sources = await getBibliography();
   const item = archive.find((a) => String(a.id) === id);
   if (!item) notFound();
   const src = `/api/media/${item.id}`;

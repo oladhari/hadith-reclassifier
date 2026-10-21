@@ -18,7 +18,7 @@ After deployment, check anonymous access, the default collection inventory, expl
 
 ## Database and text ownership
 
-The local editorial catalogue remains at `data/research/research.sqlite3`. Its portable catalogue is hosted in the dedicated Neon project, under the private `research` schema. The published website uses generated read-only JSON projections; it does not query Neon on every page view. Until an editorial database adapter is introduced, make catalogue changes locally and synchronize deliberately.
+The local editorial catalogue remains at `data/research/research.sqlite3`. Its portable catalogue is hosted in the dedicated Neon project, under the private `research` schema. The website reads hadith search, review statistics, media metadata and source bundles from Neon through restricted website views. Statistics and source metadata have a 60-second cache; hadith searches query current records with pagination. Editorial page copy and curated argument/image selections remain source-controlled. Local catalogue changes must still be synchronized deliberately.
 
 The hosted destination is a dedicated Neon PostgreSQL project named `othmani`, separate from other applications. Store book metadata, source citations, OCR/transcripts, narration texts, narrator records, filter observations and human reviews there. Keep scans, PDFs, audio and video in R2, referenced by object key and checksum. Original text discussion/provenance is internal and is not automatically a public website projection. The seven Arabic corpus JSON files are already hosted in the public corpus prefix and bundled for search during builds.
 
@@ -28,7 +28,7 @@ Cloudflare folder creation is unnecessary: the uploader creates objects under th
 
 ## Neon authentication and provisioning
 
-Authenticate with `npx --yes neonctl@latest auth` on this workstation. Credentials belong to the CLI's private configuration and must not be copied into source files. Once authenticated, create the dedicated `othmani` project on the Free plan and obtain its PostgreSQL connection string without logging the password. Store the connection string only as `RESEARCH_POSTGRES_URL` in the root private `.env`; keep the legacy backend's `DATABASE_URL` unchanged. The current website continues using its published read-only snapshots until a database adapter is explicitly connected and verified.
+Authenticate with `npx --yes neonctl@latest auth` on this workstation. Credentials belong to the CLI's private configuration and must not be copied into source files. Once authenticated, create the dedicated `othmani` project on the Free plan and obtain its PostgreSQL connection string without logging the password. Store the connection string only as `RESEARCH_POSTGRES_URL` in the root private `.env`; keep the legacy backend's `DATABASE_URL` unchanged. The administrator connection remains local. The website receives only the restricted reader connection as `RESEARCH_READ_DATABASE_URL` in Vercel production and preview environments.
 
 Before migration, retain a consistent local backup and validate the exported table checksums and row counts. The migration uses a single transaction, checks every table by row count and an order-independent content fingerprint, enables RLS, and revokes PUBLIC access to the schema. Private discussion provenance and import payloads remain in the original local archive; they are excluded from this portable catalogue. File uploads to R2 are independent and continue during this setup.
 
@@ -36,4 +36,12 @@ Before migration, retain a consistent local backup and validate the exported tab
 
 Install `scripts/requirements-database-publish.txt` along with the research requirements. `scripts/publish_research_database.py --dry-run` verifies export checksums without contacting a database. Initial migration refuses to overwrite an existing `research` schema and checks the connection against `NEON_DATABASE_HOST`. Use `--verify-only` for a later read-only content comparison against the same export snapshot. After any intentional cloud synchronization, generate a fresh snapshot before comparing it.
 
-`--sync-storage` updates only locally verified R2 storage locations in Neon. It does not publish discussion payloads, alter scholarly reviews, or make database tables public. The local upload completion hook runs this synchronization after the media upload finishes. Credentials belong only in the root private `.env`; the current frontend does not require database credentials on Vercel.
+`--sync-storage` updates only locally verified R2 storage locations in Neon. It does not publish discussion payloads, alter scholarly reviews, or make database tables public. The local upload completion hook runs this synchronization after the media upload finishes. Credentials belong only in the root private `.env`; only the restricted reader connection belongs on Vercel; the administrator connection does not.
+
+## Active website reader
+
+Run `scripts/configure_website_reader.py` after initial migration to install `scripts/website-read-views.sql` and provision the restricted login. It grants SELECT only on the website views, denies editing privileges, and leaves original provenance inaccessible. Run `scripts/check_neon_website.py` to verify permissions and review-state transitions. Its synthetic changes use a transaction that is always rolled back.
+
+Set the server-only `RESEARCH_READ_DATABASE_URL` in the frontend environment. A configured Neon connection never silently falls back to stale JSON on database errors; readers see a retry message. Offline snapshot mode remains available only when this connection is absent. Database credentials are never NEXT_PUBLIC variables. Hosted builds skip corpus JSON preparation when the reader is configured; original JSON files remain preserved in R2.
+
+The HTTP integration suite was also run against the Neon-connected server with `HADITH_DATA_DIR` pointing to a nonexistent directory, verifying that search results came from the database. Media bytes continue to come from R2. On local networks with slow IPv4 connections and unavailable IPv6, Node's `--network-family-autoselection-attempt-timeout=2000` option may be needed for the local preview; this is not a Vercel requirement.

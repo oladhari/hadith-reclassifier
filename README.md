@@ -85,6 +85,6 @@ The public research pages require no OpenAI key or backend service. The legacy e
 
 The normalized local catalogue preserves originals and provenance, deduplicates objects, and generates public JSON projections. OCR text remains subject to verification. Video transcription and the editorial review interface remain future work. See [database documentation](docs/research-database.md).
 
-For local development, run `npm ci` and `npm run dev` in `frontend/`. Production builds prepare seven corpus files in the ignored `.corpus/` directory. Media can be served from the local archive or public object storage. See [hosting instructions](docs/hosting.md).
+For local development, run `npm ci` and `npm run dev` in `frontend/`. Neon-connected deployments read the restricted database views directly. Offline builds prepare seven corpus files in the ignored `.corpus/` directory. Media can be served from the local archive or public object storage. See [hosting instructions](docs/hosting.md).
 
 Run `npm run lint`, `npm run build`, and, against a running edition, `npm run check:research` in `frontend/`. Set `RESEARCH_TEST_URL` to test another deployment. These checks do not call AI or mutate scholarly assessments.

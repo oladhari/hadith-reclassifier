@@ -6,6 +6,7 @@ import { PageHeading } from "@/components/research-ui";
 import { caseEvidence } from "@/lib/public-evidence";
 import { cases } from "@/lib/research";
 import { topics } from "@/lib/topics";
+export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
@@ -13,8 +14,8 @@ export async function generateMetadata({
 }) {
   const { id } = await params;
   return {
-    title: sourceRecord(Number(id))
-      ? sourceTitle(Number(id))
+    title: await sourceRecord(Number(id))
+      ? await sourceTitle(Number(id))
       : "المرجع غير موجود",
   };
 }
@@ -25,7 +26,7 @@ export default async function SourcePage({
 }) {
   const { id } = await params;
   const numeric = Number(id);
-  if (!/^\d+$/.test(id) || !sourceRecord(numeric)) notFound();
+  if (!/^\d+$/.test(id) || !(await sourceRecord(numeric))) notFound();
   const relatedCases = cases.filter(item => caseEvidence(item.slug).includes(numeric));
   const relatedTopics = topics.filter(topic => topic.cases.some(slug => caseEvidence(slug).includes(numeric)));
   return (
@@ -33,11 +34,11 @@ export default async function SourcePage({
       <div className="breadcrumb">
         <Link href="/library">مكتبة المصادر</Link>
         <span>/</span>
-        <span>{sourceTitle(numeric)}</span>
+        <span>{await sourceTitle(numeric)}</span>
       </div>
       <PageHeading
         eyebrow="مرجع داخل الموسوعة"
-        title={sourceTitle(numeric)}
+        title={await sourceTitle(numeric)}
         description="الأصل ومعلوماته والنقول المرتبطة به في مكان واحد. تُستكمل بيانات المرجع بمقابلة الكتاب والطبعة، وتُفصل الوثيقة عن تفسيرها."
       />
       <SourceBundle id={numeric} expanded />
