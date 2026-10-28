@@ -8,6 +8,10 @@ const transcripts = JSON.parse(await readFile(new URL("../src/content/transcript
 const archive = JSON.parse(await readFile(new URL("../src/content/archive-index.json", import.meta.url), "utf8"));
 const collections = JSON.parse(await readFile(new URL("../src/content/media-collections.json", import.meta.url), "utf8"));
 const readings = JSON.parse(await readFile(new URL("../src/content/evidence-analysis.json", import.meta.url), "utf8"));
+const videoVisibility = JSON.parse(await readFile(new URL("../src/content/video-visibility.json", import.meta.url), "utf8"));
+for (const row of Object.values(catalogue)) {
+  if (videoVisibility.hidden.includes(row.canonical_id)) { row.visible = false; row.manual_video_hidden = true; }
+}
 const organization = JSON.parse(await readFile(new URL("../src/content/library-organization.json", import.meta.url), "utf8"));
 for (const row of Object.values(catalogue)) {
   const review = organization[String(row.canonical_id)];
@@ -168,3 +172,15 @@ for (const link of albumLinks.slice(0, 8)) {
 assert.ok(mixedAlbumFound, "Book/theme albums should gather PDF and image excerpts together");
 assert.equal((await fetch(`${base}/library/albums/nonexistent`)).status, 404);
 console.log(`Organization checks passed: ${books.length} complete works, book/author index, drafts excluded, mixed-format albums, audio/video preserved.`);
+
+for (const path of ["/review/videos", "/api/video-review/export", "/api/video-review/session", "/api/video-review/decision"]) {
+  assert.equal((await fetch(base + path)).status, 404, `Closed review route ${path}`);
+}
+assert.equal((await fetch(base + "/api/video-review/decision", { method: "POST", headers: { Origin: base, "Content-Type": "application/json" }, body: "{}" })).status, 404);
+for (let offset = 0; offset < videoVisibility.hidden.length; offset += 6) {
+  await Promise.all(videoVisibility.hidden.slice(offset, offset + 6).map(async id => {
+    assert.equal((await fetch(`${base}/library/${id}`)).status, 404, `Rejected video ${id} stays hidden`);
+    assert.equal((await fetch(`${base}/api/media/${id}`, { redirect: "manual", headers: { Cookie: "othmani-video-review=retired-session" } })).status, 404);
+  }));
+}
+console.log(`Final video decisions verified: ${videoVisibility.hidden.length} rejected videos hidden; review page and editing endpoints removed.`);

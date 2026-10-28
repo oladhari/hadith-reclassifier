@@ -3,6 +3,7 @@ import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { organizeEntry } from "./library-organization";
 import documentPdfs from "@/content/document-pdfs.json";
+import videoVisibility from "@/content/video-visibility.json";
 import snapshot from "@/content/media-catalogue.json";
 import transcriptSnapshot from "@/content/transcript-content.json";
 import { queryNeon, usesNeon } from "./neon";
@@ -29,9 +30,10 @@ const liveCatalogue = unstable_cache(async () => {
     "SELECT id,metadata FROM research.website_catalogue",
   );
   return Object.fromEntries(rows.map(row => [row.id, row.metadata])) as MediaCatalogue;
-}, ["neon-catalogue-v5"], { revalidate: 60, tags: ["media-catalogue"] });
+}, ["neon-catalogue-v6"], { revalidate: 60, tags: ["media-catalogue"] });
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
   Object.fromEntries(Object.entries(usesNeon() ? await liveCatalogue() : snapshot as MediaCatalogue).map(([id, entry]) => {
+    if (videoVisibility.hidden.includes(entry.canonical_id)) entry = { ...entry, visible: false, manual_video_hidden: true };
     const pdf = (documentPdfs as Record<string, { asset_url: string; asset_size: number; page_count: number }>)[String(entry.canonical_id)];
     return [id, organizeEntry(pdf ? { ...entry, ...pdf, converted_document: true } : entry)];
   })),

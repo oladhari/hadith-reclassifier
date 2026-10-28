@@ -21,6 +21,8 @@
   these decisions and apply `scripts/media-catalogue-view.sql`; never reset them
   from machine-generated selection metadata. Initial setup is
   `scripts/setup_video_review.py` (restricted role; credentials stay private).
-- The private `/review/videos` page uses server-only reviewer credentials and a
-  signed, expiring access-code session. Do not publish the access code, private
-  review exports, or credentials as website assets. Originals stay in R2.
+- Video review was completed by the user: 129 kept, 57 hidden. The review page
+  and APIs were removed, and the reviewer role disabled. Preserve the final
+  `frontend/src/content/video-visibility.json` fallback and all database decisions.
+  Do not re-enable review access without a new user request. Private review
+  backups and credentials must never enter public assets. Originals stay in R2.

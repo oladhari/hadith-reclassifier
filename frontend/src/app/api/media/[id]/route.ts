@@ -1,5 +1,4 @@
 import { getMediaCatalogue } from "@/lib/media-catalogue";
-import { isVideoReviewer } from "@/lib/video-review-auth";
 import { NextRequest } from "next/server";
 import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
@@ -16,7 +15,7 @@ export async function GET(
   const { id } = await params;
   const item = archive.find((a) => String(a.id) === id);
   if (!item) return new Response("Not found", { status: 404 });
-  if (item.kind === "video" && (await getMediaCatalogue())[id]?.manual_video_hidden && !await isVideoReviewer())
+  if (item.kind === "video" && (await getMediaCatalogue())[id]?.manual_video_hidden)
     return new Response("Not found", { status: 404, headers: { "Cache-Control": "private, no-store" } });
   const remoteBase = process.env.MEDIA_PUBLIC_BASE_URL?.replace(/\/$/, "");
   if (remoteBase) {
