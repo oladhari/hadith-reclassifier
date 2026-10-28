@@ -7,6 +7,7 @@ const catalogue = JSON.parse(await readFile(new URL("../src/content/media-catalo
 const transcripts = JSON.parse(await readFile(new URL("../src/content/transcript-content.json", import.meta.url), "utf8"));
 const archive = JSON.parse(await readFile(new URL("../src/content/archive-index.json", import.meta.url), "utf8"));
 const collections = JSON.parse(await readFile(new URL("../src/content/media-collections.json", import.meta.url), "utf8"));
+const readings = JSON.parse(await readFile(new URL("../src/content/evidence-analysis.json", import.meta.url), "utf8"));
 const visible = Object.values(catalogue).filter(row => row.visible && row.id === row.canonical_id);
 assert.ok(visible.length > 0);
 assert.equal(new Set(visible.map(row => row.canonical_id)).size, visible.length);
@@ -72,6 +73,10 @@ for (const collection of Object.values(collections)) {
     for (const image of collection.images) {
       assert.ok(detail.includes(`src="/api/media/${image.id}"`));
       assert.ok(detail.includes(image.label));
+      if (readings.media[String(image.id)]) {
+        assert.equal((detail.match(new RegExp(`data-evidence-analysis="${image.id}"`, "g")) || []).length, 1,
+          "A checked reading must stay with its own image and appear once");
+      }
     }
     const source = await html(`/sources/${collection.canonical_id}`);
     assert.equal((source.match(/class="image-collection-page"/g) || []).length, collection.images.length,
@@ -91,7 +96,7 @@ for (const collection of Object.values(collections)) {
   if (collection.type === "images") {
     const search = await html(`/library?q=${collection.canonical_id}`);
     assert.ok(search.includes('class="image-collection-cover"'));
-    assert.ok(search.includes("صورتان"));
+    assert.ok(search.includes(collection.images.length === 2 ? "صورتان" : `${collection.images.length} صور`));
     continue;
   }
   const file = await fetch(base + collection.asset_url);

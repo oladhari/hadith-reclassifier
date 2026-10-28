@@ -26,7 +26,7 @@ const liveCatalogue = unstable_cache(async () => {
     "SELECT id,metadata FROM research.website_catalogue",
   );
   return Object.fromEntries(rows.map(row => [row.id, row.metadata])) as MediaCatalogue;
-}, ["neon-catalogue-v3"], { revalidate: 60 });
+}, ["neon-catalogue-v4"], { revalidate: 60 });
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
   usesNeon() ? liveCatalogue() : snapshot as MediaCatalogue,
 );

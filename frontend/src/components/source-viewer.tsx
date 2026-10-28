@@ -47,7 +47,7 @@ export async function MediaOriginal({ item }: { item: ArchiveItem }) {
           فتح {metadata?.collection_images ? "مجموعة الصور" : kindNames[item.kind]} في صفحة مستقلة ←
         </Link>
       </div>
-      <EvidenceReading id={item.id} />
+      {!metadata?.collection_images && <EvidenceReading id={item.id} />}
     </div>
   );
 }

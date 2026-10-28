@@ -149,7 +149,9 @@ def assemble():
             page_label=collection.get("page_label", ""), occurrences=occurrences,
             collection_sources=[{"id": row["id"], "page_count": row.get("page_count", 1)} for row in collection["originals"]])
         for field in ["topics", "cases", "tags"]:
-            base[field] = list(dict.fromkeys(value for member in members for value in public[str(member)][field]))
+            base[field] = collection.get(field, list(dict.fromkeys(value for member in members for value in public[str(member)][field])))
+        if not set(base["topics"]) <= TOPICS or not set(base["cases"]) <= CASES:
+            raise ValueError("Unknown collection topic or case")
         if images:
             base.update(collection_images=collection["images"], image_count=len(members),
                         asset_size=sum(row["size"] for row in collection["originals"]))

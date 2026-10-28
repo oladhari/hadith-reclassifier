@@ -40,7 +40,7 @@ export default async function AssetPage({ params, searchParams }: {
   const transcript = entry.has_transcript ? await getTranscript(item.id) : "";
   return <>
     <div className="breadcrumb"><Link href="/library">المكتبة</Link><span>/</span><span>{entry.title}</span></div>
-    <PageHeading eyebrow={`${entry.collection_images ? "مجموعة صور" : scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(entry.asset_size || item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}${entry.image_count === 2 ? " • صورتان" : ""}`}
+    <PageHeading eyebrow={`${entry.collection_images ? "مجموعة صور" : scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(entry.asset_size || item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}${entry.image_count ? entry.image_count === 2 ? " • صورتان" : ` • ${entry.image_count} صور` : ""}`}
       title={entry.title} description={entry.description} />
     {(entry.work_title || entry.author || entry.page_label) && <dl className="media-bibliography">
       {entry.work_title && <div><dt>المصدر</dt><dd><Link href={`/library?q=${encodeURIComponent(entry.work_title)}`}>{entry.work_title} ←</Link></dd></div>}
@@ -79,6 +79,6 @@ export default async function AssetPage({ params, searchParams }: {
     </div></section>}
     {entry.tags.length > 0 && <div className="media-tags">{entry.tags.map(tag => <Link href={`/library?q=${encodeURIComponent(tag)}`} key={tag}>{tag}</Link>)}</div>}
     {sources[item.id] && <p className="source-metadata">{sources[item.id].detail}</p>}
-    <EvidenceReading id={item.id} />
+    {!entry.collection_images && <EvidenceReading id={item.id} />}
   </>;
 }

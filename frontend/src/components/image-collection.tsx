@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- Readable original source scans. */
 import type { CollectionImage } from "@/lib/media-catalogue";
+import { EvidenceReading } from "./evidence-reading";
 
 export function ImageCollection({ images }: { images: CollectionImage[] }) {
   return <div className="image-collection-pages">{images.map((image, index) =>
@@ -9,6 +10,7 @@ export function ImageCollection({ images }: { images: CollectionImage[] }) {
         <img src={`/api/media/${image.id}`} alt={image.label} loading={index === 0 ? "eager" : "lazy"} />
       </a>
       <a className="text-link" href={`/api/media/${image.id}`} target="_blank" rel="noreferrer">فتح الصورة الأصلية بالحجم الكامل ←</a>
+      <EvidenceReading id={image.id} />
     </figure>
   )}</div>;
 }

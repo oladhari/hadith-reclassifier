@@ -9,8 +9,8 @@ import { topics } from "@/lib/topics";
 export function LibraryCard({ item, metadata, chapter }: { item: ArchiveItem; metadata: MediaDescription; chapter?: MediaChapter }) {
   const href = chapter ? `/library/${item.id}?start=${chapter.start}&end=${chapter.end}#media-player` : `/library/${item.id}`;
   return <Link className="asset-card" href={href}>
-    {metadata.collection_images ? <div className="image-collection-cover">
-      {metadata.collection_images.slice(0, 2).map(image => <AssetThumbnail key={image.id} src={(thumbnails as Record<string, string>)[image.id]} kind="image" label={image.label} />)}
+    {metadata.collection_images ? <div className="image-collection-cover" style={{ gridTemplateColumns: `repeat(${Math.min(metadata.collection_images.length, 3)}, minmax(0, 1fr))` }}>
+      {metadata.collection_images.slice(0, 3).map(image => <AssetThumbnail key={image.id} src={(thumbnails as Record<string, string>)[image.id]} kind="image" label={image.label} />)}
       <span className="image-count-badge">{metadata.image_count === 2 ? "صورتان" : `${metadata.image_count} صور`}</span>
     </div> : <AssetThumbnail src={(thumbnails as Record<string, string>)[item.id]} kind={item.kind} label={kindNames[item.kind]} />}
     <div className="asset-info">
