@@ -1,10 +1,12 @@
 // Read-only catalogue integration: public selection, deduplication and transcripts.
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 const base = process.env.RESEARCH_TEST_URL || "http://127.0.0.1:3000";
 const catalogue = JSON.parse(await readFile(new URL("../src/content/media-catalogue.json", import.meta.url), "utf8"));
 const transcripts = JSON.parse(await readFile(new URL("../src/content/transcript-content.json", import.meta.url), "utf8"));
 const archive = JSON.parse(await readFile(new URL("../src/content/archive-index.json", import.meta.url), "utf8"));
+const collections = JSON.parse(await readFile(new URL("../src/content/media-collections.json", import.meta.url), "utf8"));
 const visible = Object.values(catalogue).filter(row => row.visible && row.id === row.canonical_id);
 assert.ok(visible.length > 0);
 assert.equal(new Set(visible.map(row => row.canonical_id)).size, visible.length);
@@ -62,4 +64,25 @@ const chapter = chapterItem.chapters[0];
 const clip = await html(`/library/${chapterItem.id}?start=${chapter.start}&end=${chapter.end}`);
 assert.ok(clip.includes(chapter.title));
 assert.ok(clip.includes("عرض التسجيل الكامل"));
+for (const collection of Object.values(collections)) {
+  const detail = await html(`/library/${collection.canonical_id}`);
+  assert.ok(detail.includes(collection.asset_url));
+  assert.ok(detail.includes("الأصول وترتيب الصفحات"));
+  for (const id of collection.members.filter(id => id !== collection.canonical_id)) {
+    const response = await fetch(`${base}/library/${id}`, { redirect: "manual" });
+    assert.equal(response.status, 308);
+    assert.ok(response.headers.get("location").endsWith(`/library/${collection.canonical_id}`));
+    const search = await html(`/library?q=${id}`);
+    assert.ok(search.includes(`href="/library/${collection.canonical_id}"`));
+    assert.ok(!search.includes(`href="/library/${id}"`));
+  }
+  const file = await fetch(base + collection.asset_url);
+  assert.equal(file.status, 200);
+  const bytes = Buffer.from(await file.arrayBuffer());
+  assert.equal(bytes.length, collection.asset_size);
+  assert.equal(createHash("sha256").update(bytes).digest("hex"), collection.asset_sha256);
+  const range = await fetch(base + collection.asset_url, { headers: { range: "bytes=0-127" } });
+  assert.equal(range.status, 206);
+  assert.deepEqual(Buffer.from(await range.arrayBuffer()), bytes.subarray(0, 128));
+}
 console.log(`Catalogue checks passed: ${visible.length} canonical listings, hidden materials, duplicate redirects, book/excerpt/theme filters, transcript search, Arabic captions and thematic playback sections.`);

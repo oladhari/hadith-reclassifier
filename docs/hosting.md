@@ -52,6 +52,17 @@ filters separate complete books/volumes, excerpts, page scans and recordings.
 Thematic chapters are bounded playback sections linked to their full original;
 they are not newly encoded or context-free replacement videos.
 
+Editorial PDF collections are registered in `frontend/src/content/media-collections.json`.
+`scripts/merge_pdf_collection.py` compares all selected pages locally and copies
+original PDF page objects into a versioned asset under `public/collections/`.
+Near-identical covers require explicit operator confirmation with `--same-cover`;
+different evidence pages are preserved. The registry records original checksums,
+output checksum, omitted duplicate pages and a complete source-page map. Publication
+consolidates the member listings and aliases, while original media endpoints remain
+unchanged and accessible from the collection's provenance panel. The collection is
+served directly by the website CDN; no paid AI processing or original R2 replacement
+is involved.
+
 Publish repository changes before deploying. Deploy the `frontend` directory as a Next.js application on Vercel. The feedback edition sends `X-Robots-Tag: noindex, nofollow`.
 
 ## Public assets

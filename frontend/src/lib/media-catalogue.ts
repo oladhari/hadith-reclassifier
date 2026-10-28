@@ -13,6 +13,9 @@ export type MediaDescription = {
   work_title: string; author: string; page_label: string; scope: string;
   topics: string[]; cases: string[]; tags: string[]; visible: boolean;
   page_count?: number; duration?: number; has_transcript?: boolean;
+  asset_url?: string; asset_size?: number;
+  collection_sources?: { id: number; page_count: number }[];
+  collection_page_map?: { page: number; source_id: number; source_page: number }[];
   chapters: MediaChapter[]; occurrences: number[];
 };
 export type MediaCatalogue = Record<string, MediaDescription>;
@@ -21,7 +24,7 @@ const liveCatalogue = unstable_cache(async () => {
     "SELECT id,metadata FROM research.website_catalogue",
   );
   return Object.fromEntries(rows.map(row => [row.id, row.metadata])) as MediaCatalogue;
-}, ["neon-catalogue-v1"], { revalidate: 60 });
+}, ["neon-catalogue-v2"], { revalidate: 60 });
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
   usesNeon() ? liveCatalogue() : snapshot as MediaCatalogue,
 );

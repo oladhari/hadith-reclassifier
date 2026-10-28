@@ -26,6 +26,7 @@ data/
 .DS_Store
 coverage/
 dist/
+output/
 *.tsbuildinfo
 .research-venv/
 

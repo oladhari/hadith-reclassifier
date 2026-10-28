@@ -114,6 +114,33 @@ def assemble():
             }
     if missing:
         raise ValueError(f"Crosscheck incomplete for {len(missing)} unique files; first IDs: {missing[:15]}")
+    registry = ROOT / "frontend/src/content/media-collections.json"
+    collections = json.loads(registry.read_text()) if registry.exists() else {}
+    claimed = set()
+    for collection in collections.values():
+        canonical = collection["canonical_id"]
+        members = collection["members"]
+        if canonical not in members or claimed.intersection(members):
+            raise ValueError("Invalid or overlapping editorial collection")
+        claimed.update(members)
+        asset = (ROOT / "frontend/public" / collection["asset_url"].lstrip("/")).resolve()
+        if not asset.is_relative_to((ROOT / "frontend/public/collections").resolve()):
+            raise ValueError("Collection asset outside public collections directory")
+        if asset.stat().st_size != collection["asset_size"] or hashlib.sha256(asset.read_bytes()).hexdigest() != collection["asset_sha256"]:
+            raise ValueError("Collection PDF checksum mismatch")
+        if len(collection["page_map"]) != collection["page_count"]:
+            raise ValueError("Collection page provenance incomplete")
+        base = dict(public[str(canonical)])
+        if not base["visible"] or any(not public[str(member)]["visible"] for member in members):
+            raise ValueError("Only already selected sources can enter a public collection")
+        occurrences = sorted({id for member in members for id in public[str(member)]["occurrences"]})
+        base.update(canonical_id=canonical, title=collection["title"], description=collection["description"],
+            page_count=collection["page_count"], asset_url=collection["asset_url"], asset_size=collection["asset_size"],
+            scope="excerpt", work_title="", author="", page_label="", occurrences=occurrences,
+            collection_sources=[{"id": row["id"], "page_count": row["page_count"]} for row in collection["originals"]],
+            collection_page_map=[{key: row[key] for key in ["page", "source_id", "source_page"]} for row in collection["page_map"]])
+        for id in occurrences:
+            public[str(id)] = {**base, "id": id}
     return items, metadata, public, transcripts
 
 
@@ -125,7 +152,8 @@ def main():
     args = parser.parse_args()
     items, editorial, public, transcripts = assemble()
     selected = [row for key, row in public.items() if row["visible"] and row["canonical_id"] == int(key)]
-    report = {"unique_originals": len(items), "public_unique": len(selected), "hidden_unique": len(items) - len(selected),
+    report = {"unique_originals": len(items), "public_unique": len(selected), "hidden_unique": sum(not public[str(item["id"])]["visible"] for item in items),
+        "collection_members_consolidated": sum(public[str(item["id"])]["visible"] and public[str(item["id"])]["canonical_id"] != item["id"] for item in items),
         "duplicate_listings_removed": sum(len(item["ids"]) - 1 for item in items),
         "scopes": dict(Counter(row["scope"] for row in selected)),
         "roles": dict(Counter(row["role"] for row in editorial.values())),
@@ -137,6 +165,8 @@ def main():
     now = datetime.now(timezone.utc).isoformat()
     settings = {"version": 1, "updated_at": now, "public": public, "editorial": editorial,
                 "review_state": "descriptive_metadata_only_not_scholarly_assessments"}
+    registry = ROOT / "frontend/src/content/media-collections.json"
+    settings["collections"] = json.loads(registry.read_text()) if registry.exists() else {}
     local_path = ROOT / "data/research/research.sqlite3"
     backup = ROOT / "data/research/backups" / ("pre-media-catalogue-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S") + ".sqlite3")
     with sqlite3.connect(local_path) as source, sqlite3.connect(backup) as target:

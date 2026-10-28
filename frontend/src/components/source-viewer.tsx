@@ -10,7 +10,7 @@ import thumbnails from "@/content/thumbnails.json";
 export async function MediaOriginal({ item }: { item: ArchiveItem }) {
   const sources = await getBibliography();
   const metadata = (await getMediaCatalogue())[String(item.id)];
-  const src = `/api/media/${item.id}`;
+  const src = metadata?.asset_url || `/api/media/${item.id}`;
   return (
     <div className={`source-original ${item.kind}`}>
       <div className="source-file-heading">
@@ -41,7 +41,7 @@ export async function MediaOriginal({ item }: { item: ArchiveItem }) {
         <p>الوثيقة متاحة للتنزيل وفتحها ببرنامجها المناسب.</p>
       )}
       <div className="source-file-actions">
-        <a href={`${src}?download=1`}>تنزيل الأصل • {fileSize(item.size)}</a>
+        <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>
         <Link href={`/library/${item.id}`}>
           فتح {kindNames[item.kind]} في صفحة مستقلة ←
         </Link>

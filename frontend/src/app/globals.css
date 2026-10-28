@@ -2296,3 +2296,6 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .asset-viewer img.document-first-page { max-height: 640px; width: auto; margin-inline: auto; }
 .document-viewer { flex-direction: column; align-items: center; gap: 16px; }
 .chapter-heading { padding: 20px; background: #e9e4d6; margin-bottom: 20px; }
+.collection-provenance table { width: 100%; margin-top: 18px; border-collapse: collapse; text-align: right; font-size: 13px; }
+.collection-provenance th, .collection-provenance td { padding: 7px 12px; border-bottom: 1px solid #d9dce2; }
+.collection-provenance li { margin-block: 8px; }

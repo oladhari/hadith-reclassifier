@@ -29,7 +29,7 @@ export default async function AssetPage({ params, searchParams }: {
   if (entry.canonical_id !== Number(id)) permanentRedirect(`/library/${entry.canonical_id}`);
   const item = archive.find(row => row.id === Number(id));
   if (!item) notFound();
-  const src = `/api/media/${item.id}`;
+  const src = entry.asset_url || `/api/media/${item.id}`;
   const startValue = Number(query.start);
   const endValue = Number(query.end);
   const start = Number.isFinite(startValue) && startValue >= 0 && startValue < (entry.duration || 0) ? startValue : 0;
@@ -39,7 +39,7 @@ export default async function AssetPage({ params, searchParams }: {
   const transcript = entry.has_transcript ? await getTranscript(item.id) : "";
   return <>
     <div className="breadcrumb"><Link href="/library">المكتبة</Link><span>/</span><span>{entry.title}</span></div>
-    <PageHeading eyebrow={`${scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}`}
+    <PageHeading eyebrow={`${scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(entry.asset_size || item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}`}
       title={entry.title} description={entry.description} />
     {(entry.work_title || entry.author || entry.page_label) && <dl className="media-bibliography">
       {entry.work_title && <div><dt>المصدر</dt><dd><Link href={`/library?q=${encodeURIComponent(entry.work_title)}`}>{entry.work_title} ←</Link></dd></div>}
@@ -54,10 +54,15 @@ export default async function AssetPage({ params, searchParams }: {
         : <><img className="document-first-page" src={(thumbnails as Record<string, string>)[id]} alt={`الصفحة الأولى: ${entry.title}`} /><p>يمكن تنزيل الوثيقة الأصلية وفتحها ببرنامجها المناسب.</p></>}
     </div>
     <div className="related-actions">
-      <a className="button button-dark" href={`${src}?download=1`}><Download size={17} /> تنزيل الملف الأصلي</a>
+      <a className="button button-dark" href={entry.asset_url ? src : `${src}?download=1`} download={entry.asset_url ? `${entry.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}><Download size={17} /> {entry.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الملف الأصلي"}</a>
       <Link className="button button-outline" href={`/sources/${item.id}`}>بيانات المرجع وصفحاته المرتبطة ←</Link>
       {speech && transcript && <a className="text-link" href={`/transcripts/${id}.vtt`} download>تنزيل الترجمة العربية (VTT)</a>}
     </div>
+    {entry.collection_sources && <details className="transcript-panel collection-provenance"><summary>الأصول وترتيب الصفحات</summary>
+      <p>جُمعت الصفحات كما وردت في أصولها، وحُذفت الأغلفة المتكررة فقط. هذه مجموعة مصادر وليست كتابًا محقّقًا جديدًا.</p>
+      <ol>{entry.collection_sources.map((source, index) => <li key={source.id}><a href={`/api/media/${source.id}`} target="_blank" rel="noreferrer">فتح الملف الأصلي {index + 1} ({source.page_count} صفحات) ←</a></li>)}</ol>
+      <table><thead><tr><th>صفحة المجموعة</th><th>الملف الأصلي</th><th>صفحته</th></tr></thead><tbody>{entry.collection_page_map?.map(row => <tr key={row.page}><td>{row.page}</td><td>{entry.collection_sources!.findIndex(source => source.id === row.source_id) + 1}</td><td>{row.source_page}</td></tr>)}</tbody></table>
+    </details>}
     {entry.chapters.length > 0 && <section className="article-section"><h2>الموضوعات داخل التسجيل</h2><div className="media-chapters">
       {entry.chapters.map((row, index) => <Link key={index} href={`/library/${id}?start=${row.start}&end=${row.end}#media-player`}>
         <span dir="ltr">{timeLabel(row.start)} – {timeLabel(row.end)}</span><strong>{row.title}</strong><p>{row.summary}</p>

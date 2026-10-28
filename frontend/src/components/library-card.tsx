@@ -11,7 +11,7 @@ export function LibraryCard({ item, metadata, chapter }: { item: ArchiveItem; me
   return <Link className="asset-card" href={href}>
     <AssetThumbnail src={(thumbnails as Record<string, string>)[item.id]} kind={item.kind} label={kindNames[item.kind]} />
     <div className="asset-info">
-      <span className="eyebrow">{chapter ? "مقطع موضوعي" : scopeNames[metadata.scope] || kindNames[item.kind]} • {chapter ? timeLabel(chapter.end - chapter.start) : fileSize(item.size)}
+      <span className="eyebrow">{chapter ? "مقطع موضوعي" : scopeNames[metadata.scope] || kindNames[item.kind]} • {chapter ? timeLabel(chapter.end - chapter.start) : fileSize(metadata.asset_size || item.size)}
         {!chapter && metadata.page_count ? ` • ${metadata.page_count} صفحة` : ""}
         {!chapter && metadata.duration ? ` • ${timeLabel(metadata.duration)}` : ""}
       </span>

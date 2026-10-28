@@ -1,0 +1,175 @@
+{
+  "742": {
+    "canonical_id": 742,
+    "members": [
+      742,
+      743,
+      744
+    ],
+    "title": "نقد حديث الغدير: مجموعة المصادر الموحّدة",
+    "description": "مجموعة موحّدة من 21 صفحة تجمع الملفات الثلاثة المتعلقة بنقد حديث «من كنت مولاه فعلي مولاه». تضم جميع صفحات الأدلة وصور المصادر بترتيبها الأصلي، مع حذف نسختين مكررتين من الغلاف، وإتاحة الأصول الثلاثة للمراجعة.",
+    "asset_url": "/collections/ghadir-sources-d3630a502f04d8c318aa.pdf",
+    "asset_sha256": "d3630a502f04d8c318aad2bfe141211406a6c37fc1fca8a2ae1e7fdf5fa3bcc4",
+    "asset_size": 3603855,
+    "page_count": 21,
+    "originals": [
+      {
+        "id": 742,
+        "page_count": 6,
+        "sha256": "550a51450921b37c16f6844d6c5c3fd02160f210a990014828e25c0098fc5aad"
+      },
+      {
+        "id": 743,
+        "page_count": 9,
+        "sha256": "adcb24baf8859af3c7959b9baac76ca756e85048498bd667c83958b5a989b44f"
+      },
+      {
+        "id": 744,
+        "page_count": 8,
+        "sha256": "e20ba79370d5f29b2f695a005391253a8050b817d1dff210cbb795191f9250f1"
+      }
+    ],
+    "page_map": [
+      {
+        "page": 1,
+        "source_id": 742,
+        "source_page": 1,
+        "render_sha256": "1fb010b81afacff969290acd61b5397793cfceba2209c84b9447f3a3368855f3"
+      },
+      {
+        "page": 2,
+        "source_id": 742,
+        "source_page": 2,
+        "render_sha256": "18612045754897b7611a2174df601387049b29d982a42fe5aac0d27bf3677bfa"
+      },
+      {
+        "page": 3,
+        "source_id": 742,
+        "source_page": 3,
+        "render_sha256": "e7ae56de6f3e3251341964a0d265fa2bb420a33803f41f655858cc7e9ca01a8f"
+      },
+      {
+        "page": 4,
+        "source_id": 742,
+        "source_page": 4,
+        "render_sha256": "5492a366a0ff56828cfb9c8a8c4d477b1b6be1ae877e20883136deb156b85703"
+      },
+      {
+        "page": 5,
+        "source_id": 742,
+        "source_page": 5,
+        "render_sha256": "0358a0fb7a16c00b80b08723077c8eb1791f8300080aee1d86272cf1fe435c71"
+      },
+      {
+        "page": 6,
+        "source_id": 742,
+        "source_page": 6,
+        "render_sha256": "a746a953d0bdc7b86b9e45c8d4db27f1f646451f7b57963d304133940f69a176"
+      },
+      {
+        "page": 7,
+        "source_id": 743,
+        "source_page": 2,
+        "render_sha256": "58ba1154029f8b122fbcd8aaf2514f58a41ea07ab6c7176398bcf22c82b1315e"
+      },
+      {
+        "page": 8,
+        "source_id": 743,
+        "source_page": 3,
+        "render_sha256": "af5126772eaae74bc7f79ac253c3170989a25872e25d64ba7dde715f894fb4e8"
+      },
+      {
+        "page": 9,
+        "source_id": 743,
+        "source_page": 4,
+        "render_sha256": "13c6d56451d5f501f5581676f443578332764be21e111b8595eb421d20804588"
+      },
+      {
+        "page": 10,
+        "source_id": 743,
+        "source_page": 5,
+        "render_sha256": "724b30e3d029c46f424f22aeb77e19b9f64384c4ff9cc153fa91b830bc0b80f9"
+      },
+      {
+        "page": 11,
+        "source_id": 743,
+        "source_page": 6,
+        "render_sha256": "caf2a897630a444006f1b0efdb2281a8048828c6fdd94e55a937e775596da591"
+      },
+      {
+        "page": 12,
+        "source_id": 743,
+        "source_page": 7,
+        "render_sha256": "c7542d136b31aaaa4e44e9e133102945ab6e5836fa4d17e2bd84e9a1c0d8bec0"
+      },
+      {
+        "page": 13,
+        "source_id": 743,
+        "source_page": 8,
+        "render_sha256": "631e23bfd6b222eb86e242193a2327519e27d3883a09e3e5bc1734af94fd856a"
+      },
+      {
+        "page": 14,
+        "source_id": 743,
+        "source_page": 9,
+        "render_sha256": "4bd9d1d342540c4b562d2a8c5255f5fdfcffa366f92a6d0a2821fcad3f48618a"
+      },
+      {
+        "page": 15,
+        "source_id": 744,
+        "source_page": 2,
+        "render_sha256": "a05f0086949be41e5ca5e46cffff9cd329e86e1a666c496a051612a7cc66d858"
+      },
+      {
+        "page": 16,
+        "source_id": 744,
+        "source_page": 3,
+        "render_sha256": "1b65e8a3df64c5c496683aa14927667cd5207ad337f82426de351326ee28d0fe"
+      },
+      {
+        "page": 17,
+        "source_id": 744,
+        "source_page": 4,
+        "render_sha256": "daf5674bbad294d78aba78db6cb7d6c53440e90493c8def04311334c873169d3"
+      },
+      {
+        "page": 18,
+        "source_id": 744,
+        "source_page": 5,
+        "render_sha256": "0772559221239d9c73a53a56a2483f7e6eb0ad1bd9bde17a7c36643999284068"
+      },
+      {
+        "page": 19,
+        "source_id": 744,
+        "source_page": 6,
+        "render_sha256": "d9a1478d0e089fd1d2a8ea0d8a8a501b571fc5817326b0d41b128df8d587be52"
+      },
+      {
+        "page": 20,
+        "source_id": 744,
+        "source_page": 7,
+        "render_sha256": "3336e04599769d104ef660c325480553db719fba1bb603b0019c1a96ab679c70"
+      },
+      {
+        "page": 21,
+        "source_id": 744,
+        "source_page": 8,
+        "render_sha256": "79a9f17460c0be955415c5a9efd5bad7d904ea08f943c8c44753873efd430979"
+      }
+    ],
+    "omitted": [
+      {
+        "source_id": 743,
+        "source_page": 1,
+        "duplicate_of": 1,
+        "reason": "visually_confirmed_same_cover"
+      },
+      {
+        "source_id": 744,
+        "source_page": 1,
+        "duplicate_of": 1,
+        "reason": "visually_confirmed_same_cover"
+      }
+    ]
+  }
+}

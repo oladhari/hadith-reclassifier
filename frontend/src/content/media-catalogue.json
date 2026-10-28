@@ -13890,8 +13890,8 @@
     "chapters": []
   },
   "742": {
-    "title": "نقد حديث «من كنت مولاه» — تجميعة من 6 صفحات",
-    "description": "تجميعة مصورة من 6 صفحات تحت عنوان تضعيف حديث «من كنت مولاه فعلي مولاه». تعرض مقتطفات من مصادر الحديث والتراجم ومواضع الاستدلال على روايات الغدير، وهي تجميعة مستقلة وليست جزءا مرقما من كتاب.",
+    "title": "نقد حديث الغدير: مجموعة المصادر الموحّدة",
+    "description": "مجموعة موحّدة من 21 صفحة تجمع الملفات الثلاثة المتعلقة بنقد حديث «من كنت مولاه فعلي مولاه». تضم جميع صفحات الأدلة وصور المصادر بترتيبها الأصلي، مع حذف نسختين مكررتين من الغلاف، وإتاحة الأصول الثلاثة للمراجعة.",
     "work_title": "",
     "author": "",
     "page_label": "",
@@ -13914,70 +13914,445 @@
     "canonical_id": 742,
     "visible": true,
     "occurrences": [
-      742
-    ],
-    "chapters": [],
-    "page_count": 6
-  },
-  "743": {
-    "title": "نقد حديث «من كنت مولاه» — تجميعة من 9 صفحات",
-    "description": "تجميعة مصورة من 9 صفحات تحت عنوان تضعيف حديث «من كنت مولاه فعلي مولاه». تعرض مقتطفات من مصادر الحديث والتراجم ومواضع الاستدلال على روايات الغدير، وهي تجميعة مستقلة وليست جزءا مرقما من كتاب.",
-    "work_title": "",
-    "author": "",
-    "page_label": "",
-    "scope": "excerpt",
-    "topics": [
-      "virtues",
-      "narrators"
-    ],
-    "cases": [
-      "ghadir"
-    ],
-    "tags": [
-      "تضعيفات",
-      "الغدير",
-      "التاريخ الكبير",
-      "نقد الإسناد",
-      "مراجع"
-    ],
-    "id": 743,
-    "canonical_id": 743,
-    "visible": true,
-    "occurrences": [
-      743
-    ],
-    "chapters": [],
-    "page_count": 9
-  },
-  "744": {
-    "title": "نقد حديث «من كنت مولاه» — تجميعة من 8 صفحات",
-    "description": "تجميعة مصورة من 8 صفحات تحت عنوان تضعيف حديث «من كنت مولاه فعلي مولاه». تعرض مقتطفات من مصادر الحديث والتراجم ومواضع الاستدلال على روايات الغدير، وهي تجميعة مستقلة وليست جزءا مرقما من كتاب.",
-    "work_title": "",
-    "author": "",
-    "page_label": "",
-    "scope": "excerpt",
-    "topics": [
-      "virtues",
-      "narrators"
-    ],
-    "cases": [
-      "ghadir"
-    ],
-    "tags": [
-      "تضعيف",
-      "الغدير",
-      "شرح ابن داود",
-      "الروض النظيف",
-      "ترجمات"
-    ],
-    "id": 744,
-    "canonical_id": 744,
-    "visible": true,
-    "occurrences": [
+      742,
+      743,
       744
     ],
     "chapters": [],
-    "page_count": 8
+    "page_count": 21,
+    "asset_url": "/collections/ghadir-sources-d3630a502f04d8c318aa.pdf",
+    "asset_size": 3603855,
+    "collection_sources": [
+      {
+        "id": 742,
+        "page_count": 6
+      },
+      {
+        "id": 743,
+        "page_count": 9
+      },
+      {
+        "id": 744,
+        "page_count": 8
+      }
+    ],
+    "collection_page_map": [
+      {
+        "page": 1,
+        "source_id": 742,
+        "source_page": 1
+      },
+      {
+        "page": 2,
+        "source_id": 742,
+        "source_page": 2
+      },
+      {
+        "page": 3,
+        "source_id": 742,
+        "source_page": 3
+      },
+      {
+        "page": 4,
+        "source_id": 742,
+        "source_page": 4
+      },
+      {
+        "page": 5,
+        "source_id": 742,
+        "source_page": 5
+      },
+      {
+        "page": 6,
+        "source_id": 742,
+        "source_page": 6
+      },
+      {
+        "page": 7,
+        "source_id": 743,
+        "source_page": 2
+      },
+      {
+        "page": 8,
+        "source_id": 743,
+        "source_page": 3
+      },
+      {
+        "page": 9,
+        "source_id": 743,
+        "source_page": 4
+      },
+      {
+        "page": 10,
+        "source_id": 743,
+        "source_page": 5
+      },
+      {
+        "page": 11,
+        "source_id": 743,
+        "source_page": 6
+      },
+      {
+        "page": 12,
+        "source_id": 743,
+        "source_page": 7
+      },
+      {
+        "page": 13,
+        "source_id": 743,
+        "source_page": 8
+      },
+      {
+        "page": 14,
+        "source_id": 743,
+        "source_page": 9
+      },
+      {
+        "page": 15,
+        "source_id": 744,
+        "source_page": 2
+      },
+      {
+        "page": 16,
+        "source_id": 744,
+        "source_page": 3
+      },
+      {
+        "page": 17,
+        "source_id": 744,
+        "source_page": 4
+      },
+      {
+        "page": 18,
+        "source_id": 744,
+        "source_page": 5
+      },
+      {
+        "page": 19,
+        "source_id": 744,
+        "source_page": 6
+      },
+      {
+        "page": 20,
+        "source_id": 744,
+        "source_page": 7
+      },
+      {
+        "page": 21,
+        "source_id": 744,
+        "source_page": 8
+      }
+    ]
+  },
+  "743": {
+    "title": "نقد حديث الغدير: مجموعة المصادر الموحّدة",
+    "description": "مجموعة موحّدة من 21 صفحة تجمع الملفات الثلاثة المتعلقة بنقد حديث «من كنت مولاه فعلي مولاه». تضم جميع صفحات الأدلة وصور المصادر بترتيبها الأصلي، مع حذف نسختين مكررتين من الغلاف، وإتاحة الأصول الثلاثة للمراجعة.",
+    "work_title": "",
+    "author": "",
+    "page_label": "",
+    "scope": "excerpt",
+    "topics": [
+      "virtues",
+      "narrators"
+    ],
+    "cases": [
+      "ghadir"
+    ],
+    "tags": [
+      "تضعيف حديث",
+      "الغدير",
+      "سلاسل الإسناد",
+      "روايات الفضائل",
+      "نقد السند"
+    ],
+    "id": 743,
+    "canonical_id": 742,
+    "visible": true,
+    "occurrences": [
+      742,
+      743,
+      744
+    ],
+    "chapters": [],
+    "page_count": 21,
+    "asset_url": "/collections/ghadir-sources-d3630a502f04d8c318aa.pdf",
+    "asset_size": 3603855,
+    "collection_sources": [
+      {
+        "id": 742,
+        "page_count": 6
+      },
+      {
+        "id": 743,
+        "page_count": 9
+      },
+      {
+        "id": 744,
+        "page_count": 8
+      }
+    ],
+    "collection_page_map": [
+      {
+        "page": 1,
+        "source_id": 742,
+        "source_page": 1
+      },
+      {
+        "page": 2,
+        "source_id": 742,
+        "source_page": 2
+      },
+      {
+        "page": 3,
+        "source_id": 742,
+        "source_page": 3
+      },
+      {
+        "page": 4,
+        "source_id": 742,
+        "source_page": 4
+      },
+      {
+        "page": 5,
+        "source_id": 742,
+        "source_page": 5
+      },
+      {
+        "page": 6,
+        "source_id": 742,
+        "source_page": 6
+      },
+      {
+        "page": 7,
+        "source_id": 743,
+        "source_page": 2
+      },
+      {
+        "page": 8,
+        "source_id": 743,
+        "source_page": 3
+      },
+      {
+        "page": 9,
+        "source_id": 743,
+        "source_page": 4
+      },
+      {
+        "page": 10,
+        "source_id": 743,
+        "source_page": 5
+      },
+      {
+        "page": 11,
+        "source_id": 743,
+        "source_page": 6
+      },
+      {
+        "page": 12,
+        "source_id": 743,
+        "source_page": 7
+      },
+      {
+        "page": 13,
+        "source_id": 743,
+        "source_page": 8
+      },
+      {
+        "page": 14,
+        "source_id": 743,
+        "source_page": 9
+      },
+      {
+        "page": 15,
+        "source_id": 744,
+        "source_page": 2
+      },
+      {
+        "page": 16,
+        "source_id": 744,
+        "source_page": 3
+      },
+      {
+        "page": 17,
+        "source_id": 744,
+        "source_page": 4
+      },
+      {
+        "page": 18,
+        "source_id": 744,
+        "source_page": 5
+      },
+      {
+        "page": 19,
+        "source_id": 744,
+        "source_page": 6
+      },
+      {
+        "page": 20,
+        "source_id": 744,
+        "source_page": 7
+      },
+      {
+        "page": 21,
+        "source_id": 744,
+        "source_page": 8
+      }
+    ]
+  },
+  "744": {
+    "title": "نقد حديث الغدير: مجموعة المصادر الموحّدة",
+    "description": "مجموعة موحّدة من 21 صفحة تجمع الملفات الثلاثة المتعلقة بنقد حديث «من كنت مولاه فعلي مولاه». تضم جميع صفحات الأدلة وصور المصادر بترتيبها الأصلي، مع حذف نسختين مكررتين من الغلاف، وإتاحة الأصول الثلاثة للمراجعة.",
+    "work_title": "",
+    "author": "",
+    "page_label": "",
+    "scope": "excerpt",
+    "topics": [
+      "virtues",
+      "narrators"
+    ],
+    "cases": [
+      "ghadir"
+    ],
+    "tags": [
+      "تضعيف حديث",
+      "الغدير",
+      "سلاسل الإسناد",
+      "روايات الفضائل",
+      "نقد السند"
+    ],
+    "id": 744,
+    "canonical_id": 742,
+    "visible": true,
+    "occurrences": [
+      742,
+      743,
+      744
+    ],
+    "chapters": [],
+    "page_count": 21,
+    "asset_url": "/collections/ghadir-sources-d3630a502f04d8c318aa.pdf",
+    "asset_size": 3603855,
+    "collection_sources": [
+      {
+        "id": 742,
+        "page_count": 6
+      },
+      {
+        "id": 743,
+        "page_count": 9
+      },
+      {
+        "id": 744,
+        "page_count": 8
+      }
+    ],
+    "collection_page_map": [
+      {
+        "page": 1,
+        "source_id": 742,
+        "source_page": 1
+      },
+      {
+        "page": 2,
+        "source_id": 742,
+        "source_page": 2
+      },
+      {
+        "page": 3,
+        "source_id": 742,
+        "source_page": 3
+      },
+      {
+        "page": 4,
+        "source_id": 742,
+        "source_page": 4
+      },
+      {
+        "page": 5,
+        "source_id": 742,
+        "source_page": 5
+      },
+      {
+        "page": 6,
+        "source_id": 742,
+        "source_page": 6
+      },
+      {
+        "page": 7,
+        "source_id": 743,
+        "source_page": 2
+      },
+      {
+        "page": 8,
+        "source_id": 743,
+        "source_page": 3
+      },
+      {
+        "page": 9,
+        "source_id": 743,
+        "source_page": 4
+      },
+      {
+        "page": 10,
+        "source_id": 743,
+        "source_page": 5
+      },
+      {
+        "page": 11,
+        "source_id": 743,
+        "source_page": 6
+      },
+      {
+        "page": 12,
+        "source_id": 743,
+        "source_page": 7
+      },
+      {
+        "page": 13,
+        "source_id": 743,
+        "source_page": 8
+      },
+      {
+        "page": 14,
+        "source_id": 743,
+        "source_page": 9
+      },
+      {
+        "page": 15,
+        "source_id": 744,
+        "source_page": 2
+      },
+      {
+        "page": 16,
+        "source_id": 744,
+        "source_page": 3
+      },
+      {
+        "page": 17,
+        "source_id": 744,
+        "source_page": 4
+      },
+      {
+        "page": 18,
+        "source_id": 744,
+        "source_page": 5
+      },
+      {
+        "page": 19,
+        "source_id": 744,
+        "source_page": 6
+      },
+      {
+        "page": 20,
+        "source_id": 744,
+        "source_page": 7
+      },
+      {
+        "page": 21,
+        "source_id": 744,
+        "source_page": 8
+      }
+    ]
   },
   "745": {
     "title": "حوار علي مع ابن طلحة وذِكر موقف من قتلة عثمان",
