@@ -27,6 +27,8 @@ while (queue.size) {
       assert.ok(html.includes('src="/api/media/1881"'));
     }
     const destination = new URL(response.url);
+    if (destination.pathname === "/corpus" && destination.searchParams.has("id"))
+      assert.ok(html.includes('class="hadith-record"'), `Referenced hadith is missing: ${path}`);
     for (const match of html.matchAll(/href="([^"<>]+)"/g)) {
       const value = match[1].replace(/&amp;/g, "&");
       if (value.startsWith("#")) {
