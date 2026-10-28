@@ -52,16 +52,20 @@ export function mediaMatches(item: ArchiveItem, metadata: MediaDescription, quer
       metadata.page_label, ...metadata.tags,
       ...(metadata.collection_images || []).flatMap(image => [image.label, image.description])].join(" "), query);
 }
+// Cache a bounded, server-only speech index. Normalize once per refresh rather
+// than repeatedly normalizing long transcripts inside a correlated SQL query.
+const liveSpeechIndex = unstable_cache(async () => {
+  const rows = await queryNeon<{ id: string; text: string }>("SELECT id,text FROM research.website_transcripts");
+  return rows.map(row => ({ id: Number(row.id), text: normalize(row.text) }));
+}, ["neon-speech-search-v1"], { revalidate: 60, tags: ["media-catalogue"] });
 export async function searchLibrary(archive: ArchiveItem[], catalogue: MediaCatalogue, query: string) {
   const library = publicLibrary(archive, catalogue);
   if (!query.trim()) return library;
   let transcriptIds: Set<number>;
   if (usesNeon()) {
     const words = normalize(query).split(/\s+/).filter(Boolean);
-    const rows = await queryNeon<{ id: string }>(`SELECT id FROM research.website_transcripts t
-      WHERE NOT EXISTS (SELECT 1 FROM unnest($1::text[]) AS w(word)
-      WHERE strpos(research.website_normalize(t.text),w.word)=0)`, [words]);
-    transcriptIds = new Set(rows.map(row => Number(row.id)));
+    const rows = await liveSpeechIndex();
+    transcriptIds = new Set(rows.filter(row => words.every(word => row.text.includes(word))).map(row => row.id));
   } else {
     transcriptIds = new Set(Object.entries(transcriptSnapshot).filter(([, text]) => matches(text as string, query)).map(([id]) => Number(id)));
   }
