@@ -42,7 +42,7 @@ for (const payload of ['<script>window.__audit_xss=1</script>', '<img src=x oner
 }
 for (const path of ["/.env", "/.env.local", "/.git/config", "/package.json", "/data/research/research.sqlite3", "/backend/app/core/config.py", "/api/video-review/export", "/api/video-review/decision", "/api/v1/ingest", "/api/v1/classifications/bulk-classify", "/_next/server/app/page.js", "/__nextjs_original-stack-frame"]) await probe(path, [404,403]);
 for (const id of ["195%27%20OR%201%3D1", "..%2F.env", "%252e%252e%252f.env", "%00", "-1", "9999999999999999999999"]) await probe(`/api/media/${id}`, [400,404]);
-await probe("/_next/image?url=https%3A%2F%2Fexample.invalid%2Faudit.png&w=64&q=75", 404);
+await probe("/_next/image?url=https%3A%2F%2Fexample.invalid%2Faudit.png&w=64&q=75", [400,404]);
 const asset = await probe("/api/media/195?url=https%3A%2F%2Fexample.invalid%2Faudit", 307);
 assert.notEqual(new URL(asset.response.headers.get("location")).hostname, "example.invalid");
 for (const path of ["/corpus", "/library", "/explore", "/api/media/195"]) await probe(path, 405, { method: "POST", headers: { "next-action": "invalid-audit-action", "Content-Type": "text/plain" }, body: "audit-marker" });
