@@ -33,6 +33,7 @@ function ReviewPlayer({ item, busy, save }: { item: VideoReviewItem; busy: boole
 }
 export function VideoReview({ initialItems }: { initialItems: VideoReviewItem[] }) {
   const [items, setItems] = useState(initialItems);
+  const [playerReset, setPlayerReset] = useState(0);
   const [status, setStatus] = useState("pending"), [platform, setPlatform] = useState("all"), [query, setQuery] = useState("");
   const [activeId, setActiveId] = useState<number | null>(null), [advance, setAdvance] = useState(true);
   const [busy, setBusy] = useState(false), [message, setMessage] = useState(""), [error, setError] = useState("");
@@ -50,6 +51,7 @@ export function VideoReview({ initialItems }: { initialItems: VideoReviewItem[] 
       if (!response.ok) throw new Error(result.error || "تعذّر حفظ القرار.");
       setItems(rows => rows.map(row => row.id === item.id ? { ...row, ...result, duration: Number(result.duration), size: Number(result.size) } : row));
       setUndo(isUndo ? null : { previous: item, revision: result.revision });
+      if (isUndo) setPlayerReset(value => value + 1);
       setMessage(isUndo ? "تم التراجع عن آخر تغيير." : `تم الحفظ: ${decisions[decision]} — ${item.title}`);
       if (!isUndo && advance && decision !== item.decision) {
         const position = filtered.findIndex(row => row.id === item.id);
@@ -74,7 +76,7 @@ export function VideoReview({ initialItems }: { initialItems: VideoReviewItem[] 
     <div className="review-workspace"><div>
       <div className="review-navigation"><button className="button button-outline" disabled={busy || position <= 0} onClick={() => setActiveId(filtered[position - 1].id)}>السابق</button>
         <span>{filtered.length} فيديو مطابق</span><button className="button button-outline" disabled={busy || position < 0 || position >= filtered.length - 1} onClick={() => setActiveId(filtered[position + 1].id)}>تجاوز / التالي</button></div>
-      {active ? <ReviewPlayer key={active.id} item={active} busy={busy} save={persist} /> : <p className="empty-state">لا توجد فيديوهات مطابقة. غيّر الفلتر لعرض القرارات المحفوظة.</p>}
+      {active ? <ReviewPlayer key={`${active.id}-${playerReset}`} item={active} busy={busy} save={persist} /> : <p className="empty-state">لا توجد فيديوهات مطابقة. غيّر الفلتر لعرض القرارات المحفوظة.</p>}
     </div><nav className="review-queue" aria-label="قائمة الفيديوهات">
       {filtered.map(item => <button key={item.id} className={active?.id === item.id ? "selected" : ""} disabled={busy} onClick={() => setActiveId(item.id)} aria-current={active?.id === item.id ? "true" : undefined}>
         <img loading="lazy" src={(thumbnails as Record<string, string>)[item.id]} alt="" /><span><strong>{item.title}</strong><small>#{item.id} • {duration(item.duration)} • {decisions[item.decision]} • {platforms[item.platform]}</small></span>
