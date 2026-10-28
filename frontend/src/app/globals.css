@@ -2269,3 +2269,30 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .corpus-state-rejected { color:#874e3d; background:#f5ece5; border-color:#e6cec1; }
 @media (max-width:900px) { .corpus-collection-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:600px) { .corpus-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .corpus-stats > div { padding:16px; } .corpus-collection-grid { grid-template-columns:1fr; } .corpus-welcome, .corpus-book-banner { padding:22px; } }
+
+/* Arabic descriptive catalogue and thematic browsing. */
+.library-filters { flex-wrap: wrap; align-items: flex-end; }
+.library-filters .library-query { flex: 2 1 280px; }
+.library-filters label { flex: 1 1 170px; }
+.library-filters select { width: 100%; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line, #d9dce2); border-radius: 3px; background: white; color: inherit; font: inherit; }
+.library-result-count { margin: 0 0 18px; }
+.asset-info .asset-description { margin: 10px 0; color: #596477; font-size: 12px; line-height: 1.9; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.asset-info h3 { font-size: 14px; line-height: 1.85; }
+.asset-info .asset-topic-labels { color: #946b36; font-size: 11px; margin: 8px 0 14px; line-height: 1.8; }
+.asset-info .asset-parent-title { color: #677184; font-size: 11px; line-height: 1.8; }
+.media-bibliography { display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 18px 22px; border: 1px solid #d9dce2; margin: 0 0 24px; }
+.media-bibliography dt { font-size: 12px; color: #677184; }
+.media-bibliography dd { margin: 4px 0 0; }
+.media-chapters { display: grid; gap: 10px; }
+.media-chapters a { display: block; border: 1px solid #d9dce2; padding: 16px; background: #fffdf8; }
+.media-chapters span { display: block; font-size: 12px; color: #946b36; text-align: right; }
+.media-chapters strong { display: block; margin-top: 6px; }
+.media-chapters p { margin: 6px 0 0; line-height: 1.9; color: #596477; }
+.transcript-panel { border: 1px solid #d9dce2; padding: 20px; margin: 32px 0; background: #fffdf8; }
+.transcript-panel summary { cursor: pointer; font-weight: 700; }
+.transcript-text { max-height: 600px; overflow-y: auto; line-height: 2.1; padding-inline: 8px; }
+.media-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+.media-tags a { background: #e9e4d6; padding: 5px 12px; font-size: 12px; border-radius: 3px; }
+.asset-viewer img.document-first-page { max-height: 640px; width: auto; margin-inline: auto; }
+.document-viewer { flex-direction: column; align-items: center; gap: 16px; }
+.chapter-heading { padding: 20px; background: #e9e4d6; margin-bottom: 20px; }

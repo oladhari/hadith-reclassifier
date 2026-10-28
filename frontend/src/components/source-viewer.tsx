@@ -5,15 +5,19 @@ import { EvidenceReading } from "./evidence-reading";
 import { kindNames, fileSize, type ArchiveItem } from "@/lib/archive";
 import { sourceFiles, sourceRecord, sourceTitle } from "@/lib/local-sources";
 import { evidenceLabels } from "@/lib/public-evidence";
+import { getMediaCatalogue } from "@/lib/media-catalogue";
+import thumbnails from "@/content/thumbnails.json";
 export async function MediaOriginal({ item }: { item: ArchiveItem }) {
   const sources = await getBibliography();
+  const metadata = (await getMediaCatalogue())[String(item.id)];
   const src = `/api/media/${item.id}`;
   return (
     <div className={`source-original ${item.kind}`}>
       <div className="source-file-heading">
         <strong>
-          {sources[item.id]?.title || evidenceLabels[item.id] || `${kindNames[item.kind]} الدليل`}
+          {metadata?.visible ? metadata.title : sources[item.id]?.title || evidenceLabels[item.id] || `${kindNames[item.kind]} الدليل`}
         </strong>
+        {metadata?.visible && <p>{metadata.description}</p>}
         {sources[item.id] && <p>{sources[item.id].detail}</p>}
       </div>
       {item.kind === "image" ? (
@@ -25,8 +29,8 @@ export async function MediaOriginal({ item }: { item: ArchiveItem }) {
           />
         </a>
       ) : item.kind === "video" ? (
-        <video controls playsInline preload="none" src={src}>
-          <track kind="captions" />
+        <video controls playsInline preload="none" src={src} poster={(thumbnails as Record<string, string>)[item.id]}>
+          <track kind="captions" src={`/transcripts/${metadata?.canonical_id || item.id}.vtt`} srcLang="ar" label="العربية — تفريغ آلي" />
           استخدم رابط تنزيل الأصل لفتح هذا الفيديو.
         </video>
       ) : item.kind === "audio" ? (

@@ -35,6 +35,7 @@ with psycopg.connect(admin, connect_timeout=30) as conn:
                 "CREATE ROLE {} LOGIN PASSWORD {} NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS"
             ).format(sql.Identifier(role), sql.Literal(password))
         )
+    conn.execute((ROOT / "scripts/media-catalogue-view.sql").read_text())
     conn.execute(
         sql.SQL("GRANT USAGE ON SCHEMA research TO {}").format(sql.Identifier(role))
     )

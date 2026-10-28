@@ -83,7 +83,7 @@ The public Arabic RTL edition provides topic dossiers, source scans, PDFs and vi
 
 The public research pages require no OpenAI key or backend service. The legacy experimental AI backend is separate. The 22-layer draft framework supports evidence-backed examination and a Quran-comparison gate; it does not automatically authenticate narrations. See [filter documentation](docs/hadith-filter-layers.md).
 
-The normalized local catalogue preserves originals and provenance, deduplicates objects, and generates public JSON projections. OCR text remains subject to verification. Video transcription and the editorial review interface remain future work. See [database documentation](docs/research-database.md).
+The normalized catalogue preserves originals and provenance, consolidates duplicate public listings, and supplies Arabic titles, descriptions, topic links and book/excerpt filters. All 349 unique video/audio objects have automatic Arabic transcripts; selected public recordings expose searchable text, WebVTT captions and thematic playback sections. OCR and automatic transcripts remain subject to source checking. The editorial review interface remains future work. See [database documentation](docs/research-database.md).
 
 For local development, run `npm ci` and `npm run dev` in `frontend/`. Neon-connected deployments read the restricted database views directly. Offline builds prepare seven corpus files in the ignored `.corpus/` directory. Media can be served from the local archive or public object storage. See [hosting instructions](docs/hosting.md).
 

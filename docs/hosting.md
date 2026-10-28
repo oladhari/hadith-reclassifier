@@ -16,6 +16,42 @@ adding archive items. Change the filename version when changing rendering rules.
 Library cards use lazy loading, an error fallback, full-page containment and a
 play overlay for videos; the video detail player also uses the preview as its poster.
 
+## Arabic catalogue and transcripts
+
+The curated catalogue lives in the existing `research_catalogue_settings` row
+`media_catalogue`. Its private editorial section retains evidence, confidence,
+selection reasons and duplicate occurrences. Only its `public` section is exposed
+through `website_catalogue`; full transcript text is separated into the restricted
+`website_transcripts` read view so ordinary library pages do not load every transcript.
+No hadith verdict, scholar approval or book acceptance is created by this workflow.
+
+`scripts/enrich_media.py` preserves original bytes and reuses existing Arabic OCR,
+album captions, PDF text and content-hash caches. Speech transcription follows the
+AraClip word-timed Arabic cache pattern, using bounded Whisper API chunks. Generated
+text remains unverified for quotation; literal name corrections do not rewrite a
+speaker's claims. The cache is `data/research/enrichment`, linked to the data disk.
+API processing is disabled by default in the initial tool. Use the capped
+`scripts/finish_media_catalogue.py` continuation and preserve its spending ledger.
+The guard reserves a conservative maximum before each request, settles using
+returned token usage, and counts unknown network outcomes conservatively.
+
+After metadata/source checks and manual overrides, run
+`scripts/publish_media_catalogue.py --dry-run`, then its normal mode to save a
+consistent local backup, descriptions, extracts, public JSON and WebVTT captions.
+`--sync-cloud` deliberately synchronizes only this catalogue and its transcript
+extracts to the dedicated Neon host, installs `media-catalogue-view.sql`, and verifies
+the restricted reader. Existing raw provenance remains private. Install the optional
+dependencies in `scripts/requirements-media-catalogue.txt`; PDF rendering also needs
+Poppler and document conversion needs LibreOffice.
+
+The public library has one listing per original content object, with duplicate IDs
+redirecting to the canonical listing. Hidden or insufficiently identified material
+does not appear in public browsing. Original source/media IDs remain preserved.
+Arabic titles, descriptions, tags and transcripts are searchable. Theme and scope
+filters separate complete books/volumes, excerpts, page scans and recordings.
+Thematic chapters are bounded playback sections linked to their full original;
+they are not newly encoded or context-free replacement videos.
+
 Publish repository changes before deploying. Deploy the `frontend` directory as a Next.js application on Vercel. The feedback edition sends `X-Robots-Tag: noindex, nofollow`.
 
 ## Public assets

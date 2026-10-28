@@ -31,3 +31,4 @@ dist/
 
 # Source-controlled, credential-free website read models.
 !scripts/website-read-views.sql
+!scripts/media-catalogue-view.sql

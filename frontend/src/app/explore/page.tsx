@@ -2,6 +2,9 @@ import Link from "next/link";
 import { cases, matches } from "@/lib/research";
 import { topics } from "@/lib/topics";
 import { PageHeading, CaseCard, TopicCard } from "@/components/research-ui";
+import { getArchive } from "@/lib/archive";
+import { getMediaCatalogue, searchLibrary } from "@/lib/media-catalogue";
+import { LibraryCard } from "@/components/library-card";
 export const metadata = { title: "البحث في الموسوعة" };
 export default async function Explore({
   searchParams,
@@ -10,6 +13,8 @@ export default async function Explore({
 }) {
   const { q: raw = "" } = await searchParams;
   const q = raw.slice(0, 160);
+  const [archive, catalogue] = await Promise.all([getArchive(), getMediaCatalogue()]);
+  const libraryResults = q ? await searchLibrary(archive, catalogue, q) : [];
   const results = q
     ? cases.filter((c) =>
         matches([c.title, c.subtitle, ...c.terms].join(" "), q),
@@ -69,11 +74,15 @@ export default async function Explore({
               <strong>ابحث عن «{q}» في الأحاديث ←</strong>
               <p>ابحث في النصوص العربية، واختر مجموعة الحديث التي تريدها.</p>
             </Link>
-            <Link href="/library">
+            <Link href={`/library?q=${encodeURIComponent(q)}`}>
               <strong>تصفّح الأصول المحفوظة ←</strong>
               <p>صور صفحات الكتب والوثائق والمرئيات متاحة للقراءة والمشاهدة.</p>
             </Link>
           </div>
+          {libraryResults.length > 0 && <section className="section-block">
+            <div className="section-heading"><h2>نتائج من الكتب والمقاطع والمصادر</h2><Link className="text-link" href={`/library?q=${encodeURIComponent(q)}`}>جميع النتائج ({libraryResults.length}) ←</Link></div>
+            <div className="library-grid">{libraryResults.slice(0, 6).map(item => <LibraryCard key={item.id} item={item} metadata={catalogue[String(item.id)]} />)}</div>
+          </section>}
         </>
       )}
     </>

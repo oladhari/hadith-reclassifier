@@ -202,6 +202,8 @@ def project_frontend(engine, directory):
         "archive-themes.json": report,
         "evidence-analysis.json": settings.get("evidence_analysis", {}).get("public", {"media": {}, "cases": {}}),
         "public-evidence.json": settings.get("public_evidence", {"cases": {}, "labels": {}}),
+        "media-catalogue.json": {key: {field: value for field, value in row.items() if field != "transcript"} for key, row in settings.get("media_catalogue", {}).get("public", {}).items()},
+        "transcript-content.json": {key: row["transcript"] for key, row in settings.get("media_catalogue", {}).get("public", {}).items() if "transcript" in row and int(key) == row["canonical_id"]},
     }
     result = {}
     for name, data in generated.items():

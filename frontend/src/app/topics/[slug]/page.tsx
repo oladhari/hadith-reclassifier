@@ -5,6 +5,7 @@ import { topics } from "@/lib/topics";
 import { cases } from "@/lib/research";
 import { CaseCard, PageHeading } from "@/components/research-ui";
 import { ArchiveMatches } from "@/components/archive-matches";
+import { ThemedLibrary } from "@/components/themed-library";
 export function generateStaticParams() {
   return topics.map((topic) => ({ slug: topic.slug }));
 }
@@ -59,6 +60,7 @@ export default async function TopicPage({
         page={Number.parseInt(page) || 1}
         baseURL={`/topics/${slug}`}
       />
+      <ThemedLibrary topic={slug} />
 
     </>
   );

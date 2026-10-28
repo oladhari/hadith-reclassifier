@@ -8,6 +8,7 @@ import { caseMatches, topics } from "@/lib/topics";
 import { ArchiveMatches } from "@/components/archive-matches";
 import { CaseReading } from "@/components/evidence-reading";
 import { StatusNote } from "@/components/research-ui";
+import { ThemedLibrary } from "@/components/themed-library";
 export function generateStaticParams() {
   return cases.map((c) => ({ slug: c.slug }));
 }
@@ -137,6 +138,7 @@ export default async function CasePage({
               </Link>
             </div>
           </section>
+          <ThemedLibrary caseSlug={slug} />
         </article>
       </div>
     </>

@@ -39,7 +39,7 @@ erDiagram
 - **Original files:** `research_media` preserves each attachment occurrence. `research_objects` deduplicates bytes, and `research_storage_locations` separates current local paths from planned R2 object keys.
 - **Book identification:** works, editions, and citations are separate records. Only the two previously inspected page sources have provisional identification. Unknown author/edition fields remain null. No automatic identification is presented as verified.
 - **Albums:** membership derives only from the original album ID. Adjacency is never used to invent a book or album association.
-- **Extracted text:** collection quote fragments and the two manually checked partial quotes have distinct extraction kinds and review states. OCR, PDF extraction, and speech transcription have dedicated job/extraction tables but have not been run or queued.
+- **Extracted text:** collection quote fragments and manually checked partial quotes have distinct extraction kinds and review states. Later OCR and speech passes are recorded below; their automatic outputs do not become verified quotations or hadith rulings.
 - **Research links:** keyword matches and selected references remain proposed links. Counts are not authentication verdicts.
 - **Hadith corpus:** 36,390 Arabic entries and 72,780 Arabic/English text rows are preserved, including empty texts. Original grades/reference fields remain inside each row's original data. All 14 source-file metadata blocks and hashes are preserved. Arabic/English entries are paired by collection and exact source number, never by guessed text similarity.
 - **Narrators and rulings:** narrator identities/judgments have separate tables and require citations. No narrator classifications, hadith verdicts, or final book entries have been invented by import.
@@ -107,7 +107,7 @@ python3 scripts/ocr_research.py --ids 195 196 344 1315 1316 2380 2381 --limit 7
 python3 scripts/ocr_research.py --limit 50 --workers 2
 ```
 
-Requires `tesseract-ocr` and Arabic/English language data. The script checks input hashes, backs up the catalogue first, deduplicates processing by object, skips completed jobs, and stores `ocr_text` extracts with `review_state=unverified`. Originals and existing manual quotes remain untouched. Initial OCR has missing and garbled words, especially around highlights, watermarks and overlaid covers; it is not suitable for automatic quotation, bibliographic identification or hadith judgments. OCR output is private until corrected against the image. The first full image pass completed on 2026-10-21: all 1,278 unique image objects processed; 1,179 yielded nonempty text and 99 yielded none. See `data/research/ocr-report.json` for exact current totals. Text correction, bibliographic identification, further gallery curation and video transcription remain pending.
+Requires `tesseract-ocr` and Arabic/English language data. The script checks input hashes, backs up the catalogue first, deduplicates processing by object, skips completed jobs, and stores `ocr_text` extracts with `review_state=unverified`. Originals and existing manual quotes remain untouched. Initial OCR has missing and garbled words, especially around highlights, watermarks and overlaid covers; it is not suitable for automatic quotation, bibliographic identification or hadith judgments. OCR output is private until corrected against the image. The first full image pass completed on 2026-10-21: all 1,278 unique image objects processed; 1,179 yielded nonempty text and 99 yielded none. See `data/research/ocr-report.json` for exact current totals. Further text correction, bibliographic identification and gallery curation remain editorial work; the later transcription pass is recorded below.
 
 ### Evidence readings (2026-10-21)
 
@@ -116,3 +116,33 @@ Requires `tesseract-ocr` and Arabic/English language data. The script checks inp
 `EvidenceReading` renders next to the actual image in case/topic galleries, source pages and individual library pages. The gallery continues to use only explicitly selected media IDs, and integration checks ensure a case cannot silently show another case's analysis. The siege reading distinguishes participation in the siege from direct killing, and later office-holding from a proven prior order. Other corrections distinguish author text from editorial footnotes, transmission of a weakening opinion from adopting it, and criticism of a specific route from rejection of all routes.
 
 Public presentation update: at the owner's request, the separate limitations block is no longer rendered. The original qualification notes remain preserved in the catalogue for internal editorial review; source text, attributions and argument wording are unchanged.
+
+### Arabic media catalogue (2026-10-28)
+
+All 1,805 unique objects have descriptive Arabic metadata based on original images,
+saved OCR, actual album captions, PDF/document extraction or full speech transcripts.
+Prior visually checked evidence readings remain authoritative editorial inputs for
+their descriptions. Automatic crosschecks are metadata checks, not human scholarly
+approval. Full books/volumes, independent papers, extracted pages and recordings are
+distinguished; filenames do not establish bibliographic identity or completeness.
+
+All 349 unique video/audio objects (about 28 hours) were transcribed with segment and
+word times. Raw Arabic transcripts are stored as `speech_transcript` extracts with
+`review_state=unverified`; caches retain full timing and processing provenance.
+Selected public transcripts include conservative spelling corrections, visible
+automatic-transcription labels, searchable text and downloadable WebVTT captions.
+
+The initial public selection has 992 canonical research items, including 188
+recordings with transcripts and 41 thematic playback sections. The 102 duplicate
+attachment occurrences resolve to their canonical library pages. Nonselected,
+uncertain and purely satirical material stays out of public catalogue browsing;
+original objects and source occurrences are preserved. Similar PDF covers with
+different contents are not silently merged. See the private publication report at
+`data/research/enrichment/publication-report.json` for the current counts.
+
+`research_catalogue_settings.media_catalogue` retains separate public and editorial
+sections. The website's restricted views expose public metadata and selected
+transcript text only; raw captions, selection reasons and original discussion
+provenance remain inaccessible. Local backups precede synchronization, and the
+portable export was compared with Neon after publication. No narration assessment,
+narrator judgment or approved book entry was added by this metadata workflow.
