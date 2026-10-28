@@ -63,6 +63,13 @@ unchanged and accessible from the collection's provenance panel. The collection 
 served directly by the website CDN; no paid AI processing or original R2 replacement
 is involved.
 
+The same registry supports `type: "images"` for related scans of the same work
+and subject. These become one library card with a paired preview and an ordered
+gallery. Each image keeps its own label, attribution, source endpoint and checksum;
+the image bytes are never stitched, cropped or recompressed. Member library URLs
+redirect to the canonical group, while source bundles deduplicate the group and
+retain access to the originals.
+
 Publish repository changes before deploying. Deploy the `frontend` directory as a Next.js application on Vercel. The feedback edition sends `X-Robots-Tag: noindex, nofollow`.
 
 ## Public assets

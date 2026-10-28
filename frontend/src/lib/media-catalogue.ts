@@ -8,12 +8,14 @@ import { matches, normalize } from "./research";
 import type { ArchiveItem } from "./archive";
 
 export type MediaChapter = { title: string; start: number; end: number; topic: string; summary: string };
+export type CollectionImage = { id: number; label: string; description: string };
 export type MediaDescription = {
   id: number; canonical_id: number; title: string; description: string;
   work_title: string; author: string; page_label: string; scope: string;
   topics: string[]; cases: string[]; tags: string[]; visible: boolean;
   page_count?: number; duration?: number; has_transcript?: boolean;
   asset_url?: string; asset_size?: number;
+  image_count?: number; collection_images?: CollectionImage[];
   collection_sources?: { id: number; page_count: number }[];
   collection_page_map?: { page: number; source_id: number; source_page: number }[];
   chapters: MediaChapter[]; occurrences: number[];
@@ -24,7 +26,7 @@ const liveCatalogue = unstable_cache(async () => {
     "SELECT id,metadata FROM research.website_catalogue",
   );
   return Object.fromEntries(rows.map(row => [row.id, row.metadata])) as MediaCatalogue;
-}, ["neon-catalogue-v2"], { revalidate: 60 });
+}, ["neon-catalogue-v3"], { revalidate: 60 });
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
   usesNeon() ? liveCatalogue() : snapshot as MediaCatalogue,
 );
@@ -41,7 +43,8 @@ export function publicLibrary(archive: ArchiveItem[], catalogue: MediaCatalogue)
 export function mediaMatches(item: ArchiveItem, metadata: MediaDescription, query: string) {
   return String(item.id) === query.trim() || metadata.occurrences.some(id => String(id) === query.trim()) ||
     matches([metadata.title, metadata.description, metadata.work_title, metadata.author,
-      metadata.page_label, ...metadata.tags].join(" "), query);
+      metadata.page_label, ...metadata.tags,
+      ...(metadata.collection_images || []).flatMap(image => [image.label, image.description])].join(" "), query);
 }
 export async function searchLibrary(archive: ArchiveItem[], catalogue: MediaCatalogue, query: string) {
   const library = publicLibrary(archive, catalogue);

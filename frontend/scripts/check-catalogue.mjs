@@ -66,8 +66,20 @@ assert.ok(clip.includes(chapter.title));
 assert.ok(clip.includes("عرض التسجيل الكامل"));
 for (const collection of Object.values(collections)) {
   const detail = await html(`/library/${collection.canonical_id}`);
-  assert.ok(detail.includes(collection.asset_url));
-  assert.ok(detail.includes("الأصول وترتيب الصفحات"));
+  if (collection.type === "images") {
+    assert.ok(detail.includes("الأصول ومعلومات الصور"));
+    assert.equal((detail.match(/class="image-collection-page"/g) || []).length, collection.images.length);
+    for (const image of collection.images) {
+      assert.ok(detail.includes(`src="/api/media/${image.id}"`));
+      assert.ok(detail.includes(image.label));
+    }
+    const source = await html(`/sources/${collection.canonical_id}`);
+    assert.equal((source.match(/class="image-collection-page"/g) || []).length, collection.images.length,
+      "An album must not render the same grouped images twice");
+  } else {
+    assert.ok(detail.includes(collection.asset_url));
+    assert.ok(detail.includes("الأصول وترتيب الصفحات"));
+  }
   for (const id of collection.members.filter(id => id !== collection.canonical_id)) {
     const response = await fetch(`${base}/library/${id}`, { redirect: "manual" });
     assert.equal(response.status, 308);
@@ -75,6 +87,12 @@ for (const collection of Object.values(collections)) {
     const search = await html(`/library?q=${id}`);
     assert.ok(search.includes(`href="/library/${collection.canonical_id}"`));
     assert.ok(!search.includes(`href="/library/${id}"`));
+  }
+  if (collection.type === "images") {
+    const search = await html(`/library?q=${collection.canonical_id}`);
+    assert.ok(search.includes('class="image-collection-cover"'));
+    assert.ok(search.includes("صورتان"));
+    continue;
   }
   const file = await fetch(base + collection.asset_url);
   assert.equal(file.status, 200);

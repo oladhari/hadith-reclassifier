@@ -7,6 +7,7 @@ import { sourceFiles, sourceRecord, sourceTitle } from "@/lib/local-sources";
 import { evidenceLabels } from "@/lib/public-evidence";
 import { getMediaCatalogue } from "@/lib/media-catalogue";
 import thumbnails from "@/content/thumbnails.json";
+import { ImageCollection } from "./image-collection";
 export async function MediaOriginal({ item }: { item: ArchiveItem }) {
   const sources = await getBibliography();
   const metadata = (await getMediaCatalogue())[String(item.id)];
@@ -20,7 +21,7 @@ export async function MediaOriginal({ item }: { item: ArchiveItem }) {
         {metadata?.visible && <p>{metadata.description}</p>}
         {sources[item.id] && <p>{sources[item.id].detail}</p>}
       </div>
-      {item.kind === "image" ? (
+      {metadata?.collection_images ? <ImageCollection images={metadata.collection_images} /> : item.kind === "image" ? (
         <a href={src} target="_blank" rel="noreferrer">
           <img
             src={src}
@@ -41,9 +42,9 @@ export async function MediaOriginal({ item }: { item: ArchiveItem }) {
         <p>الوثيقة متاحة للتنزيل وفتحها ببرنامجها المناسب.</p>
       )}
       <div className="source-file-actions">
-        <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>
+        {!metadata?.collection_images && <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>}
         <Link href={`/library/${item.id}`}>
-          فتح {kindNames[item.kind]} في صفحة مستقلة ←
+          فتح {metadata?.collection_images ? "مجموعة الصور" : kindNames[item.kind]} في صفحة مستقلة ←
         </Link>
       </div>
       <EvidenceReading id={item.id} />

@@ -36,7 +36,7 @@ export async function sourceFiles(id: number): Promise<ArchiveItem[]> {
     .filter((file): file is ArchiveItem => Boolean(file))
     .filter(file => {
       const metadata = catalogue[String(file.id)];
-      const key = metadata?.asset_url ? `collection:${metadata.canonical_id}` : file.object_key || (objectKeys as Record<string, string>)[file.id] || String(file.id);
+      const key = metadata?.asset_url || metadata?.collection_images ? `collection:${metadata.canonical_id}` : file.object_key || (objectKeys as Record<string, string>)[file.id] || String(file.id);
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
@@ -61,7 +61,7 @@ export async function resolveSources(ids: number[]) {
     const record = records[String(id)];
     if (!record) return false;
     const key = record.files.length
-      ? `files:${[...new Set(record.files.map(file => catalogue[String(file)]?.asset_url ? `collection:${catalogue[String(file)].canonical_id}` : (objectKeys as Record<string, string>)[file] || String(file)))].sort().join(",")}`
+      ? `files:${[...new Set(record.files.map(file => catalogue[String(file)]?.asset_url || catalogue[String(file)]?.collection_images ? `collection:${catalogue[String(file)].canonical_id}` : (objectKeys as Record<string, string>)[file] || String(file)))].sort().join(",")}`
       : `text:${id}`;
     if (seen.has(key)) return false;
     seen.add(key);

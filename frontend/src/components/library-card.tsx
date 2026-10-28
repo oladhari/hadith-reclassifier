@@ -9,9 +9,12 @@ import { topics } from "@/lib/topics";
 export function LibraryCard({ item, metadata, chapter }: { item: ArchiveItem; metadata: MediaDescription; chapter?: MediaChapter }) {
   const href = chapter ? `/library/${item.id}?start=${chapter.start}&end=${chapter.end}#media-player` : `/library/${item.id}`;
   return <Link className="asset-card" href={href}>
-    <AssetThumbnail src={(thumbnails as Record<string, string>)[item.id]} kind={item.kind} label={kindNames[item.kind]} />
+    {metadata.collection_images ? <div className="image-collection-cover">
+      {metadata.collection_images.slice(0, 2).map(image => <AssetThumbnail key={image.id} src={(thumbnails as Record<string, string>)[image.id]} kind="image" label={image.label} />)}
+      <span className="image-count-badge">{metadata.image_count === 2 ? "صورتان" : `${metadata.image_count} صور`}</span>
+    </div> : <AssetThumbnail src={(thumbnails as Record<string, string>)[item.id]} kind={item.kind} label={kindNames[item.kind]} />}
     <div className="asset-info">
-      <span className="eyebrow">{chapter ? "مقطع موضوعي" : scopeNames[metadata.scope] || kindNames[item.kind]} • {chapter ? timeLabel(chapter.end - chapter.start) : fileSize(metadata.asset_size || item.size)}
+      <span className="eyebrow">{chapter ? "مقطع موضوعي" : metadata.collection_images ? "مجموعة صور" : scopeNames[metadata.scope] || kindNames[item.kind]} • {chapter ? timeLabel(chapter.end - chapter.start) : fileSize(metadata.asset_size || item.size)}
         {!chapter && metadata.page_count ? ` • ${metadata.page_count} صفحة` : ""}
         {!chapter && metadata.duration ? ` • ${timeLabel(metadata.duration)}` : ""}
       </span>

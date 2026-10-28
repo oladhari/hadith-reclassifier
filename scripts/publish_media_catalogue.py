@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
-from enrich_media import CACHE, ROOT, inventory, save, config
+from enrich_media import CACHE, ROOT, inventory, save, config, original
 
 TOPICS = {"uthman", "camel", "allegiance", "siffin", "virtues", "narrators", "karbala", "manuscripts"}
 CASES = {row["slug"] for row in json.loads((ROOT / "frontend/src/content/editorial-seed.json").read_text())["cases"]}
@@ -123,22 +123,39 @@ def assemble():
         if canonical not in members or claimed.intersection(members):
             raise ValueError("Invalid or overlapping editorial collection")
         claimed.update(members)
-        asset = (ROOT / "frontend/public" / collection["asset_url"].lstrip("/")).resolve()
-        if not asset.is_relative_to((ROOT / "frontend/public/collections").resolve()):
-            raise ValueError("Collection asset outside public collections directory")
-        if asset.stat().st_size != collection["asset_size"] or hashlib.sha256(asset.read_bytes()).hexdigest() != collection["asset_sha256"]:
-            raise ValueError("Collection PDF checksum mismatch")
-        if len(collection["page_map"]) != collection["page_count"]:
-            raise ValueError("Collection page provenance incomplete")
+        images = collection.get("type") == "images"
+        if images:
+            if [image["id"] for image in collection["images"]] != members:
+                raise ValueError("Image sequence must preserve all collection members")
+            for source in collection["originals"]:
+                item = next(item for item in items if item["id"] == source["id"])
+                if item["kind"] != "image" or item["sha"] != source["sha256"]:
+                    raise ValueError("Image collection source differs")
+                original(item)  # Verify bytes without editing or recompressing.
+        else:
+            asset = (ROOT / "frontend/public" / collection["asset_url"].lstrip("/")).resolve()
+            if not asset.is_relative_to((ROOT / "frontend/public/collections").resolve()):
+                raise ValueError("Collection asset outside public collections directory")
+            if asset.stat().st_size != collection["asset_size"] or hashlib.sha256(asset.read_bytes()).hexdigest() != collection["asset_sha256"]:
+                raise ValueError("Collection PDF checksum mismatch")
+            if len(collection["page_map"]) != collection["page_count"]:
+                raise ValueError("Collection page provenance incomplete")
         base = dict(public[str(canonical)])
         if not base["visible"] or any(not public[str(member)]["visible"] for member in members):
             raise ValueError("Only already selected sources can enter a public collection")
         occurrences = sorted({id for member in members for id in public[str(member)]["occurrences"]})
         base.update(canonical_id=canonical, title=collection["title"], description=collection["description"],
-            page_count=collection["page_count"], asset_url=collection["asset_url"], asset_size=collection["asset_size"],
-            scope="excerpt", work_title="", author="", page_label="", occurrences=occurrences,
-            collection_sources=[{"id": row["id"], "page_count": row["page_count"]} for row in collection["originals"]],
-            collection_page_map=[{key: row[key] for key in ["page", "source_id", "source_page"]} for row in collection["page_map"]])
+            scope="excerpt", work_title=collection.get("work_title", ""), author=collection.get("author", ""),
+            page_label=collection.get("page_label", ""), occurrences=occurrences,
+            collection_sources=[{"id": row["id"], "page_count": row.get("page_count", 1)} for row in collection["originals"]])
+        for field in ["topics", "cases", "tags"]:
+            base[field] = list(dict.fromkeys(value for member in members for value in public[str(member)][field]))
+        if images:
+            base.update(collection_images=collection["images"], image_count=len(members),
+                        asset_size=sum(row["size"] for row in collection["originals"]))
+        else:
+            base.update(page_count=collection["page_count"], asset_url=collection["asset_url"], asset_size=collection["asset_size"],
+                collection_page_map=[{key: row[key] for key in ["page", "source_id", "source_page"]} for row in collection["page_map"]])
         for id in occurrences:
             public[str(id)] = {**base, "id": id}
     return items, metadata, public, transcripts
