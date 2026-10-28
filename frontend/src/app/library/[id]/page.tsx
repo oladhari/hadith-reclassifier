@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EvidenceReading } from "@/components/evidence-reading";
 import { Download } from "lucide-react";
+import thumbnails from "@/content/thumbnails.json";
 import { getArchive, assetTitle, kindNames, fileSize } from "@/lib/archive";
 import { PageHeading, StatusNote } from "@/components/research-ui";
 export const dynamic = "force-dynamic";
@@ -52,7 +53,7 @@ export default async function AssetPage({
             />
           </a>
         ) : item.kind === "video" ? (
-          <video controls preload="metadata" playsInline src={src}>
+          <video controls preload="none" playsInline src={src} poster={(thumbnails as Record<string, string>)[item.id]}>
             <track kind="captions" />
             متصفحك لا يدعم تشغيل الفيديو. استخدم رابط الملف الأصلي أدناه.
           </video>

@@ -850,8 +850,33 @@ svg {
 .asset-cover img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top;
+}
+.asset-cover.video img {
+  object-position: center;
+}
+.asset-cover .thumbnail-play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #14243bd9;
+  color: white;
+  box-shadow: 0 2px 12px #0004;
+}
+.asset-cover .thumbnail-page {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: #fffef0ed;
+  color: #1b2f4b;
 }
 .asset-id {
   position: absolute;

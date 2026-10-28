@@ -1,5 +1,21 @@
 # Research website hosting
 
+## Library thumbnails
+
+Run `python3 scripts/prepare_thumbnails.py` with Pillow (see
+`scripts/requirements-thumbnails.txt`), Poppler, FFmpeg and LibreOffice installed.
+The command reads and checksum-verifies local originals without changing them.
+It makes bounded 640px WebP previews: images, the first PDF/document page, and a
+video frame. Identical originals share a preview. Audio retains its type icon.
+Outputs are `frontend/public/thumbnails/` and the source-controlled
+`frontend/src/content/thumbnails.json`; both must accompany a website deployment.
+These small derivatives are served by the website CDN independently of R2 originals.
+The resumable command reuses verified existing previews and reports unsupported
+or failed conversions in `data/research/thumbnail-report.json`. Run it again after
+adding archive items. Change the filename version when changing rendering rules.
+Library cards use lazy loading, an error fallback, full-page containment and a
+play overlay for videos; the video detail player also uses the preview as its poster.
+
 Publish repository changes before deploying. Deploy the `frontend` directory as a Next.js application on Vercel. The feedback edition sends `X-Robots-Tag: noindex, nofollow`.
 
 ## Public assets

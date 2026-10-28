@@ -1,13 +1,8 @@
 import { getBibliography } from "@/lib/local-sources";
-/* eslint-disable @next/next/no-img-element -- Original archival images are served without alteration. */
 import Link from "next/link";
-import {
-  Image as ImageIcon,
-  Play,
-  FileText,
-  ArrowUpLeft,
-  Headphones,
-} from "lucide-react";
+import { ArrowUpLeft } from "lucide-react";
+import AssetThumbnail from "@/components/asset-thumbnail";
+import thumbnails from "@/content/thumbnails.json";
 import { getArchive, assetTitle, kindNames, fileSize } from "@/lib/archive";
 import { ar, matches } from "@/lib/research";
 import { PageHeading } from "@/components/research-ui";
@@ -74,30 +69,12 @@ export default async function LibraryPage({
             key={item.id}
             href={`/library/${item.id}`}
           >
-            <div className={`asset-cover ${item.kind}`}>
-              {sources[item.id] ? (
-                <>
-                  <img
-                    src={`/evidence/${item.id}.jpg`}
-                    alt={sources[item.id].title}
-                    loading="lazy"
-                  />
-                </>
-              ) : (
-                <>
-                  {item.kind === "video" ? (
-                    <Play size={34} />
-                  ) : item.kind === "image" ? (
-                    <ImageIcon size={34} />
-                  ) : item.kind === "audio" ? (
-                    <Headphones size={34} />
-                  ) : (
-                    <FileText size={34} />
-                  )}
-                  <span>{kindNames[item.kind]}</span>
-                </>
-              )}
-            </div>
+            <AssetThumbnail
+              key={item.id}
+              src={(thumbnails as Record<string, string>)[item.id] || (sources[item.id] ? `/evidence/${item.id}.jpg` : undefined)}
+              kind={item.kind}
+              label={kindNames[item.kind]}
+            />
             <div className="asset-info">
               <span className="eyebrow">
                 {kindNames[item.kind]} • {fileSize(item.size)}
