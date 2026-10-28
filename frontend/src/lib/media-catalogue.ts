@@ -1,6 +1,7 @@
 import "server-only";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
+import { organizeEntry } from "./library-organization";
 import documentPdfs from "@/content/document-pdfs.json";
 import snapshot from "@/content/media-catalogue.json";
 import transcriptSnapshot from "@/content/transcript-content.json";
@@ -16,6 +17,7 @@ export type MediaDescription = {
   topics: string[]; cases: string[]; tags: string[]; visible: boolean;
   page_count?: number; duration?: number; has_transcript?: boolean;
   asset_url?: string; asset_size?: number; converted_document?: boolean;
+  library_section?: string; content_label?: string; attribution?: string; organization_note?: string;
   image_count?: number; collection_images?: CollectionImage[];
   collection_sources?: { id: number; page_count: number }[];
   collection_page_map?: { page: number; source_id: number; source_page: number }[];
@@ -31,12 +33,12 @@ const liveCatalogue = unstable_cache(async () => {
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
   Object.fromEntries(Object.entries(usesNeon() ? await liveCatalogue() : snapshot as MediaCatalogue).map(([id, entry]) => {
     const pdf = (documentPdfs as Record<string, { asset_url: string; asset_size: number; page_count: number }>)[String(entry.canonical_id)];
-    return [id, pdf ? { ...entry, ...pdf, converted_document: true } : entry];
+    return [id, organizeEntry(pdf ? { ...entry, ...pdf, converted_document: true } : entry)];
   })),
 );
 export const scopeNames: Record<string, string> = {
   page: "صفحة مصوّرة", excerpt: "مقتطف / صفحات مجمّعة", full_book: "كتاب / مجلد كامل",
-  article: "بحث / وثيقة", lecture: "محاضرة", clip: "مقطع مرئي", audio: "تسجيل صوتي",
+  article: "بحث / مقال كامل", lecture: "محاضرة", clip: "مقطع مرئي", audio: "تسجيل صوتي",
 };
 export function publicLibrary(archive: ArchiveItem[], catalogue: MediaCatalogue) {
   return archive.filter(item => {

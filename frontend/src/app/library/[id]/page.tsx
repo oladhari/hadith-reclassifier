@@ -1,3 +1,4 @@
+import { excerptAlbums, librarySection, sectionNames } from "@/lib/library-organization";
 import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Preserve original scans and pre-sized document previews. */
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { ImageCollection } from "@/components/image-collection";
 import { Download } from "lucide-react";
 import thumbnails from "@/content/thumbnails.json";
 import { getArchive, kindNames, fileSize } from "@/lib/archive";
-import { getMediaCatalogue, getTranscript, scopeNames, timeLabel } from "@/lib/media-catalogue";
+import { getMediaCatalogue, getTranscript, publicLibrary, scopeNames, timeLabel } from "@/lib/media-catalogue";
 import { topics } from "@/lib/topics";
 import { cases } from "@/lib/research";
 import { PageHeading } from "@/components/research-ui";
@@ -30,6 +31,8 @@ export default async function AssetPage({ params, searchParams }: {
   if (entry.canonical_id !== Number(id)) permanentRedirect(`/library/${entry.canonical_id}`);
   const item = archive.find(row => row.id === Number(id));
   if (!item) notFound();
+  const relatedAlbum = librarySection(item, entry) === "excerpts"
+    ? excerptAlbums(publicLibrary(archive, catalogue), catalogue).find(album => album.items.length > 1 && album.items.some(member => member.id === item.id)) : undefined;
   const src = entry.asset_url || `/api/media/${item.id}`;
   const startValue = Number(query.start);
   const endValue = Number(query.end);
@@ -39,9 +42,10 @@ export default async function AssetPage({ params, searchParams }: {
   const speech = item.kind === "video" || item.kind === "audio";
   const transcript = entry.has_transcript ? await getTranscript(item.id) : "";
   return <>
-    <div className="breadcrumb"><Link href="/library">المكتبة</Link><span>/</span><span>{entry.title}</span></div>
-    <PageHeading eyebrow={`${entry.collection_images ? "مجموعة صور" : scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(entry.asset_size || item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}${entry.image_count ? entry.image_count === 2 ? " • صورتان" : ` • ${entry.image_count} صور` : ""}`}
+    <div className="breadcrumb"><Link href={`/library?section=${librarySection(item, entry)}`}>{sectionNames[librarySection(item, entry)]}</Link><span>/</span><span>{entry.title}</span></div>
+    <PageHeading eyebrow={`${entry.collection_images ? "مجموعة صور" : entry.content_label || scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(entry.asset_size || item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}${entry.image_count ? entry.image_count === 2 ? " • صورتان" : ` • ${entry.image_count} صور` : ""}`}
       title={entry.title} description={entry.description} />
+    {entry.organization_note && <p className="organization-note">{entry.organization_note}</p>}
     {(entry.work_title || entry.author || entry.page_label) && <dl className="media-bibliography">
       {entry.work_title && <div><dt>المصدر</dt><dd><Link href={`/library?q=${encodeURIComponent(entry.work_title)}`}>{entry.work_title} ←</Link></dd></div>}
       {entry.author && <div><dt>المؤلف</dt><dd>{entry.author}</dd></div>}
@@ -55,6 +59,7 @@ export default async function AssetPage({ params, searchParams }: {
         : <><img className="document-first-page" src={(thumbnails as Record<string, string>)[id]} alt={`الصفحة الأولى: ${entry.title}`} /><p>يمكن تنزيل الوثيقة الأصلية وفتحها ببرنامجها المناسب.</p></>}
     </div>
     <div className="related-actions">
+      {relatedAlbum && <Link className="button button-outline" href={`/library/albums/${relatedAlbum.key}#source-${item.id}`}>جميع شواهد الكتاب في هذا الموضوع ←</Link>}
       {entry.converted_document && <a className="button button-outline" href={`/api/media/${item.id}?download=1`}>تنزيل الوثيقة الأصلية</a>}
       {!entry.collection_images && <a className="button button-dark" href={entry.asset_url ? src : `${src}?download=1`} download={entry.asset_url ? `${entry.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}><Download size={17} /> {entry.converted_document ? "تنزيل PDF" : entry.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الملف الأصلي"}</a>}
       <Link className="button button-outline" href={`/sources/${item.id}`}>بيانات المرجع وصفحاته المرتبطة ←</Link>

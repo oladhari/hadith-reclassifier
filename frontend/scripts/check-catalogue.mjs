@@ -8,6 +8,14 @@ const transcripts = JSON.parse(await readFile(new URL("../src/content/transcript
 const archive = JSON.parse(await readFile(new URL("../src/content/archive-index.json", import.meta.url), "utf8"));
 const collections = JSON.parse(await readFile(new URL("../src/content/media-collections.json", import.meta.url), "utf8"));
 const readings = JSON.parse(await readFile(new URL("../src/content/evidence-analysis.json", import.meta.url), "utf8"));
+const organization = JSON.parse(await readFile(new URL("../src/content/library-organization.json", import.meta.url), "utf8"));
+for (const row of Object.values(catalogue)) {
+  const review = organization[String(row.canonical_id)];
+  if (review) {
+    row.scope = ["book", "volume"].includes(review.form) ? "full_book" : review.form === "research" ? "article" : "excerpt";
+    if (review.title) row.title = review.title;
+  }
+}
 const visible = Object.values(catalogue).filter(row => row.visible && row.id === row.canonical_id);
 assert.ok(visible.length > 0);
 assert.equal(new Set(visible.map(row => row.canonical_id)).size, visible.length);
@@ -122,3 +130,41 @@ for (const [id, pdf] of Object.entries(documentPdfs)) {
   assert.equal(createHash("sha256").update(bytes).digest("hex"), pdf.pdf_sha256);
 }
 console.log(`Converted document checks passed: ${Object.keys(documentPdfs).length} PDFs and original download links.`);
+
+const books = visible.filter(row => organization[String(row.id)]?.section === "books");
+const booksPage = await html("/library?section=books");
+const indexIds = [...booksPage.matchAll(/data-book-index-id="(\d+)"/g)].map(match => Number(match[1]));
+assert.deepEqual(indexIds.sort((a,b) => a-b), books.map(row => row.id).sort((a,b) => a-b));
+assert.ok(booksPage.includes("فهرس الكتب والبحوث"));
+assert.ok(booksPage.includes("المؤلف غير مذكور في النسخة"));
+assert.ok(booksPage.includes('name="section" value="books"'));
+for (const id of [1078, 1912, 1947, 2424]) assert.ok(indexIds.includes(id), `Complete converted work/research ${id} in index`);
+for (const id of [648, 908, 1057, 1144, 1480]) assert.ok(!indexIds.includes(id), `Partial work/draft ${id} excluded from complete works`);
+const draftPage = await html("/library/1144");
+assert.ok(draftPage.includes("مسودة غير مكتملة") && draftPage.includes("ثماني صفحات"));
+for (const section of ["audio", "video"]) {
+  const page = await html(`/library?section=${section}`);
+  const expected = visible.filter(row => archive.find(item => item.id === row.id)?.kind === section);
+  assert.ok(page.includes(`data-result-count="${expected.length}"`));
+  assert.ok(!page.includes("data-excerpt-album="));
+}
+// The same book and theme can contain images and PDFs; every underlying source stays reachable.
+const excerptsPage = await html(`/library?section=excerpts&q=${encodeURIComponent("صحيح البخاري")}`);
+assert.ok(excerptsPage.includes("data-excerpt-album="));
+const albumLinks = [...new Set([...excerptsPage.matchAll(/href="(\/library\/albums\/[a-f0-9]+)"/g)].map(match => match[1]))];
+let mixedAlbumFound = false;
+for (const link of albumLinks.slice(0, 8)) {
+  const page = await html(link);
+  const ids = [...page.matchAll(/data-album-member="(\d+)"/g)].map(match => Number(match[1]));
+  assert.ok(ids.length > 1);
+  for (const id of ids) {
+    assert.ok(visible.some(row => row.id === id));
+    assert.notEqual(organization[String(id)]?.section, "books");
+    assert.ok(page.includes(`href="/library/${id}"`));
+  }
+  const kinds = new Set(ids.map(id => archive.find(item => item.id === id).kind));
+  if (kinds.has("image") && kinds.has("pdf")) mixedAlbumFound = true;
+}
+assert.ok(mixedAlbumFound, "Book/theme albums should gather PDF and image excerpts together");
+assert.equal((await fetch(`${base}/library/albums/nonexistent`)).status, 404);
+console.log(`Organization checks passed: ${books.length} complete works, book/author index, drafts excluded, mixed-format albums, audio/video preserved.`);

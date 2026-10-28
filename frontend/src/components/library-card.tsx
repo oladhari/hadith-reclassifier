@@ -14,7 +14,7 @@ export function LibraryCard({ item, metadata, chapter }: { item: ArchiveItem; me
       <span className="image-count-badge">{metadata.image_count === 2 ? "صورتان" : `${metadata.image_count} صور`}</span>
     </div> : <AssetThumbnail src={(thumbnails as Record<string, string>)[item.id]} kind={item.kind} label={kindNames[item.kind]} />}
     <div className="asset-info">
-      <span className="eyebrow">{chapter ? "مقطع موضوعي" : metadata.collection_images ? "مجموعة صور" : scopeNames[metadata.scope] || kindNames[item.kind]} • {chapter ? timeLabel(chapter.end - chapter.start) : fileSize(metadata.asset_size || item.size)}
+      <span className="eyebrow">{chapter ? "مقطع موضوعي" : metadata.collection_images ? "مجموعة صور" : metadata.content_label || scopeNames[metadata.scope] || kindNames[item.kind]} • {chapter ? timeLabel(chapter.end - chapter.start) : fileSize(metadata.asset_size || item.size)}
         {!chapter && metadata.page_count ? ` • ${metadata.page_count} صفحة` : ""}
         {!chapter && metadata.duration ? ` • ${timeLabel(metadata.duration)}` : ""}
       </span>

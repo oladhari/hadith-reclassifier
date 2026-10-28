@@ -1,0 +1,138 @@
+{
+  "65": {
+    "section": "books",
+    "form": "book"
+  },
+  "70": {
+    "section": "books",
+    "form": "book"
+  },
+  "130": {
+    "section": "books",
+    "form": "research"
+  },
+  "634": {
+    "section": "books",
+    "form": "research"
+  },
+  "648": {
+    "section": "excerpts",
+    "form": "excerpt",
+    "note": "تجميع تراجم ونقول دون بيانات تثبت أنه كتاب كامل."
+  },
+  "737": {
+    "section": "books",
+    "form": "book"
+  },
+  "882": {
+    "section": "books",
+    "form": "book"
+  },
+  "908": {
+    "section": "excerpts",
+    "form": "excerpt",
+    "title": "منهاج السنة النبوية — مقدمة التحقيق من الجزء الأول",
+    "author": "محمد رشاد سالم (محقق كتاب ابن تيمية)",
+    "description": "ملف من 179 صفحة يضم الصفحات التمهيدية ومقدمة التحقيق وينتهي بقائمة رموز النسخ. لا يحتوي على متن الجزء الأول كاملا.",
+    "note": "الملف المتاح مقدمة التحقيق؛ لا يُعد نسخة كاملة من الجزء الأول."
+  },
+  "909": {
+    "section": "books",
+    "form": "volume"
+  },
+  "910": {
+    "section": "books",
+    "form": "volume"
+  },
+  "911": {
+    "section": "books",
+    "form": "volume"
+  },
+  "912": {
+    "section": "books",
+    "form": "volume"
+  },
+  "913": {
+    "section": "books",
+    "form": "volume"
+  },
+  "914": {
+    "section": "books",
+    "form": "volume"
+  },
+  "915": {
+    "section": "books",
+    "form": "volume"
+  },
+  "1057": {
+    "section": "excerpts",
+    "form": "excerpt",
+    "note": "أربع صفحات من الكتاب؛ ليست النسخة الكاملة.",
+    "title": "نقد حركة الترجمة في عهد المأمون — صفحات من الكتاب"
+  },
+  "1058": {
+    "section": "books",
+    "form": "research"
+  },
+  "1078": {
+    "section": "books",
+    "form": "book"
+  },
+  "1099": {
+    "section": "books",
+    "form": "research"
+  },
+  "1144": {
+    "section": "excerpts",
+    "form": "draft",
+    "note": "مسودة من ثماني صفحات؛ يذكر الأصل عملا أوسع من 128 صفحة.",
+    "author": "عبد الله العراقي"
+  },
+  "1173": {
+    "section": "books",
+    "form": "book"
+  },
+  "1193": {
+    "section": "books",
+    "form": "book"
+  },
+  "1480": {
+    "section": "excerpts",
+    "form": "excerpt",
+    "note": "اثنتا عشرة صفحة من رسالة ماجستير؛ ليست الرسالة كاملة.",
+    "title": "الروض الأنيق في إثبات إمامة أبي بكر الصديق — مقتطف من رسالة تحقيق",
+    "author": "أبو بكر محمد بن حاتم بن زنجويه البخاري؛ تحقيق عواد برد جاعد العنزي"
+  },
+  "1753": {
+    "section": "books",
+    "form": "book"
+  },
+  "1768": {
+    "section": "books",
+    "form": "book"
+  },
+  "1912": {
+    "section": "books",
+    "form": "research",
+    "attribution": "مجلة معاوية — اسم الكاتب غير مذكور في النسخة"
+  },
+  "2209": {
+    "section": "books",
+    "form": "book"
+  },
+  "2388": {
+    "section": "books",
+    "form": "research"
+  },
+  "1947": {
+    "section": "books",
+    "form": "research",
+    "author": "جمع وتحرير: مجلة معاوية"
+  },
+  "2424": {
+    "section": "books",
+    "form": "research",
+    "title": "الشعوبية في مصر: من المانوية إلى الفاطميين",
+    "author": "وليد الزهراني"
+  }
+}
