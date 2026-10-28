@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 const base = process.env.RESEARCH_TEST_URL || "http://127.0.0.1:3110";
 const code = process.env.VIDEO_REVIEW_TEST_CODE;
 assert.ok(code, "Set VIDEO_REVIEW_TEST_CODE without printing the access code");
@@ -29,15 +30,25 @@ const snapshot = await (await fetch(base + "/api/video-review/export", { headers
 assert.equal(new Set(snapshot.items.map(row => row.id)).size, snapshot.items.length);
 assert.ok(snapshot.items.length > 0);
 if (process.env.REVIEW_TEST_MUTATIONS === "1") {
-  const item = snapshot.items.find(row => row.decision === "pending" && row.revision === 0 && row.visible);
+  const transcripts = JSON.parse(await readFile(new URL("../src/content/transcript-content.json", import.meta.url), "utf8"));
+  const item = snapshot.items.find(row => row.decision === "pending" && row.revision === 0 && row.visible && transcripts[row.id]);
   assert.ok(item, "Only test an untouched, currently public review item");
+  const words = transcripts[item.id].split(/\s+/).filter(Boolean);
+  const speechQuery = words.slice(Math.floor(words.length / 2), Math.floor(words.length / 2) + 6).join(" ");
+  const searchPath = `${base}/library?section=video&q=${encodeURIComponent(speechQuery)}`;
   let hidden;
   try {
     assert.equal((await fetch(`${base}/library/${item.id}`)).status, 200);
+    const indexed = await fetch(searchPath);
+    assert.equal(indexed.status, 200);
+    assert.ok((await indexed.text()).includes(`href="/library/${item.id}"`));
     const save = await fetch(base + "/api/video-review/decision", { method: "POST", headers: privateHeaders,
       body: JSON.stringify({ id: item.id, decision: "hide", platform: item.platform, note: item.note, revision: item.revision }) });
     assert.equal(save.status, 200); hidden = await save.json();
     assert.equal((await fetch(`${base}/library/${item.id}`)).status, 404);
+    const hiddenSearch = await fetch(searchPath);
+    assert.equal(hiddenSearch.status, 200);
+    assert.ok(!(await hiddenSearch.text()).includes(`href="/library/${item.id}"`), "Hidden video must leave transcript search too");
     assert.equal((await fetch(`${base}/api/media/${item.id}`, { redirect: "manual" })).status, 404);
     assert.equal((await fetch(`${base}/api/media/${item.id}`, { redirect: "manual", headers: { Cookie: cookie } })).status, 307);
     const source = await (await fetch(`${base}/sources/${item.id}`)).text();
