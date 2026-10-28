@@ -16,7 +16,7 @@ export type MediaDescription = {
   work_title: string; author: string; page_label: string; scope: string;
   topics: string[]; cases: string[]; tags: string[]; visible: boolean;
   page_count?: number; duration?: number; has_transcript?: boolean;
-  asset_url?: string; asset_size?: number; converted_document?: boolean;
+  asset_url?: string; asset_size?: number; converted_document?: boolean; manual_video_hidden?: boolean;
   library_section?: string; content_label?: string; attribution?: string; organization_note?: string;
   image_count?: number; collection_images?: CollectionImage[];
   collection_sources?: { id: number; page_count: number }[];
@@ -29,7 +29,7 @@ const liveCatalogue = unstable_cache(async () => {
     "SELECT id,metadata FROM research.website_catalogue",
   );
   return Object.fromEntries(rows.map(row => [row.id, row.metadata])) as MediaCatalogue;
-}, ["neon-catalogue-v4"], { revalidate: 60 });
+}, ["neon-catalogue-v5"], { revalidate: 60, tags: ["media-catalogue"] });
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
   Object.fromEntries(Object.entries(usesNeon() ? await liveCatalogue() : snapshot as MediaCatalogue).map(([id, entry]) => {
     const pdf = (documentPdfs as Record<string, { asset_url: string; asset_size: number; page_count: number }>)[String(entry.canonical_id)];

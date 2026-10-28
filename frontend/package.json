@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "check:research": "node scripts/check-research.mjs",
-    "check:catalogue": "node scripts/check-catalogue.mjs"
+    "check:catalogue": "node scripts/check-catalogue.mjs",
+    "check:video-review": "node scripts/check-video-review.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

@@ -11,6 +11,7 @@ import { ImageCollection } from "./image-collection";
 export async function MediaOriginal({ item }: { item: ArchiveItem }) {
   const sources = await getBibliography();
   const metadata = (await getMediaCatalogue())[String(item.id)];
+  if (metadata?.manual_video_hidden) return null;
   const src = metadata?.asset_url || `/api/media/${item.id}`;
   return (
     <div className={`source-original ${item.kind}`}>

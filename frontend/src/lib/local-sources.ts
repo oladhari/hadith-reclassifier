@@ -36,6 +36,7 @@ export async function sourceFiles(id: number): Promise<ArchiveItem[]> {
     .filter((file): file is ArchiveItem => Boolean(file))
     .filter(file => {
       const metadata = catalogue[String(file.id)];
+      if (metadata?.manual_video_hidden) return false;
       const key = metadata?.asset_url || metadata?.collection_images ? `collection:${metadata.canonical_id}` : file.object_key || (objectKeys as Record<string, string>)[file.id] || String(file.id);
       if (seen.has(key)) return false;
       seen.add(key);

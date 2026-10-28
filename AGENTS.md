@@ -15,3 +15,12 @@
 - Generated processing caches live under `/mnt/linuxdata/othmani-catalogue`,
   linked at `data/research/enrichment`. Keep private captions, selection reasons,
   credentials and raw provenance out of public projections and deployments.
+
+- Manual video visibility is stored separately in Neon `video_review_decisions`
+  with append-only `video_review_history`. Catalogue publication must preserve
+  these decisions and apply `scripts/media-catalogue-view.sql`; never reset them
+  from machine-generated selection metadata. Initial setup is
+  `scripts/setup_video_review.py` (restricted role; credentials stay private).
+- The private `/review/videos` page uses server-only reviewer credentials and a
+  signed, expiring access-code session. Do not publish the access code, private
+  review exports, or credentials as website assets. Originals stay in R2.

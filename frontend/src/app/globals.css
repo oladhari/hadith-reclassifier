@@ -2324,3 +2324,26 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .album-index li { margin: 8px 0; }
 .album-material { border-top: 1px solid #d9dce2; padding-top: 24px; margin-top: 36px; scroll-margin-top: 24px; }
 .album-material h2 { font-size: 24px; }
+
+.review-login { max-width: 480px; padding: 24px; border: 1px solid #d9dce2; }
+.review-login label, .review-player label, .review-filters label { display: grid; gap: 6px; margin-bottom: 14px; }
+.review-login input, .review-player select, .review-player textarea, .review-filters select, .review-filters input:not([type=checkbox]) { width: 100%; padding: 10px 12px; border: 1px solid #ccd2dc; background: #fff; color: #203047; font: inherit; }
+.review-toolbar, .review-counts, .review-filters, .review-decisions, .review-navigation { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 20px; }
+.review-toolbar { justify-content: space-between; }
+.review-counts span { padding: 8px 16px; background: #e8ebef; }
+.review-filters label { flex: 1; min-width: 150px; }
+.review-filters .review-auto { display: flex; align-items: center; }
+.review-feedback { min-height: 40px; margin-bottom: 16px; }
+.review-feedback [role=alert] { color: #9d2a2a; }
+.review-workspace { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: 24px; align-items: start; }
+.review-player video { width: 100%; max-height: 65vh; background: #111; }
+.review-player h2 { margin-top: 0; }
+.review-hide { background: #8c3434; color: #fff; border-color: #8c3434; }
+.review-queue { max-height: 100vh; overflow-y: auto; border: 1px solid #d9dce2; }
+.review-queue button { display: flex; width: 100%; text-align: start; gap: 12px; padding: 12px; border: 0; border-bottom: 1px solid #d9dce2; background: #fffdf8; color: inherit; cursor: pointer; }
+.review-queue button.selected { background: #e3e9f1; box-shadow: inset -4px 0 #ad8b47; }
+.review-queue img { width: 88px; height: 64px; object-fit: contain; background: #203047; }
+.review-queue small { display: block; margin-top: 6px; color: #657188; }
+.review-navigation { justify-content: space-between; }
+.video-review button:disabled { opacity: .55; cursor: wait; }
+@media(max-width: 800px) { .review-workspace { grid-template-columns: 1fr; } .review-queue { max-height: 400px; } }
