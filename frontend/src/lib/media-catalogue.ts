@@ -1,6 +1,7 @@
 import "server-only";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
+import documentPdfs from "@/content/document-pdfs.json";
 import snapshot from "@/content/media-catalogue.json";
 import transcriptSnapshot from "@/content/transcript-content.json";
 import { queryNeon, usesNeon } from "./neon";
@@ -14,7 +15,7 @@ export type MediaDescription = {
   work_title: string; author: string; page_label: string; scope: string;
   topics: string[]; cases: string[]; tags: string[]; visible: boolean;
   page_count?: number; duration?: number; has_transcript?: boolean;
-  asset_url?: string; asset_size?: number;
+  asset_url?: string; asset_size?: number; converted_document?: boolean;
   image_count?: number; collection_images?: CollectionImage[];
   collection_sources?: { id: number; page_count: number }[];
   collection_page_map?: { page: number; source_id: number; source_page: number }[];
@@ -28,7 +29,10 @@ const liveCatalogue = unstable_cache(async () => {
   return Object.fromEntries(rows.map(row => [row.id, row.metadata])) as MediaCatalogue;
 }, ["neon-catalogue-v4"], { revalidate: 60 });
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
-  usesNeon() ? liveCatalogue() : snapshot as MediaCatalogue,
+  Object.fromEntries(Object.entries(usesNeon() ? await liveCatalogue() : snapshot as MediaCatalogue).map(([id, entry]) => {
+    const pdf = (documentPdfs as Record<string, { asset_url: string; asset_size: number; page_count: number }>)[String(entry.canonical_id)];
+    return [id, pdf ? { ...entry, ...pdf, converted_document: true } : entry];
+  })),
 );
 export const scopeNames: Record<string, string> = {
   page: "صفحة مصوّرة", excerpt: "مقتطف / صفحات مجمّعة", full_book: "كتاب / مجلد كامل",

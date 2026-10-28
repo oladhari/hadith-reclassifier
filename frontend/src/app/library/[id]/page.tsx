@@ -51,11 +51,12 @@ export default async function AssetPage({ params, searchParams }: {
     <div className={`asset-viewer${item.kind === "document" ? " document-viewer" : ""}${entry.collection_images ? " grouped-image-viewer" : ""}`} id="media-player">
       {entry.collection_images ? <ImageCollection images={entry.collection_images} /> : item.kind === "image" ? <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={entry.title} /></a>
         : speech ? <ResearchPlayer id={item.id} kind={item.kind as "video" | "audio"} poster={(thumbnails as Record<string, string>)[id]} start={start} end={end} />
-        : item.kind === "pdf" ? <iframe title={entry.title} src={src} />
+        : item.kind === "pdf" || entry.converted_document ? <iframe title={entry.title} src={src} />
         : <><img className="document-first-page" src={(thumbnails as Record<string, string>)[id]} alt={`الصفحة الأولى: ${entry.title}`} /><p>يمكن تنزيل الوثيقة الأصلية وفتحها ببرنامجها المناسب.</p></>}
     </div>
     <div className="related-actions">
-      {!entry.collection_images && <a className="button button-dark" href={entry.asset_url ? src : `${src}?download=1`} download={entry.asset_url ? `${entry.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}><Download size={17} /> {entry.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الملف الأصلي"}</a>}
+      {entry.converted_document && <a className="button button-outline" href={`/api/media/${item.id}?download=1`}>تنزيل الوثيقة الأصلية</a>}
+      {!entry.collection_images && <a className="button button-dark" href={entry.asset_url ? src : `${src}?download=1`} download={entry.asset_url ? `${entry.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}><Download size={17} /> {entry.converted_document ? "تنزيل PDF" : entry.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الملف الأصلي"}</a>}
       <Link className="button button-outline" href={`/sources/${item.id}`}>بيانات المرجع وصفحاته المرتبطة ←</Link>
       {speech && transcript && <a className="text-link" href={`/transcripts/${id}.vtt`} download>تنزيل الترجمة العربية (VTT)</a>}
     </div>

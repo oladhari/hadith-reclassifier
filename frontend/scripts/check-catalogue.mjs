@@ -109,3 +109,16 @@ for (const collection of Object.values(collections)) {
   assert.deepEqual(Buffer.from(await range.arrayBuffer()), bytes.subarray(0, 128));
 }
 console.log(`Catalogue checks passed: ${visible.length} canonical listings, hidden materials, duplicate redirects, book/excerpt/theme filters, transcript search, Arabic captions and thematic playback sections.`);
+
+const documentPdfs = JSON.parse(await readFile(new URL("../src/content/document-pdfs.json", import.meta.url), "utf8"));
+for (const [id, pdf] of Object.entries(documentPdfs)) {
+  const page = await html(`/library/${id}`);
+  assert.ok(page.includes(`<iframe`) && page.includes(pdf.asset_url), `PDF reader for document ${id}`);
+  assert.ok(page.includes(`/api/media/${id}?download=1`), `Original document retained for ${id}`);
+  const response = await fetch(base + pdf.asset_url);
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type"), /application\/pdf/);
+  const bytes = Buffer.from(await response.arrayBuffer());
+  assert.equal(createHash("sha256").update(bytes).digest("hex"), pdf.pdf_sha256);
+}
+console.log(`Converted document checks passed: ${Object.keys(documentPdfs).length} PDFs and original download links.`);

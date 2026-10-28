@@ -1,0 +1,30 @@
+{
+  "1078": {
+    "asset_url": "/documents/1078-0134fc813137abb1.pdf",
+    "asset_size": 458269,
+    "page_count": 36,
+    "source_sha256": "8ec8fdf5c2975d3e901d871a27ef85e5ddb6373a3721e2f27faa643a11cacf0a",
+    "pdf_sha256": "0134fc813137abb134e936473ad4935dbf20541486fdfc4da8f91b53d5ff29f0"
+  },
+  "1144": {
+    "asset_url": "/documents/1144-5941d47166ba5863.pdf",
+    "asset_size": 165595,
+    "page_count": 8,
+    "source_sha256": "0ae5972918fc438d7b602a68d35bfd0aa7a42fe79e91b95e76fe3c559d9d44d5",
+    "pdf_sha256": "5941d47166ba586379346765d6318acd6219e35caaad32bc11258d4e175c8978"
+  },
+  "1912": {
+    "asset_url": "/documents/1912-c0fcdc63d1e361d9.pdf",
+    "asset_size": 287423,
+    "page_count": 13,
+    "source_sha256": "0113c7a76935c98509c53a2cacc70d65e8fc45556bf81a3a65e56441d52376d2",
+    "pdf_sha256": "c0fcdc63d1e361d97d246f2c35c1ed2a8f472207136ac58732b5c8c876a23cce"
+  },
+  "1947": {
+    "asset_url": "/documents/1947-dde143756d34a6a6.pdf",
+    "asset_size": 154050,
+    "page_count": 9,
+    "source_sha256": "f9ba62797c920307de91fb074c027d29fa47049b784079948e1f0fce58c6d273",
+    "pdf_sha256": "dde143756d34a6a695c709a95d501a32c506667b636933d16683a104c4000bd4"
+  }
+}

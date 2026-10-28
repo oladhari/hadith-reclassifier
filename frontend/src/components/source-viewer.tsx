@@ -36,13 +36,14 @@ export async function MediaOriginal({ item }: { item: ArchiveItem }) {
         </video>
       ) : item.kind === "audio" ? (
         <audio controls preload="none" src={src} />
-      ) : item.kind === "pdf" ? (
+      ) : item.kind === "pdf" || metadata?.converted_document ? (
         <iframe src={src} title={await sourceTitle(item.id)} loading="lazy" />
       ) : (
         <p>الوثيقة متاحة للتنزيل وفتحها ببرنامجها المناسب.</p>
       )}
       <div className="source-file-actions">
-        {!metadata?.collection_images && <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>}
+        {metadata?.converted_document && <a href={`/api/media/${item.id}?download=1`}>تنزيل الوثيقة الأصلية</a>}
+        {!metadata?.collection_images && <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.converted_document ? "تنزيل PDF" : metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>}
         <Link href={`/library/${item.id}`}>
           فتح {metadata?.collection_images ? "مجموعة الصور" : kindNames[item.kind]} في صفحة مستقلة ←
         </Link>
