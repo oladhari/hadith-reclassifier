@@ -1,0 +1,11 @@
+# Deploy only website source and its public assets. Local research data stays local.
+*
+!frontend
+!frontend/**
+frontend/node_modules
+frontend/.next
+frontend/.corpus
+frontend/.vercel
+frontend/.env*
+!frontend/.env.example
+frontend/*.tsbuildinfo
