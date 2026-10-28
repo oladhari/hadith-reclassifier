@@ -1,3 +1,4 @@
+import { queryText } from "@/lib/request-policy";
 import { cases, matches, ar } from "@/lib/research";
 import { CaseCard, PageHeading } from "@/components/research-ui";
 export const metadata = { title: "القضايا والأدلة" };
@@ -6,7 +7,8 @@ export default async function CasesPage({
 }: {
   searchParams: Promise<{ q?: string; category?: string }>;
 }) {
-  const { q = "", category = "" } = await searchParams;
+  const params = await searchParams;
+  const q = queryText(params.q), category = queryText(params.category, 80);
   const results = cases.filter(
     (c) =>
       (!category || c.category === category) &&

@@ -1,3 +1,4 @@
+import { queryText } from "@/lib/request-policy";
 import Link from "next/link";
 import { getArchive } from "@/lib/archive";
 import { getMediaCatalogue, publicLibrary, searchLibrary, scopeNames } from "@/lib/media-catalogue";
@@ -13,7 +14,7 @@ export default async function LibraryPage({ searchParams }: {
 }) {
   const [archive, catalogue, params] = await Promise.all([getArchive(), getMediaCatalogue(), searchParams]);
   const { kind = "", page = "1", q: raw = "", topic = "", scope = "" } = params;
-  const q = raw.slice(0, 160);
+  const q = queryText(raw);
   const requested = params.section || (kind || q || topic || scope ? "all" : "books");
   const section = sectionNames[requested] ? requested : "books";
   const library = publicLibrary(archive, catalogue);

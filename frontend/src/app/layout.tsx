@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { Noto_Naskh_Arabic, IBM_Plex_Sans_Arabic } from "next/font/google";
 import Link from "next/link";
@@ -22,11 +23,13 @@ export const metadata: Metadata = {
   description:
     "مكتبة بحثية وفق المنهج العثماني: مصادر مصوّرة، روايات وأسانيد، وملفات تقود من السؤال إلى الدليل. نسخة أولية قيد الإعداد.",
 };
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Per-request CSP nonces require dynamic HTML; data and static assets remain cached.
+  await headers();
   return (
     <html lang="ar" dir="rtl">
       <body className={`${sans.variable} ${serif.variable}`}>

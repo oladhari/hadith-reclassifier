@@ -1,3 +1,4 @@
+import { queryText } from "@/lib/request-policy";
 import Link from "next/link";
 import { readInventory, searchNeon, type CorpusResult } from "@/lib/live-corpus";
 import { usesNeon } from "@/lib/neon";
@@ -11,8 +12,8 @@ export default async function CorpusPage({ searchParams }: {
   searchParams: Promise<{ q?: string; collection?: string; page?: string; id?: string; status?: string }>;
 }) {
   const { q: rawQ = "", collection = "", page = "1", id: rawId = "", status: rawStatus = "" } = await searchParams;
-  const q = rawQ.slice(0, 160).trim();
-  const id = rawId.slice(0, 80).trim();
+  const q = queryText(rawQ).trim();
+  const id = queryText(rawId, 80).trim();
   const status = [...Object.keys(stateNames), "filtered", "book"].includes(rawStatus) ? rawStatus : "";
   const requested = Boolean(q || id || status);
   const inventory = await readInventory();
@@ -28,7 +29,7 @@ export default async function CorpusPage({ searchParams }: {
   let pages = Math.max(1, Math.ceil(total / 15));
   let current = Math.min(pages, Math.max(1, Number.parseInt(page) || 1));
   if (usesNeon() && requested) {
-    const live = await searchNeon({ q, id, collection, status, page: Number.parseInt(page) || 1 });
+    const live = await searchNeon({ q, id, collection: queryText(collection, 40), status, page: Number.parseInt(queryText(page, 5)) || 1 });
     ({results, total, pages, current} = live);
   } else results = results.slice((current - 1) * 15, current * 15);
   const url = (p: number) => `/corpus?${new URLSearchParams({ q, collection, status, page: String(p), ...(id ? { id } : {}) })}#corpus-results`;

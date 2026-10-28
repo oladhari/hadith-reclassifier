@@ -9,14 +9,16 @@
     "lint": "eslint",
     "check:research": "node scripts/check-research.mjs",
     "check:catalogue": "node scripts/check-catalogue.mjs",
-    "check:links": "node scripts/check-proof-links.mjs"
+    "check:links": "node scripts/check-proof-links.mjs",
+    "check:security": "node scripts/check-security.mjs",
+    "check:security-policy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-security-policy.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
     "lucide-react": "^1.16.0",
-    "next": "16.2.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -24,7 +26,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "16.4.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

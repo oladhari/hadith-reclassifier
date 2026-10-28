@@ -1,3 +1,4 @@
+import { queryText } from "@/lib/request-policy";
 import Link from "next/link";
 import { cases, matches } from "@/lib/research";
 import { topics } from "@/lib/topics";
@@ -12,7 +13,7 @@ export default async function Explore({
   searchParams: Promise<{ q?: string }>;
 }) {
   const { q: raw = "" } = await searchParams;
-  const q = raw.slice(0, 160);
+  const q = queryText(raw);
   const [archive, catalogue] = await Promise.all([getArchive(), getMediaCatalogue()]);
   const libraryResults = q ? await searchLibrary(archive, catalogue, q) : [];
   const results = q

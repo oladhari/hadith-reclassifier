@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = "postgresql://hadith:hadith@db:5432/hadith_db"
 
+    # Write/AI-processing APIs are disabled until a private administrator key is set.
+    ADMIN_API_KEY: SecretStr = SecretStr("")
+
     # OpenAI API
     OPENAI_API_KEY: SecretStr = SecretStr("")
     OPENAI_TEXT_MODEL: str = "gpt-5-mini"

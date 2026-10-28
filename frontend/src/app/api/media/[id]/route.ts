@@ -1,7 +1,7 @@
 import { getMediaCatalogue } from "@/lib/media-catalogue";
 import { NextRequest } from "next/server";
 import { createReadStream } from "node:fs";
-import { stat } from "node:fs/promises";
+import { realpath, stat } from "node:fs/promises";
 import { Readable } from "node:stream";
 import path from "node:path";
 import { getArchive } from "@/lib/archive";
@@ -11,8 +11,9 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
-  const archive = await getArchive();
   const { id } = await params;
+  if (!/^[1-9]\d{0,8}$/.test(id)) return new Response("Not found", { status: 404 });
+  const archive = await getArchive();
   const item = archive.find((a) => String(a.id) === id);
   if (!item) return new Response("Not found", { status: 404 });
   if (item.kind === "video" && (await getMediaCatalogue())[id]?.manual_video_hidden)
@@ -36,7 +37,9 @@ export async function GET(
       return new Response("Not found", { status: 404 });
     const remoteURL = `${remoteBase}/${key}`;
     if (request.nextUrl.searchParams.get("download") === "1" && item.size <= 4 * 1024 * 1024) {
-      const response = await fetch(remoteURL, { signal: request.signal });
+      let response: Response;
+      try { response = await fetch(remoteURL, { signal: AbortSignal.any([request.signal, AbortSignal.timeout(15000)]), redirect: "error" }); }
+      catch { return new Response("المادة غير متاحة مؤقتًا", { status: 502 }); }
       if (!response.ok) return new Response("المادة غير متاحة مؤقتًا", { status: 502 });
       return new Response(response.body, { headers: {
         "Content-Type": item.mime,
@@ -55,11 +58,14 @@ export async function GET(
         "../../telegram-archive/kkee9938",
       ),
   );
-  const file = path.resolve(/* turbopackIgnore: true */ root, item.path);
+  let file = path.resolve(/* turbopackIgnore: true */ root, item.path);
   if (!file.startsWith(root + path.sep))
     return new Response("Not found", { status: 404 });
   let size: number;
   try {
+    const actualRoot = await realpath(root);
+    file = await realpath(file);
+    if (!file.startsWith(actualRoot + path.sep)) return new Response("Not found", { status: 404 });
     size = (await stat(/* turbopackIgnore: true */ file)).size;
   } catch {
     return new Response(
@@ -73,7 +79,7 @@ export async function GET(
     "X-Content-Type-Options": "nosniff",
     "Cache-Control": "private, max-age=3600",
   };
-  if (request.nextUrl.searchParams.get("download") === "1")
+  if (request.nextUrl.searchParams.get("download") === "1" || item.kind === "document")
     headers["Content-Disposition"] =
       `attachment; filename="archive-${item.id}${path.extname(item.path).replace(/[^a-zA-Z0-9.]/g, "")}"`;
   const range = request.headers.get("range");

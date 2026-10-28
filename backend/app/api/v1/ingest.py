@@ -1,3 +1,4 @@
+from app.core.security import require_admin_api_key
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -9,7 +10,7 @@ from app.services.sunnah_client import hadith_client, EDITION_MAP
 router = APIRouter(prefix="/ingest", tags=["ingest"])
 
 
-@router.post("/")
+@router.post("/", dependencies=[Depends(require_admin_api_key)])
 def ingest_hadiths(req: IngestRequest, db: Session = Depends(get_db)):
     """Load hadiths from local JSON files and store in database."""
     collection = req.collection.value

@@ -1,3 +1,4 @@
+from app.core.security import require_admin_api_key
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 
@@ -10,7 +11,7 @@ from app.services.validation_engine import validation_engine
 router = APIRouter(prefix="/classifications", tags=["classifications"])
 
 
-@router.post("/classify", response_model=ClassificationResponse)
+@router.post("/classify", response_model=ClassificationResponse, dependencies=[Depends(require_admin_api_key)])
 def classify_hadith(req: ClassifyRequest, db: Session = Depends(get_db)):
     hadith = db.query(Hadith).filter(Hadith.id == req.hadith_id).first()
     if not hadith:
@@ -19,7 +20,7 @@ def classify_hadith(req: ClassifyRequest, db: Session = Depends(get_db)):
     return classification
 
 
-@router.post("/bulk-classify")
+@router.post("/bulk-classify", dependencies=[Depends(require_admin_api_key)])
 def bulk_classify(req: BulkClassifyRequest, db: Session = Depends(get_db)):
     results = validation_engine.bulk_classify(db, collection=req.collection, limit=req.limit)
     accepted = sum(1 for r in results if r.verdict == Verdict.ACCEPTED)

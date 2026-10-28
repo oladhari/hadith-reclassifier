@@ -131,10 +131,7 @@ const countPattern = /([0-9٠-٩٬,]+) سجلًا/;
 assert.ok(first.match(countPattern), "Arabic result count must be present");
 assert.equal(first.match(countPattern)?.[1], second.match(countPattern)?.[1]);
 await page("/corpus?collection=bukhari&id=1", "مرجع الرواية");
-await page(
-  "/corpus?collection=not-a-collection&q=zzznomatch",
-  "لم نجد نصًا مطابقًا",
-);
+assert.equal((await fetch(base + "/corpus?collection=not-a-collection&q=zzznomatch")).status, 400);
 await page("/corpus?q=" + encodeURIComponent("' OR 1=1 --"), "لم نجد نصًا مطابقًا");
 const methodology = await page("/methodology", "صريح القرآن الكريم هو الميزان الأول");
 assert.ok(methodology.includes("الاعتقاد وصلة الرواية بالبدعة"));

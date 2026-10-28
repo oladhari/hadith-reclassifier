@@ -31,3 +31,14 @@
   pages and non-listed scans use preserved source pages. Explicit editorial
   references may redirect old library URLs to sources; this never republishes
   rejected videos. Use the shared proof-link card for evidence navigation.
+
+- Security baseline: patched frontend dependencies, parameterized SQL with a
+  restricted read-only database role, and `src/proxy.ts` input guards plus
+  per-request CSP nonces. HTML must stay dynamic/private so nonces are not reused
+  from a shared HTML cache. Static assets and data caches may remain cached.
+- Do not add a public write/upload/AI endpoint without authentication and abuse
+  controls. The experimental backend's write routes require a private, strong
+  ADMIN_API_KEY and fail closed if unset. Never expose that key in browser code.
+- Keep security reports, permission evidence and account details under ignored
+  output/security, never frontend/public. Run check:security-policy,
+  check:security and normal research/catalogue regressions after security edits.
