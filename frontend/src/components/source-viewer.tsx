@@ -1,6 +1,7 @@
+import { ProofLink } from "./proof-link";
+import { proofHref } from "@/lib/evidence-links";
 import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Preserve the original source scan. */
-import Link from "next/link";
 import { EvidenceReading } from "./evidence-reading";
 import { kindNames, fileSize, type ArchiveItem } from "@/lib/archive";
 import { sourceFiles, sourceRecord, sourceTitle } from "@/lib/local-sources";
@@ -8,10 +9,11 @@ import { evidenceLabels } from "@/lib/public-evidence";
 import { getMediaCatalogue } from "@/lib/media-catalogue";
 import thumbnails from "@/content/thumbnails.json";
 import { ImageCollection } from "./image-collection";
-export async function MediaOriginal({ item }: { item: ArchiveItem }) {
+export async function MediaOriginal({ item, sourcePageId }: { item: ArchiveItem; sourcePageId?: number }) {
   const sources = await getBibliography();
   const metadata = (await getMediaCatalogue())[String(item.id)];
   if (metadata?.manual_video_hidden) return null;
+  const detailsHref = await proofHref(item.id);
   const src = metadata?.asset_url || `/api/media/${item.id}`;
   return (
     <div className={`source-original ${item.kind}`}>
@@ -45,9 +47,7 @@ export async function MediaOriginal({ item }: { item: ArchiveItem }) {
       <div className="source-file-actions">
         {metadata?.converted_document && <a href={`/api/media/${item.id}?download=1`}>تنزيل الوثيقة الأصلية</a>}
         {!metadata?.collection_images && <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.converted_document ? "تنزيل PDF" : metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>}
-        <Link href={`/library/${item.id}`}>
-          فتح {metadata?.collection_images ? "مجموعة الصور" : kindNames[item.kind]} في صفحة مستقلة ←
-        </Link>
+        {detailsHref && detailsHref !== `/sources/${sourcePageId}` && <ProofLink href={detailsHref} title={metadata?.visible ? metadata.title : await sourceTitle(item.id)} action="فتح صفحة الدليل" />}
       </div>
       {!metadata?.collection_images && <EvidenceReading id={item.id} />}
     </div>
@@ -73,9 +73,7 @@ export async function SourceBundle({
               ? "أصل محفوظ في مكتبة الموسوعة"
               : "نقول تحتاج ربطًا بالأصل"}
           </span>
-          <h3>
-            <Link href={`/sources/${id}`}>{await sourceTitle(id)}</Link>
-          </h3>
+          <h3>{await sourceTitle(id)}</h3>
         </div>
 
       </div>
@@ -83,7 +81,7 @@ export async function SourceBundle({
       {files.length > 0 && (
         <div className="source-open" data-expanded={expanded}>
           {files.map((item) => (
-            <MediaOriginal item={item} key={item.id} />
+            <MediaOriginal item={item} key={item.id} sourcePageId={id} />
           ))}
         </div>
       )}
@@ -105,9 +103,6 @@ export async function SourceBundle({
           يُربط بها أصل مستقل بعد.
         </p>
       )}
-      <Link href={`/sources/${id}`} className="text-link">
-        تفاصيل المرجع ومواضع استخدامه ←
-      </Link>
     </article>
   );
 }

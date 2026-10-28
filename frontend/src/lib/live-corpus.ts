@@ -27,6 +27,14 @@ type Row = {slug: string; source_number: string; original_data: LocalHadith; tex
 export type CorpusResult = LocalHadith & {collection: string; progress: CorpusProgress};
 
 export async function searchNeon({q,id,collection,status,page}: {q:string;id:string;collection:string;status:string;page:number}) {
+  const inventory = await readInventory();
+  const selected = collection ? inventory.collections.find(book => book.slug === collection) : undefined;
+  const counts = collection ? selected?.counts : inventory.counts;
+  const stateKey = status === "book" ? "in_book" : status;
+  // The inventory is authoritative: avoid scanning every corpus row for a
+  // review state with no entries (or for an unavailable collection).
+  if ((collection && !selected) || (counts && stateKey && Object.hasOwn(counts, stateKey) && Number(counts[stateKey as keyof Counts]) === 0))
+    return { results: [] as CorpusResult[], total: 0, pages: 1, current: 1 };
   const values: unknown[] = [];
   const where = ["length(trim(text))>0"];
   const parameter = (value: unknown) => {values.push(value);return `$${values.length}`;};
@@ -39,8 +47,12 @@ export async function searchNeon({q,id,collection,status,page}: {q:string;id:str
   const condition = where.join(" AND ");
   const [count] = await queryNeon<{total:number}>(`SELECT count(*)::int AS total FROM research.website_hadiths WHERE ${condition}`, values);
   const total = Number(count.total), pages = Math.max(1,Math.ceil(total/15)), current = Math.min(pages,Math.max(1,page));
+  if (!total) return { results: [] as CorpusResult[], total, pages, current };
   const offset = parameter((current-1)*15);
-  const rows = await queryNeon<Row>(`SELECT slug,source_number,original_data,text,status,filtered,in_book,review FROM research.website_hadiths WHERE ${condition} ORDER BY CASE slug ${Object.keys(collections).map((key,i)=>`WHEN '${key}' THEN ${i}`).join(" ")} ELSE 99 END,source_ordinal LIMIT 15 OFFSET ${offset}`, values);
+  const order = `CASE slug ${Object.keys(collections).map((key,i)=>`WHEN '${key}' THEN ${i}`).join(" ")} ELSE 99 END,source_ordinal`;
+  // Sort only identifiers; load the larger source payloads after pagination.
+  const keys = await queryNeon<{id: string}>(`SELECT id FROM research.website_hadiths WHERE ${condition} ORDER BY ${order} LIMIT 15 OFFSET ${offset}`, values);
+  const rows = keys.length ? await queryNeon<Row>(`SELECT slug,source_number,original_data,text,status,filtered,in_book,review FROM research.website_hadiths WHERE id=ANY($1::varchar[]) ORDER BY ${order}`, [keys.map(row => row.id)]) : [];
   const results: CorpusResult[] = rows.map(row=>({...row.original_data,hadithnumber:Number(row.source_number),text:row.text,collection:row.slug,
     progress:{status:row.status,filtered:row.filtered,in_book:row.in_book,...(row.review?{review:row.review}:{})}}));
   return {results,total,pages,current};

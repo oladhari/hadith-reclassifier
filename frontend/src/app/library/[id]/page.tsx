@@ -1,3 +1,4 @@
+import { proofHref, referencedProofIds } from "@/lib/evidence-links";
 import { excerptAlbums, librarySection, sectionNames } from "@/lib/library-organization";
 import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Preserve original scans and pre-sized document previews. */
@@ -27,7 +28,13 @@ export default async function AssetPage({ params, searchParams }: {
     params, searchParams, getArchive(), getMediaCatalogue(), getBibliography(),
   ]);
   const entry = catalogue[id];
-  if (!entry?.visible) notFound();
+  if (!entry?.visible) {
+    if (referencedProofIds.has(Number(id))) {
+      const destination = await proofHref(Number(id));
+      if (destination) permanentRedirect(destination);
+    }
+    notFound();
+  }
   if (entry.canonical_id !== Number(id)) permanentRedirect(`/library/${entry.canonical_id}`);
   const item = archive.find(row => row.id === Number(id));
   if (!item) notFound();

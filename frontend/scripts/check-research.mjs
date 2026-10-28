@@ -111,7 +111,7 @@ await page(
   "لا توجد قضية مطابقة",
 );
 await page("/library?kind=video", "فيديو");
-const library = await page("/library?q=195", "نزهة النظر");
+const library = await page("/library?q=195", "مادة مطابقة");
 assert.ok(library.includes("/library/195"));
 const inventory = await page("/corpus", "مكتبة الحديث وحالة المراجعة");
 assert.ok(!inventory.includes('class="hadith-record"'));

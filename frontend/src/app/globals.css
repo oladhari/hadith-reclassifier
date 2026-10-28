@@ -2324,3 +2324,17 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .album-index li { margin: 8px 0; }
 .album-material { border-top: 1px solid #d9dce2; padding-top: 24px; margin-top: 36px; scroll-margin-top: 24px; }
 .album-material h2 { font-size: 24px; }
+
+/* Whole proof cards are links, with a visible action and keyboard focus. */
+.proof-link { display: flex; align-items: center; gap: 14px; width: 100%; padding: 16px 18px; margin: 12px 0; border: 1px solid #b9c5d4; border-radius: 8px; background: #f2f5f9; color: #1e3553; text-decoration: none; transition: background .15s, border-color .15s, box-shadow .15s; }
+.proof-link:hover { background: #e7edf5; border-color: #6b83a4; box-shadow: 0 3px 10px #20304712; }
+.proof-link:focus-visible { outline: 3px solid #ad8b47; outline-offset: 3px; }
+.proof-link-icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: #dde5ef; }
+.proof-link-copy { display: grid; gap: 5px; flex: 1; min-width: 0; line-height: 1.8; }
+.proof-link-copy strong { font-weight: 700; }
+.proof-link-copy > span { color: #54657b; font-size: 13px; }
+.proof-link-action { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 8px; padding: 9px 13px; border-radius: 5px; background: #203047; color: #fff; font-size: 13px; font-weight: 700; }
+.filter-reference-list .proof-link { padding: 14px 16px; margin: 0; }
+.proof-references .filter-reference-list { max-height: none; overflow: visible; }
+.source-file-actions .proof-link { flex-basis: 100%; }
+@media(max-width: 600px) { .proof-link { flex-wrap: wrap; padding: 14px; gap: 10px; } .proof-link-action { width: 100%; } .proof-link-copy { flex-basis: calc(100% - 56px); } }

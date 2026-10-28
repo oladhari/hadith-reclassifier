@@ -26,3 +26,8 @@
   `frontend/src/content/video-visibility.json` fallback and all database decisions.
   Do not re-enable review access without a new user request. Private review
   backups and credentials must never enter public assets. Originals stay in R2.
+
+- Resolve evidence links with `proofHref` so merged items use canonical library
+  pages and non-listed scans use preserved source pages. Explicit editorial
+  references may redirect old library URLs to sources; this never republishes
+  rejected videos. Use the shared proof-link card for evidence navigation.

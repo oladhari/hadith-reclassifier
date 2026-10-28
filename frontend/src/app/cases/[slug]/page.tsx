@@ -1,3 +1,5 @@
+import { ProofLink } from "@/components/proof-link";
+import { proofHref } from "@/lib/evidence-links";
 import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Original archival images are served without alteration. */
 import Link from "next/link";
@@ -32,6 +34,7 @@ export default async function CasePage({
   const { page = "1" } = await searchParams;
   const item = cases.find((c) => c.slug === slug);
   if (!item) notFound();
+  const proofLinks = Object.fromEntries(await Promise.all(item.evidence.map(async id => [id, await proofHref(id)])));
   return (
     <>
       <div className="breadcrumb">
@@ -103,11 +106,9 @@ export default async function CasePage({
                     تُعدّ التعليقات الملوّنة أو تعليقات المحقق قولًا للمؤلف دون
                     تمييز.
                   </p>
-                  <Link className="text-link" href={`/library/${id}`}>
-                    افتح الصورة كاملة <ArrowUpLeft size={17} />
-                  </Link>
+                  {proofLinks[id] && <ProofLink href={proofLinks[id]!} title="الصفحة الأصلية وبيانات المرجع" action="فتح الدليل ومصادره" />}
                 </div>
-                <Link className="source-preview" href={`/library/${id}`}>
+                <Link className="source-preview" href={proofLinks[id] || `/sources/${id}`} aria-label={`فتح الدليل: ${sources[id].title}`}>
                   <img
                     src={`/evidence/${id}.jpg`}
                     alt={`صورة المصدر: ${sources[id].title}`}
