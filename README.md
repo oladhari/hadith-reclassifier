@@ -77,6 +77,8 @@ PostgreSQL data persists in the `pg_data` Docker volume. Use `docker compose sto
 
 ## Arabic research website
 
+The public website is [othmaniya.com](https://othmaniya.com).
+
 The public Arabic RTL edition provides topic dossiers, source scans, PDFs and video, a searchable library, and a reviewed-book workflow. It uses navy, ivory and copper with IBM Plex Sans Arabic and Noto Naskh Arabic. Public references open within the website.
 
 `/corpus` starts with collection inventory and actual review statistics. Narrations appear after an explicit search or status selection. Seven structured Arabic collections contain 36,390 records including repeated transmission routes. Musnad Ahmad scans are available, but a complete structured collection is not yet imported. Imported source grades are separate from project decisions; acceptance and book inclusion require recorded human review.
