@@ -16,6 +16,9 @@ const sans = IBM_Plex_Sans_Arabic({
   display: "swap",
 });
 export const metadata: Metadata = {
+  metadataBase: new URL("https://othmaniya.com"),
+  // Resolve against each page's pathname, rather than canonicalizing every page to /.
+  alternates: { canonical: "./" },
   title: {
     default: "موسوعة الرد على العباسيين | المصدر أولًا",
     template: "%s | موسوعة الرد على العباسيين",

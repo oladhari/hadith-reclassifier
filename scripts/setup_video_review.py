@@ -38,5 +38,5 @@ lines=path.read_text().splitlines() if path.exists() else []
 lines=[line for line in lines if not any(line.startswith(k+'=') for k in credentials)]
 path.write_text('\n'.join(lines+[k+'='+v for k,v in credentials.items()])+'\n');path.chmod(0o600)
 out=ROOT/'output/video-review-access.txt';out.parent.mkdir(exist_ok=True)
-out.write_text('Private video review\nhttps://othmani-encyclopedia.vercel.app/review/videos\n\nAccess code: '+credentials['VIDEO_REVIEW_ACCESS_CODE']+'\n\nKeep this code private. Hiding preserves the database and original file.\n');out.chmod(0o600)
+out.write_text('Private video review\nhttps://othmaniya.com/review/videos\n\nAccess code: '+credentials['VIDEO_REVIEW_ACCESS_CODE']+'\n\nKeep this code private. Hiding preserves the database and original file.\n');out.chmod(0o600)
 print('Limited reviewer permissions verified; private access code saved locally.')

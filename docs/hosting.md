@@ -80,11 +80,18 @@ The seven Arabic corpus JSON files are uploaded under `othmani/corpus/`. Dedupli
 
 ## Vercel configuration
 
+The production website is https://othmaniya.com, hosted by the existing Vercel
+project `othmani-encyclopedia`. Both `othmaniya.com` and `www.othmaniya.com` are
+attached to that project. Domain registration and DNS remain at Squarespace;
+the `@` and `www` A records point to `76.76.21.21`. Preserve email DNS records.
+The root layout uses the apex domain for absolute metadata URLs and page-specific
+canonical links. Relative internal links keep navigation on the current host.
+
 Set `CORPUS_DATA_BASE_URL` to the public corpus directory for build-time preparation, and `MEDIA_PUBLIC_BASE_URL` to the public app prefix for runtime delivery. These are public URLs; no storage secret belongs on Vercel. Set both for production and preview deployments when applicable. The build bundles corpus files for server-side search. Large media are delivered directly by R2 rather than bundled or proxied through Vercel.
 
 For local builds, `HADITH_DATA_DIR` can override corpus input. `TELEGRAM_ARCHIVE_DIR` selects the read-only local archive. Neither should reference account session folders.
 
-After deployment, check anonymous access, the default collection inventory, explicit search, empty review states, source images, PDF downloads and video byte ranges. `RESEARCH_TEST_URL=https://deployment.example npm run check:research` runs the HTTP checks from `frontend/`.
+After deployment, check anonymous access, the default collection inventory, explicit search, empty review states, source images, PDF downloads and video byte ranges. `RESEARCH_TEST_URL=https://othmaniya.com npm run check:research` runs the HTTP checks from `frontend/`.
 
 ## Database and text ownership
 
