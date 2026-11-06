@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import type { Metadata } from "next";
-import { Noto_Naskh_Arabic, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Noto_Naskh_Arabic, Noto_Kufi_Arabic } from "next/font/google";
 import Link from "next/link";
 import SiteHeader from "@/components/site-header";
 import "./globals.css";
@@ -8,8 +8,9 @@ const serif = Noto_Naskh_Arabic({
   subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arabic-serif",
+  display: "swap",
 });
-const sans = IBM_Plex_Sans_Arabic({
+const kufi = Noto_Kufi_Arabic({
   subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arabic-sans",
@@ -35,7 +36,7 @@ export default async function RootLayout({
   await headers();
   return (
     <html lang="ar" dir="rtl">
-      <body className={`${sans.variable} ${serif.variable}`}>
+      <body className={`${kufi.variable} ${serif.variable}`}>
         <a className="skip-link" href="#main">
           انتقل إلى المحتوى
         </a>

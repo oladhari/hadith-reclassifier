@@ -2204,7 +2204,7 @@ svg {
 .evidence-passages figcaption { font-size: 11px; line-height: 1.9; color: var(--muted); }
 .case-reading { border-inline-start: 3px solid var(--gold); padding-inline-start: 22px; }
 
-/* Plex for navigation and commentary; Naskh for quoted source texts. */
+/* Kufi for the interface; Naskh for reading and source quotations. */
 h1, h2, h3, h4 { font-family: var(--font-arabic-sans), Tahoma, sans-serif; font-weight: 600; }
 .question-box > p, .research-steps p { font-size: 18px; line-height: 2.1; }
 .hero-copy > p { font-size: 17px; }
@@ -2399,3 +2399,19 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .quoted-scan-viewport:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
 .quote-context { margin:24px 0; }
 .quote-context summary { cursor:pointer; font-weight:600; }
+
+/* Arabic type roles: reading passages stay distinct from interface controls. */
+p, blockquote, .font-hadith, .source-context, .transcript-text, .document-text,
+.prose-panel > ul, .prose-panel > ol, .article-section > ul, .article-section > ol,
+.method-card ul, .filter-study > ul {
+  font-family: var(--font-arabic-serif), "Traditional Arabic", serif;
+}
+p { font-size:18px; }
+.source-context, .transcript-text, .document-text { font-size:20px; line-height:2.1; }
+blockquote p { font-size:inherit; line-height:inherit; }
+h1, h2, h3, h4, h5, h6, nav, button, input, select, textarea, summary, table,
+.button, .eyebrow, .breadcrumb, .metadata-list, .quote-finding-nav,
+.library-result-count, .result-count, .asset-topic-labels, .commentary-attribution,
+.record-header, .corpus-state-accepted, .corpus-state-rejected, table p {
+  font-family: var(--font-arabic-sans), Tahoma, sans-serif;
+}
