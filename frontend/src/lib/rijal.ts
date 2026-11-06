@@ -14,3 +14,6 @@ export function groupedFindings(evidence:Evidence){
  for(const finding of evidence.findings){const key=JSON.stringify([finding.critic,finding.quote]);const group=groups.get(key)||{critic:finding.critic,quote:finding.quote,labels:[]};group.labels.push(finding.label);groups.set(key,group);}
  return [...groups.values()];
 }
+export function narratorEvidenceHref(person:Narrator,evidence:Evidence,index=0){
+ return `/narrators/${person.slug}/evidence/${evidence.book_id}-${evidence.page_id}?quote=${index}`;
+}

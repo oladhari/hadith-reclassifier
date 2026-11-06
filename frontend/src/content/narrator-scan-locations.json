@@ -1,0 +1,1526 @@
+{
+  "aban-ibn-taghlib/1692-5/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-01",
+      "pdf_page": 5,
+      "printed_locator": "1/5",
+      "image": "/evidence/narrators/dc840f804a9d60ef-5.webp",
+      "width": 1366,
+      "height": 2000,
+      "sha256": "dc840f804a9d60ef534882105be48c28ef868ccc1eaa0e84b94aa492407c0285",
+      "image_sha256": "e888026591d5f1651a8d0f987898a0be29079afc92cc39114804bcc578c877bb",
+      "rectangles": [
+        {
+          "x": 17.9356,
+          "y": 50.5,
+          "width": 51.8302,
+          "height": 2.75
+        },
+        {
+          "x": 70.937,
+          "y": 53.3,
+          "width": 15.1537,
+          "height": 2.95
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/5",
+      "verification": "page_location_checked",
+      "quote_sha256": "127dd0eeaf31911e1f8d20f75f660ea8c41a9aa59d1fe840dfcea4358883016e"
+    }
+  ],
+  "aban-ibn-taghlib/1692-5/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-01",
+      "pdf_page": 5,
+      "printed_locator": "1/5",
+      "image": "/evidence/narrators/dc840f804a9d60ef-5.webp",
+      "width": 1366,
+      "height": 2000,
+      "sha256": "dc840f804a9d60ef534882105be48c28ef868ccc1eaa0e84b94aa492407c0285",
+      "image_sha256": "e888026591d5f1651a8d0f987898a0be29079afc92cc39114804bcc578c877bb",
+      "rectangles": [
+        {
+          "x": 17.9356,
+          "y": 50.5,
+          "width": 51.8302,
+          "height": 2.75
+        },
+        {
+          "x": 70.937,
+          "y": 53.3,
+          "width": 15.1537,
+          "height": 2.95
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/5",
+      "verification": "page_location_checked",
+      "quote_sha256": "127dd0eeaf31911e1f8d20f75f660ea8c41a9aa59d1fe840dfcea4358883016e"
+    }
+  ],
+  "aban-ibn-taghlib/1692-5/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-01",
+      "pdf_page": 5,
+      "printed_locator": "1/5",
+      "image": "/evidence/narrators/dc840f804a9d60ef-5.webp",
+      "width": 1366,
+      "height": 2000,
+      "sha256": "dc840f804a9d60ef534882105be48c28ef868ccc1eaa0e84b94aa492407c0285",
+      "image_sha256": "e888026591d5f1651a8d0f987898a0be29079afc92cc39114804bcc578c877bb",
+      "rectangles": [
+        {
+          "x": 19.4729,
+          "y": 57.55,
+          "width": 7.6867,
+          "height": 2.5
+        },
+        {
+          "x": 68.448,
+          "y": 60.45,
+          "width": 18.1552,
+          "height": 3.55
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/5",
+      "verification": "page_location_checked",
+      "quote_sha256": "8c799af09049e4fa89bec87b15a8281357cc9b292f9751ddd7d1d768dab60843"
+    }
+  ],
+  "ahmad-ibn-salama/1692-101/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-01",
+      "pdf_page": 101,
+      "printed_locator": "1/101",
+      "image": "/evidence/narrators/dc840f804a9d60ef-101.webp",
+      "width": 1361,
+      "height": 2000,
+      "sha256": "dc840f804a9d60ef534882105be48c28ef868ccc1eaa0e84b94aa492407c0285",
+      "image_sha256": "088b576c3b67f3042b17a998c963b301e3c8823efe7ef0939e0f4f0d0a1319ce",
+      "rectangles": [
+        {
+          "x": 21.2344,
+          "y": 38.75,
+          "width": 12.8582,
+          "height": 2.95
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/101",
+      "verification": "page_location_checked",
+      "quote_sha256": "4dfc967f8035fa81e2a1319c2d19997aff3a77a0e28750bd7b6ba7ca0013dfc2"
+    }
+  ],
+  "ibrahim-ibn-al-hakam/1692-27/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-01",
+      "pdf_page": 27,
+      "printed_locator": "1/27",
+      "image": "/evidence/narrators/dc840f804a9d60ef-27.webp",
+      "width": 1356,
+      "height": 2000,
+      "sha256": "dc840f804a9d60ef534882105be48c28ef868ccc1eaa0e84b94aa492407c0285",
+      "image_sha256": "8ef13bbbee1af43e3babf3d39cc26a86515a810aad979ffb39736d06bc395ac6",
+      "rectangles": [
+        {
+          "x": 33.7758,
+          "y": 58.0,
+          "width": 7.6696,
+          "height": 2.85
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/27",
+      "verification": "page_location_checked",
+      "quote_sha256": "d5416a54b462a2a22bf01d417d4e82051d908c844e24db9c703c60421207dd67"
+    }
+  ],
+  "ibrahim-ibn-al-hakam/1692-27/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-01",
+      "pdf_page": 27,
+      "printed_locator": "1/27",
+      "image": "/evidence/narrators/dc840f804a9d60ef-27.webp",
+      "width": 1356,
+      "height": 2000,
+      "sha256": "dc840f804a9d60ef534882105be48c28ef868ccc1eaa0e84b94aa492407c0285",
+      "image_sha256": "8ef13bbbee1af43e3babf3d39cc26a86515a810aad979ffb39736d06bc395ac6",
+      "rectangles": [
+        {
+          "x": 60.6932,
+          "y": 61.5,
+          "width": 19.5428,
+          "height": 3.25
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/27",
+      "verification": "page_location_checked",
+      "quote_sha256": "6685e40fc7b87d6b8e14fd20b81672351b9538e266a720384ff1c868712539b3"
+    }
+  ],
+  "ibrahim-ibn-al-hakam/1692-27/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-01",
+      "pdf_page": 27,
+      "printed_locator": "1/27",
+      "image": "/evidence/narrators/dc840f804a9d60ef-27.webp",
+      "width": 1356,
+      "height": 2000,
+      "sha256": "dc840f804a9d60ef534882105be48c28ef868ccc1eaa0e84b94aa492407c0285",
+      "image_sha256": "8ef13bbbee1af43e3babf3d39cc26a86515a810aad979ffb39736d06bc395ac6",
+      "rectangles": [
+        {
+          "x": 59.292,
+          "y": 64.95,
+          "width": 20.4277,
+          "height": 3.15
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/27",
+      "verification": "page_location_checked",
+      "quote_sha256": "c25173b817a25493184492ee4e61ffbbacaf19ca85749258a849c66a92ff3aff"
+    }
+  ],
+  "jafar-ibn-al-zubayr/8609-66/0": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 147,
+      "printed_locator": "ص 140",
+      "image": "/evidence/narrators/c1bf84338c71c93f-147.webp",
+      "width": 1424,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "3c9987ec8e2f0bea048afdd1c1d2475685c7f8de9372774f8babb377db578ce9",
+      "rectangles": [
+        {
+          "x": 6.0393,
+          "y": 51.65,
+          "width": 27.809,
+          "height": 2.3
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/66",
+      "verification": "page_location_checked",
+      "quote_sha256": "4a5f74d27828581a8259a0d1a1064cbbaef9ae20ae51efc4d2326e93ca31b481"
+    }
+  ],
+  "jafar-ibn-ziyad/8609-66/0": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 147,
+      "printed_locator": "ص 140",
+      "image": "/evidence/narrators/c1bf84338c71c93f-147.webp",
+      "width": 1424,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "3c9987ec8e2f0bea048afdd1c1d2475685c7f8de9372774f8babb377db578ce9",
+      "rectangles": [
+        {
+          "x": 46.3483,
+          "y": 58.25,
+          "width": 10.8848,
+          "height": 2.35
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/66",
+      "verification": "page_location_checked",
+      "quote_sha256": "96fe7afbd815935b113d7e6dd312886dd004cfdf0e4cb465ee93200451538584"
+    }
+  ],
+  "jafar-ibn-ziyad/8609-66/1": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 147,
+      "printed_locator": "ص 140",
+      "image": "/evidence/narrators/c1bf84338c71c93f-147.webp",
+      "width": 1424,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "3c9987ec8e2f0bea048afdd1c1d2475685c7f8de9372774f8babb377db578ce9",
+      "rectangles": [
+        {
+          "x": 46.3483,
+          "y": 58.25,
+          "width": 10.8848,
+          "height": 2.35
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/66",
+      "verification": "page_location_checked",
+      "quote_sha256": "96fe7afbd815935b113d7e6dd312886dd004cfdf0e4cb465ee93200451538584"
+    }
+  ],
+  "jafar-ibn-sulayman/8609-66/0": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 147,
+      "printed_locator": "ص 140",
+      "image": "/evidence/narrators/c1bf84338c71c93f-147.webp",
+      "width": 1424,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "3c9987ec8e2f0bea048afdd1c1d2475685c7f8de9372774f8babb377db578ce9",
+      "rectangles": [
+        {
+          "x": 5.0562,
+          "y": 66.25,
+          "width": 14.3961,
+          "height": 2.5
+        },
+        {
+          "x": 71.9803,
+          "y": 69.0,
+          "width": 10.8848,
+          "height": 2.65
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/66",
+      "verification": "page_location_checked",
+      "quote_sha256": "20e08d7e5e216c4ec6935c94f9589f7dedebc424cb1f7e80007b34f9f18e62a0"
+    }
+  ],
+  "jafar-ibn-sulayman/8609-66/1": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 147,
+      "printed_locator": "ص 140",
+      "image": "/evidence/narrators/c1bf84338c71c93f-147.webp",
+      "width": 1424,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "3c9987ec8e2f0bea048afdd1c1d2475685c7f8de9372774f8babb377db578ce9",
+      "rectangles": [
+        {
+          "x": 5.0562,
+          "y": 66.25,
+          "width": 14.3961,
+          "height": 2.5
+        },
+        {
+          "x": 71.9803,
+          "y": 69.0,
+          "width": 10.8848,
+          "height": 2.65
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/66",
+      "verification": "page_location_checked",
+      "quote_sha256": "20e08d7e5e216c4ec6935c94f9589f7dedebc424cb1f7e80007b34f9f18e62a0"
+    }
+  ],
+  "zubayd-al-yami/1692-733/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 66,
+      "printed_locator": "2/66",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-66.webp",
+      "width": 1377,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "85a8423ec4e09cba5db54492d397e1a7e28c95945c1f2bf9a9cda96c2f529164",
+      "rectangles": [
+        {
+          "x": 16.5577,
+          "y": 39.15,
+          "width": 16.8482,
+          "height": 3.3
+        },
+        {
+          "x": 67.5381,
+          "y": 42.9,
+          "width": 15.2505,
+          "height": 3.25
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/733",
+      "verification": "page_location_checked",
+      "quote_sha256": "ae8d24d404e9932b6c36873cc073b1c26240f27c5c5f0783784cbf3863c6532d"
+    }
+  ],
+  "zubayd-al-yami/1692-733/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 66,
+      "printed_locator": "2/66",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-66.webp",
+      "width": 1377,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "85a8423ec4e09cba5db54492d397e1a7e28c95945c1f2bf9a9cda96c2f529164",
+      "rectangles": [
+        {
+          "x": 16.5577,
+          "y": 39.15,
+          "width": 16.8482,
+          "height": 3.3
+        },
+        {
+          "x": 67.5381,
+          "y": 42.9,
+          "width": 15.2505,
+          "height": 3.25
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/733",
+      "verification": "page_location_checked",
+      "quote_sha256": "ae8d24d404e9932b6c36873cc073b1c26240f27c5c5f0783784cbf3863c6532d"
+    }
+  ],
+  "zubayd-al-yami/1692-733/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 66,
+      "printed_locator": "2/66",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-66.webp",
+      "width": 1377,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "85a8423ec4e09cba5db54492d397e1a7e28c95945c1f2bf9a9cda96c2f529164",
+      "rectangles": [
+        {
+          "x": 63.9797,
+          "y": 47.0,
+          "width": 14.0886,
+          "height": 1.75
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/733",
+      "verification": "page_location_checked",
+      "quote_sha256": "bd17b068e8fa43273b193be6ec1207d27638e22fc87e48e8a7e496709abea4e9"
+    }
+  ],
+  "sulayman-al-amash/3310-1677/0": [
+    {
+      "book_id": 3310,
+      "file_id": "part-04",
+      "pdf_page": 223,
+      "printed_locator": "4/223",
+      "image": "/evidence/narrators/b34200315bea16ee-223.webp",
+      "width": 1377,
+      "height": 2000,
+      "sha256": "b34200315bea16ee1c2005d5f16b39c615c83d5dd9de8cd095540bd7ec3a5fe0",
+      "image_sha256": "e55628a7cdca91c893bb8f40d4c86500d52ec1b3cd8d805b4a7a34fdd8743a16",
+      "rectangles": [
+        {
+          "x": 27.0153,
+          "y": 72.7,
+          "width": 10.167,
+          "height": 3.3
+        },
+        {
+          "x": 77.6325,
+          "y": 76.35,
+          "width": 8.5694,
+          "height": 3.9
+        }
+      ],
+      "source_url": "https://shamela.ws/book/3310/1678",
+      "verification": "page_location_checked",
+      "quote_sha256": "3646239576b5a165d0ca4cf291cd005e6bcff86769d2855eaa320e43dfae0e15"
+    }
+  ],
+  "sulayman-al-amash/3310-1677/1": [
+    {
+      "book_id": 3310,
+      "file_id": "part-04",
+      "pdf_page": 223,
+      "printed_locator": "4/223",
+      "image": "/evidence/narrators/b34200315bea16ee-223.webp",
+      "width": 1377,
+      "height": 2000,
+      "sha256": "b34200315bea16ee1c2005d5f16b39c615c83d5dd9de8cd095540bd7ec3a5fe0",
+      "image_sha256": "e55628a7cdca91c893bb8f40d4c86500d52ec1b3cd8d805b4a7a34fdd8743a16",
+      "rectangles": [
+        {
+          "x": 27.5962,
+          "y": 80.55,
+          "width": 15.4684,
+          "height": 4.4
+        }
+      ],
+      "source_url": "https://shamela.ws/book/3310/1678",
+      "verification": "page_location_checked",
+      "quote_sha256": "76855d7a49717fd5a0928b528e8d60bcc8df1c00e868c78d5d22d6e0c7d7bc48"
+    }
+  ],
+  "sulayman-al-amash/3310-1677/2": [
+    {
+      "book_id": 3310,
+      "file_id": "part-04",
+      "pdf_page": 224,
+      "printed_locator": "4/224",
+      "image": "/evidence/narrators/b34200315bea16ee-224.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "b34200315bea16ee1c2005d5f16b39c615c83d5dd9de8cd095540bd7ec3a5fe0",
+      "image_sha256": "4403796979204c4611da70d0107c82da8679539867c911cc2973f4c6dfb286c3",
+      "rectangles": [
+        {
+          "x": 46.7249,
+          "y": 30.85,
+          "width": 14.7016,
+          "height": 3.45
+        }
+      ],
+      "source_url": "https://shamela.ws/book/3310/1679",
+      "verification": "page_location_checked",
+      "quote_sha256": "3f12e4212b71cd431d2791e0642468c9e7aef5e7d262f206e9409ff31f228e7a"
+    }
+  ],
+  "sahl-ibn-ali/1692-907/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 240,
+      "printed_locator": "2/240",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-240.webp",
+      "width": 1363,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "0ea0268770ddac2829dafc24c5303fb267d466b21e384bd9afb6a152d1be311b",
+      "rectangles": [
+        {
+          "x": 16.4343,
+          "y": 24.3,
+          "width": 10.6383,
+          "height": 3.5
+        },
+        {
+          "x": 63.8298,
+          "y": 28.15,
+          "width": 18.2685,
+          "height": 2.7
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/907",
+      "verification": "page_location_checked",
+      "quote_sha256": "ed4d32264097eb3d560e97b8432ed548db566f422f65f1edfc14a525b2b4fa8e"
+    }
+  ],
+  "sayf-ibn-muhammad/1692-923/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 256,
+      "printed_locator": "2/256",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-256.webp",
+      "width": 1375,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "1c3355d574d53cbb303e21144dfad7480c832aa44597ab2f3fa2c2e304bfc4a1",
+      "rectangles": [
+        {
+          "x": 43.7091,
+          "y": 74.1,
+          "width": 34.1818,
+          "height": 3.15
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/923",
+      "verification": "page_location_checked",
+      "quote_sha256": "a397c2401902ede2008903d15fc5bb9f3d6021b489bbb59c8f5612d358dac859"
+    }
+  ],
+  "sayf-ibn-muhammad/1692-923/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 256,
+      "printed_locator": "2/256",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-256.webp",
+      "width": 1375,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "1c3355d574d53cbb303e21144dfad7480c832aa44597ab2f3fa2c2e304bfc4a1",
+      "rectangles": [
+        {
+          "x": 50.8364,
+          "y": 80.95,
+          "width": 26.9818,
+          "height": 2.9
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/923",
+      "verification": "page_location_checked",
+      "quote_sha256": "82daa54a65a98a8b00d8bb9accba8fd31a506f75c9bb9a046a5529d957cd6d61"
+    }
+  ],
+  "abd-al-rahman-ibn-hatim/1692-1221/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 554,
+      "printed_locator": "2/554",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-554.webp",
+      "width": 1367,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "50abb77a485e02ab29822741a760f7ab79fe1e1f4be39056e152520f83027b59",
+      "rectangles": [
+        {
+          "x": 14.2648,
+          "y": 28.75,
+          "width": 21.7996,
+          "height": 3.1
+        },
+        {
+          "x": 76.9568,
+          "y": 32.15,
+          "width": 5.8522,
+          "height": 2.05
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1221",
+      "verification": "page_location_checked",
+      "quote_sha256": "199aa2bbad81b577cc43be8a3cd26e1cba7fd96c43c5b88c346b8c4f799f86a0"
+    }
+  ],
+  "abd-al-rahman-ibn-hatim/1692-1221/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 554,
+      "printed_locator": "2/554",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-554.webp",
+      "width": 1367,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "50abb77a485e02ab29822741a760f7ab79fe1e1f4be39056e152520f83027b59",
+      "rectangles": [
+        {
+          "x": 37.6006,
+          "y": 35.35,
+          "width": 41.4045,
+          "height": 3.45
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1221",
+      "verification": "page_location_checked",
+      "quote_sha256": "4f3ba662b8be80b81de886c608a07d61a80c3d03a80df897d05d0e9cb8d54363"
+    }
+  ],
+  "abd-al-rahman-ibn-yazid/1692-1265/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 598,
+      "printed_locator": "2/598",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-598.webp",
+      "width": 1369,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "81aa5797ba04f60e0c61f80a4dde9c12f0820181f2fc88478a1a6cbed4b4c5c6",
+      "rectangles": [
+        {
+          "x": 54.1271,
+          "y": 42.45,
+          "width": 31.2637,
+          "height": 2.9
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1265",
+      "verification": "page_location_checked",
+      "quote_sha256": "e32608aaf98c51367a55d7df6b840d6b5a0236572ffe5517d79b0c3adaacba6b"
+    }
+  ],
+  "abd-al-rahman-ibn-yazid/1692-1265/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 598,
+      "printed_locator": "2/598",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-598.webp",
+      "width": 1369,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "81aa5797ba04f60e0c61f80a4dde9c12f0820181f2fc88478a1a6cbed4b4c5c6",
+      "rectangles": [
+        {
+          "x": 66.691,
+          "y": 52.2,
+          "width": 18.5537,
+          "height": 3.55
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1265",
+      "verification": "page_location_checked",
+      "quote_sha256": "5bc6c0cf1a7e862be0ac70766d895f66f0c3dc5c94a39609352db7042a16dfac"
+    }
+  ],
+  "abd-al-razzaq-ibn-hammam/8609-280/0": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 361,
+      "printed_locator": "ص 354",
+      "image": "/evidence/narrators/c1bf84338c71c93f-361.webp",
+      "width": 1415,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "09f8a4198a0b43c34be604745378aa10c38132d3fda7bf27dd2efce4df564c12",
+      "rectangles": [
+        {
+          "x": 7.7739,
+          "y": 73.65,
+          "width": 24.3816,
+          "height": 2.6
+        },
+        {
+          "x": 61.8375,
+          "y": 76.1,
+          "width": 20.2827,
+          "height": 2.45
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/280",
+      "verification": "page_location_checked",
+      "quote_sha256": "10199e3074a9063ac2346c550750a3ec16d625f5886c9388a23a7d0f1a55ce74"
+    }
+  ],
+  "abd-al-razzaq-ibn-hammam/8609-280/1": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 361,
+      "printed_locator": "ص 354",
+      "image": "/evidence/narrators/c1bf84338c71c93f-361.webp",
+      "width": 1415,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "09f8a4198a0b43c34be604745378aa10c38132d3fda7bf27dd2efce4df564c12",
+      "rectangles": [
+        {
+          "x": 7.7739,
+          "y": 73.65,
+          "width": 24.3816,
+          "height": 2.6
+        },
+        {
+          "x": 61.8375,
+          "y": 76.1,
+          "width": 20.2827,
+          "height": 2.45
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/280",
+      "verification": "page_location_checked",
+      "quote_sha256": "10199e3074a9063ac2346c550750a3ec16d625f5886c9388a23a7d0f1a55ce74"
+    }
+  ],
+  "abdallah-ibn-isa/1692-1137/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 470,
+      "printed_locator": "2/470",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-470.webp",
+      "width": 1376,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "bb1685de8ff5df9b2839074e00ff7bbb26fab654b26adec79f7fc2a495eba20d",
+      "rectangles": [
+        {
+          "x": 54.7238,
+          "y": 35.45,
+          "width": 22.4564,
+          "height": 3.75
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1137",
+      "verification": "page_location_checked",
+      "quote_sha256": "8073b6b2ac692b128926cd7da9434486e79e2f48f4114179dd43b55720d50761"
+    }
+  ],
+  "abdallah-ibn-isa/1692-1137/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 470,
+      "printed_locator": "2/470",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-470.webp",
+      "width": 1376,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "bb1685de8ff5df9b2839074e00ff7bbb26fab654b26adec79f7fc2a495eba20d",
+      "rectangles": [
+        {
+          "x": 54.7238,
+          "y": 35.45,
+          "width": 22.4564,
+          "height": 3.75
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1137",
+      "verification": "page_location_checked",
+      "quote_sha256": "8073b6b2ac692b128926cd7da9434486e79e2f48f4114179dd43b55720d50761"
+    }
+  ],
+  "abdallah-ibn-isa/1692-1137/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 470,
+      "printed_locator": "2/470",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-470.webp",
+      "width": 1376,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "bb1685de8ff5df9b2839074e00ff7bbb26fab654b26adec79f7fc2a495eba20d",
+      "rectangles": [
+        {
+          "x": 33.5756,
+          "y": 35.45,
+          "width": 18.4593,
+          "height": 3.75
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1137",
+      "verification": "page_location_checked",
+      "quote_sha256": "3d4c8127f9b6d0a3c279296929b8135859721e56bcd3abadef8b914383316266"
+    }
+  ],
+  "abdallah-ibn-isa/1692-1137/3": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 470,
+      "printed_locator": "2/470",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-470.webp",
+      "width": 1376,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "bb1685de8ff5df9b2839074e00ff7bbb26fab654b26adec79f7fc2a495eba20d",
+      "rectangles": [
+        {
+          "x": 13.1541,
+          "y": 35.45,
+          "width": 17.4419,
+          "height": 3.75
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1137",
+      "verification": "page_location_checked",
+      "quote_sha256": "70952ee95d803ef67d77bdfda2d8d42a3e854d79bd2ec9121615255917dcdc9f"
+    }
+  ],
+  "abdallah-ibn-isa/1692-1137/4": [
+    {
+      "book_id": 1692,
+      "file_id": "part-02",
+      "pdf_page": 470,
+      "printed_locator": "2/470",
+      "image": "/evidence/narrators/e1f6f15f6e4fdc80-470.webp",
+      "width": 1376,
+      "height": 2000,
+      "sha256": "e1f6f15f6e4fdc805ce4040c5565d03be1de6853a6154b906b1cb50aea1cf4d3",
+      "image_sha256": "bb1685de8ff5df9b2839074e00ff7bbb26fab654b26adec79f7fc2a495eba20d",
+      "rectangles": [
+        {
+          "x": 52.907,
+          "y": 39.05,
+          "width": 27.9797,
+          "height": 2.9
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1137",
+      "verification": "page_location_checked",
+      "quote_sha256": "09830014a66b5ea23ee5e727c39d019127d30f8b506ec98cf87172addbc74598"
+    }
+  ],
+  "ubayd-allah-ibn-musa/8609-301/0": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 382,
+      "printed_locator": "ص 375",
+      "image": "/evidence/narrators/c1bf84338c71c93f-382.webp",
+      "width": 1415,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "c3fd4bb0363accf3a7d701fdcc5513164a29d6ecb71df485029726ed34daf55b",
+      "rectangles": [
+        {
+          "x": 32.1555,
+          "y": 13.25,
+          "width": 11.3074,
+          "height": 2.65
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/301",
+      "verification": "page_location_checked",
+      "quote_sha256": "b8d315c4270946cf42797761e6ae707e1748ecef98d3305fb0807492097b0571"
+    }
+  ],
+  "ubayd-allah-ibn-musa/8609-301/1": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 382,
+      "printed_locator": "ص 375",
+      "image": "/evidence/narrators/c1bf84338c71c93f-382.webp",
+      "width": 1415,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "c3fd4bb0363accf3a7d701fdcc5513164a29d6ecb71df485029726ed34daf55b",
+      "rectangles": [
+        {
+          "x": 32.1555,
+          "y": 13.25,
+          "width": 11.3074,
+          "height": 2.65
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/301",
+      "verification": "page_location_checked",
+      "quote_sha256": "b8d315c4270946cf42797761e6ae707e1748ecef98d3305fb0807492097b0571"
+    }
+  ],
+  "adi-ibn-thabit/8609-314/0": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 395,
+      "printed_locator": "ص 388",
+      "image": "/evidence/narrators/c1bf84338c71c93f-395.webp",
+      "width": 1424,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "b9a8a17ee2c4f71ba404590513f36bed91396084f2810c7b38ffd25861ddbbde",
+      "rectangles": [
+        {
+          "x": 42.5562,
+          "y": 25.5,
+          "width": 12.4298,
+          "height": 1.9
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/314",
+      "verification": "page_location_checked",
+      "quote_sha256": "be12670e3056c709d0c4906022b3a43b16fa7e3c9cea7c0dc6e86abbdedd700d"
+    }
+  ],
+  "adi-ibn-thabit/8609-314/1": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 395,
+      "printed_locator": "ص 388",
+      "image": "/evidence/narrators/c1bf84338c71c93f-395.webp",
+      "width": 1424,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "b9a8a17ee2c4f71ba404590513f36bed91396084f2810c7b38ffd25861ddbbde",
+      "rectangles": [
+        {
+          "x": 42.5562,
+          "y": 25.5,
+          "width": 12.4298,
+          "height": 1.9
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/314",
+      "verification": "page_location_checked",
+      "quote_sha256": "be12670e3056c709d0c4906022b3a43b16fa7e3c9cea7c0dc6e86abbdedd700d"
+    }
+  ],
+  "ali-ibn-hashim/1692-1511/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 160,
+      "printed_locator": "3/160",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-160.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ecf88bea270d052e42ed9b8189000e4f0586db1cccab40fab899a416cbc3cc75",
+      "rectangles": [
+        {
+          "x": 27.0015,
+          "y": 39.95,
+          "width": 25.5459,
+          "height": 3.05
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1511",
+      "verification": "page_location_checked",
+      "quote_sha256": "7cff4d46ef25e6fbcc2c93229c2fea8b9e8322e5f83a3bb720c15a8d74eec5e6"
+    }
+  ],
+  "ali-ibn-hashim/1692-1511/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 160,
+      "printed_locator": "3/160",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-160.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ecf88bea270d052e42ed9b8189000e4f0586db1cccab40fab899a416cbc3cc75",
+      "rectangles": [
+        {
+          "x": 27.0015,
+          "y": 39.95,
+          "width": 25.5459,
+          "height": 3.05
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1511",
+      "verification": "page_location_checked",
+      "quote_sha256": "7cff4d46ef25e6fbcc2c93229c2fea8b9e8322e5f83a3bb720c15a8d74eec5e6"
+    }
+  ],
+  "ali-ibn-hashim/1692-1511/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 160,
+      "printed_locator": "3/160",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-160.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ecf88bea270d052e42ed9b8189000e4f0586db1cccab40fab899a416cbc3cc75",
+      "rectangles": [
+        {
+          "x": 25.9098,
+          "y": 43.0,
+          "width": 24.9636,
+          "height": 3.55
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1511",
+      "verification": "page_location_checked",
+      "quote_sha256": "2a2b41adea28be8d7c3b8f089ce7e4163df8843447033c8d4268041804bb3ad2"
+    }
+  ],
+  "ali-ibn-hashim/1692-1511/3": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 160,
+      "printed_locator": "3/160",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-160.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ecf88bea270d052e42ed9b8189000e4f0586db1cccab40fab899a416cbc3cc75",
+      "rectangles": [
+        {
+          "x": 10.9898,
+          "y": 74.6,
+          "width": 20.9607,
+          "height": 3.25
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1511",
+      "verification": "page_location_checked",
+      "quote_sha256": "4dce592568c80732bc46f23ee63c0da1decb783eb67940b96f0fdd47a4fe6c57"
+    }
+  ],
+  "ali-ibn-hashim/1692-1511/4": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 160,
+      "printed_locator": "3/160",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-160.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ecf88bea270d052e42ed9b8189000e4f0586db1cccab40fab899a416cbc3cc75",
+      "rectangles": [
+        {
+          "x": 57.278,
+          "y": 77.8,
+          "width": 22.1252,
+          "height": 3.0
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1511",
+      "verification": "page_location_checked",
+      "quote_sha256": "2600cbeff19b65e8f58703d3bf3138daa5a87116523ce49a979113cc01188827"
+    }
+  ],
+  "amr-ibn-khalid/1692-1608/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 257,
+      "printed_locator": "3/257",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-257.webp",
+      "width": 1367,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "340f436a5c75c5fd6fe64410cad3461c862a71003b57c79c068695378a317cfb",
+      "rectangles": [
+        {
+          "x": 17.4835,
+          "y": 68.55,
+          "width": 11.6313,
+          "height": 3.95
+        },
+        {
+          "x": 79.1514,
+          "y": 71.75,
+          "width": 6.3643,
+          "height": 2.5
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1608",
+      "verification": "page_location_checked",
+      "quote_sha256": "c3987f02a6ef8672ce9ecb08519805d62e93f7059417b7815069c11c42c4646a"
+    }
+  ],
+  "amr-ibn-khalid/1692-1608/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 257,
+      "printed_locator": "3/257",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-257.webp",
+      "width": 1367,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "340f436a5c75c5fd6fe64410cad3461c862a71003b57c79c068695378a317cfb",
+      "rectangles": [
+        {
+          "x": 31.602,
+          "y": 68.55,
+          "width": 49.4514,
+          "height": 3.95
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1608",
+      "verification": "page_location_checked",
+      "quote_sha256": "1afde4a8f4e2b2babd6290f77f757ee04a443d2d2e24774fae34167c22a1a985"
+    }
+  ],
+  "fitr-ibn-khalifa/8609-374/0": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 455,
+      "printed_locator": "ص 448",
+      "image": "/evidence/narrators/c1bf84338c71c93f-455.webp",
+      "width": 1422,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "5e283f4d2d6ac8d6e4bed18da64bf9a96bed2a97ac1ba30c04585da66be786aa",
+      "rectangles": [
+        {
+          "x": 11.3924,
+          "y": 59.45,
+          "width": 15.8228,
+          "height": 1.95
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/374",
+      "verification": "page_location_checked",
+      "quote_sha256": "f417188925d349b493a72a9416e5be88874f195f5bc145db80d67c865a8fd800"
+    }
+  ],
+  "fitr-ibn-khalifa/8609-374/1": [
+    {
+      "book_id": 8609,
+      "file_id": "part-01",
+      "pdf_page": 455,
+      "printed_locator": "ص 448",
+      "image": "/evidence/narrators/c1bf84338c71c93f-455.webp",
+      "width": 1422,
+      "height": 2000,
+      "sha256": "c1bf84338c71c93f9219cdee436c29b0fa96c196ea95ceea5d1f724eafc627e1",
+      "image_sha256": "5e283f4d2d6ac8d6e4bed18da64bf9a96bed2a97ac1ba30c04585da66be786aa",
+      "rectangles": [
+        {
+          "x": 11.3924,
+          "y": 59.45,
+          "width": 15.8228,
+          "height": 1.95
+        }
+      ],
+      "source_url": "https://shamela.ws/book/8609/374",
+      "verification": "page_location_checked",
+      "quote_sha256": "f417188925d349b493a72a9416e5be88874f195f5bc145db80d67c865a8fd800"
+    }
+  ],
+  "kathir-al-nawwa/1692-1753/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 402,
+      "printed_locator": "3/402",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-402.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ab0514be832e85ce23561459f1563fe9d597fd19b0df3e9fc8acf4d268578e00",
+      "rectangles": [
+        {
+          "x": 49.7089,
+          "y": 55.45,
+          "width": 7.7875,
+          "height": 3.15
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1753",
+      "verification": "page_location_checked",
+      "quote_sha256": "d5416a54b462a2a22bf01d417d4e82051d908c844e24db9c703c60421207dd67"
+    }
+  ],
+  "kathir-al-nawwa/1692-1753/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 402,
+      "printed_locator": "3/402",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-402.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ab0514be832e85ce23561459f1563fe9d597fd19b0df3e9fc8acf4d268578e00",
+      "rectangles": [
+        {
+          "x": 56.1863,
+          "y": 58.65,
+          "width": 20.0146,
+          "height": 3.65
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1753",
+      "verification": "page_location_checked",
+      "quote_sha256": "97b43bfb266b80073e2a4dc89de3d26306f26db58ce48ff3baec6bf5ca3a7e78"
+    }
+  ],
+  "kathir-al-nawwa/1692-1753/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 402,
+      "printed_locator": "3/402",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-402.webp",
+      "width": 1374,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "ab0514be832e85ce23561459f1563fe9d597fd19b0df3e9fc8acf4d268578e00",
+      "rectangles": [
+        {
+          "x": 26.2737,
+          "y": 58.65,
+          "width": 27.2926,
+          "height": 3.65
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1753",
+      "verification": "page_location_checked",
+      "quote_sha256": "4120f9ff6877215a4a1e4a91aa4614650c81694eee797a0ef6662c341771a567"
+    }
+  ],
+  "muhammad-ibn-abi-al-dhikr/1692-1852/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 501,
+      "printed_locator": "3/501",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-501.webp",
+      "width": 1365,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "998e7982fe6f720e112bedd5c0d6674edaccd5c78baa4db5884d3be01c6786d1",
+      "rectangles": [
+        {
+          "x": 75.8242,
+          "y": 24.75,
+          "width": 10.989,
+          "height": 3.5
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/1852",
+      "verification": "page_location_checked",
+      "quote_sha256": "795b3735999fd73c75682975bbe80b1e8b600ba1a3865a52e080639c752c375b"
+    }
+  ],
+  "muhammad-ibn-wadan/1692-2008/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-03",
+      "pdf_page": 657,
+      "printed_locator": "3/657",
+      "image": "/evidence/narrators/ee8d28b0c0cab861-657.webp",
+      "width": 1372,
+      "height": 2000,
+      "sha256": "ee8d28b0c0cab86178a13629d305fd2ae68e7473747d7cb172f391079a9f1f49",
+      "image_sha256": "5a0bf4c467d284d37d48ab8a008d34d6003c8f5d425a6219c93037ad64dec985",
+      "rectangles": [
+        {
+          "x": 17.1283,
+          "y": 58.1,
+          "width": 20.7726,
+          "height": 3.05
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2008",
+      "verification": "page_location_checked",
+      "quote_sha256": "12ac517048a21229430da819fb7f26fefea8eb28ade687c174ff5b4dd53210f6"
+    }
+  ],
+  "muhammad-al-ubaydali/1692-2060/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 30,
+      "printed_locator": "4/30",
+      "image": "/evidence/narrators/10e6e7a1da84c041-30.webp",
+      "width": 1360,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "907d753230f8b7aef8a9df21e14685dcc67f78b26a34acfe68aa0368943c0bb1",
+      "rectangles": [
+        {
+          "x": 63.3088,
+          "y": 50.15,
+          "width": 10.2941,
+          "height": 3.5
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2060",
+      "verification": "page_location_checked",
+      "quote_sha256": "96449b2f3996b93d1fa6e4b6bf40544c4454d9b18975b7618d36d48634149dd5"
+    }
+  ],
+  "muhammad-al-ubaydali/1692-2060/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 30,
+      "printed_locator": "4/30",
+      "image": "/evidence/narrators/10e6e7a1da84c041-30.webp",
+      "width": 1360,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "907d753230f8b7aef8a9df21e14685dcc67f78b26a34acfe68aa0368943c0bb1",
+      "rectangles": [
+        {
+          "x": 62.2059,
+          "y": 57.9,
+          "width": 13.8235,
+          "height": 2.35
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2060",
+      "verification": "page_location_checked",
+      "quote_sha256": "2085055d2e63bc8160507eeed6fc36a08a133195e8ba50fa049453d989b37931"
+    }
+  ],
+  "muhammad-ibn-musa-al-sadi/1692-2080/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 50,
+      "printed_locator": "4/50",
+      "image": "/evidence/narrators/10e6e7a1da84c041-50.webp",
+      "width": 1358,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "fb8272fa8b40b1addc704cf0b85930553f2eaf7a225ef33555db273bd60102a4",
+      "rectangles": [
+        {
+          "x": 10.6775,
+          "y": 65.75,
+          "width": 8.1001,
+          "height": 2.75
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2080",
+      "verification": "page_location_checked",
+      "quote_sha256": "ff66d1727d191a9c0eb770107d9e1304ba8fa1c58c019d3f9a07fb686121a700"
+    }
+  ],
+  "muhammad-ibn-musa-al-sadi/1692-2080/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 50,
+      "printed_locator": "4/50",
+      "image": "/evidence/narrators/10e6e7a1da84c041-50.webp",
+      "width": 1358,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "fb8272fa8b40b1addc704cf0b85930553f2eaf7a225ef33555db273bd60102a4",
+      "rectangles": [
+        {
+          "x": 44.6981,
+          "y": 69.3,
+          "width": 23.0486,
+          "height": 2.8
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2080",
+      "verification": "page_location_checked",
+      "quote_sha256": "0ffa2628bb4e789e9ac3cd6c47a5b6cfd6ed7b0371b7e6ffa1f0992e5cfc32e4"
+    }
+  ],
+  "muhammad-al-fitri/1692-2080/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 50,
+      "printed_locator": "4/50",
+      "image": "/evidence/narrators/10e6e7a1da84c041-50.webp",
+      "width": 1358,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "fb8272fa8b40b1addc704cf0b85930553f2eaf7a225ef33555db273bd60102a4",
+      "rectangles": [
+        {
+          "x": 49.9264,
+          "y": 55.55,
+          "width": 23.2695,
+          "height": 3.2
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2080",
+      "verification": "page_location_checked",
+      "quote_sha256": "94600b658ef752c052ca06f21324c9813ea8f5d6c6d3538c875e94855494a036"
+    }
+  ],
+  "muhammad-al-fitri/1692-2080/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 50,
+      "printed_locator": "4/50",
+      "image": "/evidence/narrators/10e6e7a1da84c041-50.webp",
+      "width": 1358,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "fb8272fa8b40b1addc704cf0b85930553f2eaf7a225ef33555db273bd60102a4",
+      "rectangles": [
+        {
+          "x": 49.9264,
+          "y": 55.55,
+          "width": 23.2695,
+          "height": 3.2
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2080",
+      "verification": "page_location_checked",
+      "quote_sha256": "94600b658ef752c052ca06f21324c9813ea8f5d6c6d3538c875e94855494a036"
+    }
+  ],
+  "muhammad-al-fitri/1692-2080/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 50,
+      "printed_locator": "4/50",
+      "image": "/evidence/narrators/10e6e7a1da84c041-50.webp",
+      "width": 1358,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "fb8272fa8b40b1addc704cf0b85930553f2eaf7a225ef33555db273bd60102a4",
+      "rectangles": [
+        {
+          "x": 30.1915,
+          "y": 55.55,
+          "width": 16.7894,
+          "height": 3.2
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2080",
+      "verification": "page_location_checked",
+      "quote_sha256": "8c245335f4154e369b527e0a7e8de6d985b77d7915f9b320819681708b0f770a"
+    }
+  ],
+  "waki-ibn-al-jarrah/1692-2365/0": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 335,
+      "printed_locator": "4/335",
+      "image": "/evidence/narrators/10e6e7a1da84c041-335.webp",
+      "width": 1347,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "21ae03c9a4a9a445ff881061392d20cfe68a81544df23b677979502f7b771eef",
+      "rectangles": [
+        {
+          "x": 17.8174,
+          "y": 71.5,
+          "width": 6.0876,
+          "height": 3.75
+        },
+        {
+          "x": 70.5271,
+          "y": 75.5,
+          "width": 17.8174,
+          "height": 3.0
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2365",
+      "verification": "page_location_checked",
+      "quote_sha256": "606bd24252ec1af13a52fe3e66284753058904260c4975d23bfdadb414ca9f9a"
+    }
+  ],
+  "waki-ibn-al-jarrah/1692-2365/1": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 336,
+      "printed_locator": "4/336",
+      "image": "/evidence/narrators/10e6e7a1da84c041-336.webp",
+      "width": 1356,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "38aeca3948d79b3f821258934f3ae02cb1a88951d3ce6f7d7b54b46794addcd1",
+      "rectangles": [
+        {
+          "x": 27.4336,
+          "y": 23.5,
+          "width": 44.9115,
+          "height": 3.55
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2366",
+      "verification": "page_location_checked",
+      "quote_sha256": "c77b45e76a4942e0751d9f4a2d9da53d7a5ce62e9b78f2ed643cf1da082edc09"
+    }
+  ],
+  "waki-ibn-al-jarrah/1692-2365/2": [
+    {
+      "book_id": 1692,
+      "file_id": "part-04",
+      "pdf_page": 336,
+      "printed_locator": "4/336",
+      "image": "/evidence/narrators/10e6e7a1da84c041-336.webp",
+      "width": 1356,
+      "height": 2000,
+      "sha256": "10e6e7a1da84c041f45cfc7fc80c07b713cd0ac6676e1e3acefa86de46b05f3c",
+      "image_sha256": "38aeca3948d79b3f821258934f3ae02cb1a88951d3ce6f7d7b54b46794addcd1",
+      "rectangles": [
+        {
+          "x": 50.1475,
+          "y": 30.5,
+          "width": 23.5251,
+          "height": 3.65
+        }
+      ],
+      "source_url": "https://shamela.ws/book/1692/2366",
+      "verification": "page_location_checked",
+      "quote_sha256": "71df2c74564c3deda6633370a4b820b3406cf6bfc2813f324bb9b88ca14436cb"
+    }
+  ]
+}

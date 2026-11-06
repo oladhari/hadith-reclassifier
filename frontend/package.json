@@ -17,7 +17,8 @@
     "check:hadith-drafts": "node scripts/check-hadith-drafts.mjs",
     "check:supplementary-corpus": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-supplementary-corpus.mjs",
     "check:narrators": "node scripts/check-narrator-directory.mjs",
-    "check:hosted-reference-books": "node scripts/check-hosted-reference-books.mjs"
+    "check:hosted-reference-books": "node scripts/check-hosted-reference-books.mjs",
+    "check:narrator-evidence": "node scripts/check-narrator-evidence.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

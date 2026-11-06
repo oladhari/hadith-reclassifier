@@ -2381,3 +2381,21 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .book-thumbnail-group h2 small { font-size:.65em; color:var(--muted); }
 .reference-series-card .asset-info small { display:block; color:#566174; line-height:1.8; }
 .series-volume-label { color:#805d32; font-weight:600; }
+
+.narrator-evidence-link { text-decoration:underline; text-underline-offset:4px; }
+.quote-evidence mark { background:#fff0a6; color:inherit; padding:2px 3px; box-decoration-break:clone; }
+.quote-evidence blockquote { font-size:1.25rem; line-height:2; }
+.quote-finding-nav { display:flex; flex-wrap:wrap; gap:8px; margin:22px 0; }
+.quote-finding-nav a { border:1px solid var(--line); padding:8px 12px; border-radius:3px; }
+.quote-finding-nav a[aria-current=page] { background:#fff0a6; border-color:var(--gold); }
+.evidence-scan-figure { margin:24px 0 40px; }
+.evidence-scan-figure figcaption { font-weight:700; margin:12px 0; }
+.scan-controls { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin:15px 0; }
+.quoted-scan { position:relative; width:100%; max-width:1000px; margin:auto; border:1px solid var(--line); }
+.quoted-scan img { display:block; width:100%; height:auto; }
+.scan-quote-highlight { position:absolute; pointer-events:none; background:rgba(255,217,0,.32); outline:1px solid rgba(180,117,0,.45); mix-blend-mode:multiply; }
+
+.quoted-scan-viewport { max-height:75vh; overflow:auto; max-width:1000px; margin:auto; border:1px solid var(--line); background:#f6f4ee; }
+.quoted-scan-viewport:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+.quote-context { margin:24px 0; }
+.quote-context summary { cursor:pointer; font-weight:600; }

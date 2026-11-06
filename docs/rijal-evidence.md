@@ -209,3 +209,28 @@ media, edition, citation URL or review record is removed. The current books view
 shows 26 works/sets (19 independent archived works plus seven reference sets),
 without splitting theme groups across pages; other media remain paginated.
 `check-book-groups.mjs` verifies themed cards, series counts, search and old links.
+
+### Direct quotation and highlighted scan views
+
+Each of the 60 indexed findings has an on-site evidence URL:
+`/narrators/{slug}/evidence/{book_id}-{page_id}?quote={finding_index}`.
+The URL selects stored evidence; it never accepts arbitrary quotation text or a
+remote file URL. The table's assessment and book/citation links open this view.
+It highlights the exact stored quote in the electronic biography context,
+retains critic attribution, and shows the corresponding original scanned page
+with a removable CSS highlight overlay. No marks are burned into originals.
+
+All 60 findings are mapped across 25 rendered pages in
+`narrator-scan-locations.json`. Page/quotation locations were visually checked,
+including correction of OCR candidates that selected another biography or a
+footnote. OCR was used locally only to propose positions; it is not published as
+source text. The page mapping stores the parent PDF SHA256 and rendered-image
+SHA256. `build_narrator_scan_views.py` reproduces the unannotated page images from
+verified originals. No API/model processing costs were incurred.
+
+Printed and PDF page numbers are separate: for example Waki's Mizan quote is PDF
+336, and Taqrib's printed 140 is PDF 147. Different scanned/electronic editions
+remain labeled separately. The full-book reader supports a bounded `page`
+parameter and includes it in the PDF fragment. Public endpoints remain read-only;
+unknown narrator/source/finding combinations return 404. These location checks
+are not a scholarly verdict or an assignment of narrator identity to a hadith.
