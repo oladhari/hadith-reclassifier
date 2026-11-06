@@ -183,6 +183,17 @@ def main():
                 if field in row:
                     public[key][field] = row[field]
             public[key]["occurrences"] = sorted(set(public[key]["occurrences"] + [id for id in row.get("occurrences", []) if id >= 1_000_000]))
+    # Preserve reviewed work-level merges across generated catalogue refreshes.
+    organization = json.loads((ROOT / "frontend/src/content/library-organization.json").read_text())
+    for source, review in organization.items():
+        target = review.get("canonical_id")
+        if target is None or source not in public:
+            continue
+        canonical = public[str(target)]
+        if not canonical["visible"] or canonical["canonical_id"] != target:
+            raise ValueError(f"Invalid reviewed merge target: {target}")
+        canonical["occurrences"] = sorted(set(canonical.get("occurrences", []) + public[source].get("occurrences", []) + [int(source), target]))
+        public[source]["canonical_id"] = target
     selected = [row for key, row in public.items() if row["visible"] and row["canonical_id"] == int(key)]
     report = {"unique_originals": len(items), "public_unique": len(selected), "hidden_unique": sum(not public[str(item["id"])]["visible"] for item in items),
         "collection_members_consolidated": sum(public[str(item["id"])]["visible"] and public[str(item["id"])]["canonical_id"] != item["id"] for item in items),

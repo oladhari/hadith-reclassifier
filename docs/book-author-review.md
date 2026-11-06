@@ -27,3 +27,12 @@ has been exhausted. Unresolved entries now say اسم المؤلف لم يُوث
 than asserting the name is absent from the copy.
 
 Local visual-review renders are in ignored `data/research/book-author-review`.
+
+## Work-level consolidation — 1099 / 1193
+
+Rendered all 21 and 22 pages for comparison. Both files contain the same work,
+الوثيقة العثمانية, with layout differences. Version 1193 includes additional
+concluding text on page 21 before the shared final recommendations on page 22.
+The public catalogue therefore uses 1193, and 1099 permanently redirects to it.
+Original files and source records are retained; no alternative-version card is
+shown. The reviewed merge is also applied by the catalogue publishing script.

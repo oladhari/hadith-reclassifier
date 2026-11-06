@@ -37,7 +37,7 @@ async function html(path) {
 const home = await html("/library");
 assert.ok(home.includes('class="asset-description"'));
 assert.ok(home.includes('name="topic"') && home.includes('name="scope"'));
-assert.equal((home.match(/class="asset-card(?: [^"]*)?"/g) || []).length, 26);
+assert.equal((home.match(/class="asset-card(?: [^"]*)?"/g) || []).length, 25);
 const duplicate = Object.values(catalogue).find(row => row.visible && row.id !== row.canonical_id);
 assert.ok(duplicate, "A duplicate occurrence should remain resolvable");
 const redirected = await fetch(`${base}/library/${duplicate.id}`, { redirect: "manual" });
@@ -139,6 +139,10 @@ const books = visible.filter(row => organization[String(row.id)]?.section === "b
 const booksPage = await html("/library?section=books");
 const indexIds = [...booksPage.matchAll(/data-book-index-id="(\d+)"/g)].map(match => Number(match[1]));
 assert.deepEqual(indexIds.sort((a,b) => a-b), books.filter(row=>![909,910,911,912,913,914,915].includes(row.id)).map(row => row.id).sort((a,b) => a-b));
+assert.ok(!indexIds.includes(1099) && indexIds.includes(1193), "One public entry for الوثيقة العثمانية");
+const mergedBook = await fetch(`${base}/library/1099`, { redirect: "manual" });
+assert.equal(mergedBook.status, 308);
+assert.ok(mergedBook.headers.get("location").endsWith("/library/1193"));
 assert.ok(booksPage.includes("فهرس الكتب والبحوث"));
 assert.ok(booksPage.includes("اسم المؤلف لم يُوثق بعد"));
 assert.ok(booksPage.includes('name="section" value="books"'));

@@ -12,10 +12,10 @@ export const sectionNames: Record<string, string> = {
 const formNames: Record<string, string> = {
   book: "كتاب كامل", volume: "مجلد كامل من كتاب", research: "بحث / مقال كامل", excerpt: "مقتطف / شواهد", draft: "مسودة غير مكتملة",
 };
-type Review = { section: string; form: string; title?: string; description?: string; author?: string; author_role?: string; author_source?: { page: number; quote: string }; attribution?: string; note?: string };
+type Review = { canonical_id?: number; section: string; form: string; title?: string; description?: string; author?: string; author_role?: string; author_source?: { page: number; quote: string }; attribution?: string; note?: string };
 export function organizeEntry(entry: MediaDescription): MediaDescription {
   const review = (reviews as Record<string, Review>)[String(entry.canonical_id)];
-  return review ? { ...entry, scope: review.form === "book" || review.form === "volume" ? "full_book" : review.form === "research" ? "article" : "excerpt", library_section: review.section, content_label: formNames[review.form],
+  return review ? { ...entry, canonical_id: review.canonical_id || entry.canonical_id, scope: review.form === "book" || review.form === "volume" ? "full_book" : review.form === "research" ? "article" : "excerpt", library_section: review.section, content_label: formNames[review.form],
     title: review.title || entry.title, description: review.description || entry.description, author: review.author || entry.author,
     author_role: review.author_role, author_source: review.author_source, attribution: review.attribution, organization_note: review.note } : entry;
 }
