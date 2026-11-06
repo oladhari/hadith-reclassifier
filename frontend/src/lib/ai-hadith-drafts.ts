@@ -1,3 +1,4 @@
+import snapshot from "@/content/ai-hadith-drafts.json";
 import "server-only";
 import { unstable_cache } from "next/cache";
 import { queryNeon, usesNeon } from "./neon";
@@ -6,11 +7,11 @@ export type HadithDraft = {collection:string;source_number:string;model:string;p
 export type DraftSummary = Omit<HadithDraft,"report"> & {summary:string};
 export const draftStatusNames = {text_observation:"ملاحظة من النص؛ ليست اجتيازًا للطبقة",needs_evidence:"تحتاج أدلة ومراجعة",methodology_pending:"تحتاج تحرير القاعدة المنهجية"};
 export const readDraftSummaries = unstable_cache(async ():Promise<DraftSummary[]> => {
- if(!usesNeon()) return [];
+ if(!usesNeon()) return (snapshot as HadithDraft[]).map(({report,...draft})=>({...draft,summary:report.summary}));
  return queryNeon<DraftSummary>("SELECT collection,source_number,model,profile_key,profile_version,created_at,report->>'summary' AS summary FROM research.website_ai_hadith_drafts ORDER BY collection,source_number::numeric");
-},["ai-hadith-draft-summaries-v1"],{revalidate:60});
+},["ai-hadith-draft-summaries-v1"],{revalidate:21600});
 export async function readHadithDraft(collection:string,number:string):Promise<HadithDraft|null> {
- if(!usesNeon())return null;
+ if(!usesNeon())return (snapshot as HadithDraft[]).find(d=>d.collection===collection&&d.source_number===number)||null;
  const rows=await queryNeon<HadithDraft>("SELECT * FROM research.website_ai_hadith_drafts WHERE collection=$1 AND source_number=$2 LIMIT 1",[collection,number]);
  return rows[0]||null;
 }

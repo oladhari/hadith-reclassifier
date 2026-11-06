@@ -2,12 +2,14 @@ import "server-only";
 import { neon } from "@neondatabase/serverless";
 
 export function usesNeon() {
-  return Boolean(process.env.RESEARCH_READ_DATABASE_URL);
+  // Public reads use versioned publication snapshots unless live mode is explicitly enabled.
+  return process.env.RESEARCH_DATA_SOURCE === "neon" && Boolean(process.env.RESEARCH_READ_DATABASE_URL);
 }
 
 const state = globalThis as typeof globalThis & { othmaniPublicQueries?: Map<string, Promise<unknown[]>> };
 const pending = state.othmaniPublicQueries ||= new Map<string, Promise<unknown[]>>();
 export async function queryNeon<T>(text: string, values: unknown[] = []): Promise<T[]> {
+  if (!usesNeon()) throw new Error("Live research database reads are disabled");
   const url = process.env.RESEARCH_READ_DATABASE_URL;
   if (!url) throw new Error("Research database is not configured");
   const key = JSON.stringify([text, values]);

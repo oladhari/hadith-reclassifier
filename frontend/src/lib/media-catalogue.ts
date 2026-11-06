@@ -1,13 +1,11 @@
 import "server-only";
 import { cache } from "react";
-import { unstable_cache } from "next/cache";
 import { organizeEntry } from "./library-organization";
 import documentPdfs from "@/content/document-pdfs.json";
 import videoVisibility from "@/content/video-visibility.json";
 import snapshot from "@/content/media-catalogue.json";
 import documentSnapshot from "@/content/document-texts.json";
 import transcriptSnapshot from "@/content/transcript-content.json";
-import { queryNeon, usesNeon } from "./neon";
 import { matches, normalize } from "./research";
 import type { ArchiveItem } from "./archive";
 
@@ -28,14 +26,8 @@ export type MediaDescription = {
   chapters: MediaChapter[]; occurrences: number[];
 };
 export type MediaCatalogue = Record<string, MediaDescription>;
-const liveCatalogue = unstable_cache(async () => {
-  const rows = await queryNeon<{ id: string; metadata: MediaDescription }>(
-    "SELECT id,metadata FROM research.website_catalogue",
-  );
-  return Object.fromEntries(rows.map(row => [row.id, row.metadata])) as MediaCatalogue;
-}, ["neon-catalogue-v6"], { revalidate: 60, tags: ["media-catalogue"] });
 export const getMediaCatalogue = cache(async (): Promise<MediaCatalogue> =>
-  Object.fromEntries(Object.entries(usesNeon() ? await liveCatalogue() : snapshot as MediaCatalogue).map(([id, entry]) => {
+  Object.fromEntries(Object.entries(snapshot as MediaCatalogue).map(([id, entry]) => {
     if (videoVisibility.hidden.includes(entry.canonical_id)) entry = { ...entry, visible: false, manual_video_hidden: true };
     const pdf = (documentPdfs as Record<string, { asset_url: string; asset_size: number; page_count: number }>)[String(entry.canonical_id)];
     return [id, organizeEntry(pdf ? { ...entry, ...pdf, converted_document: true } : entry)];
@@ -57,35 +49,24 @@ export function mediaMatches(item: ArchiveItem, metadata: MediaDescription, quer
       metadata.page_label, ...metadata.tags, ...(metadata.explanations || []).map(row => row.text),
       ...(metadata.collection_images || []).flatMap(image => [image.label, image.description])].join(" "), query);
 }
-// Cache a bounded, server-only speech index. Normalize once per refresh rather
-// than repeatedly normalizing long transcripts inside a correlated SQL query.
-const liveSpeechIndex = unstable_cache(async () => {
-  const rows = await queryNeon<{ id: string; text: string }>("SELECT id,text FROM research.website_transcripts");
-  return rows.map(row => ({ id: Number(row.id), text: normalize(row.text) }));
-}, ["neon-speech-search-v1"], { revalidate: 60, tags: ["media-catalogue"] });
+// Normalize published search text lazily once per server instance, without network reads.
+let textIndexes:{speech:{id:number;text:string}[];documents:{id:number;text:string}[]}|undefined;
+function publicTextIndexes(){
+ return textIndexes ||= {
+  speech:Object.entries(transcriptSnapshot).map(([id,text])=>({id:Number(id),text:normalize(text)})),
+  documents:Object.entries(documentSnapshot).map(([id,row])=>({id:Number(id),text:normalize(row.text)})),
+ };
+}
 export async function searchLibrary(archive: ArchiveItem[], catalogue: MediaCatalogue, query: string) {
   const library = publicLibrary(archive, catalogue);
   if (!query.trim()) return library;
-  let transcriptIds: Set<number>;
-  if (usesNeon()) {
-    const words = normalize(query).split(/\s+/).filter(Boolean);
-    const rows = await liveSpeechIndex();
-    transcriptIds = new Set(rows.filter(row => words.every(word => row.text.includes(word))).map(row => row.id));
-  } else {
-    transcriptIds = new Set(Object.entries(transcriptSnapshot).filter(([, text]) => matches(text as string, query)).map(([id]) => Number(id)));
-  }
-  const documents = usesNeon()
-    ? await liveDocumentIndex()
-    : Object.entries(documentSnapshot).map(([id, row]) => ({ id: Number(id), text: normalize(row.text) }));
   const words = normalize(query).split(/\s+/).filter(Boolean);
-  const documentIds = new Set(documents.filter(row => words.every(word => row.text.includes(word))).map(row => row.id));
+  const indexes=publicTextIndexes();
+  const transcriptIds=new Set(indexes.speech.filter(row=>words.every(word=>row.text.includes(word))).map(row=>row.id));
+  const documentIds=new Set(indexes.documents.filter(row=>words.every(word=>row.text.includes(word))).map(row=>row.id));
   return library.filter(item => mediaMatches(item, catalogue[String(item.id)], query) || transcriptIds.has(item.id) || documentIds.has(item.id));
 }
-export const getTranscript = cache(async (id: number): Promise<string> => {
-  if (!usesNeon()) return (transcriptSnapshot as Record<string, string>)[id] || "";
-  const rows = await queryNeon<{ text: string }>("SELECT text FROM research.website_transcripts WHERE id=$1", [String(id)]);
-  return rows[0]?.text || "";
-});
+export const getTranscript = cache(async (id: number): Promise<string> => (transcriptSnapshot as Record<string,string>)[String(id)] || "");
 export function timeLabel(seconds: number) {
   const whole = Math.max(0, Math.floor(seconds));
   return whole >= 3600
@@ -93,12 +74,4 @@ export function timeLabel(seconds: number) {
     : `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`;
 }
 
-const liveDocumentIndex = unstable_cache(async () => {
-  const rows = await queryNeon<{ id: string; text: string }>("SELECT id,text FROM research.website_document_texts");
-  return rows.map(row => ({ id: Number(row.id), text: normalize(row.text) }));
-}, ["neon-document-search-v1"], { revalidate: 60, tags: ["media-catalogue"] });
-export const getDocumentText = cache(async (id: number): Promise<string> => {
-  if (!usesNeon()) return (documentSnapshot as Record<string, { text: string }>)[String(id)]?.text || "";
-  const rows = await queryNeon<{ text: string }>("SELECT text FROM research.website_document_texts WHERE id=$1", [String(id)]);
-  return rows[0]?.text || "";
-});
+export const getDocumentText = cache(async (id: number): Promise<string> => (documentSnapshot as Record<string,{text:string}>)[String(id)]?.text || "");

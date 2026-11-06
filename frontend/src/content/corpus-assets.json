@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "collections": {
+    "bukhari": {
+      "key": "site-snapshots/corpus/sha256/fa528e4f6eddfc79879364e53e698f5b31544bb4612f3765a659ba0b319156d7.json.gz",
+      "sha256": "e34a3402889ca378871da3c5984b7875c680920e93f1c8738ac7afe502179562",
+      "gzip_sha256": "fa528e4f6eddfc79879364e53e698f5b31544bb4612f3765a659ba0b319156d7",
+      "bytes": 9770083,
+      "gzip_bytes": 1491153,
+      "records": 7589
+    },
+    "muslim": {
+      "key": "site-snapshots/corpus/sha256/8752bb10f6a6bb3eaa89b15e146f51d9319e937db932fddf700c11212b129e43.json.gz",
+      "sha256": "194073b24090c5368e4d14a3f55c9e0ef144c7437bd7e5aa83aa4d2bc54a8ea0",
+      "gzip_sha256": "8752bb10f6a6bb3eaa89b15e146f51d9319e937db932fddf700c11212b129e43",
+      "bytes": 8685140,
+      "gzip_bytes": 1190866,
+      "records": 7563
+    },
+    "malik": {
+      "key": "site-snapshots/corpus/sha256/4be6c3ae88e0537f1e0dbb68fb0684701d4420a79073f78561679d22734d5c54.json.gz",
+      "sha256": "088b1f354e110211da006d47e37dd8f8837368f318ed683271f0fdb0f09a3ab5",
+      "gzip_sha256": "4be6c3ae88e0537f1e0dbb68fb0684701d4420a79073f78561679d22734d5c54",
+      "bytes": 2150337,
+      "gzip_bytes": 308111,
+      "records": 1858
+    },
+    "abudawud": {
+      "key": "site-snapshots/corpus/sha256/c6e0d08be8f4fc02029f4e5fb809e641bfa83cca7b1cce560eb45cdd68d2dd24.json.gz",
+      "sha256": "216139c5f40a8147e700d62ffa3b5b2fe45d0e034f86941a193c598c10056189",
+      "gzip_sha256": "c6e0d08be8f4fc02029f4e5fb809e641bfa83cca7b1cce560eb45cdd68d2dd24",
+      "bytes": 7345422,
+      "gzip_bytes": 983750,
+      "records": 5274
+    },
+    "tirmidhi": {
+      "key": "site-snapshots/corpus/sha256/9d8003b416cce2d46e2a8a33327a2745ec42ec049d07f5f2425ce4ce81253fde.json.gz",
+      "sha256": "408028cd56329ed78edbe3ad443beb96b58e16c3e5bd49f9bc7b0eac77c8820f",
+      "gzip_sha256": "9d8003b416cce2d46e2a8a33327a2745ec42ec049d07f5f2425ce4ce81253fde",
+      "bytes": 7120806,
+      "gzip_bytes": 931044,
+      "records": 3998
+    },
+    "nasai": {
+      "key": "site-snapshots/corpus/sha256/b153d23c346146ed7ff814e9077b30e45ec8bca91cb9b61047e3922c1246adc9.json.gz",
+      "sha256": "c705983c19bb089c87cd6531aff609bd94d862183ed0859115b0ff991826a956",
+      "gzip_sha256": "b153d23c346146ed7ff814e9077b30e45ec8bca91cb9b61047e3922c1246adc9",
+      "bytes": 7152291,
+      "gzip_bytes": 835803,
+      "records": 5765
+    },
+    "ibnmajah": {
+      "key": "site-snapshots/corpus/sha256/d250e9350a63727e3d5385aef572ac22511b678d21f25a35a96f4b58fa3ff9af.json.gz",
+      "sha256": "b406e6be81588ab0ec1ddbed32f5fd95bbcdda242c460d88331e82eb5c2bc0aa",
+      "gzip_sha256": "d250e9350a63727e3d5385aef572ac22511b678d21f25a35a96f4b58fa3ff9af",
+      "bytes": 5583102,
+      "gzip_bytes": 689286,
+      "records": 4343
+    },
+    "nawawi40": {
+      "key": "site-snapshots/corpus/sha256/d3e1560f4d93066964507cc6801ae0e814556ed12a62ba5fc8dd5b2e72fccde0.json.gz",
+      "sha256": "7c6053a7903aeafc612147ab66fda2e071fddf37c030294861359d7337a2d65f",
+      "gzip_sha256": "d3e1560f4d93066964507cc6801ae0e814556ed12a62ba5fc8dd5b2e72fccde0",
+      "bytes": 79026,
+      "gzip_bytes": 10769,
+      "records": 42
+    },
+    "qudsi40": {
+      "key": "site-snapshots/corpus/sha256/ae27e8496e89ee0e8153f464eb10ea185b7db816be6ac7f727a8973329b9c237.json.gz",
+      "sha256": "da67f4bdebe6ade74eebafc06a41fda3b37b7553d738f8f581b1ce747737db5c",
+      "gzip_sha256": "ae27e8496e89ee0e8153f464eb10ea185b7db816be6ac7f727a8973329b9c237",
+      "bytes": 85744,
+      "gzip_bytes": 11845,
+      "records": 40
+    },
+    "shahwaliullah40": {
+      "key": "site-snapshots/corpus/sha256/297bb6e3f7e58d457182e56aeab75dd527099975797b49c5938dc496a4d79192.json.gz",
+      "sha256": "9189fcc8bc1014c07ab8fdd3d8b2dd9a35b943ab5c205ae4773d889e5e3788f9",
+      "gzip_sha256": "297bb6e3f7e58d457182e56aeab75dd527099975797b49c5938dc496a4d79192",
+      "bytes": 40212,
+      "gzip_bytes": 2589,
+      "records": 40
+    },
+    "aladab_almufrad": {
+      "key": "site-snapshots/corpus/sha256/e1d03aa8c45e889ce46ed8a8016bc0bf3edb8e6d8da45868ae77e94396bebb5a.json.gz",
+      "sha256": "50c8084da9aa8a8d5f1ae48c622c82b6eb0073d89e0751f4fa7a4d5246a7e6ae",
+      "gzip_sha256": "e1d03aa8c45e889ce46ed8a8016bc0bf3edb8e6d8da45868ae77e94396bebb5a",
+      "bytes": 2356077,
+      "gzip_bytes": 239027,
+      "records": 1326
+    },
+    "bulugh_almaram": {
+      "key": "site-snapshots/corpus/sha256/bd969b336601bfa028cb3f5ec63165a50cead39144d38570ad4d529f152869cf.json.gz",
+      "sha256": "07fba1e9a65d013133e7f16ab0e50bd2e8563adca145192d3a068fa469c7f051",
+      "gzip_sha256": "bd969b336601bfa028cb3f5ec63165a50cead39144d38570ad4d529f152869cf",
+      "bytes": 3017853,
+      "gzip_bytes": 361579,
+      "records": 1767
+    },
+    "mishkat_almasabih": {
+      "key": "site-snapshots/corpus/sha256/632d379f132c3f1f708beed8f11cbc49966f72bd0a9c1a6d2a22c81c00db86f3.json.gz",
+      "sha256": "eb267afb1c59a5c1cafc2b7240bdd310c02c93194d282326f152efc32edab433",
+      "gzip_sha256": "632d379f132c3f1f708beed8f11cbc49966f72bd0a9c1a6d2a22c81c00db86f3",
+      "bytes": 7041677,
+      "gzip_bytes": 673360,
+      "records": 4428
+    },
+    "riyad_assalihin": {
+      "key": "site-snapshots/corpus/sha256/e6347384db65772c895de2e3abac85e74ad4a6e5e6637653e9dca5517ffaae7b.json.gz",
+      "sha256": "e609c1d0b899656b9eee8fbed53b6c778b3a812cc8e6aebc0630a7c790b27ff5",
+      "gzip_sha256": "e6347384db65772c895de2e3abac85e74ad4a6e5e6637653e9dca5517ffaae7b",
+      "bytes": 2841043,
+      "gzip_bytes": 285035,
+      "records": 1896
+    },
+    "shamail_muhammadiyah": {
+      "key": "site-snapshots/corpus/sha256/b266c36c95b71ff5017956ce3ab6d9abc175557b21c01cbf119f1669ccd60e04.json.gz",
+      "sha256": "8d07224150f188507fb601a993561bfa8ab4f59e9fd7998e4f415ab7aba72160",
+      "gzip_sha256": "b266c36c95b71ff5017956ce3ab6d9abc175557b21c01cbf119f1669ccd60e04",
+      "bytes": 713417,
+      "gzip_bytes": 69101,
+      "records": 402
+    },
+    "ahmad": {
+      "key": "site-snapshots/corpus/sha256/f6ba98e405922ddcde20cce04ab3856c06122f16868321dc542fc6fd9ed5b5f4.json.gz",
+      "sha256": "94f4fdd925991cc081ee84d2171f3775dcce29f4bee167079c32e2e30518baf7",
+      "gzip_sha256": "f6ba98e405922ddcde20cce04ab3856c06122f16868321dc542fc6fd9ed5b5f4",
+      "bytes": 2734874,
+      "gzip_bytes": 288464,
+      "records": 1374
+    },
+    "darimi": {
+      "key": "site-snapshots/corpus/sha256/ad261878cc4a6f2cb0d704580ca8f8c1d608a4c089339ee369546157f6e510e0.json.gz",
+      "sha256": "8919ec9cd352e5901e7c7e47bcc7c279a281e2d701c9253289b0747a6eca45fe",
+      "gzip_sha256": "ad261878cc4a6f2cb0d704580ca8f8c1d608a4c089339ee369546157f6e510e0",
+      "bytes": 5724924,
+      "gzip_bytes": 546802,
+      "records": 3406
+    }
+  }
+}

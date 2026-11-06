@@ -1,29 +1,19 @@
 import "server-only";
-import { unstable_cache } from "next/cache";
 import { cache } from "react";
-import { queryNeon, usesNeon } from "./neon";
 import data from "@/content/local-sources.json";
 import { getArchive, assetTitle, type ArchiveItem } from "./archive";
 import { evidenceLabels } from "./public-evidence";
 import { sources } from "./research";
 import { getMediaCatalogue } from "./media-catalogue";
 import objectKeys from "@/content/media-objects.json";
-const liveBibliography = unstable_cache(async () => {
-  const rows = await queryNeon<{id:number;title:string;detail:string;quote:string}>("SELECT * FROM research.website_bibliography");
-  return Object.fromEntries(rows.map(({id,...source})=>[id,source]));
-}, ["neon-bibliography-v1"], { revalidate:60 });
-export const getBibliography = cache(async (): Promise<typeof sources> => usesNeon() ? liveBibliography() : sources);
+export const getBibliography = cache(async (): Promise<typeof sources> => sources);
 export type LocalSource = {
   id: number;
   date: string;
   files: number[];
   quotes: string[];
 };
-const liveSources = unstable_cache(async () => {
-  const rows = await queryNeon<LocalSource>("SELECT * FROM research.website_sources ORDER BY id");
-  return Object.fromEntries(rows.map(row=>[String(row.id),row]));
-}, ["neon-sources-v1"], { revalidate: 60 });
-const getSources = cache(async (): Promise<Record<string, LocalSource>> => usesNeon() ? liveSources() : data as Record<string, LocalSource>);
+const getSources = cache(async (): Promise<Record<string, LocalSource>> => data as Record<string, LocalSource>);
 export async function sourceRecord(id: number) {
   return (await getSources())[String(id)];
 }

@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       { key: "Content-Security-Policy", value: "default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'self'" },
     ] }];
   },
-  outputFileTracingIncludes: { "/corpus": ["./.corpus/ara-*.json"] },
+  outputFileTracingIncludes: { "/corpus": ["./.corpus/ara-*.json"], "/corpus/**": ["./.corpus/ara-*.json"], "/explore": ["./.corpus/ara-*.json"] },
 };
 
 export default nextConfig;
