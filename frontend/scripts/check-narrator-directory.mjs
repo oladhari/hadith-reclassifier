@@ -20,7 +20,7 @@ for(const [finding,count] of [['mild',1],['rafidi_jald',2],['shii_jald',3],['lia
 assert.ok((await html('/narrators?source_book=2170')).includes('data-narrator-result-count="0"'));
 assert.ok((await html('/narrators?q='+encodeURIComponent('زبيد'))).includes('data-narrator-result-count="1"'));
 const contrary=await html('/narrators/abd-al-rahman-ibn-hatim');assert.ok(contrary.includes('متروك الحديث'));assert.ok(contrary.includes('ما علمت به بأسا'));
-const library=await html('/library?section=books');assert.equal((library.match(/data-reference-index-id=/g)||[]).length,6);assert.equal((library.match(/data-book-index-id=/g)||[]).length,26);
+const library=await html('/library?section=books');assert.equal((library.match(/data-reference-index-id=/g)||[]).length,7);assert.equal((library.match(/data-book-index-id=/g)||[]).length,26);
 for(const key of Object.keys(themes.themes)){assert.ok(library.includes(`data-book-theme="${key}"`));await html('/library?section=books&theme='+key);}
 const rijal=await html('/library?section=books&theme=rijal');assert.ok(rijal.includes('data-reference-book-count="6"'));assert.ok(!rijal.includes('data-book-index-id="909"'));
 for(const book of books){const page=await html(`/library/references/${book.id}`);assert.ok(page.includes(book.url));if(book.id===2170)assert.equal((page.replace(/<!--[\s\S]*?-->/g,"").match(/الملف المصور \d+ — PDF/g)||[]).length,9);}
@@ -28,4 +28,4 @@ const found=await html('/library?section=books&q='+encodeURIComponent('تقري�
 for(const path of ['/narrators/not-a-narrator','/library/references/999999'])assert.equal((await fetch(base+path)).status,404);
 for(const path of ['/narrators?finding=not-real','/library?theme=not-real'])assert.equal((await fetch(base+path)).status,400);
 const payload='<img src=x onerror=alert(1)>';assert.ok(!(await html('/narrators?q='+encodeURIComponent(payload))).includes(payload));
-console.log(JSON.stringify({narrators:20,source_findings:46,citation_boundaries:'passed',all_profiles_and_filters:'passed',contradictory_assessments:'preserved',reference_books:6,thematic_groups:6,old_books:26,read_only_security:'passed'}));
+console.log(JSON.stringify({narrators:20,source_findings:46,citation_boundaries:'passed',all_profiles_and_filters:'passed',contradictory_assessments:'preserved',reference_books:7,thematic_groups:6,old_books:26,read_only_security:'passed'}));

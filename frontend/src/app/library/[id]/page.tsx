@@ -55,6 +55,7 @@ export default async function AssetPage({ params, searchParams }: {
     <div className="breadcrumb"><Link href={`/library?section=${librarySection(item, entry)}`}>{sectionNames[librarySection(item, entry)]}</Link><span>/</span><span>{entry.title}</span></div>
     <PageHeading eyebrow={`${entry.collection_images ? "مجموعة صور" : entry.content_label || scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(entry.asset_size || item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}${entry.image_count ? entry.image_count === 2 ? " • صورتان" : ` • ${entry.image_count} صور` : ""}`}
       title={entry.title} description={entry.description} />
+    {Number(id)>=908&&Number(id)<=915&&<p className="organization-note"><Link href={`/library/references/927?file=part-${String(Number(id)===908?1:Number(id)-907).padStart(2,"0")}`}>اقرأ مجموعة منهاج السنة النبوية الكاملة: تسعة مجلدات مع مقدمة المحقق ←</Link></p>}
     {entry.organization_note && <p className="organization-note">{entry.organization_note}</p>}
     {(entry.work_title || entry.author || entry.page_label) && <dl className="media-bibliography">
       {entry.work_title && <div><dt>المصدر</dt><dd><Link href={`/library?q=${encodeURIComponent(entry.work_title)}`}>{entry.work_title} ←</Link></dd></div>}

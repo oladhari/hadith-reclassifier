@@ -5,7 +5,7 @@ export async function GET(request:NextRequest,{params}:{params:Promise<{book:str
  const {book,file}=await params;
  if(!/^[1-9]\d{0,5}$/.test(book)||!/^part-\d{2}$/.test(file))return new Response("Not found",{status:404});
  const asset=referenceFile(book,file);if(!asset)return new Response("Not found",{status:404});
- if(!/^reference-books\/rijal\/(?:[a-z0-9-]+\/)*sha256\/[a-f0-9]{64}\.pdf$/.test(asset.key)||!asset.key.endsWith(`/${asset.sha256}.pdf`))return new Response("Not found",{status:404});
+ if(!/^reference-books\/(?:rijal|creed)\/(?:[a-z0-9-]+\/)*sha256\/[a-f0-9]{64}\.pdf$/.test(asset.key)||!asset.key.endsWith(`/${asset.sha256}.pdf`))return new Response("Not found",{status:404});
  const range=request.headers.get("range");
  if(range){
   const match=/^bytes=(\d*)-(\d*)$/.exec(range);

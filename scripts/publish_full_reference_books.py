@@ -66,7 +66,8 @@ def main():
  with ThreadPoolExecutor(max_workers=4) as pool:
   for record in pool.map(publish,missing):completed[record['sha256']]=record
  receipt_path.write_text(json.dumps({'files':completed},ensure_ascii=False,indent=2))
- public={}
+ manifest_path=ROOT/'frontend/src/content/reference-book-assets.json'
+ public={k:v for k,v in json.loads(manifest_path.read_text()).items() if int(k) not in EXPECTED} if manifest_path.exists() else {}
  for book,expected in EXPECTED.items():
   items=sorted([a for a in assets if a['book_id']==book and 1<=a['part']<=expected],key=lambda a:a['part'])
   covers=sorted([a for a in assets if a['book_id']==book and a['part'] not in range(1,expected+1)],key=lambda a:a['part'])

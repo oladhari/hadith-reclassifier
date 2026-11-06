@@ -165,3 +165,15 @@ Archive، ويستأنف الأجزاء المؤقتة، ويتحقق من حج�
 الستة و75 ملفاً عبر مسار الموقع وخادم الوسائط، ويطابق البايتات والحجم مع
 الأصل المحلي، واختيار الأجزاء، وفصل بيانات الطبعات، ورفض الطلبات الكتابية
 والملفات غير المعروفة والنطاقات غير الصحيحة ومحاولات تبديل وجهة التحميل.
+
+### Other thematic references
+
+Minhaj al-Sunna (Shamela 927) is hosted under the creed theme, independently of
+six rijal reference works. The matching Rashad Salim scan set comes from
+https://archive.org/details/manhaj-ah-sonna. Missing volumes 1 and 9 were added;
+volumes 2–8 match the previously archived files. The 179-page editor introduction
+remains separately available and never substitutes for volume 1. Originals and
+old citation URLs are preserved. `scripts/publish_minhaj_volumes.py` validates
+source checksums for new downloads and verifies all ten R2 objects by readback.
+The on-site reader is `/library/references/927`; PDF scans are not a verified
+full-text search index. `frontend/scripts/check-minhaj.mjs` checks delivery.

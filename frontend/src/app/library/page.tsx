@@ -22,7 +22,7 @@ export default async function LibraryPage({ searchParams }: {
   const { kind = "", page = "1", q: raw = "", topic = "", scope = "" } = params;
   const q = queryText(raw);
   const theme=Object.hasOwn(bookThemes,params.theme||"")?params.theme!:"";
-  const references=referenceBooks.filter(book=>(!q||matches([book.title,book.author,book.purpose,book.edition].join(" "),q))&&(!theme||theme===book.theme)&&(!topic||topic==="narrators")&&(!scope||scope==="full_book")&&(!kind||(kind==="pdf"&&Boolean(referenceEdition(String(book.id))))));
+  const references=referenceBooks.filter(book=>(!q||matches([book.title,book.author,book.purpose,book.edition].join(" "),q))&&(!theme||theme===book.theme)&&(!topic||(topic==="narrators"&&book.theme==="rijal"))&&(!scope||scope==="full_book")&&(!kind||(kind==="pdf"&&Boolean(referenceEdition(String(book.id))))));
   const requested = params.section || (kind || q || topic || scope ? "all" : "books");
   const section = sectionNames[requested] ? requested : "books";
   const library = publicLibrary(archive, catalogue);
@@ -67,7 +67,7 @@ export default async function LibraryPage({ searchParams }: {
       <button className="button button-dark">ابحث في المكتبة</button>
     </form>
     <p className="muted library-result-count" data-result-count={filtered.length} data-library-total-count={filtered.length+((section==="books"||section==="all")?references.length:0)}>{ar(filtered.length)} مادة مطابقة من المواد المحفوظة{(section==="books"||section==="all")&&references.length>0&&`، و${ar(references.length)} مراجع مصدرية`}{section === "excerpts" && ` ضمن ${ar(rows.length)} ألبومًا ومادة مستقلة`}</p>
-    {(section==="books"||section==="all")&&references.length>0&&<section className="article-section" data-reference-book-count={references.length}><h2>مراجع علم الرجال والجرح والتعديل</h2><p>بطاقات المصادر ونصوصها الإلكترونية، مع الملفات المصورة المتاحة. روابط المواضع المقتبسة تظهر في <Link href="/narrators">فهرس الرواة وأقوال النقاد</Link>.</p><div className="reference-book-grid">{references.map(book=><ReferenceBookCard key={book.id} book={book}/>)}</div></section>}
+    {(section==="books"||section==="all")&&references.length>0&&<section className="article-section" data-reference-book-count={references.length}><h2>الكتب والمراجع المحفوظة</h2><p>بطاقات المصادر ونصوصها الإلكترونية، مع الملفات المصورة المتاحة. روابط المواضع المقتبسة تظهر في <Link href="/narrators">فهرس الرواة وأقوال النقاد</Link>.</p><div className="reference-book-grid">{references.map(book=><ReferenceBookCard key={book.id} book={book}/>)}</div></section>}
     <div className="library-grid">{items.map(({ item, album }) => album && album.items.length > 1
       ? <ExcerptAlbumCard key={album.key} album={album} catalogue={catalogue} />
       : <LibraryCard key={item.id} item={item} metadata={catalogue[String(item.id)]} />)}</div>

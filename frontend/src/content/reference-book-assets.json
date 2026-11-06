@@ -964,5 +964,136 @@
     "pages": 795,
     "scanned_edition": "تحقيق محمد عوامة، دار الرشيد، الطبعة الثالثة المنقحة، 1411 هـ / 1991 م؛ تختلف عن طبعة النص الإلكتروني المرجعي الأولى 1406 هـ / 1986 م.",
     "volume_count": 1
+  },
+  "927": {
+    "format": "pdf_scans",
+    "complete_source_set": true,
+    "scanned_edition": "تحقيق محمد رشاد سالم، جامعة الإمام محمد بن سعود الإسلامية، الطبعة الأولى، 1406 هـ / 1986 م، تسعة مجلدات، ومقدمة المحقق محفوظة في ملف مستقل.",
+    "volume_count": 9,
+    "file_count": 10,
+    "pages": 5346,
+    "files": [
+      {
+        "id": "part-01",
+        "part": 1,
+        "label": "المجلد 1",
+        "key": "reference-books/creed/minhaj/sha256/189b6a19421eb3e69018e65cc7168cab5735394afb18447b58ecc1a0245038ec.pdf",
+        "sha256": "189b6a19421eb3e69018e65cc7168cab5735394afb18447b58ecc1a0245038ec",
+        "bytes": 10160335,
+        "pages": 580,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/01.pdf",
+        "original_name": "01.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-02",
+        "part": 2,
+        "label": "المجلد 2",
+        "key": "reference-books/creed/minhaj/sha256/898484d433082b4a8a1b34f893ecbd0c278b638b90a7a0387f49938fb5b456f6.pdf",
+        "sha256": "898484d433082b4a8a1b34f893ecbd0c278b638b90a7a0387f49938fb5b456f6",
+        "bytes": 11782583,
+        "pages": 664,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/03.pdf",
+        "original_name": "03.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-03",
+        "part": 3,
+        "label": "المجلد 3",
+        "key": "reference-books/creed/minhaj/sha256/014f1e666f630875f33c9530d0964f78ef66882d39c6119990087fd0693d90c5.pdf",
+        "sha256": "014f1e666f630875f33c9530d0964f78ef66882d39c6119990087fd0693d90c5",
+        "bytes": 8225939,
+        "pages": 519,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/04.pdf",
+        "original_name": "04.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-04",
+        "part": 4,
+        "label": "المجلد 4",
+        "key": "reference-books/creed/minhaj/sha256/9ef99fb814e92940d1b9cad2d82569d8e60ed8d1dfe28e1ff76dd5732e6ac8ca.pdf",
+        "sha256": "9ef99fb814e92940d1b9cad2d82569d8e60ed8d1dfe28e1ff76dd5732e6ac8ca",
+        "bytes": 10504130,
+        "pages": 623,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/05.pdf",
+        "original_name": "05.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-05",
+        "part": 5,
+        "label": "المجلد 5",
+        "key": "reference-books/creed/minhaj/sha256/baf8570dd8c5f184eb8d313d96e8623406263d1a3c94fb79a16cc5bba5eeae68.pdf",
+        "sha256": "baf8570dd8c5f184eb8d313d96e8623406263d1a3c94fb79a16cc5bba5eeae68",
+        "bytes": 10195580,
+        "pages": 535,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/06.pdf",
+        "original_name": "06.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-06",
+        "part": 6,
+        "label": "المجلد 6",
+        "key": "reference-books/creed/minhaj/sha256/56544b16d1ba39ea926b1a99687073a27e022be439ebcd8a846b0cc6d9298140.pdf",
+        "sha256": "56544b16d1ba39ea926b1a99687073a27e022be439ebcd8a846b0cc6d9298140",
+        "bytes": 10049537,
+        "pages": 493,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/07.pdf",
+        "original_name": "07.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-07",
+        "part": 7,
+        "label": "المجلد 7",
+        "key": "reference-books/creed/minhaj/sha256/88c37e8df98b25e25f8eb63bd992b7761dbde1ee8198bcfc3d4c68281e24211a.pdf",
+        "sha256": "88c37e8df98b25e25f8eb63bd992b7761dbde1ee8198bcfc3d4c68281e24211a",
+        "bytes": 11572370,
+        "pages": 562,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/08.pdf",
+        "original_name": "08.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-08",
+        "part": 8,
+        "label": "المجلد 8",
+        "key": "reference-books/creed/minhaj/sha256/f78fc2ca58f5829340f80bb3438814c2efe580b5310c3cfff52b9c6996487af5.pdf",
+        "sha256": "f78fc2ca58f5829340f80bb3438814c2efe580b5310c3cfff52b9c6996487af5",
+        "bytes": 12101029,
+        "pages": 599,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/09.pdf",
+        "original_name": "09.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-09",
+        "part": 9,
+        "label": "المجلد 9",
+        "key": "reference-books/creed/minhaj/sha256/d0187c39f3455ed3ea882f8e9cff2c5250efb24a6367ff1f0e687f193f721794.pdf",
+        "sha256": "d0187c39f3455ed3ea882f8e9cff2c5250efb24a6367ff1f0e687f193f721794",
+        "bytes": 8210898,
+        "pages": 592,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/10.pdf",
+        "original_name": "10.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      },
+      {
+        "id": "part-90",
+        "part": 90,
+        "label": "مقدمة المحقق — ملف مستقل",
+        "key": "reference-books/creed/minhaj/sha256/7f434c0f6f9cd70db2de27ab7849a836d850b27c905e288358cbb1b411777b1a.pdf",
+        "sha256": "7f434c0f6f9cd70db2de27ab7849a836d850b27c905e288358cbb1b411777b1a",
+        "bytes": 3395538,
+        "pages": 179,
+        "source_url": "https://archive.org/download/manhaj-ah-sonna/02.pdf",
+        "original_name": "02.pdf",
+        "source_archive": "manhaj-ah-sonna"
+      }
+    ],
+    "edition_note": "المجلد الأول هنا متن الكتاب، ومقدمة المحقق محفوظة مستقلة وليست بديلاً عنه. طابقت بصمات ملفات المجلدات 2–8 النسخ المحفوظة سابقاً. أرقام صفحات PDF لا تطابق بالضرورة ترقيم النص الإلكتروني في الشاملة."
   }
 }

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile,open} from 'node:fs/promises';
-const editions=JSON.parse(await readFile(new URL('../src/content/reference-book-assets.json',import.meta.url),'utf8'));
+const allEditions=JSON.parse(await readFile(new URL('../src/content/reference-book-assets.json',import.meta.url),'utf8'));
+const editions=Object.fromEntries(Object.entries(allEditions).filter(([id])=>id!=='927'));
 const expected={2170:9,3722:35,3310:12,8609:1,1692:4,12579:9};
 const base=process.env.RESEARCH_TEST_URL||'http://127.0.0.1:3015';
 const sourceAssets=JSON.parse(await readFile(new URL('../../data/research/rijal-sources/full-books/download-assets.json',import.meta.url),'utf8'));
