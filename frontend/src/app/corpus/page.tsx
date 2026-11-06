@@ -54,7 +54,7 @@ export default async function CorpusPage({ searchParams }: {
       </>}
     </section>
     {drafts.length>0&&<section className="article-section"><h2>مسودات الفحص الآلي</h2><p>نُشرت {drafts.length} مسودة من دفعة البخاري 1–200، تغطي الطبقات الـ22 وتوضح الأدلة الناقصة. تحتاج مراجعة بشرية ولا تمثل قبولًا أو ردًا معتمدًا.</p><Link className="text-link" href="/corpus/analysis">عرض النتائج وفتح تحليل كل حديث ←</Link></section>}
-    <details className="corpus-inventory"><summary>الكتب المتاحة وإحصاءات المراجعة</summary>
+    <details className="corpus-inventory" open><summary>الكتب المتاحة وإحصاءات المراجعة</summary>
     <div className="corpus-scope"><strong>{selectedBook ? selectedBook.title : "المكتبة كاملة"}</strong>{selectedBook && <Link href="/corpus">اعرض جميع المجموعات ←</Link>}</div>
     <section className="corpus-stats" aria-label="إحصاءات فحص الأحاديث">{stats.map(([key, label]) => <div key={key} data-corpus-stat={key}><strong dir="ltr">{ar(counts[key])}</strong><span>{label}</span></div>)}</section>
     <p className="corpus-stat-note">الأعداد سجلات بحسب ترقيم المجموعات وتشمل تكرار الطرق. الفحص الأولي يختلف عن القبول النهائي؛ لا تُحسب تشغيلات بلا أدلة مكتملة نتائجَ تصفية، ولا يعتمد مدخل للكتاب قبل المراجعة البشرية.</p>
