@@ -33,7 +33,7 @@ export async function GET(
       if (!valid) return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${item.size}` } });
     }
     const key = item.object_key || (objectKeys as Record<string, string>)[item.id];
-    if (!key || !/^(?:originals\/sha256\/[a-f0-9]{2}|imports\/muawiya4n\/originals\/sha256)\/[a-f0-9]{64}$/.test(key))
+    if (!key || !/^(?:(?:originals\/sha256\/[a-f0-9]{2}|imports\/muawiya4n\/originals\/sha256)\/[a-f0-9]{64}|imports\/tiktok\/brad2557wtn\/objects\/[a-f0-9]{64}\.(?:mp4|webm|mov|m4a|mp3|ogg))$/.test(key))
       return new Response("Not found", { status: 404 });
     const remoteURL = `${remoteBase}/${key}`;
     if (request.nextUrl.searchParams.get("download") === "1" && item.size <= 4 * 1024 * 1024) {

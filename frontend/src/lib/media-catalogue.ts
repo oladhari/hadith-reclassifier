@@ -17,6 +17,8 @@ export type MediaDescription = {
   topics: string[]; cases: string[]; tags: string[]; visible: boolean;
   page_count?: number; duration?: number; has_transcript?: boolean;
   asset_url?: string; asset_size?: number; converted_document?: boolean; manual_video_hidden?: boolean;
+  source_posts?: { url: string; caption: string }[];
+  source_url?: string; source_caption?: string; source_account?: string;
   author_role?: string; author_source?: { page: number; quote: string };
   library_section?: string; content_label?: string; attribution?: string; organization_note?: string;
   image_count?: number; collection_images?: CollectionImage[];
@@ -61,6 +63,11 @@ function publicTextIndexes(){
 export async function searchLibrary(archive: ArchiveItem[], catalogue: MediaCatalogue, query: string) {
   const library = publicLibrary(archive, catalogue);
   if (!query.trim()) return library;
+  // A known catalogue number resolves its canonical work before matching dates
+  // and other incidental numbers in captions from a much larger collection.
+  const numbered = /^\d+$/.test(query.trim()) ? catalogue[query.trim()] : undefined;
+  if (numbered?.visible && library.some(item => item.id === numbered.canonical_id))
+    return library.filter(item => item.id === numbered.canonical_id);
   const words = normalize(query).split(/\s+/).filter(Boolean);
   const indexes=publicTextIndexes();
   const transcriptIds=new Set(indexes.speech.filter(row=>words.every(word=>row.text.includes(word))).map(row=>row.id));

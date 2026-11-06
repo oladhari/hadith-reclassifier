@@ -175,6 +175,10 @@ def main():
     with sqlite3.connect(ROOT / "data/research/research.sqlite3") as existing_db:
         previous_setting = existing_db.execute("SELECT value FROM research_catalogue_settings WHERE key='media_catalogue'").fetchone()
     previous_public = json.loads(previous_setting[0]).get("public", {}) if previous_setting else {}
+    # R2-only imports are authoritative public snapshots while Neon is quota-limited.
+    published_snapshot = json.loads((ROOT / "frontend/src/content/media-catalogue.json").read_text())
+    previous_public.update({key: row for key, row in published_snapshot.items()
+                            if int(key) >= 2_000_000 and row.get("source_account") == "brad2557wtn"})
     for key, row in previous_public.items():
         if int(key) >= 1_000_000:
             public[key] = row
@@ -194,6 +198,11 @@ def main():
             raise ValueError(f"Invalid reviewed merge target: {target}")
         canonical["occurrences"] = sorted(set(canonical.get("occurrences", []) + public[source].get("occurrences", []) + [int(source), target]))
         public[source]["canonical_id"] = target
+    tiktok_overlay = ROOT / "frontend/src/content/tiktok-catalogue-overlay.json"
+    if tiktok_overlay.exists():
+        for key, patch in json.loads(tiktok_overlay.read_text()).items():
+            if key in public:
+                public[key].update(patch)
     selected = [row for key, row in public.items() if row["visible"] and row["canonical_id"] == int(key)]
     report = {"unique_originals": len(items), "public_unique": len(selected), "hidden_unique": sum(not public[str(item["id"])]["visible"] for item in items),
         "collection_members_consolidated": sum(public[str(item["id"])]["visible"] and public[str(item["id"])]["canonical_id"] != item["id"] for item in items),

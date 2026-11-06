@@ -63,10 +63,18 @@ export default async function AssetPage({ params, searchParams }: {
       {entry.page_label && <div><dt>الموضع</dt><dd>{entry.page_label}</dd></div>}
     </dl>}
     {entry.author_source && <p className="organization-note">بيانات النسبة: {entry.author_source.quote} · <a href={`${src}#page=${entry.author_source.page}&view=FitH`} target="_blank" rel="noreferrer">عرض صفحة البيانات ({entry.author_source.page}) ↗</a></p>}
+    {entry.source_url && <details className="transcript-panel">
+      <summary>وصف الناشر والمصدر الأصلي</summary>
+      <p>الوصف التالي من حساب الناشر، وتُنسب إليه الأحكام والعبارات الواردة فيه.</p>
+      {(entry.source_posts || [{ url: entry.source_url, caption: entry.source_caption || "" }]).map(post => <div key={post.url}>
+        {post.caption ? <blockquote dir="auto">{post.caption}</blockquote> : <p>لم يرفق الناشر وصفًا نصيًا لهذا المنشور.</p>}
+        <a href={post.url} target="_blank" rel="noreferrer">المنشور الأصلي في TikTok — @{entry.source_account} ↗</a>
+      </div>)}
+    </details>}
     {chapter && <div className="chapter-heading"><h2>{chapter.title}</h2><p>{chapter.summary}</p><Link href={`/library/${id}#media-player`}>عرض التسجيل الكامل ←</Link></div>}
     <div className={`asset-viewer${item.kind === "document" ? " document-viewer" : ""}${entry.collection_images ? " grouped-image-viewer" : ""}`} id="media-player">
       {entry.collection_images ? <ImageCollection images={entry.collection_images} /> : item.kind === "image" ? <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={entry.title} /></a>
-        : speech ? <ResearchPlayer id={item.id} kind={item.kind as "video" | "audio"} poster={(thumbnails as Record<string, string>)[id]} start={start} end={end} />
+        : speech ? <ResearchPlayer id={item.id} mediaId={entry.preferred_media_id} kind={item.kind as "video" | "audio"} poster={(thumbnails as Record<string, string>)[entry.preferred_media_id || id]} start={start} end={end} />
         : item.kind === "pdf" || entry.converted_document ? <iframe title={entry.title} src={src} />
         : <><img className="document-first-page" src={(thumbnails as Record<string, string>)[id]} alt={`الصفحة الأولى: ${entry.title}`} /><p>يمكن تنزيل الوثيقة الأصلية وفتحها ببرنامجها المناسب.</p></>}
     </div>
@@ -74,7 +82,7 @@ export default async function AssetPage({ params, searchParams }: {
       {relatedAlbum && <Link className="button button-outline" href={`/library/albums/${relatedAlbum.key}#source-${item.id}`}>جميع شواهد الكتاب في هذا الموضوع ←</Link>}
       {entry.converted_document && <a className="button button-outline" href={`/api/media/${item.id}?download=1`}>تنزيل الوثيقة الأصلية</a>}
       {!entry.collection_images && <a className="button button-dark" href={entry.asset_url ? src : `${src}?download=1`} download={entry.asset_url ? `${entry.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}><Download size={17} /> {entry.converted_document ? "تنزيل PDF" : entry.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الملف الأصلي"}</a>}
-      <Link className="button button-outline" href={`/sources/${item.id}`}>بيانات المرجع وصفحاته المرتبطة ←</Link>
+      {entry.source_url ? <a className="button button-outline" href={entry.source_url} target="_blank" rel="noreferrer">المصدر الأصلي في TikTok ↗</a> : <Link className="button button-outline" href={`/sources/${item.id}`}>بيانات المرجع وصفحاته المرتبطة ←</Link>}
       {speech && transcript && <a className="text-link" href={`/transcripts/${id}.vtt`} download>تنزيل الترجمة العربية (VTT)</a>}
     </div>
     {entry.collection_sources && <details className="transcript-panel collection-provenance"><summary>{entry.collection_images ? "الأصول ومعلومات الصور" : "الأصول وترتيب الصفحات"}</summary>

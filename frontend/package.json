@@ -19,7 +19,8 @@
     "check:narrators": "node scripts/check-narrator-directory.mjs",
     "check:hosted-reference-books": "node scripts/check-hosted-reference-books.mjs",
     "check:narrator-evidence": "node scripts/check-narrator-evidence.mjs",
-    "check:seo": "node scripts/check-seo.mjs"
+    "check:seo": "node scripts/check-seo.mjs",
+    "check:tiktok": "node scripts/check-tiktok-collection.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
