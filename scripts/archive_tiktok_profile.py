@@ -123,9 +123,9 @@ def main():
             if result.returncode:
                 raise RuntimeError('Download failed; see local per-video log')
             info = json.loads((args.directory / f'{id}.info.json').read_text())
-            files = [p for p in args.directory.glob(f'{id}.*') if p.suffix.lower() in ('.mp4', '.webm', '.mov')]
+            files = [p for p in args.directory.glob(f'{id}.*') if p.suffix.lower() in ('.mp4', '.webm', '.mov', '.m4a', '.mp3', '.ogg')]
             if len(files) != 1:
-                raise ValueError('Expected exactly one complete video')
+                raise ValueError('Expected exactly one complete media file')
             path = files[0]
             probe = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration',
                 '-of', 'json', str(path)], capture_output=True, text=True, check=True)
@@ -137,6 +137,7 @@ def main():
             upload(path, key, sha, mimetypes.guess_type(path.name)[0] or 'video/mp4')
             row.update(state='verified', sha256=sha, size=path.stat().st_size, object_key=key,
                 local_path=str(path), duration=duration, width=info.get('width'), height=info.get('height'),
+                kind='audio' if path.suffix.lower() in ('.m4a', '.mp3', '.ogg') else 'video',
                 caption=info.get('description') or row['caption'], uploader=info.get('uploader'),
                 verified_at=datetime.now(timezone.utc).isoformat())
             # Public provenance excludes expiring CDN URLs, cookies and downloader diagnostics.
