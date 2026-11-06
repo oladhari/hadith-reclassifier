@@ -12,19 +12,19 @@ export const sectionNames: Record<string, string> = {
 const formNames: Record<string, string> = {
   book: "كتاب كامل", volume: "مجلد كامل من كتاب", research: "بحث / مقال كامل", excerpt: "مقتطف / شواهد", draft: "مسودة غير مكتملة",
 };
-type Review = { section: string; form: string; title?: string; description?: string; author?: string; attribution?: string; note?: string };
+type Review = { section: string; form: string; title?: string; description?: string; author?: string; author_role?: string; author_source?: { page: number; quote: string }; attribution?: string; note?: string };
 export function organizeEntry(entry: MediaDescription): MediaDescription {
   const review = (reviews as Record<string, Review>)[String(entry.canonical_id)];
   return review ? { ...entry, scope: review.form === "book" || review.form === "volume" ? "full_book" : review.form === "research" ? "article" : "excerpt", library_section: review.section, content_label: formNames[review.form],
     title: review.title || entry.title, description: review.description || entry.description, author: review.author || entry.author,
-    attribution: review.attribution, organization_note: review.note } : entry;
+    author_role: review.author_role, author_source: review.author_source, attribution: review.attribution, organization_note: review.note } : entry;
 }
 export function librarySection(item: ArchiveItem, entry: MediaDescription) {
   if (item.kind === "video" || item.kind === "audio") return item.kind;
   return entry.library_section || "excerpts";
 }
 export function authorLabel(entry: MediaDescription) {
-  return entry.author || entry.attribution || "المؤلف غير مذكور في النسخة";
+  return (entry.author ? `${entry.author_role && entry.author_role !== "تأليف" ? `${entry.author_role}: ` : ""}${entry.author}` : entry.attribution) || "اسم المؤلف لم يُوثق بعد";
 }
 export type ExcerptAlbum = { key: string; work: string; theme: string; items: ArchiveItem[] };
 export function excerptAlbums(items: ArchiveItem[], catalogue: MediaCatalogue): ExcerptAlbum[] {

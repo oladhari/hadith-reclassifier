@@ -140,7 +140,7 @@ const booksPage = await html("/library?section=books");
 const indexIds = [...booksPage.matchAll(/data-book-index-id="(\d+)"/g)].map(match => Number(match[1]));
 assert.deepEqual(indexIds.sort((a,b) => a-b), books.filter(row=>![909,910,911,912,913,914,915].includes(row.id)).map(row => row.id).sort((a,b) => a-b));
 assert.ok(booksPage.includes("فهرس الكتب والبحوث"));
-assert.ok(booksPage.includes("المؤلف غير مذكور في النسخة"));
+assert.ok(booksPage.includes("اسم المؤلف لم يُوثق بعد"));
 assert.ok(booksPage.includes('name="section" value="books"'));
 for (const id of [1078, 1912, 1947, 2424]) assert.ok(indexIds.includes(id), `Complete converted work/research ${id} in index`);
 for (const id of [648, 908, 1057, 1144, 1480]) assert.ok(!indexIds.includes(id), `Partial work/draft ${id} excluded from complete works`);

@@ -5,7 +5,13 @@
   },
   "70": {
     "section": "books",
-    "form": "book"
+    "form": "book",
+    "author": "شرف الدين أبو عراق الحسين",
+    "author_role": "تأليف",
+    "author_source": {
+      "page": 1,
+      "quote": "تأليف: شرف الدين أبو عراق الحسين"
+    }
   },
   "130": {
     "section": "books",
@@ -26,7 +32,13 @@
   },
   "882": {
     "section": "books",
-    "form": "book"
+    "form": "book",
+    "author": "أحمد العراقي",
+    "author_role": "جمع وترتيب",
+    "author_source": {
+      "page": 1,
+      "quote": "جمع وترتيب: أحمد العراقي"
+    }
   },
   "908": {
     "section": "excerpts",
@@ -76,7 +88,13 @@
   },
   "1078": {
     "section": "books",
-    "form": "book"
+    "form": "book",
+    "author": "لجنة البحوث العلمية",
+    "author_role": "إعداد",
+    "author_source": {
+      "page": 2,
+      "quote": "إعداد: لجنة البحوث العلمية"
+    }
   },
   "1099": {
     "section": "books",
@@ -90,7 +108,13 @@
   },
   "1173": {
     "section": "books",
-    "form": "book"
+    "form": "book",
+    "author": "فارس الشمري",
+    "author_role": "إعداد",
+    "author_source": {
+      "page": 1,
+      "quote": "إعداد: فارس الشمري"
+    }
   },
   "1193": {
     "section": "books",
@@ -109,16 +133,28 @@
   },
   "1768": {
     "section": "books",
-    "form": "book"
+    "form": "book",
+    "author": "فوزي بن عبد الله بن محمد الحميدي الأثري",
+    "author_role": "تخريج",
+    "author_source": {
+      "page": 1,
+      "quote": "تخريج: فوزي بن عبد الله بن محمد الحميدي الأثري"
+    }
   },
   "1912": {
     "section": "books",
     "form": "research",
-    "attribution": "مجلة معاوية — اسم الكاتب غير مذكور في النسخة"
+    "attribution": "مجلة معاوية — اسم الكاتب غير موثق بعد"
   },
   "2209": {
     "section": "books",
-    "form": "book"
+    "form": "book",
+    "author": "فوزي بن عبد الله بن محمد الحميدي الأثري",
+    "author_role": "تأليف",
+    "author_source": {
+      "page": 1,
+      "quote": "تأليف: فوزي بن عبد الله بن محمد الحميدي الأثري"
+    }
   },
   "2388": {
     "section": "books",

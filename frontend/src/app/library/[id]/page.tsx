@@ -59,9 +59,10 @@ export default async function AssetPage({ params, searchParams }: {
     {entry.organization_note && <p className="organization-note">{entry.organization_note}</p>}
     {(entry.work_title || entry.author || entry.page_label) && <dl className="media-bibliography">
       {entry.work_title && <div><dt>المصدر</dt><dd><Link href={`/library?q=${encodeURIComponent(entry.work_title)}`}>{entry.work_title} ←</Link></dd></div>}
-      {entry.author && <div><dt>المؤلف</dt><dd>{entry.author}</dd></div>}
+      {entry.author && <div><dt>{entry.author_role || "المؤلف"}</dt><dd>{entry.author}</dd></div>}
       {entry.page_label && <div><dt>الموضع</dt><dd>{entry.page_label}</dd></div>}
     </dl>}
+    {entry.author_source && <p className="organization-note">بيانات النسبة: {entry.author_source.quote} · <a href={`${src}#page=${entry.author_source.page}&view=FitH`} target="_blank" rel="noreferrer">عرض صفحة البيانات ({entry.author_source.page}) ↗</a></p>}
     {chapter && <div className="chapter-heading"><h2>{chapter.title}</h2><p>{chapter.summary}</p><Link href={`/library/${id}#media-player`}>عرض التسجيل الكامل ←</Link></div>}
     <div className={`asset-viewer${item.kind === "document" ? " document-viewer" : ""}${entry.collection_images ? " grouped-image-viewer" : ""}`} id="media-player">
       {entry.collection_images ? <ImageCollection images={entry.collection_images} /> : item.kind === "image" ? <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={entry.title} /></a>
