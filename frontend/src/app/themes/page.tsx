@@ -1,8 +1,9 @@
+import { pageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import { PageHeading } from "@/components/research-ui";
 import { getResearchBundles } from "@/lib/research-bundles";
 export const dynamic = "force-dynamic";
-export const metadata = { title: "مجموعات الشواهد والشرح الموضوعي" };
+export const metadata=pageMetadata("مجموعات الشواهد والشرح الموضوعي","وثائق وصور وملفات PDF مجمعة بحسب الموضوع، مع شرح الأدلة وروابط إلى المصادر الأصلية.","/themes");
 export default async function ThemesPage() {
   const bundles = await getResearchBundles();
   return <><PageHeading eyebrow="من السؤال إلى الوثيقة" title="مجموعات الشواهد والشرح الموضوعي" description="لكل موضوع مجموعة من الوثائق والصور وملفات PDF، مع شرح محرر من تعليقات المصدر وروابط إلى الأصول. جمع الشواهد في موضوع واحد لا يعني تساويها في الدلالة أو صحة النسبة." />

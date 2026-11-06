@@ -1,3 +1,4 @@
+import { siteName,siteDescription,shareImage } from "@/lib/site-metadata";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { Noto_Naskh_Arabic, Noto_Kufi_Arabic } from "next/font/google";
@@ -24,8 +25,12 @@ export const metadata: Metadata = {
     default: "موسوعة الرد على العباسيين | المصدر أولًا",
     template: "%s | موسوعة الرد على العباسيين",
   },
-  description:
-    "مكتبة بحثية وفق المنهج العثماني: مصادر مصوّرة، روايات وأسانيد، وملفات تقود من السؤال إلى الدليل. نسخة أولية قيد الإعداد.",
+  description:siteDescription,
+  applicationName:siteName,
+  keywords:["المنهج العثماني","عثمان بن عفان","نقد الروايات","البحث في الأحاديث","علم الرجال","الجرح والتعديل","المصادر المصورة","موسوعة الرد على العباسيين"],
+  robots:{index:true,follow:true,googleBot:{index:true,follow:true,"max-image-preview":"large"}},
+  openGraph:{title:siteName,description:siteDescription,siteName,locale:"ar_AR",type:"website",images:[shareImage]},
+  twitter:{card:"summary_large_image",title:siteName,description:siteDescription,images:[shareImage.url]},
 };
 export default async function RootLayout({
   children,

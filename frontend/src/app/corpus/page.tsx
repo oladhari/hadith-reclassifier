@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/site-metadata";
 import coverage from "@/content/corpus-coverage.json";
 import { readDraftSummaries } from "@/lib/ai-hadith-drafts";
 import { queryText } from "@/lib/request-policy";
@@ -9,7 +10,7 @@ import { readInventory, type CorpusResult } from "@/lib/live-corpus";
 import { collections, ar } from "@/lib/research";
 import { stateNames, type CorpusState } from "@/lib/corpus-progress";
 import { PageHeading } from "@/components/research-ui";
-export const metadata = { title: "البحث في الأحاديث وقراءتها" };
+export const metadata=pageMetadata("البحث في الأحاديث وقراءتها","ابحث بكلمات من الحديث أو برقم الرواية، واقرأ نصها ومرجعها وحالة مراجعتها في مجموعات الحديث المتاحة.","/corpus");
 export const dynamic = "force-dynamic";
 export default async function CorpusPage({ searchParams }: {
   searchParams: Promise<{ q?: string; collection?: string; page?: string; id?: string; status?: string }>;

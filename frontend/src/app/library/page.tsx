@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/site-metadata";
 import bookSeries from "@/content/book-series.json";
 import { referenceEdition } from "@/lib/reference-assets";
 import { bookThemes,bookTheme } from "@/lib/book-themes";
@@ -15,7 +16,7 @@ import { topics } from "@/lib/topics";
 import { PageHeading } from "@/components/research-ui";
 import { LibraryCard } from "@/components/library-card";
 import { ExcerptAlbumCard } from "@/components/excerpt-album-card";
-export const metadata = { title: "مكتبة المصادر" };
+export const metadata=pageMetadata("مكتبة المصادر","كتب ومراجع ومصادر مصوّرة مرتبة حسب الموضوع، مع مجموعات المجلدات وروابط القراءة والتنزيل.","/library");
 export default async function LibraryPage({ searchParams }: {
   searchParams: Promise<{ section?: string; kind?: string; page?: string; q?: string; topic?: string; scope?: string; theme?: string }>;
 }) {

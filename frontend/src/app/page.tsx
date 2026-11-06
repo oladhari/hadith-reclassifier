@@ -1,3 +1,4 @@
+import { pageMetadata,siteName,siteDescription } from "@/lib/site-metadata";
 /* eslint-disable @next/next/no-img-element -- Original archival images are served without alteration. */
 import Link from "next/link";
 import {
@@ -13,6 +14,7 @@ import {
 import { cases } from "@/lib/research";
 import { CaseCard, TopicCard } from "@/components/research-ui";
 import { topics } from "@/lib/topics";
+export const metadata={...pageMetadata(siteName,siteDescription,"/"),title:{absolute:`${siteName} | المصدر أولًا`}};
 export default function HomePage() {
   return (
     <>

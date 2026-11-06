@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/site-metadata";
 import { NarratorFindingLinks } from "@/components/narrator-finding-links";
 import Link from "next/link";
 import { narrators,referenceBooks,findingNames,findings,narratorEvidenceHref,affiliationCategories } from "@/lib/rijal";
@@ -5,7 +6,7 @@ import { normalize,ar } from "@/lib/research";
 import { queryText } from "@/lib/request-policy";
 import { PageHeading } from "@/components/research-ui";
 export const dynamic="force-dynamic";
-export const metadata={title:"الرواة وأقوال النقاد"};
+export const metadata=pageMetadata("الرواة وأقوال النقاد","تتبّع أقوال النقاد في الرواة مع نص الاقتباس وسياقه وموضعه المظلل في الصفحات المصوّرة.","/narrators");
 export default async function NarratorsPage({searchParams}:{searchParams:Promise<{q?:string;finding?:string;source_book?:string}>}){
  const params=await searchParams;const q=queryText(params.q).trim();const finding=Object.hasOwn(findingNames,params.finding||"")?params.finding!:"";const book=queryText(params.source_book,20);
  const rows=narrators.filter(person=>(!finding||person.categories.includes(finding))&&(!book||person.evidence.some(e=>String(e.book_id)===book))&&normalize(q).split(/\s+/).filter(Boolean).every(word=>normalize([person.name,...person.aliases,...findings(person).flatMap(f=>[f.critic,f.label])].join(" ")).includes(word)));
