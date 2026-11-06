@@ -7,7 +7,7 @@ import type { MediaCatalogue, MediaDescription } from "./media-catalogue";
 import { normalize } from "./research";
 
 export const sectionNames: Record<string, string> = {
-  books: "الكتب والبحوث الكاملة", excerpts: "المقتطفات والشواهد", video: "فيديو", audio: "صوت", all: "الكل",
+  books: "الكتب والبحوث والمراجع", excerpts: "المقتطفات والشواهد", video: "فيديو", audio: "صوت", all: "الكل",
 };
 const formNames: Record<string, string> = {
   book: "كتاب كامل", volume: "مجلد كامل من كتاب", research: "بحث / مقال كامل", excerpt: "مقتطف / شواهد", draft: "مسودة غير مكتملة",

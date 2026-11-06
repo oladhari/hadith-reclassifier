@@ -2349,3 +2349,27 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .corpus-inventory { margin: 2rem 0; }
 .corpus-inventory > summary { cursor: pointer; font-weight: 700; padding: 1rem; border: 1px solid var(--line); }
 .main-hadith-results { margin-block: 2rem; }
+
+/* Source books and cited narrator entries. */
+.book-theme-nav { display:flex; flex-wrap:wrap; gap:8px; margin:22px 0; }
+.book-theme-nav a { border:1px solid #d9dce2; padding:9px 14px; background:#fff; }
+.book-theme-nav a.selected { background:#1e2e49; color:#fff; }
+.book-theme-group { margin:24px 0; }
+.book-theme-group h3 { border-bottom:2px solid #b88d60; padding-bottom:10px; }
+.reference-book-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr)); gap:18px; }
+.reference-book-card { border:1px solid #d9dce2; padding:20px; background:#fff; }
+.reference-book-card h3 { margin:12px 0; }
+.reference-book-card small { display:block; color:#566174; line-height:1.8; }
+.narrator-table-wrap { overflow-x:auto; margin:20px 0 36px; border:1px solid #d9dce2; background:#fff; }
+.narrator-table { width:100%; min-width:760px; border-collapse:collapse; text-align:right; }
+.narrator-table caption { padding:16px; text-align:right; color:#566174; font-size:14px; }
+.narrator-table th,.narrator-table td { border-top:1px solid #d9dce2; padding:16px; vertical-align:top; line-height:1.9; }
+.narrator-table thead th { background:#e8ebf0; }
+.narrator-table tbody th { min-width:175px; }
+.narrator-table a { text-decoration:underline; text-underline-offset:4px; }
+.narrator-finding { border-inline-start:3px solid #b88d60; padding-inline-start:18px; margin:24px 0; }
+.source-context { white-space:pre-wrap; line-height:2.1; }
+@media (min-width:761px) and (max-width:1150px) {
+  .header-inner { flex-wrap:wrap; justify-content:center; gap:8px; padding-block:14px; }
+  .main-nav { flex-wrap:wrap; justify-content:center; gap:14px; font-size:13px; }
+}

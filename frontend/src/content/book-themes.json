@@ -1,0 +1,38 @@
+{
+  "themes": {
+    "rijal": "علم الرجال والجرح والتعديل",
+    "hadith": "الحديث ونقد الروايات",
+    "history": "التاريخ والتراجم",
+    "uthman": "عثمان بن عفان والفتنة",
+    "creed": "العقيدة والفرق",
+    "research": "الدراسات والمناهج"
+  },
+  "assignments": {
+    "65": "rijal",
+    "1078": "rijal",
+    "1947": "rijal",
+    "70": "hadith",
+    "130": "hadith",
+    "634": "hadith",
+    "737": "hadith",
+    "1173": "hadith",
+    "1768": "hadith",
+    "2209": "hadith",
+    "882": "history",
+    "1058": "history",
+    "1753": "history",
+    "2424": "history",
+    "1099": "uthman",
+    "1193": "uthman",
+    "1912": "uthman",
+    "909": "creed",
+    "910": "creed",
+    "911": "creed",
+    "912": "creed",
+    "913": "creed",
+    "914": "creed",
+    "915": "creed",
+    "2388": "research",
+    "1000324": "research"
+  }
+}

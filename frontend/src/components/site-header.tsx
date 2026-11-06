@@ -6,6 +6,7 @@ import { useState } from "react";
 const links = [
   ["/topics", "القضايا والأدلة"],
   ["/library", "المكتبة"],
+  ["/narrators", "الرواة"],
   ["/methodology", "المنهج"],
   ["/corpus", "البحث في الأحاديث"],
 ];

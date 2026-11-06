@@ -1,0 +1,20 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { narrators,referenceBooks,groupedFindings,quotedLabels } from "@/lib/rijal";
+import { PageHeading } from "@/components/research-ui";
+export const dynamic="force-dynamic";
+type Params={params:Promise<{slug:string}>};
+export async function generateMetadata({params}:Params){const {slug}=await params;return {title:narrators.find(n=>n.slug===slug)?.name||"الترجمة غير موجودة"};}
+export default async function NarratorPage({params}:Params){
+ const {slug}=await params;const person=narrators.find(n=>n.slug===slug);if(!person)notFound();
+ return <><div className="breadcrumb"><Link href="/narrators">الرواة وأقوال النقاد</Link><span>/</span><span>{person.name}</span></div>
+ <PageHeading eyebrow="ترجمة موثقة بالنقول" title={person.name} description="أقوال منسوبة إلى نقادها، مع نصها وموضعها وسياقها. النقول المعروضة لا تمثل استقصاءً لجميع المصادر أو حكماً مستقلاً من الموسوعة." />
+ <section className="article-section"><h2>الأوصاف المفهرسة</h2><p><strong>في التشيع:</strong> {quotedLabels(person,true).join(" · ")||"لم يرد في النقول المعروضة"}</p><p><strong>في النقد والتوثيق:</strong> {quotedLabels(person,false).join(" · ")||"لا قول آخر في المقتطف المعروض"}</p><p className="small muted">يبقى كل لفظ منسوباً إلى قائله؛ لا يجمع الفهرس الأقوال في درجة رقمية. هوية الراوي في أي إسناد تحتاج مقابلة مستقلة قبل تطبيق الحكم على الطريق.</p></section>
+ {person.evidence.map(e=>{const book=referenceBooks.find(b=>b.id===e.book_id)!;return <section className="article-section" key={`${e.book_id}-${e.page_id}`} data-narrator-source={`${e.book_id}/${e.page_id}`}>
+ <h2>{book.title} — {e.locator}</h2><dl className="metadata-list"><div><dt>المؤلف</dt><dd>{book.author}</dd></div><div><dt>الطبعة المنقول عنها</dt><dd>{book.edition}</dd></div><div><dt>رقم الترجمة</dt><dd>{e.entry_number}</dd></div></dl>
+ {groupedFindings(e).map((f,index)=><div className="narrator-finding" key={index}><h3>{f.critic}</h3><blockquote><p>{f.quote}</p></blockquote><p className="small muted">الألفاظ المفهرسة: {[...new Set(f.labels)].join(" · ")}</p></div>)}
+ <p><a className="button button-dark" href={e.url} target="_blank" rel="noopener noreferrer">افتح النص في موضعه بالشاملة ↗</a> <Link className="text-link" href={`/library/references/${book.id}`}>بطاقة الكتاب وطرق القراءة ←</Link></p>
+ <details><summary>سياق الترجمة في الصفحة</summary><p className="source-context">{e.context}</p></details><p className="small muted">مقابلة بالنص الإلكتروني؛ الصورة المطبوعة لهذا الموضع لم تُقابل بعد. قد تمتد الترجمة إلى صفحات أخرى؛ رابط المصدر يتيح متابعة السياق.</p>
+ </section>;})}
+ <Link className="text-link" href="/narrators">العودة إلى جدول الرواة ←</Link></>;
+}

@@ -1,0 +1,802 @@
+{
+  "version": 1,
+  "scope": "initial_cited_directory_not_exhaustive",
+  "entries": [
+    {
+      "slug": "aban-ibn-taghlib",
+      "name": "أبان بن تغلب",
+      "aliases": [],
+      "categories": [
+        "shii_jald",
+        "reliability",
+        "ghulu"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 5,
+          "entry_number": 2,
+          "locator": "1/ 5",
+          "url": "https://shamela.ws/book/1692/5",
+          "source_text_sha256": "79b1665d44bd5151a7f4726a3ae0803b6fce61706d0237f95b94d6006b7749eb",
+          "context": "٢ - أبان (٢) بن تغلب [م، عو] (٣) الكوفي شيعي جلد، لكنه صدوق، فلنا صدقه وعليه بدعته.\nوقد وثقه أحمد بن حنبل، وابن معين، وأبو حاتم، وأورده ابن عدي، وقال: كان غاليا في التشيع.\nوقال السعدي: زائغ مجاهر.\nفلقائل أن يقول: كيف ساغ توثيق مبتدع وحد الثقة العدالة والإتقان؟ فكيف يكون عدلا من هو صاحب بدعة؟ وجوابه أن البدعة على ضربين: فبدعة صغرى كغلو التشيع، أو كالتشيع بلا غلو ولا تحرف، فهذا كثير في التابعين وتابعيهم مع الدين والورع والصدق.\nفلو رد حديث هؤلاء لذهب جملة من الآثار النبوية، وهذه مفسدة بينة.",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "شيعي جلد، لكنه صدوق، فلنا صدقه وعليه بدعته.",
+              "category": "shii_jald",
+              "label": "شيعي جلد"
+            },
+            {
+              "critic": "الذهبي",
+              "quote": "شيعي جلد، لكنه صدوق، فلنا صدقه وعليه بدعته.",
+              "category": "reliability",
+              "label": "صدوق"
+            },
+            {
+              "critic": "ابن عدي، بنقل الذهبي",
+              "quote": "وقال: كان غاليا في التشيع.",
+              "category": "ghulu",
+              "label": "غال في التشيع"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "ahmad-ibn-salama",
+      "name": "أحمد بن سلمة المدائني",
+      "aliases": [],
+      "categories": [
+        "accused"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 101,
+          "entry_number": 395,
+          "locator": "1/ 101",
+          "url": "https://shamela.ws/book/1692/101",
+          "source_text_sha256": "da768e921e8f71d098f3518f13fe35b30cdcacc13a4f21278dd840cbfc2d6c46",
+          "context": "٣٩٥ - أحمد بن سلمة المدائني.\nعن منصور بن عمار.\nمتهم بالكذب.",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "متهم بالكذب.",
+              "category": "accused",
+              "label": "متهم بالكذب"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "ibrahim-ibn-al-hakam",
+      "name": "إبراهيم بن الحكم بن ظهير",
+      "aliases": [],
+      "categories": [
+        "shii_jald",
+        "liar",
+        "weak"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 27,
+          "entry_number": 73,
+          "locator": "1/ 27",
+          "url": "https://shamela.ws/book/1692/27",
+          "source_text_sha256": "40e6e64acab21b6226caf6eae9a73366b10a64cfb6ee43c5b455e9d2ff66272c",
+          "context": "٧٣ - إبراهيم بن الحكم بن ظهير الكوفي.\nشيعي جلد.\nله عن شريك.\nقال أبو حاتم: كذاب.\nروى في مثالب معاوية فمزقنا ما كتبنا عنه.\nوقال الدارقطني: ضعيف.\nقلت: قد اختلف الناس في الاحتجاج برواية الرافضة على ثلاثة أقوال: أحدها - المنع مطلقاً.\nالثاني - الترخص مطلقاً إلا فيمن يكذب ويضع.\nالثالث - التفصيل، فتقبل رواية الرافضي الصدوق العارف بما يحدث، وترد رواية الرافضي الداعية ولو كان صدوقاً.\nقال أشهب: سئل مالك عن الرافضة.\nفقال: لا تكلمهم ولا تروعنهم، فإنهم يكذبون.",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "شيعي جلد.",
+              "category": "shii_jald",
+              "label": "شيعي جلد"
+            },
+            {
+              "critic": "أبو حاتم، بنقل الذهبي",
+              "quote": "قال أبو حاتم: كذاب.",
+              "category": "liar",
+              "label": "كذاب"
+            },
+            {
+              "critic": "الدارقطني، بنقل الذهبي",
+              "quote": "وقال الدارقطني: ضعيف.",
+              "category": "weak",
+              "label": "ضعيف"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "jafar-ibn-al-zubayr",
+      "name": "جعفر بن الزبير",
+      "aliases": [],
+      "categories": [
+        "abandoned"
+      ],
+      "evidence": [
+        {
+          "book_id": 8609,
+          "page_id": 66,
+          "entry_number": 939,
+          "locator": "ص 140",
+          "url": "https://shamela.ws/book/8609/66",
+          "source_text_sha256": "58002ba7c842ee70a2a91f2bda72af4b7259a228e7d982b2734429dbe67bbd5d",
+          "context": "٩٣٩- جعفر ابن الزبير الحنفي أو الباهلي الدمشقي نزيل البصرة متروك الحديث وكان صالحا في نفسه من السابعة مات بعد الأربعين ق",
+          "findings": [
+            {
+              "critic": "ابن حجر",
+              "quote": "متروك الحديث وكان صالحا في نفسه",
+              "category": "abandoned",
+              "label": "متروك الحديث؛ وكان صالحاً في نفسه"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "jafar-ibn-ziyad",
+      "name": "جعفر بن زياد الأحمر",
+      "aliases": [],
+      "categories": [
+        "tashayyu",
+        "reliability"
+      ],
+      "evidence": [
+        {
+          "book_id": 8609,
+          "page_id": 66,
+          "entry_number": 940,
+          "locator": "ص 140",
+          "url": "https://shamela.ws/book/8609/66",
+          "source_text_sha256": "58002ba7c842ee70a2a91f2bda72af4b7259a228e7d982b2734429dbe67bbd5d",
+          "context": "٩٤٠- جعفر ابن زياد الأحمر الكوفي صدوق يتشيع من السابعة مات سنة سبع وستين ل ت س",
+          "findings": [
+            {
+              "critic": "ابن حجر",
+              "quote": "صدوق يتشيع",
+              "category": "tashayyu",
+              "label": "يتشيع"
+            },
+            {
+              "critic": "ابن حجر",
+              "quote": "صدوق يتشيع",
+              "category": "reliability",
+              "label": "صدوق"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "jafar-ibn-sulayman",
+      "name": "جعفر بن سليمان الضبعي",
+      "aliases": [],
+      "categories": [
+        "tashayyu",
+        "reliability"
+      ],
+      "evidence": [
+        {
+          "book_id": 8609,
+          "page_id": 66,
+          "entry_number": 942,
+          "locator": "ص 140",
+          "url": "https://shamela.ws/book/8609/66",
+          "source_text_sha256": "58002ba7c842ee70a2a91f2bda72af4b7259a228e7d982b2734429dbe67bbd5d",
+          "context": "٩٤٢- جعفر ابن سليمان الضبعي بضم المعجمة وفتح الموحدة أبو سليمان البصري صدوق زاهد لكنه كان يتشيع من الثامنة مات سنة ثمان وسبعين بخ م ٤",
+          "findings": [
+            {
+              "critic": "ابن حجر",
+              "quote": "صدوق زاهد لكنه كان يتشيع",
+              "category": "tashayyu",
+              "label": "كان يتشيع"
+            },
+            {
+              "critic": "ابن حجر",
+              "quote": "صدوق زاهد لكنه كان يتشيع",
+              "category": "reliability",
+              "label": "صدوق زاهد"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "zubayd-al-yami",
+      "name": "زبيد بن الحارث اليامي",
+      "aliases": [],
+      "categories": [
+        "mild",
+        "reliability"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 733,
+          "entry_number": 2829,
+          "locator": "2/ 66",
+          "url": "https://shamela.ws/book/1692/733",
+          "source_text_sha256": "73ba6d7a9a3cc876d05dd5417d279dbbed68ef6df08e933dfc38f6b3dd24a0bf",
+          "context": "[زبيد]\n٢٨٢٩ -[صح] زبيد بن الحارث [ع] اليامى، من ثقات التابعين، فيه تشيع يسير.\nقال القطان: ثبت.\nوقال غير واحد: هو ثقة.\nوقال أبو إسحاق الجوزجاني -\nكعوائده في فظاظة عبارته: كان من أهل الكوفة قوم لا يحمد الناس مذاهبهم، هم رءوس محدثي الكوفة، مثل أبي إسحاق، ومنصور، وزبيد اليامى، والأعمش، وغيرهم من أقرانهم احتملهم الناس لصدق ألسنتهم في الحديث وتوقفوا عندما أرسلوا.",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "من ثقات التابعين، فيه تشيع يسير.",
+              "category": "mild",
+              "label": "فيه تشيع يسير"
+            },
+            {
+              "critic": "الذهبي",
+              "quote": "من ثقات التابعين، فيه تشيع يسير.",
+              "category": "reliability",
+              "label": "من ثقات التابعين"
+            },
+            {
+              "critic": "القطان، بنقل الذهبي",
+              "quote": "قال القطان: ثبت.",
+              "category": "reliability",
+              "label": "ثبت"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "sahl-ibn-ali",
+      "name": "سهل بن علي",
+      "aliases": [],
+      "categories": [
+        "accused"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 907,
+          "entry_number": 3588,
+          "locator": "2/ 240",
+          "url": "https://shamela.ws/book/1692/907",
+          "source_text_sha256": "1c98d07cc20cec8667e5b27bfc6f2dd581dfd55bd64b08935b8a81132eed4da7",
+          "context": "٣٥٨٨ - سهل بن علي.\nشيخ حدث عن علي بن الجعد وغيره.\nمتهم بالكذب، قاله أبو مزاحم الخاقاني.",
+          "findings": [
+            {
+              "critic": "أبو مزاحم الخاقاني، بنقل الذهبي",
+              "quote": "متهم بالكذب، قاله أبو مزاحم الخاقاني.",
+              "category": "accused",
+              "label": "متهم بالكذب"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "sayf-ibn-muhammad",
+      "name": "سيف بن محمد الكوفي",
+      "aliases": [],
+      "categories": [
+        "liar",
+        "abandoned"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 923,
+          "entry_number": 3639,
+          "locator": "2/ 256",
+          "url": "https://shamela.ws/book/1692/923",
+          "source_text_sha256": "8cb01b43fff74cf6427b9421477693b1f3eb1e88af7ba33ad15ec0cf711dc73a",
+          "context": "٣٦٣٩ - سيف بن محمد [ت] الكوفي ابن أخت سفيان الثوري.\nروى عن عاصم الأحول، والأعمش، وطائفة.\nوعنه محمود بن خداش، وأحمد بن أبي شريج، وطائفة.\nروى عبد الله بن أحمد عن أبيه: كذاب.\nوروى عثمان بن سعيد، عن يحيى: كذاب خبيث، كان ها هنا.\nوقال أبو حاتم: لا يكتب حديثه.\nوعن ابن معين: كذاب، وأخوه عمار ثقة.\nوقال النسائي: ضعيف.\nوقال - ومرة: متروك.\nليس بثقة.\nوقال الدارقطني",
+          "findings": [
+            {
+              "critic": "أحمد بن حنبل، من رواية ابنه بنقل الذهبي",
+              "quote": "روى عبد الله بن أحمد عن أبيه: كذاب.",
+              "category": "liar",
+              "label": "كذاب"
+            },
+            {
+              "critic": "أبو حاتم، بنقل الذهبي",
+              "quote": "وقال أبو حاتم: لا يكتب حديثه.",
+              "category": "abandoned",
+              "label": "لا يكتب حديثه"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "abd-al-rahman-ibn-hatim",
+      "name": "عبد الرحمن بن حاتم المرادي القفطي",
+      "aliases": [],
+      "categories": [
+        "abandoned",
+        "counterassessment"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 1221,
+          "entry_number": 4839,
+          "locator": "2/ 554",
+          "url": "https://shamela.ws/book/1692/1221",
+          "source_text_sha256": "4686a692783d1c7d8045d538d4492d1a5db8fdeda5ae0eb836344e74bbbfc20f",
+          "context": "٤٨٣٩ - عبد الرحمن بن حاتم المرادي القفطى.\nقال ابن الجوزي: متروك الحديث.\nقلت: هذا من شيوخ الطبراني، ما علمت به بأسا.\nيروي عن نعيم بن حماد،\nوجماعة.",
+          "findings": [
+            {
+              "critic": "ابن الجوزي، بنقل الذهبي",
+              "quote": "قال ابن الجوزي: متروك الحديث.",
+              "category": "abandoned",
+              "label": "متروك الحديث"
+            },
+            {
+              "critic": "الذهبي، معقباً",
+              "quote": "قلت: هذا من شيوخ الطبراني، ما علمت به بأسا.",
+              "category": "counterassessment",
+              "label": "ما علمت به بأسا"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "abd-al-rahman-ibn-yazid",
+      "name": "عبد الرحمن بن يزيد بن تميم الدمشقي",
+      "aliases": [],
+      "categories": [
+        "abandoned",
+        "weak"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 1265,
+          "entry_number": 5006,
+          "locator": "2/ 598",
+          "url": "https://shamela.ws/book/1692/1265",
+          "source_text_sha256": "201fe37c84915bb59ceee63b3ca0f750d24497aeaccd3a26ead44d6574760b73",
+          "context": "٥٠٠٦ - عبد الرحمن بن يزيد [س، ق] بن تميم الدمشقي.\nعن مكحول وغيره.\nلينه أحمد شيئا.\nوقال أحمد: له حديث معضل.\nوقال البخاري: منكر الحديث.\nوقال النسائي: متروك الحديث، شامي.\nقلت: هذا عجيب، إذ يروي له ويقول: متروك.\nوقال دحيم: منكر الحديث.\nوضعفه أحمد أيضا فقال: قلب أحاديث شهر بن حوشب، فجعلها حديث الزهري.\nوقال أبو زرعة: ضعيف.\nوقال الدارقطني وغيره: متروك الحديث.\nالحكم بن موسى، حدثنا الوليد، عن عبد الرحمن بن يزيد بن تميم، عن الزهري، عن عبد الرحمن بن عبد الله بن كعب، عن كعب بن مالك، قال: كان رسول الله صلى الله عليه وسلم إذا قدم من سفر بدأ بالمسجد فصلى فيه ركعتين، ثم يقعد ما قدر له لمسائل الناس ولكلامهم.\nدحيم، حدثنا الوليد بن مسلم، حدثنا عبد الرحمن بن يزيد بن تميم، حدثنا علي بن بذيمة، سمع سعيد بن جبير يحدث عن ابن عباس قال رجل: يارسول الله، إنى أصبت امرأتي وهى حائض.\nفأمره النبي صلى الله عليه وسلم أن يعتق نسمة.",
+          "findings": [
+            {
+              "critic": "النسائي، بنقل الذهبي",
+              "quote": "وقال النسائي: متروك الحديث، شامي.",
+              "category": "abandoned",
+              "label": "متروك الحديث"
+            },
+            {
+              "critic": "أبو زرعة، بنقل الذهبي",
+              "quote": "وقال أبو زرعة: ضعيف.",
+              "category": "weak",
+              "label": "ضعيف"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "abdallah-ibn-isa",
+      "name": "عبد الله بن عيسى بن عبد الرحمن بن أبي ليلى",
+      "aliases": [],
+      "categories": [
+        "tashayyu",
+        "reliability",
+        "weak"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 1137,
+          "entry_number": 4495,
+          "locator": "2/ 470",
+          "url": "https://shamela.ws/book/1692/1137",
+          "source_text_sha256": "edec9b52f6b7e082cabc2cf57f97b7892c7608fcb63d03508e5d0f6cf59c6613",
+          "context": "٤٤٩٥ - عبد الله بن عيسى بن عبد الرحمن بن أبي ليلى [ع] .\nعن جده، وسعيد ابن جبير، وعكرمة.\nوعنه عمه محمد بن عبد الرحمن، وشعبة، والثوري، وعدة.\nقال ابن معين: ثقة، يتشيع.\nوقال النسائي: ثقة ثبت.\nوقال أبو حاتم: صالح.\nوقال ابن المديني: هو عندي منكر.\n[٢٠٢] قال ابن معين: مات سنة ثلاثين ومائة /.",
+          "findings": [
+            {
+              "critic": "ابن معين، بنقل الذهبي",
+              "quote": "قال ابن معين: ثقة، يتشيع.",
+              "category": "tashayyu",
+              "label": "يتشيع"
+            },
+            {
+              "critic": "ابن معين، بنقل الذهبي",
+              "quote": "قال ابن معين: ثقة، يتشيع.",
+              "category": "reliability",
+              "label": "ثقة"
+            },
+            {
+              "critic": "النسائي، بنقل الذهبي",
+              "quote": "وقال النسائي: ثقة ثبت.",
+              "category": "reliability",
+              "label": "ثقة ثبت"
+            },
+            {
+              "critic": "أبو حاتم، بنقل الذهبي",
+              "quote": "وقال أبو حاتم: صالح.",
+              "category": "reliability",
+              "label": "صالح"
+            },
+            {
+              "critic": "ابن المديني، بنقل الذهبي",
+              "quote": "وقال ابن المديني: هو عندي منكر.",
+              "category": "weak",
+              "label": "هو عندي منكر"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "ali-ibn-hashim",
+      "name": "علي بن هاشم بن البريد",
+      "aliases": [],
+      "categories": [
+        "tashayyu",
+        "reliability",
+        "ghulu"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 1511,
+          "entry_number": 5960,
+          "locator": "3/ 160",
+          "url": "https://shamela.ws/book/1692/1511",
+          "source_text_sha256": "c900a0397a76e98b4103a83033811966485e41e4cd8c72683a930ec8d948a729",
+          "context": "٥٩٦٠ - على بن هاشم [م، عو] بن البريد، أبو الحسن الكوفي الخزاز، مولى قريش.\nعن هشام بن عروة، وجماعة.\nوعنه أحمد، وابنا أبي شيبة، وخلق.\nوثقة ابن معين، وغيره.\nوقال أبو داود: ثبت يتشيع.\nوقال البخاري: كان هو وأبوه غاليين في مذهبهما.\nوقال ابن حبان: غال في التشيع.\nروى المناكير عن المشاهير.\nقلت: ولغلوه ترك البخاري إخراج حديثه، فإنه يتجنب الرافضة كثيرا، كأنه يخاف من تدينهم بالتقية ولانراه يتجنب القدرية ولا الخوارج ولا الجهمية، فإنهم على بدعهم يلزمون الصدق، وعلى بن هاشم، قال أحمد: سمعت منه مجلسا واحدا.\nقلت: ومات قديما في سنة إحدى وثمانين ومائة (١) ، فلعله أقدم مشيخة الامام أحمد وفاة.\nقال جعفر بن ابان: سمعت ابن نمير يقول: على بن هاشم كان مفرطا في التشيع منكر الحديث.\nقال ابن حبان: حدثنا مكحول، سمعت جعفرا بهذا.\nقال أبو زرعة: صدوق.\nوقال النسائي: ليس به بأس.",
+          "findings": [
+            {
+              "critic": "أبو داود، بنقل الذهبي",
+              "quote": "وقال أبو داود: ثبت يتشيع.",
+              "category": "tashayyu",
+              "label": "يتشيع"
+            },
+            {
+              "critic": "أبو داود، بنقل الذهبي",
+              "quote": "وقال أبو داود: ثبت يتشيع.",
+              "category": "reliability",
+              "label": "ثبت"
+            },
+            {
+              "critic": "ابن حبان، بنقل الذهبي",
+              "quote": "وقال ابن حبان: غال في التشيع.",
+              "category": "ghulu",
+              "label": "غال في التشيع"
+            },
+            {
+              "critic": "أبو زرعة، بنقل الذهبي",
+              "quote": "قال أبو زرعة: صدوق.",
+              "category": "reliability",
+              "label": "صدوق"
+            },
+            {
+              "critic": "النسائي، بنقل الذهبي",
+              "quote": "وقال النسائي: ليس به بأس.",
+              "category": "reliability",
+              "label": "ليس به بأس"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "amr-ibn-khalid",
+      "name": "عمرو بن خالد القرشي الواسطي",
+      "aliases": [],
+      "categories": [
+        "liar",
+        "weak"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 1608,
+          "entry_number": 6359,
+          "locator": "3/ 257",
+          "url": "https://shamela.ws/book/1692/1608",
+          "source_text_sha256": "e1289064505182d21a040eb0ee70f53a643f864df2206c95e6f2ea586d277541",
+          "context": "٦٣٥٩ - عمرو بن خالد [ق] القرشي.\nكوفي، أبو خالد.\nتحول إلى واسط.\nقالت وكيع: كان في جوارنا، يضع الحديث، فلما فطن له تحول إلى واسط.\nوقال معلى بن منصور، عن أبي عوانة: كان عمرو بن خالد يشترى الصحف من الصيادلة ويحدث بها.\nوروى عباس، عن يحيى، قال: كذاب غير ثقة.\nحدث عنه أبو حفص الابار وغيره، فروى عن زيد بن علي، عن آبائه.\nوروى عثمان بن سعيد، عن يحيى، قال: عمرو بن خالد الذي يروي عنه الابار كذاب.\nوروى أحمد بن ثابت، عن أحمد بن حنبل، قال: عمرو بن خالد الواسطي كذاب.\nوقال النسائي: روى عن حبيب بن أبي ثابت، كوفي ليس بثقة.\nوقال الدارقطني: كذاب.\nوروى إبراهيم بن هراسة أحد المتروكين، عن أبي خالد، عن زيد بن علي، عن أبيه، عن علي، قال: لعن رسول الله صلى الله عليه وسلم الذكرين يغلب أحدهما صاحبه (١) .",
+          "findings": [
+            {
+              "critic": "الدارقطني، بنقل الذهبي",
+              "quote": "وقال الدارقطني: كذاب.",
+              "category": "liar",
+              "label": "كذاب"
+            },
+            {
+              "critic": "النسائي، بنقل الذهبي",
+              "quote": "وقال النسائي: روى عن حبيب بن أبي ثابت، كوفي ليس بثقة.",
+              "category": "weak",
+              "label": "ليس بثقة"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "kathir-al-nawwa",
+      "name": "كثير بن إسماعيل النواء",
+      "aliases": [],
+      "categories": [
+        "shii_jald",
+        "weak",
+        "ghulu"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 1753,
+          "entry_number": 6930,
+          "locator": "3/ 402",
+          "url": "https://shamela.ws/book/1692/1753",
+          "source_text_sha256": "5d4c343c689fdd4f52090ba2358ea96e4c2b92eac4013e04c076dac97cce94bd",
+          "context": "٦٩٣٠ - كثير بن إسماعيل النواء [ت] ، أبو إسماعيل.\nعن عطية العوفى وغيره.\nوعنه ابن فضيل، وجماعة.\nشيعي جلد.\nضعفه أبو حاتم، والنسائي.\nوقال ابن عدي: مفرط في التشيع.\nوقال السعدي: زائغ.\nمنصور بن أبي الأسود، حدثنا كثير النواء، عن عبد الله بن مليل، سمعت عليا يقول: قال رسول الله صلى الله عليه وسلم: إن لكل نبي سبعة نجباء ... الحديث.\nأبو عقيل يحيى بن المتوكل، حدثنا كثير النواء، عن إبراهيم بن الحسن، عن أبيه، عن جده - مرفوعاً، قال: يكون بعدى قوم من أمتى يسمون الرافضة يرفضون الإسلام.",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "شيعي جلد.",
+              "category": "shii_jald",
+              "label": "شيعي جلد"
+            },
+            {
+              "critic": "أبو حاتم والنسائي، بنقل الذهبي",
+              "quote": "ضعفه أبو حاتم، والنسائي.",
+              "category": "weak",
+              "label": "ضعفه أبو حاتم والنسائي"
+            },
+            {
+              "critic": "ابن عدي، بنقل الذهبي",
+              "quote": "وقال ابن عدي: مفرط في التشيع.",
+              "category": "ghulu",
+              "label": "مفرط في التشيع"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "muhammad-ibn-abi-al-dhikr",
+      "name": "محمد بن جعفر بن أبي الذكر المصري",
+      "aliases": [],
+      "categories": [
+        "rafidi_jald"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 1852,
+          "entry_number": 7317,
+          "locator": "3/ 501",
+          "url": "https://shamela.ws/book/1692/1852",
+          "source_text_sha256": "9bc131ee863155248302ca234526b163eba327497d7c3b754a008d8b704401b2",
+          "context": "٧٣١٧ - محمد بن جعفر بن أبي الذكر المصري.\nيروي عن الحسن بن رشيق.\nرافضي جلد (١) .",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "رافضي جلد",
+              "category": "rafidi_jald",
+              "label": "رافضي جلد"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "muhammad-ibn-wadan",
+      "name": "محمد بن علي بن ودعان",
+      "aliases": [],
+      "categories": [
+        "accused"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 2008,
+          "entry_number": 7983,
+          "locator": "3/ 657",
+          "url": "https://shamela.ws/book/1692/2008",
+          "source_text_sha256": "246906b73f1d27829887b84202878345e8715514a43d20350687f6f031272c22",
+          "context": "٧٩٨٣ - محمد بن علي بن ودعان القاضي، أبو نصر الموصلي، صاحب تلك الأربعين الودعانية (٥) الموضوعة ذمه أبو طاهر السلفي، وأدركه، وسمع منه، وقال: هالك متهم بالكذب.\nقلت: توفى سنة أربع وتسعين وأربعمائة في المحرم بالموصل عقيب رجوعه من بغداد عن ثنتين وتسعين سنة.",
+          "findings": [
+            {
+              "critic": "أبو طاهر السلفي، بنقل الذهبي",
+              "quote": "هالك متهم بالكذب.",
+              "category": "accused",
+              "label": "متهم بالكذب"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "muhammad-al-ubaydali",
+      "name": "محمد بن محمد بن علي العبيدلي",
+      "aliases": [],
+      "categories": [
+        "rafidi_jald",
+        "weak"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 2060,
+          "entry_number": 8142,
+          "locator": "4/ 30",
+          "url": "https://shamela.ws/book/1692/2060",
+          "source_text_sha256": "e26d3417ba4b6aae68c35287a87033eac7621d0c85c5aa53e23fb9ae54c59638",
+          "context": "٨١٤٢ - محمد بن محمد بن علي الشريف، أبو الحسن الحسينى العبيدلى (٤) النسابة المعمر.\nرافضي جلد.\nمتهم في لقى صاحب الاغانى أبي الفرج.\nمات سنة ست وثلاثين وأربعمائة.\nضعفه ابن خيرون.",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "رافضي جلد.",
+              "category": "rafidi_jald",
+              "label": "رافضي جلد"
+            },
+            {
+              "critic": "ابن خيرون، بنقل الذهبي",
+              "quote": "ضعفه ابن خيرون.",
+              "category": "weak",
+              "label": "ضعفه ابن خيرون"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "muhammad-ibn-musa-al-sadi",
+      "name": "محمد بن موسى السعدي",
+      "aliases": [],
+      "categories": [
+        "unknown",
+        "weak"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 2080,
+          "entry_number": 8229,
+          "locator": "4/ 50",
+          "url": "https://shamela.ws/book/1692/2080",
+          "source_text_sha256": "3cce883d5df4a155a97e567b94eaf8b2e65d2b6c0cadb188b2efeb6e92854f94",
+          "context": "٨٢٢٩ - محمد بن موسى السعدي.\nعن عمرو بن دينار القهرمان.\nمجهول.\nوقال ابن عدي: منكر الحديث، لم أر أحدا حدث عنه [غير] (١) محمد بن عبد الله بن حفص الأنصاري.",
+          "findings": [
+            {
+              "critic": "الذهبي",
+              "quote": "مجهول.",
+              "category": "unknown",
+              "label": "مجهول"
+            },
+            {
+              "critic": "ابن عدي، بنقل الذهبي",
+              "quote": "وقال ابن عدي: منكر الحديث",
+              "category": "weak",
+              "label": "منكر الحديث"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    },
+    {
+      "slug": "muhammad-al-fitri",
+      "name": "محمد بن موسى الفطري",
+      "aliases": [],
+      "categories": [
+        "tashayyu",
+        "reliability"
+      ],
+      "evidence": [
+        {
+          "book_id": 1692,
+          "page_id": 2080,
+          "entry_number": 8227,
+          "locator": "4/ 50",
+          "url": "https://shamela.ws/book/1692/2080",
+          "source_text_sha256": "3cce883d5df4a155a97e567b94eaf8b2e65d2b6c0cadb188b2efeb6e92854f94",
+          "context": "٨٢٢٧ - محمد بن موسى [م، عو] الفطري المدني.\nعن المقبري، وعبد الله ابن عبد الله بن أبي طلحة، وجماعة.\nوعنه ابن أبي فديك أيضا، وابن مهدي، وقتيبة، وعدة.\nقال أبو حاتم: صدوق يتشيع.\nوقال الترمذي: ثقة.",
+          "findings": [
+            {
+              "critic": "أبو حاتم، بنقل الذهبي",
+              "quote": "قال أبو حاتم: صدوق يتشيع.",
+              "category": "tashayyu",
+              "label": "يتشيع"
+            },
+            {
+              "critic": "أبو حاتم، بنقل الذهبي",
+              "quote": "قال أبو حاتم: صدوق يتشيع.",
+              "category": "reliability",
+              "label": "صدوق"
+            },
+            {
+              "critic": "الترمذي، بنقل الذهبي",
+              "quote": "وقال الترمذي: ثقة.",
+              "category": "reliability",
+              "label": "ثقة"
+            }
+          ],
+          "verification": "electronic_text_checked",
+          "scan_compared": false
+        }
+      ],
+      "scholarly_verdict": null,
+      "hadith_route_identity_linked": false
+    }
+  ]
+}

@@ -1,6 +1,9 @@
 // Query values remain data. SQL is parameterized separately in live-corpus.ts.
 const enums: Record<string, readonly string[]> = {
   collection: ["bukhari", "muslim", "malik", "abudawud", "tirmidhi", "nasai", "ibnmajah", "nawawi40", "qudsi40", "shahwaliullah40", "aladab_almufrad", "bulugh_almaram", "mishkat_almasabih", "riyad_assalihin", "shamail_muhammadiyah", "ahmad", "darimi"],
+  theme: ["rijal", "hadith", "history", "uthman", "creed", "research"],
+  finding: ["mild", "tashayyu", "shii_jald", "rafidi_jald", "ghulu", "liar", "accused", "abandoned", "weak", "unknown", "reliability", "counterassessment"],
+  source_book: ["2170", "3722", "3310", "8609", "1692", "12579"],
   status: ["unreviewed", "in_progress", "needs_review", "accepted", "rejected", "filtered", "book"],
   kind: ["image", "pdf", "document", "video", "audio"],
   section: ["books", "excerpts", "video", "audio", "all"],
