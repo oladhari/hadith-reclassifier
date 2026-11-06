@@ -48,6 +48,7 @@ export default async function AssetPage({ params, searchParams }: {
   const start = Number.isFinite(startValue) && startValue >= 0 && startValue < (entry.duration || 0) ? startValue : 0;
   const end = Number.isFinite(endValue) && endValue > start && endValue <= (entry.duration || 0) ? endValue : undefined;
   const chapter = entry.chapters.find(row => Math.abs(row.start - start) < .1 && end === row.end);
+  const sourcePlatform = entry.source_platform || "TikTok";
   const speech = item.kind === "video" || item.kind === "audio";
   const transcript = entry.has_transcript ? await getTranscript(item.id) : "";
   const documentText = entry.has_document_text ? await getDocumentText(item.id) : "";
@@ -68,7 +69,7 @@ export default async function AssetPage({ params, searchParams }: {
       <p>الوصف التالي من حساب الناشر، وتُنسب إليه الأحكام والعبارات الواردة فيه.</p>
       {(entry.source_posts || [{ url: entry.source_url, caption: entry.source_caption || "" }]).map(post => <div key={post.url}>
         {post.caption ? <blockquote dir="auto">{post.caption}</blockquote> : <p>لم يرفق الناشر وصفًا نصيًا لهذا المنشور.</p>}
-        <a href={post.url} target="_blank" rel="noreferrer">المنشور الأصلي في TikTok — @{entry.source_account} ↗</a>
+        <a href={post.url} target="_blank" rel="noreferrer">المنشور الأصلي في {sourcePlatform} — @{entry.source_account} ↗</a>
       </div>)}
     </details>}
     {chapter && <div className="chapter-heading"><h2>{chapter.title}</h2><p>{chapter.summary}</p><Link href={`/library/${id}#media-player`}>عرض التسجيل الكامل ←</Link></div>}
@@ -82,7 +83,7 @@ export default async function AssetPage({ params, searchParams }: {
       {relatedAlbum && <Link className="button button-outline" href={`/library/albums/${relatedAlbum.key}#source-${item.id}`}>جميع شواهد الكتاب في هذا الموضوع ←</Link>}
       {entry.converted_document && <a className="button button-outline" href={`/api/media/${item.id}?download=1`}>تنزيل الوثيقة الأصلية</a>}
       {!entry.collection_images && <a className="button button-dark" href={entry.asset_url ? src : `${src}?download=1`} download={entry.asset_url ? `${entry.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}><Download size={17} /> {entry.converted_document ? "تنزيل PDF" : entry.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الملف الأصلي"}</a>}
-      {entry.source_url ? <a className="button button-outline" href={entry.source_url} target="_blank" rel="noreferrer">المصدر الأصلي في TikTok ↗</a> : <Link className="button button-outline" href={`/sources/${item.id}`}>بيانات المرجع وصفحاته المرتبطة ←</Link>}
+      {entry.source_url ? <a className="button button-outline" href={entry.source_url} target="_blank" rel="noreferrer">المصدر الأصلي في {sourcePlatform} ↗</a> : <Link className="button button-outline" href={`/sources/${item.id}`}>بيانات المرجع وصفحاته المرتبطة ←</Link>}
       {speech && transcript && <a className="text-link" href={`/transcripts/${id}.vtt`} download>تنزيل الترجمة العربية (VTT)</a>}
     </div>
     {entry.collection_sources && <details className="transcript-panel collection-provenance"><summary>{entry.collection_images ? "الأصول ومعلومات الصور" : "الأصول وترتيب الصفحات"}</summary>

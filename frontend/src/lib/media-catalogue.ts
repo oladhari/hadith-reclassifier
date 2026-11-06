@@ -17,6 +17,7 @@ export type MediaDescription = {
   topics: string[]; cases: string[]; tags: string[]; visible: boolean;
   page_count?: number; duration?: number; has_transcript?: boolean;
   asset_url?: string; asset_size?: number; converted_document?: boolean; manual_video_hidden?: boolean;
+  source_platform?: string;
   source_posts?: { url: string; caption: string }[];
   source_url?: string; source_caption?: string; source_account?: string;
   author_role?: string; author_source?: { page: number; quote: string };

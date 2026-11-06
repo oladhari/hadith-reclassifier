@@ -30,3 +30,15 @@ review decisions, regenerate the corpus manifest/draft projection when their
 contents change, and deploy. Neon remains the research store; the website shows
 the last published snapshot rather than arbitrary unpublished database changes.
 Keep 57 hidden-video decisions and all original/citation URLs intact.
+
+## Explicit Telegram catalogue selections
+
+`telegram-catalogue-overrides.json` preserves individual public selections across
+catalogue refreshes. On 2026-11-06 the user highlighted muawiya4n/1769, already
+stored in R2 but absent from the public projection. Library ID 1001769 is now
+published with a neutral Arabic title, its full attributed channel caption,
+Telegram source link, and a generated preview. Three sampled frames show tables
+of Bukhari's teachers and quotations about narrators described as Shi'i. Duration:
+429.732 seconds. No duplicate candidate appeared against the saved five-frame
+fingerprints of 1,613 archived videos. This selection does not alter the 57
+manual exclusions, make a scholarly ruling, or claim a completed transcription.

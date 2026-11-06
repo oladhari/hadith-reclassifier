@@ -198,6 +198,9 @@ def main():
             raise ValueError(f"Invalid reviewed merge target: {target}")
         canonical["occurrences"] = sorted(set(canonical.get("occurrences", []) + public[source].get("occurrences", []) + [int(source), target]))
         public[source]["canonical_id"] = target
+    telegram_overrides = ROOT / "frontend/src/content/telegram-catalogue-overrides.json"
+    if telegram_overrides.exists():
+        public.update(json.loads(telegram_overrides.read_text()))
     tiktok_overlay = ROOT / "frontend/src/content/tiktok-catalogue-overlay.json"
     if tiktok_overlay.exists():
         for key, patch in json.loads(tiktok_overlay.read_text()).items():
