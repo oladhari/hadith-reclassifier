@@ -123,3 +123,10 @@ book entries or evidence-backed filter completion counts.
 
 Offline safety checks:
 `.research-venv/bin/python -m unittest discover -s scripts -p test_hadith_drafts.py`.
+
+## مصادر الرجال
+
+انظر [مصادر الرجال وسجل الدليل](rijal-evidence.md) للمراجع الستة المتحققة
+البطاقات، وأرشيف الجرح والتعديل، والاسترجاع المجاني من الشاملة. وجود نص
+مسترجع أو OCR لا يحوّله إلى ملاحظة مراجعة؛ تبقى هوية الراوي والطبعة ونسبة
+القول وسياقه وشروط المراجعة مطلوبة لكل طريق.
