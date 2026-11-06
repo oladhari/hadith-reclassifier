@@ -7,7 +7,7 @@ const links = [
   ["/topics", "القضايا والأدلة"],
   ["/library", "المكتبة"],
   ["/methodology", "المنهج"],
-  ["/corpus", "المجموعة الحديثية"],
+  ["/corpus", "البحث في الأحاديث"],
 ];
 export default function SiteHeader() {
   const pathname = usePathname();

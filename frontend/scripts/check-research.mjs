@@ -113,7 +113,7 @@ await page(
 await page("/library?kind=video", "فيديو");
 const library = await page("/library?q=195", "مادة مطابقة");
 assert.ok(library.includes("/library/195"));
-const inventory = await page("/corpus", "مكتبة الحديث وحالة المراجعة");
+const inventory = await page("/corpus", "ابحث عن حديث واقرأ نصّه");
 assert.ok(!inventory.includes('class="hadith-record"'));
 assert.ok(inventory.includes("مسند الإمام أحمد"));
 const acceptedCorpus = await page("/corpus?status=accepted", "لا توجد روايات بهذه الحالة");

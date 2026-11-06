@@ -227,3 +227,18 @@ catalogue/transcript JSON per request; migration checks compare all public metad
 transcripts and document text before and after the change. The public reader has
 no direct access to these base tables or raw provenance. Legacy catalogue refreshes
 preserve the separately reviewed imported entries and their explanations.
+
+### Unified hadith search and reading
+
+Homepage search (`/explore`) shows matching hadiths directly before related topic
+and library results. The same read-only search supports `/corpus`, with the main
+form before the optional inventory/review statistics. Users can enter words,
+Western/Eastern/Persian digits, or a book name and number such as `البخاري 1`.
+Numeric input matches both the collection record number and its supplied Arabic
+reference number; numbering differences remain visible. Query punctuation and
+vocalization are ignored without altering source texts. Interface numbers use
+Western digits. `/corpus/[collection]/[number]` provides a shareable full-text reader
+with references and separate source grades/project review state. Legacy `/search`
+links retain their query when redirected to `/corpus`. No backend AI/API is needed.
+Run `npm run check:hadith-search` against a running edition to test the homepage
+form destination, number/word search, digit variants, reading links and references.

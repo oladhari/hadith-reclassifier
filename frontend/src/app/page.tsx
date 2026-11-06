@@ -34,7 +34,7 @@ export default function HomePage() {
             <input
               name="q"
               aria-label="البحث في الموسوعة"
-              placeholder="حديث، راوٍ، كتاب، أو سؤال يشغلك…"
+              placeholder="كلمات من حديث أو رقمه، مثل: البخاري 1…"
               required
               maxLength={160}
             />

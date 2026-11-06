@@ -4,6 +4,7 @@ import path from "node:path";
 import { collections } from "./research";
 export type LocalHadith = {
   hadithnumber: number;
+  arabicnumber?: number;
   text: string;
   grades?: { name?: string; grade?: string }[];
   reference?: { book?: number; hadith?: number };

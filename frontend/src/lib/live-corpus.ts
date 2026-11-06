@@ -2,7 +2,8 @@ import "server-only";
 import { unstable_cache } from "next/cache";
 import snapshot from "@/content/corpus-progress.json";
 import { queryNeon, usesNeon } from "./neon";
-import { normalize, collections } from "./research";
+import { hadithWords } from "./hadith-query";
+import { collections } from "./research";
 import type { LocalHadith } from "./corpus";
 import type { CorpusProgress } from "./corpus-progress";
 
@@ -39,8 +40,8 @@ export async function searchNeon({q,id,collection,status,page}: {q:string;id:str
   const where = ["length(trim(text))>0"];
   const parameter = (value: unknown) => {values.push(value);return `$${values.length}`;};
   if (collection) where.push(`slug=${parameter(collection)}`);
-  if (id) where.push(`source_number=${parameter(id)}`);
-  for (const term of normalize(q).split(/\s+/).filter(Boolean)) where.push(`position(${parameter(term)} in normalized_text)>0`);
+  if (id) { const number=parameter(id); where.push(`(source_number=${number} OR original_data->>'arabicnumber'=${number})`); }
+  for (const term of hadithWords(q)) where.push(`position(${parameter(term)} in normalized_text)>0`);
   if (status === "filtered") where.push("filtered");
   else if (status === "book") where.push("in_book");
   else if (status) where.push(`status=${parameter(status)}`);
@@ -56,4 +57,12 @@ export async function searchNeon({q,id,collection,status,page}: {q:string;id:str
   const results: CorpusResult[] = rows.map(row=>({...row.original_data,hadithnumber:Number(row.source_number),text:row.text,collection:row.slug,
     progress:{status:row.status,filtered:row.filtered,in_book:row.in_book,...(row.review?{review:row.review}:{})}}));
   return {results,total,pages,current};
+}
+
+function corpusRow(row: Row): CorpusResult {
+ return {...row.original_data,hadithnumber:Number(row.source_number),text:row.text,collection:row.slug,progress:{status:row.status,filtered:row.filtered,in_book:row.in_book,...(row.review?{review:row.review}:{})}};
+}
+export async function readNeonHadith(collection:string,number:string):Promise<CorpusResult|null> {
+ const rows=await queryNeon<Row>("SELECT slug,source_number,original_data,text,status,filtered,in_book,review FROM research.website_hadiths WHERE slug=$1 AND source_number=$2 AND length(trim(text))>0 LIMIT 1",[collection,number]);
+ return rows[0]?corpusRow(rows[0]):null;
 }

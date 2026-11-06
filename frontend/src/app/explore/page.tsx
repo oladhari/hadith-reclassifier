@@ -1,3 +1,6 @@
+import { searchHadiths } from "@/lib/corpus-search";
+import { HadithRecord } from "@/components/hadith-record";
+import { ar } from "@/lib/research";
 import { queryText } from "@/lib/request-policy";
 import Link from "next/link";
 import { cases, matches } from "@/lib/research";
@@ -14,7 +17,7 @@ export default async function Explore({
 }) {
   const { q: raw = "" } = await searchParams;
   const q = queryText(raw);
-  const [archive, catalogue] = await Promise.all([getArchive(), getMediaCatalogue()]);
+  const [archive, catalogue, hadiths] = await Promise.all([getArchive(), getMediaCatalogue(), q ? searchHadiths({q}) : Promise.resolve(null)]);
   const libraryResults = q ? await searchLibrary(archive, catalogue, q) : [];
   const results = q
     ? cases.filter((c) =>
@@ -39,7 +42,7 @@ export default async function Explore({
           <input
             name="q"
             defaultValue={q}
-            placeholder="حديث، راوٍ، كتاب، أو قضية…"
+            placeholder="كلمات من حديث، أو رقمه، أو البخاري 1، أو قضية…"
             required
             maxLength={160}
           />
@@ -48,6 +51,10 @@ export default async function Explore({
       </form>
       {q && (
         <>
+          <section className="section-block main-hadith-results" data-main-hadith-search>
+            <div className="section-heading"><h2>أحاديث مطابقة لبحثك</h2><Link className="text-link" href={`/corpus?q=${encodeURIComponent(q)}`}>جميع نتائج الأحاديث ({ar(hadiths?.total || 0)}) ←</Link></div>
+            {hadiths && hadiths.total > 0 ? <><p className="result-count" data-hadith-result-count={hadiths.total}>{ar(hadiths.total)} سجلًا مطابقًا في مكتبة الحديث</p><div className="hadith-list">{hadiths.results.slice(0,5).map(h=><HadithRecord key={`${h.collection}-${h.hadithnumber}`} hadith={h} />)}</div></> : <p className="empty-state">لم نجد حديثًا بهذه الكلمات أو بهذا الرقم ضمن المجموعات المتاحة. جرّب كلمات أقصر أو اختر الكتاب في <Link href={`/corpus?q=${encodeURIComponent(q)}`}>البحث المتخصص</Link>.</p>}
+          </section>
           {matchedTopics.length > 0 && (
             <>
               <h2 className="results-heading">محاور مرتبطة بسؤالك</h2>

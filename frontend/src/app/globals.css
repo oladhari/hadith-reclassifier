@@ -2343,3 +2343,9 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .commentary-attribution { color: var(--muted); font-size: .88rem; line-height: 1.9; }
 .source-commentary p, .theme-explanation p { white-space: pre-line; }
 .theme-bundle-links .reference-uses { gap: .75rem; }
+
+.corpus-examples { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; }
+.corpus-examples a { padding: .35rem .65rem; border: 1px solid var(--line); background: var(--paper); }
+.corpus-inventory { margin: 2rem 0; }
+.corpus-inventory > summary { cursor: pointer; font-weight: 700; padding: 1rem; border: 1px solid var(--line); }
+.main-hadith-results { margin-block: 2rem; }

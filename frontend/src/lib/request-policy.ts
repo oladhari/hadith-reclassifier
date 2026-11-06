@@ -25,7 +25,7 @@ export function requestProblem(url: URL): { status: number; message: string } | 
       return { status: 400, message: "خيار البحث غير صالح." };
     if (key === "page" && (!/^[1-9]\d{0,4}$/.test(value) || Number(value) > 10000))
       return { status: 400, message: "رقم الصفحة غير صالح." };
-    if (key === "id" && url.pathname === "/corpus" && !/^\d{1,8}(?:\.\d{1,6})?$/.test(value))
+    if (key === "id" && url.pathname === "/corpus" && !/^[0-9٠-٩۰-۹]{1,8}(?:[.٫][0-9٠-٩۰-۹]{1,6})?$/.test(value.trim()))
       return { status: 400, message: "رقم الرواية غير صالح." };
     if (["start", "end"].includes(key) && (!/^\d{1,7}(?:\.\d{1,16})?$/.test(value) || Number(value) > 604800))
       return { status: 400, message: "موضع التشغيل غير صالح." };
