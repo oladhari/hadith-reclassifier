@@ -4,13 +4,15 @@ import { getBibliography } from "@/lib/local-sources";
 /* eslint-disable @next/next/no-img-element -- Preserve original scans and pre-sized document previews. */
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
+import { SourceCommentary } from "@/components/source-commentary";
+import { BundleLinks } from "@/components/research-bundles";
 import { EvidenceReading } from "@/components/evidence-reading";
 import { ResearchPlayer } from "@/components/research-player";
 import { ImageCollection } from "@/components/image-collection";
 import { Download } from "lucide-react";
 import thumbnails from "@/content/thumbnails.json";
 import { getArchive, kindNames, fileSize } from "@/lib/archive";
-import { getMediaCatalogue, getTranscript, publicLibrary, scopeNames, timeLabel } from "@/lib/media-catalogue";
+import { getMediaCatalogue, getTranscript, getDocumentText, publicLibrary, scopeNames, timeLabel } from "@/lib/media-catalogue";
 import { topics } from "@/lib/topics";
 import { cases } from "@/lib/research";
 import { PageHeading } from "@/components/research-ui";
@@ -40,7 +42,7 @@ export default async function AssetPage({ params, searchParams }: {
   if (!item) notFound();
   const relatedAlbum = librarySection(item, entry) === "excerpts"
     ? excerptAlbums(publicLibrary(archive, catalogue), catalogue).find(album => album.items.length > 1 && album.items.some(member => member.id === item.id)) : undefined;
-  const src = entry.asset_url || `/api/media/${item.id}`;
+  const src = entry.asset_url || `/api/media/${entry.preferred_media_id || item.id}`;
   const startValue = Number(query.start);
   const endValue = Number(query.end);
   const start = Number.isFinite(startValue) && startValue >= 0 && startValue < (entry.duration || 0) ? startValue : 0;
@@ -48,6 +50,7 @@ export default async function AssetPage({ params, searchParams }: {
   const chapter = entry.chapters.find(row => Math.abs(row.start - start) < .1 && end === row.end);
   const speech = item.kind === "video" || item.kind === "audio";
   const transcript = entry.has_transcript ? await getTranscript(item.id) : "";
+  const documentText = entry.has_document_text ? await getDocumentText(item.id) : "";
   return <>
     <div className="breadcrumb"><Link href={`/library?section=${librarySection(item, entry)}`}>{sectionNames[librarySection(item, entry)]}</Link><span>/</span><span>{entry.title}</span></div>
     <PageHeading eyebrow={`${entry.collection_images ? "مجموعة صور" : entry.content_label || scopeNames[entry.scope] || kindNames[item.kind]} • ${fileSize(entry.asset_size || item.size)}${entry.page_count ? ` • ${entry.page_count} صفحة` : ""}${entry.image_count ? entry.image_count === 2 ? " • صورتان" : ` • ${entry.image_count} صور` : ""}`}
@@ -76,6 +79,12 @@ export default async function AssetPage({ params, searchParams }: {
       <p>{entry.collection_images ? "جُمعت الصور للقراءة في موضوع واحد دون قصّها أو تغيير محتواها. تظهر بيانات كل صورة وموضعها منفصلة، وتظل النصوص منسوبة إلى أصحابها." : "جُمعت الصفحات كما وردت في أصولها، وحُذفت الأغلفة المتكررة فقط. هذه مجموعة مصادر وليست كتابًا محقّقًا جديدًا."}</p>
       <ol>{entry.collection_sources.map((source, index) => <li key={source.id}><a href={`/api/media/${source.id}`} target="_blank" rel="noreferrer">{entry.collection_images ? `فتح الصورة الأصلية ${index + 1}` : `فتح الملف الأصلي ${index + 1} (${source.page_count} صفحات)`} ←</a></li>)}</ol>
       {!entry.collection_images && <table><thead><tr><th>صفحة المجموعة</th><th>الملف الأصلي</th><th>صفحته</th></tr></thead><tbody>{entry.collection_page_map?.map(row => <tr key={row.page}><td>{row.page}</td><td>{entry.collection_sources!.findIndex(source => source.id === row.source_id) + 1}</td><td>{row.source_page}</td></tr>)}</tbody></table>}
+    </details>}
+    <SourceCommentary id={item.id} />
+    <BundleLinks ids={entry.bundles} />
+    {documentText && <details className="transcript-panel" data-document-text={item.id}><summary>اقرأ النص المستخرج من الوثيقة</summary>
+      <p className="muted">نص مستخرج آليًا للبحث؛ تُراجع الصورة أو صفحات PDF عند الاقتباس، خصوصًا مع التظليل والأغلفة المضافة.</p>
+      <div className="transcript-text">{documentText.split("\n\n").filter(Boolean).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
     </details>}
     {entry.chapters.length > 0 && <section className="article-section"><h2>الموضوعات داخل التسجيل</h2><div className="media-chapters">
       {entry.chapters.map((row, index) => <Link key={index} href={`/library/${id}?start=${row.start}&end=${row.end}#media-player`}>

@@ -5,6 +5,7 @@ import { organizeEntry } from "./library-organization";
 import documentPdfs from "@/content/document-pdfs.json";
 import videoVisibility from "@/content/video-visibility.json";
 import snapshot from "@/content/media-catalogue.json";
+import documentSnapshot from "@/content/document-texts.json";
 import transcriptSnapshot from "@/content/transcript-content.json";
 import { queryNeon, usesNeon } from "./neon";
 import { matches, normalize } from "./research";
@@ -22,6 +23,8 @@ export type MediaDescription = {
   image_count?: number; collection_images?: CollectionImage[];
   collection_sources?: { id: number; page_count: number }[];
   collection_page_map?: { page: number; source_id: number; source_page: number }[];
+  preferred_media_id?: number; has_document_text?: boolean; bundles?: string[];
+  explanations?: { text: string; attribution: string; kind: string }[];
   chapters: MediaChapter[]; occurrences: number[];
 };
 export type MediaCatalogue = Record<string, MediaDescription>;
@@ -51,7 +54,7 @@ export function publicLibrary(archive: ArchiveItem[], catalogue: MediaCatalogue)
 export function mediaMatches(item: ArchiveItem, metadata: MediaDescription, query: string) {
   return String(item.id) === query.trim() || metadata.occurrences.some(id => String(id) === query.trim()) ||
     matches([metadata.title, metadata.description, metadata.work_title, metadata.author,
-      metadata.page_label, ...metadata.tags,
+      metadata.page_label, ...metadata.tags, ...(metadata.explanations || []).map(row => row.text),
       ...(metadata.collection_images || []).flatMap(image => [image.label, image.description])].join(" "), query);
 }
 // Cache a bounded, server-only speech index. Normalize once per refresh rather
@@ -71,7 +74,12 @@ export async function searchLibrary(archive: ArchiveItem[], catalogue: MediaCata
   } else {
     transcriptIds = new Set(Object.entries(transcriptSnapshot).filter(([, text]) => matches(text as string, query)).map(([id]) => Number(id)));
   }
-  return library.filter(item => mediaMatches(item, catalogue[String(item.id)], query) || transcriptIds.has(item.id));
+  const documents = usesNeon()
+    ? await liveDocumentIndex()
+    : Object.entries(documentSnapshot).map(([id, row]) => ({ id: Number(id), text: normalize(row.text) }));
+  const words = normalize(query).split(/\s+/).filter(Boolean);
+  const documentIds = new Set(documents.filter(row => words.every(word => row.text.includes(word))).map(row => row.id));
+  return library.filter(item => mediaMatches(item, catalogue[String(item.id)], query) || transcriptIds.has(item.id) || documentIds.has(item.id));
 }
 export const getTranscript = cache(async (id: number): Promise<string> => {
   if (!usesNeon()) return (transcriptSnapshot as Record<string, string>)[id] || "";
@@ -84,3 +92,13 @@ export function timeLabel(seconds: number) {
     ? `${Math.floor(whole / 3600)}:${String(Math.floor(whole / 60) % 60).padStart(2, "0")}:${String(whole % 60).padStart(2, "0")}`
     : `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`;
 }
+
+const liveDocumentIndex = unstable_cache(async () => {
+  const rows = await queryNeon<{ id: string; text: string }>("SELECT id,text FROM research.website_document_texts");
+  return rows.map(row => ({ id: Number(row.id), text: normalize(row.text) }));
+}, ["neon-document-search-v1"], { revalidate: 60, tags: ["media-catalogue"] });
+export const getDocumentText = cache(async (id: number): Promise<string> => {
+  if (!usesNeon()) return (documentSnapshot as Record<string, { text: string }>)[String(id)]?.text || "";
+  const rows = await queryNeon<{ text: string }>("SELECT text FROM research.website_document_texts WHERE id=$1", [String(id)]);
+  return rows[0]?.text || "";
+});

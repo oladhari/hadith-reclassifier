@@ -1,3 +1,4 @@
+import { BundleLinks } from "@/components/research-bundles";
 import { queryText } from "@/lib/request-policy";
 import Link from "next/link";
 import { getArchive } from "@/lib/archive";
@@ -36,6 +37,8 @@ export default async function LibraryPage({ searchParams }: {
   return <>
     <PageHeading eyebrow="مكتبة المصادر" title={section === "all" ? "جميع مواد المكتبة" : sectionNames[section]}
       description={section === "books" ? "كتب ومجلدات وبحوث كاملة، مع فهرس للعناوين والمؤلفين وروابط القراءة والتنزيل." : section === "excerpts" ? "صفحات مختارة وصور ومقتطفات من الكتب والوثائق، مجمّعة بحسب المصدر والموضوع، مع الاحتفاظ بمراجع الصفحات." : "مصادر مختارة لمحاور الموسوعة، بعناوين عربية وملخصات قابلة للبحث."} />
+    <p className="related-actions"><Link className="button button-outline" href="/themes">مجموعات الشواهد والشرح الموضوعي ←</Link></p>
+    {topic && <BundleLinks topic={topic} />}
     <nav className="type-tabs" aria-label="أقسام المكتبة">
       {Object.entries(sectionNames).map(([key, label]) => <Link className={section === key ? "selected" : ""} aria-current={section === key ? "page" : undefined} key={key} href={`/library?section=${key}`}>
         {label}<span>{ar(key === "all" ? library.length : library.filter(item => librarySection(item, catalogue[String(item.id)]) === key).length)}</span>

@@ -1,3 +1,4 @@
+import { SourceCommentary } from "./source-commentary";
 import { ProofLink } from "./proof-link";
 import { proofHref } from "@/lib/evidence-links";
 import { getBibliography } from "@/lib/local-sources";
@@ -14,7 +15,7 @@ export async function MediaOriginal({ item, sourcePageId }: { item: ArchiveItem;
   const metadata = (await getMediaCatalogue())[String(item.id)];
   if (metadata?.manual_video_hidden) return null;
   const detailsHref = await proofHref(item.id);
-  const src = metadata?.asset_url || `/api/media/${item.id}`;
+  const src = metadata?.asset_url || `/api/media/${metadata?.preferred_media_id || item.id}`;
   return (
     <div className={`source-original ${item.kind}`}>
       <div className="source-file-heading">
@@ -49,6 +50,7 @@ export async function MediaOriginal({ item, sourcePageId }: { item: ArchiveItem;
         {!metadata?.collection_images && <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.converted_document ? "تنزيل PDF" : metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>}
         {detailsHref && detailsHref !== `/sources/${sourcePageId}` && <ProofLink href={detailsHref} title={metadata?.visible ? metadata.title : await sourceTitle(item.id)} action="فتح صفحة الدليل" />}
       </div>
+      <SourceCommentary id={item.id} />
       {!metadata?.collection_images && <EvidenceReading id={item.id} />}
     </div>
   );

@@ -1,4 +1,5 @@
 export const dynamic = "force-dynamic";
+import { BundleLinks } from "@/components/research-bundles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { topics } from "@/lib/topics";
@@ -60,6 +61,7 @@ export default async function TopicPage({
         page={Number.parseInt(page) || 1}
         baseURL={`/topics/${slug}`}
       />
+      <BundleLinks topic={slug} />
       <ThemedLibrary topic={slug} />
 
     </>

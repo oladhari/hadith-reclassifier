@@ -2338,3 +2338,8 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 .proof-references .filter-reference-list { max-height: none; overflow: visible; }
 .source-file-actions .proof-link { flex-basis: 100%; }
 @media(max-width: 600px) { .proof-link { flex-wrap: wrap; padding: 14px; gap: 10px; } .proof-link-action { width: 100%; } .proof-link-copy { flex-basis: calc(100% - 56px); } }
+
+/* Edited source commentary and themed proof collections. */
+.commentary-attribution { color: var(--muted); font-size: .88rem; line-height: 1.9; }
+.source-commentary p, .theme-explanation p { white-space: pre-line; }
+.theme-bundle-links .reference-uses { gap: .75rem; }

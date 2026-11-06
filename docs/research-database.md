@@ -146,3 +146,76 @@ transcript text only; raw captions, selection reasons and original discussion
 provenance remain inaccessible. Local backups precede synchronization, and the
 portable export was compared with Neon after publication. No narration assessment,
 narrator judgment or approved book entry was added by this metadata workflow.
+
+### Additional Telegram import comparison
+
+`scripts/filter_telegram_import.py` compares the preserved `muawiya4n` archive
+against the existing catalogue using only local processing. Results live in the
+private, ignored `data/research/imports/muawiya4n/` staging directory. Its separate
+post namespace avoids collisions with the original archive's legacy numeric IDs.
+It does not change public listings or the production catalogue.
+
+The staging database retains every post payload and text. Explanation associations
+record own captions, actual album membership and explicit replies, each marked
+unverified. Adjacency alone creates no association. Exact content hashes consolidate
+staging file identities and map to existing catalogue media; canonical explanation
+views retain text from all occurrences. Similar image hashes only create visual
+review candidates, never deletion or automatic edition selection. PDF page counts
+and locally extracted text are cached; image-only PDFs still require OCR and page
+inspection. No paid API calls occur. Re-running reuses inspections and stable keys.
+
+`review_telegram_images.py` creates private numbered contact sheets for the fixed
+image-candidate set. Visual observations are preserved beside those sheets.
+`apply_telegram_visual_review.py` saves explicit Codex visual decisions and
+append-only decision history, with a consistent pre-change SQLite backup. It checks
+that distinct works/volumes and annotation variants cannot become connected through
+a transitive duplicate group. Same-page groups retain original files and every
+source/explanation association. Quality preferences follow enlarged visual detail
+comparison; equivalent scans retain the existing identity where possible. No
+scholarly approval or public/production update follows from a visual decision.
+The filtering command preserves existing candidate review states on subsequent runs.
+
+`prepare_telegram_pdf_review.py` renders all imported PDF pages for a separate
+layout/readability screen. Private `visual-review/pdf/review.json` and
+`pdf_visual_reviews` distinguish annotated excerpt compilations from an authored
+lecture booklet. Successful rendering and a visual page screen do not certify
+bibliographic completeness; inserted covers and annotations can obscure underlying
+source text. Image-only PDFs still require OCR for text search and textual checking.
+
+### Source additions and thematic explanations (November 2026)
+
+The `muawiya4n` import uses source/media IDs `1,000,000 + original message ID` and
+channel-scoped source UUIDs, avoiding collisions with the earlier archive. All
+1,686 source posts, 1,428 attachment occurrences and 834 nonempty source texts are
+preserved. Consolidation retains 1,798 caption/album/reply associations. Byte-identical
+local copies share storage through verified atomic hard links; distinct editions,
+annotation variants and archived originals are preserved.
+
+`ocr_telegram_additions.py` runs only local Arabic/English Tesseract, caching by
+verified input hash. All 1,340 unique image/PDF inputs were processed or reused;
+image-only PDFs receive page-level OCR. OCR remains explicitly unverified.
+`prepare_telegram_publication.py` creates edited Arabic subject summaries and
+source-backed thematic links. Raw comments, polemical language, account payloads,
+selection reasons and OCR processing provenance are not public metadata. The
+public explanations are attributed paraphrases of the source's argument, separate
+from the displayed document and from scholarly assessments.
+
+The initial published projection includes 559 new items (14 PDFs and 545 scans),
+30 thematic bundles and 9 clearer replacements for existing public images. Other
+candidate items stay private pending context/identification or separate recording
+review. Existing video visibility is preserved, including all 57 hidden videos.
+
+`publish_telegram_additions.py` backs up SQLite and the remote public catalogue,
+then adds namespaced relational records and merges only the reviewed public
+projection. Cloud writes use one transaction and verify the unchanged video
+review decisions. Full source payloads are stored only in the private provenance
+table, which remains inaccessible to the website reader. `telegram-additions-view.sql`
+exposes OCR text only for visible canonical documents. `/themes` groups proofs
+under edited explanations; document/source pages show attributed commentary and
+library search includes document OCR. Existing library IDs and original media
+endpoints remain valid; preferred clearer images have separate source IDs.
+
+Validation: `scripts/check-telegram-publication.py` verifies source/text/link
+preservation and publication boundaries. `frontend/scripts/check-research-additions.mjs`
+checks thematic navigation, all new PDF routes, OCR search and duplicate redirects.
+Normal research, catalogue, proof-link and security checks also apply.
