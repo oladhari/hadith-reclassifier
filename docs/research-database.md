@@ -242,3 +242,27 @@ with references and separate source grades/project review state. Legacy `/search
 links retain their query when redirected to `/corpus`. No backend AI/API is needed.
 Run `npm run check:hadith-search` against a running edition to test the homepage
 form destination, number/word search, digit variants, reading links and references.
+
+### Supplementary JSON books in R2
+
+`scripts/sync_missing_hadith_books.py` compares the corpus collection slugs with
+AhmedBaset/hadith-json's `db/by_book` files at pinned revision
+`70b83d6d21995bb32f8d7271cd75501be5a922a7`. Its default mode downloads and validates
+missing collections locally; `--upload` archives them in the project's R2 bucket.
+Original JSON bytes and dataset numbering are preserved. Git blob checksums,
+record counts, book associations, unique local numbers and Arabic text fields
+are checked before uploading, and uploaded bytes are downloaded and SHA-256
+verified. Existing identical objects are reused; differing objects are never
+overwritten.
+
+Source JSON and Arabic coverage metadata live below
+`othmani/datasets/hadith-json/<revision>/`. A content-addressed JSON index under
+`indexes/` lists each book's R2 key, source revision, record count and checksum.
+Local receipts are ignored under `data/research/source-checks/ahmed-baset/`.
+The current supplement contains ten books / 14,721 records, including the
+previously archived partial Musnad Ahmad (1,374 records, sections 8–30 missing).
+Coverage of other books is recorded as not independently verified.
+
+These are source archives in R2, not yet normalized/searchable corpus entries or
+scholarly assessments. Public HTTP delivery may deny JSON paths; successful
+storage verification uses authenticated R2 reads, independently of that route.
