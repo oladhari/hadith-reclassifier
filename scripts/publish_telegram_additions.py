@@ -9,6 +9,7 @@ import psycopg
 from psycopg import sql
 from psycopg.types.json import Json
 from publish_research_database import configuration
+from materialize_public_catalogue import refresh_public_read_tables
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'backend'))
 from app.research.catalogue import uid
 OUT=ROOT/'data/research/imports/muawiya4n';OFFSET=1_000_000
@@ -47,6 +48,7 @@ def main():
    seenobjects.add(sha)
    upload=stage.execute('select r2_key from attachments where sha256=? and r2_key is not null limit 1',(sha,)).fetchone()
    assert upload and upload[0].endswith(sha)
+   rows['research_storage_locations'].append(dict(id=ident('local-location',sha),object_id=objectid,provider='local',bucket='',key=item['path'],state='available',verified_at=now))
    rows['research_storage_locations'].append(dict(id=ident('location',sha),object_id=objectid,provider='r2',bucket=values['R2_BUCKET'],key=upload[0],state='available',verified_at=now))
   mediaid=ident('media',mid)
   rows['research_media'].append(dict(id=mediaid,source_id=sourceid,object_id=objectid,legacy_id=numeric,kind=item['kind'],original_name=item['name'],mime_type=a['mime'],archive_relative_path=item['path'],source_date=date,created_at=now))
@@ -105,12 +107,15 @@ def main():
    # Ensure the website reader cannot access private source captions/payloads.
    assert not cloud.execute("select has_table_privilege('othmani_website_reader','research.research_provenance','SELECT')").fetchone()[0]
    for table,records in rows.items():
+    if table=='research_storage_locations':records=[r for r in records if r['provider']=='r2']
     if not records:continue
     cols=list(records[0]);statement=sql.SQL('insert into research.{} ({}) values ({}) on conflict do nothing').format(sql.Identifier(table),sql.SQL(',').join(map(sql.Identifier,cols)),sql.SQL(',').join(sql.Placeholder() for _ in cols))
     with cloud.cursor() as cur:cur.executemany(statement,[[Json(r[k]) if isinstance(r[k],(dict,list)) else r[k] for k in cols] for r in records])
    merged=merge_setting(remote)
    for key,value in [('media_catalogue',merged),('telegram_additions',extra)]:
     cloud.execute('insert into research.research_catalogue_settings(key,value) values(%s,%s) on conflict(key) do update set value=excluded.value',(key,Json(value)))
+   refresh_public_read_tables(cloud)
+   cloud.execute((ROOT/'scripts/media-catalogue-view.sql').read_text())
    cloud.execute((ROOT/'scripts/telegram-additions-view.sql').read_text())
    assert before==cloud.execute('select id,decision from research.video_review_decisions order by id').fetchall()
    assert cloud.execute('select count(*) from research.research_media where legacy_id between 1000000 and 1999999').fetchone()[0]==1428

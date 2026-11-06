@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import quote, urlparse, urlunparse
 
 import psycopg
+from materialize_public_catalogue import refresh_public_read_tables
 from psycopg import sql
 from publish_research_database import configuration
 
@@ -35,7 +36,9 @@ with psycopg.connect(admin, connect_timeout=30) as conn:
                 "CREATE ROLE {} LOGIN PASSWORD {} NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS"
             ).format(sql.Identifier(role), sql.Literal(password))
         )
+    refresh_public_read_tables(conn)
     conn.execute((ROOT / "scripts/media-catalogue-view.sql").read_text())
+    conn.execute((ROOT / "scripts/telegram-additions-view.sql").read_text())
     conn.execute(
         sql.SQL("GRANT USAGE ON SCHEMA research TO {}").format(sql.Identifier(role))
     )

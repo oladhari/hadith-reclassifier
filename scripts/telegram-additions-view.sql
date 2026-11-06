@@ -1,9 +1,6 @@
--- Expose only OCR for visible canonical documents. Source commentary/provenance stays private.
+-- Read only unverified OCR for visible canonical documents, without expanding catalogue JSON.
 CREATE OR REPLACE VIEW research.website_document_texts AS
-SELECT e.key AS id,e.value->>'text' AS text
-FROM research.research_catalogue_settings s
-CROSS JOIN LATERAL jsonb_each(s.value::jsonb->'documents') e
-JOIN research.website_catalogue c ON c.id=e.key
-WHERE s.key='telegram_additions' AND (c.metadata->>'visible')::boolean
-AND (c.metadata->>'canonical_id')=e.key;
+SELECT e.id,e.text FROM research.research_public_document_entries e
+JOIN research.website_catalogue c ON c.id=e.id
+WHERE (c.metadata->>'visible')::boolean AND (c.metadata->>'canonical_id')=e.id;
 GRANT SELECT ON research.website_document_texts TO othmani_website_reader;

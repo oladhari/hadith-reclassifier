@@ -219,3 +219,11 @@ Validation: `scripts/check-telegram-publication.py` verifies source/text/link
 preservation and publication boundaries. `frontend/scripts/check-research-additions.mjs`
 checks thematic navigation, all new PDF routes, OCR search and duplicate redirects.
 Normal research, catalogue, proof-link and security checks also apply.
+
+Public reads use private, RLS-protected relational read tables populated once per
+publication by `materialize_public_catalogue.py`. Website views apply the existing
+visibility decisions over those small rows. This avoids expanding the entire
+catalogue/transcript JSON per request; migration checks compare all public metadata,
+transcripts and document text before and after the change. The public reader has
+no direct access to these base tables or raw provenance. Legacy catalogue refreshes
+preserve the separately reviewed imported entries and their explanations.

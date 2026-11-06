@@ -17,6 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
+from materialize_public_catalogue import refresh_public_read_tables
 from enrich_media import CACHE, ROOT, inventory, save, config, original
 
 TOPICS = {"uthman", "camel", "allegiance", "siffin", "virtues", "narrators", "karbala", "manuscripts"}
@@ -170,6 +171,18 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     items, editorial, public, transcripts = assemble()
+    # A legacy archive refresh must preserve separately reviewed imported materials.
+    with sqlite3.connect(ROOT / "data/research/research.sqlite3") as existing_db:
+        previous_setting = existing_db.execute("SELECT value FROM research_catalogue_settings WHERE key='media_catalogue'").fetchone()
+    previous_public = json.loads(previous_setting[0]).get("public", {}) if previous_setting else {}
+    for key, row in previous_public.items():
+        if int(key) >= 1_000_000:
+            public[key] = row
+        elif key in public:
+            for field in ["bundles", "explanations", "has_document_text", "preferred_media_id", "asset_size"]:
+                if field in row:
+                    public[key][field] = row[field]
+            public[key]["occurrences"] = sorted(set(public[key]["occurrences"] + [id for id in row.get("occurrences", []) if id >= 1_000_000]))
     selected = [row for key, row in public.items() if row["visible"] and row["canonical_id"] == int(key)]
     report = {"unique_originals": len(items), "public_unique": len(selected), "hidden_unique": sum(not public[str(item["id"])]["visible"] for item in items),
         "collection_members_consolidated": sum(public[str(item["id"])]["visible"] and public[str(item["id"])]["canonical_id"] != item["id"] for item in items),
@@ -223,7 +236,10 @@ def main():
             with conn.cursor() as cursor:
                 cursor.executemany("UPDATE research.research_sources SET editorial_title=%s WHERE legacy_id=%s", [(editorial[str(item["id"])]["title"], occurrence) for item in items for occurrence in item["ids"]])
                 cursor.executemany("INSERT INTO research.research_extracts VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(id) DO UPDATE SET text=excluded.text,text_sha256=excluded.text_sha256", extracts)
+            refresh_public_read_tables(conn)
             conn.execute((ROOT / "scripts/media-catalogue-view.sql").read_text())
+            if (ROOT / "scripts/telegram-additions-view.sql").exists():
+                conn.execute((ROOT / "scripts/telegram-additions-view.sql").read_text())
             count = conn.execute("SELECT count(*) FROM research.website_catalogue").fetchone()[0]
             if count != len(public):
                 raise ValueError("Public catalogue verification mismatch")

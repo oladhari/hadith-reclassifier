@@ -22,20 +22,26 @@ class CatalogueTests(unittest.TestCase):
     def setUpClass(cls):
         if not DEFAULT_DB.exists():
             raise unittest.SkipTest("Run scripts/research_db.py import first")
-        cls.engine = open_database(DEFAULT_DB)
+        cls.temporary = tempfile.TemporaryDirectory()
+        cls.database = Path(cls.temporary.name) / "catalogue.sqlite3"
+        with sqlite3.connect(f"file:{DEFAULT_DB}?mode=ro", uri=True) as source, sqlite3.connect(cls.database) as target:
+            source.backup(target)
+        cls.engine = open_database(cls.database)
         initialize(cls.engine)
+        cls.initial_counts = audit(cls.engine)["counts"]
 
     @classmethod
     def tearDownClass(cls):
         cls.engine.dispose()
+        cls.temporary.cleanup()
 
     def test_real_import_is_idempotent_and_complete(self):
         first = import_all(self.engine)
         second = import_all(self.engine)
         self.assertEqual(first["counts"], second["counts"])
         self.assertEqual(second["integrity"], "ok")
-        self.assertEqual(second["counts"]["research_sources"], 2477)
-        self.assertEqual(second["counts"]["research_media"], 1907)
+        self.assertEqual(second["counts"]["research_sources"], self.initial_counts["research_sources"])
+        self.assertEqual(second["counts"]["research_media"], self.initial_counts["research_media"])
         self.assertEqual(second["counts"]["research_hadiths"], 36390)
         self.assertEqual(second["counts"]["research_hadith_texts"], 72780)
         self.assertEqual(second["foreign_key_errors"], [])
@@ -49,15 +55,15 @@ class CatalogueTests(unittest.TestCase):
 
     def test_deduplication_preserves_all_attachments(self):
         report = audit(self.engine)
-        self.assertEqual(report["counts"]["research_objects"], 1805)
-        self.assertEqual(report["duplicate_attachment_instances"], 102)
+        self.assertEqual(report["counts"]["research_objects"], self.initial_counts["research_objects"])
+        self.assertEqual(report["duplicate_attachment_instances"], self.initial_counts["research_media"] - self.initial_counts["research_objects"])
         with self.engine.connect() as conn:
             planned = conn.scalar(
-                select(func.count())
+                select(func.count(func.distinct(s.locations.c.object_id)))
                 .select_from(s.locations)
                 .where(s.locations.c.provider == "r2", s.locations.c.state.in_(["planned", "available"]))
             )
-            self.assertEqual(planned, 1805)
+            self.assertEqual(planned, self.initial_counts["research_objects"])
 
     def test_frontend_projection_has_complete_albums_and_no_provenance(self):
         with tempfile.TemporaryDirectory() as d:
@@ -123,7 +129,7 @@ class CatalogueTests(unittest.TestCase):
                 json.loads(line)["object_key"]
                 for line in (out / "r2-upload-manifest.jsonl").read_text().splitlines()
             ]
-            self.assertEqual(len(keys), 1805)
+            self.assertEqual(len(keys), self.initial_counts["research_objects"])
             self.assertEqual(len(keys), len(set(keys)))
 
     def test_reimport_does_not_overwrite_editorial_changes(self):

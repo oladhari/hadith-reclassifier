@@ -162,6 +162,10 @@ def import_all(engine, archive=ARCHIVE, corpus=None, content=None):
     fingerprint = digest(json.dumps(inputs, sort_keys=True))
     batch = uid("import", fingerprint)
     timestamp = now()
+    # A combined website snapshot can contain independently namespaced archives.
+    # Reimport only occurrences belonging to the selected original archive.
+    raw_by_id = {r["id"]: r for r in records}
+    index = [item for item in index if item["id"] in raw_by_id]
     for item in index:
         file = archive / item["path"]
         if not file.is_file() or file.stat().st_size != item["size"]:
@@ -626,7 +630,10 @@ def audit(engine, archive=ARCHIVE):
                 s.objects.c.byte_size,
             ).join(s.objects, s.media.c.object_id == s.objects.c.id)
         ):
-            file = Path(archive) / row.archive_relative_path
+            relative = Path(row.archive_relative_path)
+            if relative.is_absolute() or ".." in relative.parts:
+                raise ValueError("Invalid archive-relative media path")
+            file = (ROOT.parent / "telegram-archive" / relative) if relative.parts[0] == "muawiya4n" else Path(archive) / relative
             if not file.is_file() or file.stat().st_size != row.byte_size:
                 missing_files.append(row.legacy_id)
         fk_errors = [list(r) for r in conn.exec_driver_sql("PRAGMA foreign_key_check")]

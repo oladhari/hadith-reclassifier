@@ -4,6 +4,7 @@ import json,os,secrets,sys
 from pathlib import Path
 from urllib.parse import urlsplit,urlunsplit,quote
 import psycopg
+from materialize_public_catalogue import refresh_public_read_tables
 from psycopg import sql
 from enrich_media import config,ROOT
 os.umask(0o077)
@@ -19,6 +20,7 @@ with psycopg.connect(values['RESEARCH_POSTGRES_URL'],connect_timeout=30) as conn
   password=unquote(urlsplit(credentials['VIDEO_REVIEW_DATABASE_URL']).password)
   conn.execute(sql.SQL('CREATE ROLE othmani_video_reviewer LOGIN PASSWORD {}').format(sql.Literal(password)))
  conn.execute((ROOT/'scripts/video-review-schema.sql').read_text())
+ refresh_public_read_tables(conn)
  conn.execute((ROOT/'scripts/media-catalogue-view.sql').read_text())
  print('Private review catalogue initialized:',conn.execute('SELECT count(*) FROM research.video_review_items').fetchone()[0])
 with psycopg.connect(credentials['VIDEO_REVIEW_DATABASE_URL'],connect_timeout=30) as reviewer:
