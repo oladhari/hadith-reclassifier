@@ -462,7 +462,6 @@ svg {
   flex-direction: column;
 }
 .case-card:hover {
-  transform: translateY(-4px);
   border-color: #bba46e;
 }
 .card-top {
@@ -1808,7 +1807,6 @@ svg {
 }
 .topic-card:hover {
   border-color: #b58b60;
-  transform: translateY(-3px);
 }
 .topic-overline {
   display: flex;
@@ -2414,4 +2412,108 @@ h1, h2, h3, h4, h5, h6, nav, button, input, select, textarea, summary, table,
 .library-result-count, .result-count, .asset-topic-labels, .commentary-attribution,
 .record-header, .corpus-state-accepted, .corpus-state-rejected, table p {
   font-family: var(--font-arabic-sans), Tahoma, sans-serif;
+}
+
+/* Shared depth and interaction for the library's navy / ivory / copper palette. */
+:root {
+  --card-shadow: 0 2px 5px rgb(23 42 70 / 4%), 0 9px 24px rgb(23 42 70 / 5%);
+  --card-shadow-raised: 0 5px 12px rgb(23 42 70 / 7%), 0 18px 38px rgb(23 42 70 / 10%);
+  --motion-fast: 180ms;
+  --motion-card: 240ms;
+}
+:is(.topic-card, .case-card, .asset-card, .method-card, .filter-study,
+    .corpus-collection, .hadith-record, .source-bundle, .reference-book-card,
+    .proof-link, .image-collection-page, .prose-panel, .archive-index-panel,
+    .transcript-panel, .book-index, .corpus-stats > div) {
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--motion-card) ease, border-color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease, transform var(--motion-card) ease;
+}
+:is(.topic-card, .case-card, .asset-card, .method-card, .filter-study,
+    .corpus-collection, .hadith-record, .source-bundle, .reference-book-card,
+    .proof-link):focus-within {
+  border-color: var(--gold);
+  box-shadow: var(--card-shadow-raised);
+}
+a, button, summary {
+  transition: color var(--motion-fast) ease, background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+}
+.button, .reference-uses a, .book-theme-nav a, .type-tabs a, .quote-finding-nav a {
+  transition: color var(--motion-fast) ease, background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease,
+    transform var(--motion-fast) ease;
+}
+.button:focus-visible { box-shadow: 0 0 0 4px rgb(181 139 96 / 18%); }
+:is(.text-link, .article-section p a:not(.button), .book-index li > a,
+    .breadcrumb a, .footer-links a) {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+  transition: color var(--motion-fast) ease, text-decoration-color var(--motion-fast) ease;
+}
+:is(.text-link, .article-section p a:not(.button), .book-index li > a,
+    .breadcrumb a, .footer-links a):focus-visible {
+  color: #8d6337;
+  text-decoration-color: currentColor;
+}
+.main-nav > a:not(.nav-start) { position: relative; }
+.main-nav > a:not(.nav-start)::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--motion-fast) ease;
+}
+.main-nav > a[aria-current] { box-shadow: none; }
+.main-nav > a[aria-current]::after, .main-nav > a:focus-visible::after { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) {
+  :is(a.topic-card, a.case-card, a.asset-card, a.reference-book-card, a.proof-link):hover {
+    border-color: var(--gold);
+    box-shadow: var(--card-shadow-raised);
+  }
+  :is(.text-link, .article-section p a:not(.button), .book-index li > a,
+      .breadcrumb a, .footer-links a):hover {
+    color: #8d6337;
+    text-decoration-color: currentColor;
+  }
+  .main-nav > a:hover::after { transform: scaleX(1); }
+  :is(.button-outline, .button-light, .reference-uses a, .book-theme-nav a:not(.selected),
+      .type-tabs a:not(.selected), .quote-finding-nav a:not([aria-current])):hover {
+    background-color: #f1e9dc;
+    border-color: var(--gold);
+    box-shadow: 0 3px 9px rgb(23 42 70 / 8%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .asset-cover img, .image-collection-cover img {
+    transition: transform 350ms ease;
+  }
+  .card-action svg, .topic-footer svg, .proof-link-action svg, .button svg {
+    transition: transform var(--motion-card) ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    :is(a.topic-card, a.case-card, a.asset-card, a.reference-book-card, a.proof-link):hover {
+      transform: translateY(-4px);
+    }
+    .asset-card:hover .asset-cover img, .asset-card:hover .image-collection-cover img {
+      transform: scale(1.025);
+    }
+    .case-card:hover .card-action svg, .topic-card:hover .topic-footer svg,
+    .proof-link:hover .proof-link-action svg, .button:hover svg {
+      transform: translate(-2px, -2px);
+    }
+    .button:hover { transform: translateY(-2px); }
+  }
+  .button:active, .reference-uses a:active { transform: translateY(1px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Preserve emphasis without moving surfaces or animating underlines. */
+  .main-nav > a::after { transition: none; }
 }
