@@ -31,6 +31,14 @@ SPECS=[
 ('abd-al-rahman-ibn-hatim','عبد الرحمن بن حاتم المرادي القفطي',1692,1221,4839,[('ابن الجوزي، بنقل الذهبي','قال ابن الجوزي: متروك الحديث.','abandoned','متروك الحديث'),('الذهبي، معقباً','قلت: هذا من شيوخ الطبراني، ما علمت به بأسا.','counterassessment','ما علمت به بأسا')]),
 ('jafar-ibn-al-zubayr','جعفر بن الزبير',8609,66,939,[('ابن حجر','متروك الحديث وكان صالحا في نفسه','abandoned','متروك الحديث؛ وكان صالحاً في نفسه')]),
 ('muhammad-ibn-musa-al-sadi','محمد بن موسى السعدي',1692,2080,8229,[('الذهبي','مجهول.','unknown','مجهول'),('ابن عدي، بنقل الذهبي','وقال ابن عدي: منكر الحديث','weak','منكر الحديث')]),
+
+('waki-ibn-al-jarrah','وكيع بن الجراح',1692,2365,9356,[('الذهبي','الحافظ أحد الائمة الاعلام.','reliability','الحافظ أحد الأئمة الأعلام'),('ابن المديني، بنقل الذهبي','قال ابن المديني في التهذيب: وكيع كان فيه تشيع قليل.','mild','تشيع قليل'),('يحيى بن معين، بنقل الذهبي','فقلت له: وكيع خير منك.','counterassessment','وكيع خير منك؛ رد على وصفه بالرفض')]),
+('sulayman-al-amash','سليمان بن مهران الأعمش',3310,1677,376,[('العجلي، بنقل ابن حجر','كان ثقة ثبتا في الحديث','reliability','ثقة ثبت في الحديث'),('العجلي، بنقل ابن حجر','وكان فيه تشيع','tashayyu','كان فيه تشيع'),('النسائي، بنقل ابن حجر','وقال النسائي ثقة ثبت','reliability','ثقة ثبت')]),
+('abd-al-razzaq-ibn-hammam','عبد الرزاق بن همام الصنعاني',8609,280,4064,[('ابن حجر','ثقة حافظ مصنف شهير عمي في آخر عمره فتغير وكان يتشيع','reliability','ثقة حافظ؛ عمي في آخر عمره فتغير'),('ابن حجر','ثقة حافظ مصنف شهير عمي في آخر عمره فتغير وكان يتشيع','tashayyu','كان يتشيع')]),
+('adi-ibn-thabit','عدي بن ثابت الأنصاري',8609,314,4539,[('ابن حجر','ثقة رمي بالتشيع','reliability','ثقة'),('ابن حجر','ثقة رمي بالتشيع','tashayyu','رمي بالتشيع')]),
+('fitr-ibn-khalifa','فطر بن خليفة',8609,374,5441,[('ابن حجر','صدوق رمي بالتشيع','reliability','صدوق'),('ابن حجر','صدوق رمي بالتشيع','tashayyu','رمي بالتشيع')]),
+('ubayd-allah-ibn-musa','عبيد الله بن موسى العبسي',8609,301,4345,[('ابن حجر','ثقة كان يتشيع','reliability','ثقة'),('ابن حجر','ثقة كان يتشيع','tashayyu','كان يتشيع')]),
+
 ]
 
 
@@ -59,7 +67,10 @@ def build():
             sources[(book_id,page_id)]=page
             (P/f'page-{book_id}-{page_id}.json').write_text(json.dumps({'evidence':{'sources':[page]}},ensure_ascii=False,indent=2))
         page=sources[(book_id,page_id)];text=page['text']
-        headings=list(re.finditer(r'(?m)^(?:\[[^\n]*?\]\s*)?([٠-٩0-9]+)\s*[-ـ]',text))
+        continuations={'waki-ibn-al-jarrah':[2366],'sulayman-al-amash':[1678,1679]}.get(slug,[])
+        for next_id in continuations:
+            text+='\n'+sources[(book_id,next_id)]['text']
+        headings=list(re.finditer(r'(?m)^(?:\[[^\n]*?\]\s*)?\(?([٠-٩0-9]+)(?:\)\s*\(|\s*[-ـ])',text))
         selected=next((i for i,h in enumerate(headings) if int(h[1])==number),None)
         if selected is None:raise ValueError(f'Biography heading missing: {slug}, {number}')
         start=headings[selected].start();end=headings[selected+1].start() if selected+1<len(headings) else len(text)
@@ -69,9 +80,13 @@ def build():
             findings.append({'critic':critic,'quote':quote,'category':category,'label':label})
         citation=page['citation']['markdown'];location=re.search(r'\(([^()]*)\)\]',citation)[1]
         location=location.translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))
-        entries.append({'slug':slug,'name':name,'aliases':[],'categories':list(dict.fromkeys(f['category'] for f in findings)),
+        if continuations:
+            last_location=re.search(r'\(([^()]*)\)\]',sources[(book_id,continuations[-1])]['citation']['markdown'])[1].translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))
+            location+='–'+last_location.split('/')[-1].strip()
+        entries.append({'slug':slug,'name':name,'aliases':{'waki-ibn-al-jarrah':['وكيع','وكيع ابن الجراح','أبو سفيان الرؤاسي'],'sulayman-al-amash':['الأعمش','الاعمش','سليمان ابن مهران','أبو محمد الكاهلي']}.get(slug,[]),'categories':list(dict.fromkeys(f['category'] for f in findings)),
             'evidence':[{'book_id':book_id,'page_id':page_id,'entry_number':number,'locator':location,
             'url':f'https://shamela.ws/book/{book_id}/{page_id}','source_text_sha256':hashlib.sha256(text.encode()).hexdigest(),
+            'continuation_pages':[{'page_id':n,'url':f'https://shamela.ws/book/{book_id}/{n}','locator':sources[(book_id,n)]['citation']['markdown']} for n in continuations],
             'context':context,'findings':findings,'verification':'electronic_text_checked','scan_compared':False}],
             'scholarly_verdict':None,'hadith_route_identity_linked':False})
     entries.sort(key=lambda row:row['name'])

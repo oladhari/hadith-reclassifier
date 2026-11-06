@@ -177,3 +177,22 @@ old citation URLs are preserved. `scripts/publish_minhaj_volumes.py` validates
 source checksums for new downloads and verifies all ten R2 objects by readback.
 The on-site reader is `/library/references/927`; PDF scans are not a verified
 full-text search index. `frontend/scripts/check-minhaj.mjs` checks delivery.
+
+### Directory expansion and archive evidence links
+
+The original 20 profiles were a manually selected pilot, not the result of a
+complete archive review. Added Waki ibn al-Jarrah, Sulayman al-Amash, Abd al-Razzaq,
+Adi ibn Thabit, Fitr ibn Khalifa and Ubayd Allah ibn Musa: 26 profiles / 60 indexed
+findings. Multi-page biographies retain their consecutive source-page links;
+quoted assessments are checked inside the correct numbered biography. Favorable
+statements and Ibn Main's response about Waki are retained. No final rulings or
+hadith-route identity assignments are generated.
+
+`narrator-library-evidence.json` explicitly connects existing documents to Waki
+and al-Amash. Links resolve through `proofHref`, preserving canonical merges and
+hidden-video decisions. Waki's two-page PDF 760 and al-Amash image 987 were
+visually inspected. Other linked documents are identified as contextual leads,
+not visually verified quotations. In particular the annotation about al-Amash's
+tashayyu in image 987 is an editor's footnote, not al-Mizzi's main text. Source
+comments remain on their original library pages. Missing directory matches now
+link to archive search rather than imply the library has no evidence.
