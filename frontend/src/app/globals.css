@@ -2373,3 +2373,5 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
   .header-inner { flex-wrap:wrap; justify-content:center; gap:8px; padding-block:14px; }
   .main-nav { flex-wrap:wrap; justify-content:center; gap:14px; font-size:13px; }
 }
+.reference-reader select { padding:10px; border:1px solid #d9dce2; background:white; color:inherit; font:inherit; }
+.reference-pdf-viewer { width:100%; height:min(85vh,1000px); min-height:520px; border:1px solid #d9dce2; background:#eef0f3; }

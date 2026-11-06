@@ -19,6 +19,15 @@
         "ocr_files": 10,
         "ocr_review_state": "unverified",
         "scan_to_text_page_alignment_verified": false
+      },
+      "downloaded_pdf_copy": {
+        "status": "hosted_and_checksum_verified",
+        "volume_count": 9,
+        "pdf_files": 10,
+        "pdf_pages": 4343,
+        "r2_manifest_key": "othmani/reference-books/rijal/full/manifests/c44f625c4248f62bbc0822ac2aafa0459adf05005e6f0ceaad0bf99da33ca366.json",
+        "scanned_edition": "مطبعة دائرة المعارف العثمانية، حيدر آباد، 1371 هـ / 1952 م، مع غلاف إعادة نشر دار إحياء التراث العربي. أرقام ملفات الأرشيف ليست مقابلة بعد بأجزاء الطبعة.",
+        "printed_page_alignment_verified": false
       }
     },
     {
@@ -30,7 +39,16 @@
       "url": "https://shamela.ws/book/3722",
       "bibliographic_status": "catalogue_checked",
       "full_text_local": false,
-      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة"
+      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة",
+      "downloaded_pdf_copy": {
+        "status": "hosted_and_checksum_verified",
+        "volume_count": 35,
+        "pdf_files": 36,
+        "pdf_pages": 19646,
+        "r2_manifest_key": "othmani/reference-books/rijal/full/manifests/c44f625c4248f62bbc0822ac2aafa0459adf05005e6f0ceaad0bf99da33ca366.json",
+        "scanned_edition": "تحقيق بشار عواد معروف، مؤسسة الرسالة، مجموعة من 35 مجلداً.",
+        "printed_page_alignment_verified": false
+      }
     },
     {
       "id": 3310,
@@ -41,7 +59,16 @@
       "url": "https://shamela.ws/book/3310",
       "bibliographic_status": "catalogue_checked",
       "full_text_local": false,
-      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة"
+      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة",
+      "downloaded_pdf_copy": {
+        "status": "hosted_and_checksum_verified",
+        "volume_count": 12,
+        "pdf_files": 12,
+        "pdf_pages": 5761,
+        "r2_manifest_key": "othmani/reference-books/rijal/full/manifests/c44f625c4248f62bbc0822ac2aafa0459adf05005e6f0ceaad0bf99da33ca366.json",
+        "scanned_edition": "دار الكتاب الإسلامي، القاهرة، مجموعة من 12 جزءاً. تختلف بطاقة هذه النسخة المصورة عن بطاقة الطبعة الهندية الإلكترونية.",
+        "printed_page_alignment_verified": false
+      }
     },
     {
       "id": 8609,
@@ -52,7 +79,16 @@
       "url": "https://shamela.ws/book/8609",
       "bibliographic_status": "catalogue_checked",
       "full_text_local": false,
-      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة"
+      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة",
+      "downloaded_pdf_copy": {
+        "status": "hosted_and_checksum_verified",
+        "volume_count": 1,
+        "pdf_files": 1,
+        "pdf_pages": 795,
+        "r2_manifest_key": "othmani/reference-books/rijal/full/manifests/c44f625c4248f62bbc0822ac2aafa0459adf05005e6f0ceaad0bf99da33ca366.json",
+        "scanned_edition": "تحقيق محمد عوامة، دار الرشيد، الطبعة الثالثة المنقحة، 1411 هـ / 1991 م؛ تختلف عن طبعة النص الإلكتروني المرجعي الأولى 1406 هـ / 1986 م.",
+        "printed_page_alignment_verified": false
+      }
     },
     {
       "id": 1692,
@@ -63,7 +99,16 @@
       "url": "https://shamela.ws/book/1692",
       "bibliographic_status": "catalogue_checked",
       "full_text_local": false,
-      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة"
+      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة",
+      "downloaded_pdf_copy": {
+        "status": "hosted_and_checksum_verified",
+        "volume_count": 4,
+        "pdf_files": 6,
+        "pdf_pages": 2809,
+        "r2_manifest_key": "othmani/reference-books/rijal/full/manifests/c44f625c4248f62bbc0822ac2aafa0459adf05005e6f0ceaad0bf99da33ca366.json",
+        "scanned_edition": "نسخة دار المعرفة من ميزان الاعتدال، أربعة أجزاء، مع ملفات الغلاف والمقدمة المصاحبة محفوظة منفصلة.",
+        "printed_page_alignment_verified": false
+      }
     },
     {
       "id": 12579,
@@ -74,7 +119,16 @@
       "url": "https://shamela.ws/book/12579",
       "bibliographic_status": "catalogue_checked",
       "full_text_local": false,
-      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة"
+      "page_numbering": "المصدر يذكر أن ترقيمه موافق للمطبوع؛ مقابلة كل اقتباس بالطبعة المحددة لازمة",
+      "downloaded_pdf_copy": {
+        "status": "hosted_and_checksum_verified",
+        "volume_count": 9,
+        "pdf_files": 10,
+        "pdf_pages": 4960,
+        "r2_manifest_key": "othmani/reference-books/rijal/full/manifests/c44f625c4248f62bbc0822ac2aafa0459adf05005e6f0ceaad0bf99da33ca366.json",
+        "scanned_edition": "دار الكتب العلمية، تحقيق عادل أحمد عبد الموجود وعلي محمد معوض، بمشاركة عبد الفتاح أبو سنة، تسعة أجزاء.",
+        "printed_page_alignment_verified": false
+      }
     }
   ],
   "retrieval": {

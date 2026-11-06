@@ -6,9 +6,9 @@ function reject(status: number, message: string) {
   return new NextResponse(message, { status, headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff" } });
 }
 export function proxy(request: NextRequest) {
-  // There is one public API, and it is read-only. Unknown/retired APIs never
+  // Public media/reference delivery is read-only. Unknown/retired APIs never
   // enter the application or the Server Action request parser.
-  if (request.nextUrl.pathname.startsWith("/api/") && !/^\/api\/media\/[1-9]\d{0,8}$/.test(request.nextUrl.pathname))
+  if (request.nextUrl.pathname.startsWith("/api/") && !/^\/api\/(?:media\/[1-9]\d{0,8}|reference-books\/[1-9]\d{0,5}\/part-\d{2})$/.test(request.nextUrl.pathname))
     return reject(404, "المسار غير موجود.");
   if (!["GET", "HEAD", "OPTIONS"].includes(request.method)) {
     const response = reject(405, "هذا المسار متاح للقراءة فقط.");
