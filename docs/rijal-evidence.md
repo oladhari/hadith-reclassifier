@@ -196,3 +196,16 @@ not visually verified quotations. In particular the annotation about al-Amash's
 tashayyu in image 987 is an editor's footnote, not al-Mizzi's main text. Source
 comments remain on their original library pages. Missing directory matches now
 link to archive search rather than imply the library has no evidence.
+
+### Book cards and series grouping
+
+The book thumbnail grid follows the same six themes as the title index. A
+complete reference set is one cover card with its main-volume count; covers and
+supplementary introductions do not increase that count. The explicit
+`book-series.json` mapping links Minhaj's preserved individual volumes to the
+complete reader (927), so they no longer repeat in the index or card grid.
+Volume-specific title searches still return the complete set. No underlying
+media, edition, citation URL or review record is removed. The current books view
+shows 26 works/sets (19 independent archived works plus seven reference sets),
+without splitting theme groups across pages; other media remain paginated.
+`check-book-groups.mjs` verifies themed cards, series counts, search and old links.

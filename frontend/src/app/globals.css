@@ -2375,3 +2375,9 @@ blockquote { font-family: var(--font-arabic-serif), serif; }
 }
 .reference-reader select { padding:10px; border:1px solid #d9dce2; background:white; color:inherit; font:inherit; }
 .reference-pdf-viewer { width:100%; height:min(85vh,1000px); min-height:520px; border:1px solid #d9dce2; background:#eef0f3; }
+
+.book-thumbnail-group { margin:32px 0; }
+.book-thumbnail-group > h2 { border-bottom:2px solid var(--gold); padding-bottom:12px; margin-bottom:20px; }
+.book-thumbnail-group h2 small { font-size:.65em; color:var(--muted); }
+.reference-series-card .asset-info small { display:block; color:#566174; line-height:1.8; }
+.series-volume-label { color:#805d32; font-weight:600; }

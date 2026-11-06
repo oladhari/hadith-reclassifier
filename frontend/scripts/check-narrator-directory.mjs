@@ -20,7 +20,7 @@ for(const [finding,count] of [['mild',2],['rafidi_jald',2],['shii_jald',3],['lia
 assert.ok((await html('/narrators?source_book=2170')).includes('data-narrator-result-count="0"'));
 assert.ok((await html('/narrators?q='+encodeURIComponent('زبيد'))).includes('data-narrator-result-count="1"'));
 const contrary=await html('/narrators/abd-al-rahman-ibn-hatim');assert.ok(contrary.includes('متروك الحديث'));assert.ok(contrary.includes('ما علمت به بأسا'));
-const library=await html('/library?section=books');assert.equal((library.match(/data-reference-index-id=/g)||[]).length,7);assert.equal((library.match(/data-book-index-id=/g)||[]).length,26);
+const library=await html('/library?section=books');assert.equal((library.match(/data-reference-index-id=/g)||[]).length,7);assert.equal((library.match(/data-book-index-id=/g)||[]).length,19);
 for(const key of Object.keys(themes.themes)){assert.ok(library.includes(`data-book-theme="${key}"`));await html('/library?section=books&theme='+key);}
 const rijal=await html('/library?section=books&theme=rijal');assert.ok(rijal.includes('data-reference-book-count="6"'));assert.ok(!rijal.includes('data-book-index-id="909"'));
 for(const book of books){const page=await html(`/library/references/${book.id}`);assert.ok(page.includes(book.url));if(book.id===2170)assert.equal((page.replace(/<!--[\s\S]*?-->/g,"").match(/الملف المصور \d+ — PDF/g)||[]).length,9);}

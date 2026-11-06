@@ -1,8 +1,13 @@
 import { bookThemes } from "@/lib/book-themes";
 import { referenceEdition } from "@/lib/reference-assets";
 import Link from "next/link";
+import AssetThumbnail from "./asset-thumbnail";
 import type { referenceBooks } from "@/lib/rijal";
 export function ReferenceBookCard({book}:{book:typeof referenceBooks[number]}){
  const edition=referenceEdition(String(book.id));
- return <article className="reference-book-card" data-reference-book-id={book.id}><span className="eyebrow">{bookThemes[book.theme]} · {edition?`نسخة PDF محفوظة · ${edition.file_count} ملف`:"مرجع إلكتروني"}</span><h3><Link href={`/library/references/${book.id}`}>{book.title}</Link></h3><p><strong>{book.author}</strong></p><p>{book.purpose}</p><small>{book.edition}</small><p><Link href={`/library/references/${book.id}`} className="text-link">افتح الكتاب واقرأ النسخة المحفوظة ←</Link></p></article>;
+ const volumes=edition?`${edition.volume_count} ${edition.volume_count===1?"مجلد":"مجلدات"}`:"مرجع إلكتروني";
+ return <Link className="asset-card reference-series-card" href={`/library/references/${book.id}`} data-reference-book-id={book.id} data-volume-count={edition?.volume_count}>
+ <AssetThumbnail src={edition?`/thumbnails/reference-${book.id}.webp`:undefined} kind="pdf" label={book.title}/>
+ <div className="asset-info"><span className="eyebrow">{bookThemes[book.theme]} · {volumes}</span><h3>{book.title}</h3><p><strong>{book.author}</strong></p><p className="asset-description">{book.purpose}</p>{edition&&<p className="series-volume-label">{volumes} في مجموعة واحدة · اختر المجلد للقراءة والتنزيل</p>}<small>{book.edition}</small></div>
+ </Link>;
 }
