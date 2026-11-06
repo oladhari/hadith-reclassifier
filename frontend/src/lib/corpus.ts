@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { collections } from "./research";
 export type LocalHadith = {
+  dataset_source?: {source_url:string;coverage:string;coverage_note:string;numbering_note:string};
   hadithnumber: number;
   arabicnumber?: number;
   text: string;

@@ -5,7 +5,8 @@ if (process.env.RESEARCH_READ_DATABASE_URL) {
   console.log("Using the hosted research database; corpus file preparation is unnecessary.");
   process.exit(0);
 }
-const books = ["bukhari", "muslim", "malik", "abudawud", "tirmidhi", "nasai", "ibnmajah"];
+const seed = JSON.parse(await readFile(new URL("../src/content/editorial-seed.json", import.meta.url), "utf8"));
+const books = Object.keys(seed.collections);
 const output = path.resolve(".corpus");
 await mkdir(output, { recursive: true });
 for (const book of books) {

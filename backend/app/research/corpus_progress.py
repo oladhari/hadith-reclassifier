@@ -166,7 +166,7 @@ def project_progress(conn):
             ),
         ),
         "records": records,
-        "missing_collections": [
+        "missing_collections": [] if any(b["slug"] == "ahmad" for b in books.values()) else [
             {
                 "title": "مسند الإمام أحمد",
                 "note": "توجد صفحات مصوّرة للاستدلال؛ المجموعة الحديثية الكاملة غير مضافة بعد.",

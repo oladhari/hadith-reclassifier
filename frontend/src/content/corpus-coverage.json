@@ -1,0 +1,62 @@
+{
+  "nawawi40": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/forties/nawawi40.json"
+  },
+  "qudsi40": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/forties/qudsi40.json"
+  },
+  "shahwaliullah40": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/forties/shahwaliullah40.json"
+  },
+  "aladab_almufrad": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/other_books/aladab_almufrad.json"
+  },
+  "bulugh_almaram": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/other_books/bulugh_almaram.json"
+  },
+  "mishkat_almasabih": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/other_books/mishkat_almasabih.json"
+  },
+  "riyad_assalihin": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/other_books/riyad_assalihin.json"
+  },
+  "shamail_muhammadiyah": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/other_books/shamail_muhammadiyah.json"
+  },
+  "ahmad": {
+    "coverage": "partial",
+    "note": "مجموعة جزئية؛ الأقسام 8–30 غير موجودة في المصدر.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/the_9_books/ahmed.json"
+  },
+  "darimi": {
+    "coverage": "not_independently_verified",
+    "note": "أُرشف الملف كما هو في المصدر؛ لم تُتحقق مقابلته بطبعة كاملة مستقلة.",
+    "numbering": "الأرقام محلية في مجموعة البيانات؛ لم تُطابق بترقيم طبعة مطبوعة.",
+    "source": "https://raw.githubusercontent.com/AhmedBaset/hadith-json/70b83d6d21995bb32f8d7271cd75501be5a922a7/db/by_book/the_9_books/darimi.json"
+  }
+}

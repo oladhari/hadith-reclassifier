@@ -49,6 +49,11 @@ def main():
         existing={row[0] for row in db.execute('SELECT slug FROM research_collections')}
     books=[row for row in tree['tree'] if row['path'].startswith('db/by_book/') and row['path'].endswith('.json')]
     missing=[row for row in books if ALIASES.get(Path(row['path']).stem,Path(row['path']).stem) not in existing]
+    if not missing:
+        # Keep the previous archive index for provenance/recovery after books
+        # have been promoted into the searchable corpus.
+        print(json.dumps({"missing_books":0,"existing_collections":len(existing),"archive_index_preserved":(CACHE/"r2-books-index.json").exists()}),flush=True)
+        return
     def download(entry):
         filename=Path(entry['path']).name
         path=CACHE/filename

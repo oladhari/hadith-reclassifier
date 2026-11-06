@@ -7,6 +7,7 @@ import { collections } from "./research";
 import type { LocalHadith } from "./corpus";
 import type { CorpusProgress } from "./corpus-progress";
 
+const missingCollections: {title:string;note:string}[] = snapshot.missing_collections;
 type Counts = typeof snapshot.counts;
 type Book = { slug: string; title: string; counts: Counts };
 const countKeys = Object.keys(snapshot.counts) as (keyof Counts)[];
@@ -16,11 +17,11 @@ const liveInventory = unstable_cache(async () => {
     counts: Object.fromEntries(countKeys.map(key => [key, Number(row[key])])) as Counts}));
   books.sort((a,b) => Object.keys(collections).indexOf(a.slug) - Object.keys(collections).indexOf(b.slug));
   const counts = Object.fromEntries(countKeys.map(key => [key, books.reduce((n,b) => n+b.counts[key],0)])) as Counts;
-  return {counts, collections: books, missing_collections: snapshot.missing_collections};
+  return {counts, collections: books, missing_collections: missingCollections};
 }, ["neon-corpus-inventory-v1"], { revalidate: 60 });
 
 export async function readInventory() {
-  return usesNeon() ? liveInventory() : snapshot;
+  return usesNeon() ? liveInventory() : {...snapshot,missing_collections:missingCollections};
 }
 
 type Row = {slug: string; source_number: string; original_data: LocalHadith; text: string;

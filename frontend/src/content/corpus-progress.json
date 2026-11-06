@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-21T03:44:35.771775+00:00",
+  "generated_at": "2026-11-06T02:39:27.519580+00:00",
   "counts": {
-    "total": 36390,
-    "with_text": 35982,
+    "total": 51111,
+    "with_text": 50703,
     "filtered": 0,
     "in_book": 0,
-    "unreviewed": 36390,
+    "unreviewed": 51111,
     "in_progress": 0,
     "needs_review": 0,
     "accepted": 0,
@@ -116,13 +116,158 @@
         "accepted": 0,
         "rejected": 0
       }
+    },
+    {
+      "slug": "nawawi40",
+      "title": "الأربعون النووية",
+      "counts": {
+        "total": 42,
+        "with_text": 42,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 42,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "qudsi40",
+      "title": "الأربعون القدسية",
+      "counts": {
+        "total": 40,
+        "with_text": 40,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 40,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "shahwaliullah40",
+      "title": "أربعون ولي الله الدهلوي",
+      "counts": {
+        "total": 40,
+        "with_text": 40,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 40,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "aladab_almufrad",
+      "title": "الأدب المفرد",
+      "counts": {
+        "total": 1326,
+        "with_text": 1326,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 1326,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "bulugh_almaram",
+      "title": "بلوغ المرام",
+      "counts": {
+        "total": 1767,
+        "with_text": 1767,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 1767,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "mishkat_almasabih",
+      "title": "مشكاة المصابيح",
+      "counts": {
+        "total": 4428,
+        "with_text": 4428,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 4428,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "riyad_assalihin",
+      "title": "رياض الصالحين",
+      "counts": {
+        "total": 1896,
+        "with_text": 1896,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 1896,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "shamail_muhammadiyah",
+      "title": "الشمائل المحمدية",
+      "counts": {
+        "total": 402,
+        "with_text": 402,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 402,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "ahmad",
+      "title": "مسند الإمام أحمد بن حنبل",
+      "counts": {
+        "total": 1374,
+        "with_text": 1374,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 1374,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "slug": "darimi",
+      "title": "سنن الدارمي",
+      "counts": {
+        "total": 3406,
+        "with_text": 3406,
+        "filtered": 0,
+        "in_book": 0,
+        "unreviewed": 3406,
+        "in_progress": 0,
+        "needs_review": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
     }
   ],
   "records": {},
-  "missing_collections": [
-    {
-      "title": "مسند الإمام أحمد",
-      "note": "توجد صفحات مصوّرة للاستدلال؛ المجموعة الحديثية الكاملة غير مضافة بعد."
-    }
-  ]
+  "missing_collections": []
 }

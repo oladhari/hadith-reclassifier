@@ -574,7 +574,17 @@
     "abudawud": "سنن أبي داود",
     "tirmidhi": "جامع الترمذي",
     "nasai": "سنن النسائي",
-    "ibnmajah": "سنن ابن ماجه"
+    "ibnmajah": "سنن ابن ماجه",
+    "nawawi40": "الأربعون النووية",
+    "qudsi40": "الأربعون القدسية",
+    "shahwaliullah40": "أربعون ولي الله الدهلوي",
+    "aladab_almufrad": "الأدب المفرد",
+    "bulugh_almaram": "بلوغ المرام",
+    "mishkat_almasabih": "مشكاة المصابيح",
+    "riyad_assalihin": "رياض الصالحين",
+    "shamail_muhammadiyah": "الشمائل المحمدية",
+    "ahmad": "مسند الإمام أحمد بن حنبل",
+    "darimi": "سنن الدارمي"
   },
   "topics": [
     {

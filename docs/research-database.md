@@ -263,6 +263,33 @@ The current supplement contains ten books / 14,721 records, including the
 previously archived partial Musnad Ahmad (1,374 records, sections 8–30 missing).
 Coverage of other books is recorded as not independently verified.
 
-These are source archives in R2, not yet normalized/searchable corpus entries or
-scholarly assessments. Public HTTP delivery may deny JSON paths; successful
-storage verification uses authenticated R2 reads, independently of that route.
+These immutable source archives are retained independently of the searchable
+corpus. Their original status fields describe archive creation time. Public HTTP
+delivery may deny JSON paths; storage verification uses authenticated R2 reads,
+independently of the website search route.
+
+
+### Searchable supplementary collections
+
+`scripts/import_supplementary_hadith_books.py --sync-cloud` validates the saved R2
+index checksums and imports its ten supplementary collections into local SQLite
+and the existing restricted Neon corpus views. It backs up SQLite, uses
+transactional additive inserts with deterministic IDs, compares imported rows
+with their expected contents in both databases, and confirms the existing
+collections retain their record counts. Repeated runs reuse identical records;
+differing existing records cause verification failure rather than replacement.
+Original Arabic and English text, book sections, dataset-local numbers, source
+revision, raw-file SHA-256 and R2 keys remain linked. Literal Unicode escape
+artifacts are decoded for reading/search; original JSON stays unchanged in R2.
+
+The corpus now has 17 collections and 51,111 records (50,703 with Arabic text).
+The ten additions contribute 14,721 records, all initially unreviewed. They do
+not create acceptance/rejection decisions or alter the 200 Bukhari AI drafts.
+`corpus-coverage.json` supplies public coverage notes, including Musnad Ahmad's
+missing sections 8–30 and the distinction between dataset and printed numbering.
+The importer also writes Arabic/English fallback files and regenerates corpus
+statistics. The statistics panel remains open by default.
+
+Verification: `npm --prefix frontend run check:supplementary-corpus` checks all
+ten new book readers, text searches, dataset-number searches, Arabic book aliases,
+statistics, coverage notices and preservation of the existing Bukhari report.

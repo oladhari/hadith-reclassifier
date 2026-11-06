@@ -1,3 +1,4 @@
+import coverage from "@/content/corpus-coverage.json";
 import { readDraftSummaries } from "@/lib/ai-hadith-drafts";
 import { queryText } from "@/lib/request-policy";
 import { parseHadithQuery } from "@/lib/hadith-query";
@@ -22,6 +23,7 @@ export default async function CorpusPage({ searchParams }: {
   const inferredCollection = parseHadithQuery(q,id,collection).collection;
   const selectedBook = inventory.collections.find(book => book.slug === inferredCollection);
   const counts = selectedBook?.counts || inventory.counts;
+  const selectedCoverage = coverage[inferredCollection as keyof typeof coverage];
   const found = requested ? await searchHadiths({q,id,collection,status,page:Number.parseInt(page)||1}) : {results:[] as CorpusResult[],total:0,pages:1,current:1,unavailable:[] as string[]};
   const {results,total,pages,current,unavailable} = found;
   const url = (p: number) => `/corpus?${new URLSearchParams({ q, collection, status, page: String(p), ...(id ? { id } : {}) })}#corpus-results`;
@@ -44,6 +46,7 @@ export default async function CorpusPage({ searchParams }: {
       <div className="corpus-examples"><span>جرّب:</span><Link href="/corpus?q=إنما+الأعمال+بالنيات">إنما الأعمال بالنيات</Link><Link href="/corpus?q=البخاري+1">البخاري 1</Link><Link href="/corpus?collection=muslim&id=1">مسلم 1</Link></div>
       <div className="corpus-status-links"><Link href={`/corpus?collection=${collection}&status=accepted#corpus-results`}>المقبولة</Link><Link href={`/corpus?collection=${collection}&status=needs_review#corpus-results`}>بانتظار المراجعة</Link><Link href={`/corpus?collection=${collection}&status=rejected#corpus-results`}>المستبعدة</Link><Link href={`/corpus?collection=${collection}&status=book#corpus-results`}>المعتمدة للكتاب</Link></div>
     </section>
+    {selectedCoverage&&<p className="corpus-stat-note">{selectedCoverage.note} {selectedCoverage.numbering}</p>}
     {unavailable.length > 0 && <p className="empty-state">تعذّر تحميل نصوص {unavailable.join("، ")}. حاول مجددًا لاحقًا.</p>}
     <section id="corpus-results">
       {!requested ? <div className="corpus-welcome"><h2>اكتب كلمات من الحديث أو رقمه في المربع أعلاه</h2><p>يمكنك البحث في جميع الكتب أو اختيار كتاب لتصفّح نصوصه. حالة المراجعة لا تمنع قراءة الأحاديث المتاحة.</p></div> : <>
@@ -59,8 +62,8 @@ export default async function CorpusPage({ searchParams }: {
     <section className="corpus-stats" aria-label="إحصاءات فحص الأحاديث">{stats.map(([key, label]) => <div key={key} data-corpus-stat={key}><strong dir="ltr">{ar(counts[key])}</strong><span>{label}</span></div>)}</section>
     <p className="corpus-stat-note">الأعداد سجلات بحسب ترقيم المجموعات وتشمل تكرار الطرق. الفحص الأولي يختلف عن القبول النهائي؛ لا تُحسب تشغيلات بلا أدلة مكتملة نتائجَ تصفية، ولا يعتمد مدخل للكتاب قبل المراجعة البشرية.</p>
     <section className="article-section"><div className="section-heading"><h2>الكتب المتوفرة في المكتبة</h2><Link href="/methodology" className="text-link">طبقات الفحص ←</Link></div>
-      <div className="corpus-collection-grid">{inventory.collections.map(book => <article className={`corpus-collection ${book.slug === collection ? "selected" : ""}`} key={book.slug}>
-        <h3>{book.title}</h3><strong className="collection-total" dir="ltr">{ar(book.counts.total)}</strong><p>سجل حديثي</p>
+      <div className="corpus-collection-grid">{inventory.collections.map(book => <article className={`corpus-collection ${book.slug === collection ? "selected" : ""}`} key={book.slug} data-corpus-collection={book.slug}>
+        <h3>{book.title}</h3>{coverage[book.slug as keyof typeof coverage]&&<p className="small muted">{coverage[book.slug as keyof typeof coverage].note}</p>}<strong className="collection-total" dir="ltr">{ar(book.counts.total)}</strong><p>سجل حديثي</p>
         <dl><div><dt>فحص أولي موثق</dt><dd>{ar(book.counts.filtered)}</dd></div><div><dt>بانتظار المراجعة</dt><dd>{ar(book.counts.needs_review)}</dd></div><div><dt>مقبول بعد المراجعة</dt><dd>{ar(book.counts.accepted)}</dd></div><div><dt>مستبعد بعد المراجعة</dt><dd>{ar(book.counts.rejected)}</dd></div></dl>
         <Link className="text-link" href={`/corpus?collection=${book.slug}#corpus-search`}>ابحث في هذه المجموعة ←</Link>
       </article>)}{inventory.missing_collections.map(book => <article className="corpus-collection collection-pending" key={book.title}><span className="eyebrow">غير مكتملة في مكتبة الأحاديث</span><h3>{book.title}</h3><p>{book.note}</p><Link href="/cases/uthman-shirt" className="text-link">اقرأ مثالًا من الصفحات المتوفرة ←</Link></article>)}</div>

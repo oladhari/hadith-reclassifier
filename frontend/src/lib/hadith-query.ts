@@ -17,6 +17,16 @@ const names: [string,string][] = [
  ["سنن الترمذي","tirmidhi"],["الترمذي","tirmidhi"],["tirmidhi","tirmidhi"],
  ["سنن النسائي","nasai"],["النسائي","nasai"],["nasai","nasai"],
  ["سنن ابن ماجه","ibnmajah"],["ابن ماجه","ibnmajah"],["ibnmajah","ibnmajah"],
+ ["الأربعون النووية","nawawi40"],["nawawi40","nawawi40"],
+ ["الأربعون القدسية","qudsi40"],["qudsi40","qudsi40"],
+ ["أربعون ولي الله الدهلوي","shahwaliullah40"],["shahwaliullah40","shahwaliullah40"],
+ ["الأدب المفرد","aladab_almufrad"],["aladab_almufrad","aladab_almufrad"],
+ ["بلوغ المرام","bulugh_almaram"],["bulugh_almaram","bulugh_almaram"],
+ ["مشكاة المصابيح","mishkat_almasabih"],["mishkat_almasabih","mishkat_almasabih"],
+ ["رياض الصالحين","riyad_assalihin"],["riyad_assalihin","riyad_assalihin"],
+ ["الشمائل المحمدية","shamail_muhammadiyah"],["shamail_muhammadiyah","shamail_muhammadiyah"],
+ ["مسند الإمام أحمد بن حنبل","ahmad"],["مسند الإمام أحمد","ahmad"],["مسند أحمد","ahmad"],["مسند احمد","ahmad"],["أحمد","ahmad"],["احمد","ahmad"],["ahmad","ahmad"],["ahmed","ahmad"],
+ ["سنن الدارمي","darimi"],["الدارمي","darimi"],["darimi","darimi"],
 ];
 export function parseHadithQuery(q: string, id = "", collection = "") {
  let text = latinDigits(q).trim();
