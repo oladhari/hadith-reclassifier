@@ -1,3 +1,4 @@
+import { readDraftSummaries } from "@/lib/ai-hadith-drafts";
 import { queryText } from "@/lib/request-policy";
 import { parseHadithQuery } from "@/lib/hadith-query";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export default async function CorpusPage({ searchParams }: {
   const id = queryText(rawId, 80).trim();
   const status = [...Object.keys(stateNames), "filtered", "book"].includes(rawStatus) ? rawStatus : "";
   const requested = Boolean(q || id || status || collection);
-  const inventory = await readInventory();
+  const [inventory,drafts] = await Promise.all([readInventory(),readDraftSummaries()]);
   const inferredCollection = parseHadithQuery(q,id,collection).collection;
   const selectedBook = inventory.collections.find(book => book.slug === inferredCollection);
   const counts = selectedBook?.counts || inventory.counts;
@@ -52,6 +53,7 @@ export default async function CorpusPage({ searchParams }: {
         {total > 15 && <nav className="pagination" aria-label="صفحات الأحاديث">{current > 1 && <Link href={url(current - 1)}>→ السابق</Link>}<span>صفحة {ar(current)} من {ar(pages)}</span>{current < pages && <Link href={url(current + 1)}>التالي ←</Link>}</nav>}
       </>}
     </section>
+    {drafts.length>0&&<section className="article-section"><h2>مسودات الفحص الآلي</h2><p>نُشرت {drafts.length} مسودة من دفعة البخاري 1–200، تغطي الطبقات الـ22 وتوضح الأدلة الناقصة. تحتاج مراجعة بشرية ولا تمثل قبولًا أو ردًا معتمدًا.</p><Link className="text-link" href="/corpus/analysis">عرض النتائج وفتح تحليل كل حديث ←</Link></section>}
     <details className="corpus-inventory"><summary>الكتب المتاحة وإحصاءات المراجعة</summary>
     <div className="corpus-scope"><strong>{selectedBook ? selectedBook.title : "المكتبة كاملة"}</strong>{selectedBook && <Link href="/corpus">اعرض جميع المجموعات ←</Link>}</div>
     <section className="corpus-stats" aria-label="إحصاءات فحص الأحاديث">{stats.map(([key, label]) => <div key={key} data-corpus-stat={key}><strong dir="ltr">{ar(counts[key])}</strong><span>{label}</span></div>)}</section>

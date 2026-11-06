@@ -13,7 +13,8 @@
     "check:security": "node scripts/check-security.mjs",
     "check:security-policy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-security-policy.mjs",
     "check:additions": "node scripts/check-research-additions.mjs",
-    "check:hadith-search": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-hadith-search.mjs"
+    "check:hadith-search": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-hadith-search.mjs",
+    "check:hadith-drafts": "node scripts/check-hadith-drafts.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

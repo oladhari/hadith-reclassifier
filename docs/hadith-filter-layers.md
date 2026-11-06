@@ -96,3 +96,30 @@
 ## التحقق
 
 اختبارات المعنى تستخدم أدلة اصطناعية في قواعد مؤقتة: تقديم بوابة القرآن، رفض إزالة الاعتراض بتفسير غير مراجع، عدم احتساب المفقود قبولًا، فصل الطرق، منع اعتماد OCR الخام، حفظ التعارض والمراجعات، ثبات الإصدار وإعادة التشغيل، ومنع الكتابة في وضع القراءة فقط. يختبر مسار التصدير استعادة العلاقات خارج القاعدة الأصلية.
+
+## API draft pilot: Bukhari 1–200
+
+`scripts/analyse_hadith_batch.py --budget-usd 5` runs the saved 22-layer draft
+profile against the first 200 Arabic Bukhari records. Inputs and source/profile
+checksums are preserved privately in `data/research/api-reviews/bukhari-1-200`.
+The separate, non-resettable budget ledger reserves the maximum model context
+and output cost before every call, disables SDK retries, and retains ambiguous
+charges. It does not consume or reset the media catalogue cleanup ledger.
+
+Reports describe the supplied text and identify missing evidence. No external
+rijal, parallel-route or verified Quran corpus is supplied in this pilot. The
+Quran layer must remain `needs_evidence`; model memory is not a verified source.
+Quote validation runs locally. Observations containing non-verbatim quotes are
+withheld and replaced with a request for manual investigation. Saved API output
+can be recovered and checked offline without paying for the same draft again.
+
+`scripts/publish_hadith_drafts.py` validates source checksums locally and in Neon,
+then upserts separate RLS-protected AI drafts. The website reader has access only
+to `research.website_ai_hadith_drafts`; private API traces stay local. Stale source
+texts are excluded from the public view. `/corpus/analysis` lists the available
+reports, and `/corpus/bukhari/1#ai-analysis` displays an individual report. This
+publication does not create scholarly assessments, accepted/rejected verdicts,
+book entries or evidence-backed filter completion counts.
+
+Offline safety checks:
+`.research-venv/bin/python -m unittest discover -s scripts -p test_hadith_drafts.py`.

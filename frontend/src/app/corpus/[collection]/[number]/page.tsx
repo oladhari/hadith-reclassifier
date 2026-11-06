@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { readHadithDraft } from "@/lib/ai-hadith-drafts";
+import { AiHadithReport } from "@/components/ai-hadith-report";
 import { notFound, permanentRedirect } from "next/navigation";
 import { readHadith } from "@/lib/corpus-search";
 import { collections } from "@/lib/research";
@@ -16,10 +18,11 @@ export default async function HadithReader({params}:Params) {
  const {collection,number}=await params;const normalized=routeNumber(number);
  if(!Object.hasOwn(collections,collection)||!normalized)notFound();
  if(normalized!==number)permanentRedirect(hadithHref(collection,normalized));
- const hadith=await readHadith(collection,normalized);
+ const [hadith,draft]=await Promise.all([readHadith(collection,normalized),readHadithDraft(collection,normalized)]);
  if(!hadith)notFound();
  return <><div className="breadcrumb"><Link href="/corpus">البحث في الأحاديث</Link><span>/</span><Link href={`/corpus?collection=${collection}`}>{collections[collection]}</Link><span>/</span><span>حديث {normalized}</span></div>
  <PageHeading eyebrow="نص الحديث ومرجعه" title={`${collections[collection]} — حديث ${normalized}`} description="اقرأ النص كما ورد في المجموعة المستوردة. حالة مراجعة الموسوعة منفصلة عن الأحكام المنقولة في المصدر." />
  <HadithRecord hadith={hadith} reader />
+ {draft&&<AiHadithReport draft={draft} />}
  <div className="related-actions"><Link className="button button-dark" href={`/corpus?collection=${collection}&id=${normalized}#corpus-results`}>الأحاديث بهذا الرقم في المجموعة</Link><Link className="button button-outline" href="/corpus#corpus-search">ابحث عن حديث آخر ←</Link></div></>;
 }
