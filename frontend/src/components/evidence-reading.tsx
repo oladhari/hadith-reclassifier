@@ -28,16 +28,3 @@ export function EvidenceReading({ id }: { id: number }) {
     </section>
   );
 }
-
-export function CaseReading({ slug }: { slug: string }) {
-  const item = (data.cases as Record<string, { title: string; paragraphs: string[] }>)[slug];
-  if (!item) return null;
-  return (
-    <section className="case-reading article-section" id="case-reading">
-      <span className="eyebrow">من النص إلى الحجة</span>
-      <h2>{item.title}</h2>
-      {item.paragraphs.map((text) => <p key={text}>{text}</p>)}
-      <a href="#archive-matches" className="text-link">اقرأ كل دليل ووجه الاستدلال به ↓</a>
-    </section>
-  );
-}

@@ -1,14 +1,9 @@
-import { ProofLink } from "@/components/proof-link";
-import { proofHref } from "@/lib/evidence-links";
-import { getBibliography } from "@/lib/local-sources";
-/* eslint-disable @next/next/no-img-element -- Original archival images are served without alteration. */
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpLeft, BookOpen } from "lucide-react";
+import { ArrowUpLeft } from "lucide-react";
 import { cases } from "@/lib/research";
-import { caseMatches, topics } from "@/lib/topics";
-import { ArchiveMatches } from "@/components/archive-matches";
-import { CaseReading } from "@/components/evidence-reading";
+import { topics } from "@/lib/topics";
+import { caseStudies, CasePassages, CaseStudyEvidence } from "@/components/case-study";
 import { StatusNote } from "@/components/research-ui";
 import { ThemedLibrary } from "@/components/themed-library";
 export function generateStaticParams() {
@@ -24,17 +19,13 @@ export async function generateMetadata({
 }
 export default async function CasePage({
   params,
-  searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ page?: string }>;
 }) {
-  const sources = await getBibliography();
   const { slug } = await params;
-  const { page = "1" } = await searchParams;
   const item = cases.find((c) => c.slug === slug);
   if (!item) notFound();
-  const proofLinks = Object.fromEntries(await Promise.all(item.evidence.map(async id => [id, await proofHref(id)])));
+  const study = caseStudies[slug];
   return (
     <>
       <div className="breadcrumb">
@@ -45,14 +36,10 @@ export default async function CasePage({
       <div className="case-layout">
         <aside className="case-sidebar">
           <span className="eyebrow">في هذا الملف</span>
-          <a href="#question">السؤال وموضع النزاع</a>
-          <a href="#path">مواضع النظر</a>
+          <a href="#question">موضع النزاع</a>
+          {study.passages?.length ? <a href="#texts">النص والتخريج</a> : null}
           <a href="#archive-matches">الأدلة وشرحها</a>
-          <a href="#review">حالة المراجعة</a>
-          <div className="sidebar-note">
-            <BookOpen size={24} />
-            <p>افصل بين النص الأصلي، وتفسير الناقل، ونتيجة الباحث.</p>
-          </div>
+          <a href="#review">استكمال البحث</a>
         </aside>
         <article className="case-body">
           <div className="topic-breadcrumb">
@@ -73,59 +60,18 @@ export default async function CasePage({
             <p>{item.subtitle}</p>
           </div>
           <section className="question-box" id="question">
-            <span className="eyebrow">السؤال في دقيقة</span>
-            <h2>{item.question}</h2>
-            <p>{item.intro}</p>
+            <h2>موضع النزاع</h2>
+            <p>{study.finding}</p>
           </section>
-          <CaseReading slug={item.slug} />
-          <section id="path" className="article-section">
-            <h2>مواضع النظر في الرواية</h2>
-            <ol className="research-steps">
-              {item.steps.map((s, i) => (
-                <li key={s}>
-                  <span>0{i + 1}</span>
-                  <p>{s}</p>
-                </li>
-              ))}
-            </ol>
-          </section>
-          {item.evidence.length > 0 && <section id="evidence" className="article-section">
-            <div className="section-heading">
-              <h2>ارجع إلى الأصل</h2>
-              <span className="muted">المواد المحفوظة ذات الصلة</span>
-            </div>
-            {item.evidence.map((id) => (
-              <div className="source-detail" key={id}>
-                <div className="source-text">
-                  <span className="source-number">نص من المصدر</span>
-                  <h3>{sources[id].title}</h3>
-                  <blockquote>«{sources[id].quote}»</blockquote>
-                  <p>{sources[id].detail}</p>
-                  <p className="small">
-                    اقتباس جزئي مطابق بصريًا للصورة، وليس تفريغًا كاملًا. لا
-                    تُعدّ التعليقات الملوّنة أو تعليقات المحقق قولًا للمؤلف دون
-                    تمييز.
-                  </p>
-                  {proofLinks[id] && <ProofLink href={proofLinks[id]!} title="الصفحة الأصلية وبيانات المرجع" action="فتح الدليل ومصادره" />}
-                </div>
-                <Link className="source-preview" href={proofLinks[id] || `/sources/${id}`} aria-label={`فتح الدليل: ${sources[id].title}`}>
-                  <img
-                    src={`/evidence/${id}.jpg`}
-                    alt={`صورة المصدر: ${sources[id].title}`}
-                    loading="lazy"
-                  />
-                </Link>
-              </div>
-            ))}
-          </section>}
-          <ArchiveMatches
-            matches={caseMatches(item.slug)}
-            extraIds={[...item.posts, ...item.evidence]}
-            page={Number.parseInt(page) || 1}
-            baseURL={`/cases/${item.slug}`}
-          />
+          {study.passages?.length ? (
+            <section id="texts" className="article-section">
+              <h2>النص والتخريج</h2>
+              <CasePassages study={study} />
+            </section>
+          ) : null}
+          <CaseStudyEvidence study={study} />
           <section id="review" className="article-section">
-            <h2>تنبيه عند قراءة الأدلة</h2>
+            <h2>استكمال البحث</h2>
             <StatusNote>{item.note}</StatusNote>
             <div className="related-actions">
               <Link

@@ -45,7 +45,7 @@ export default async function CasesPage({
         </button>
       </form>
       <p className="result-count">
-        {ar(results.length)} ملفات • مخططات بحث أولية
+        {ar(results.length)} ملفًا
       </p>
       <div className="case-grid">
         {results.map((item) => (

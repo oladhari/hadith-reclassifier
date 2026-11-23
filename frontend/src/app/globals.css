@@ -2194,13 +2194,12 @@ svg {
   overflow-wrap: anywhere;
 }
 .evidence-reading h3 { font-size: clamp(21px, 2.3vw, 27px); margin: 8px 0 16px; }
-.evidence-reading p, .case-reading p { font-size: 18px; line-height: 2.15; color: var(--ink); }
+.evidence-reading p { font-size: 18px; line-height: 2.15; color: var(--ink); }
 .evidence-reading h4 { font-size: 16px; margin: 22px 0 6px; color: var(--primary); }
 .evidence-passages { border-inline-start: 3px solid var(--gold); padding-inline-start: 18px; margin: 22px 0; }
 .evidence-passages figure { margin: 18px 0; }
 .evidence-passages blockquote { font-family: var(--font-arabic-serif), serif; font-size: 22px; line-height: 2; margin: 0; color: var(--primary); }
 .evidence-passages figcaption { font-size: 11px; line-height: 1.9; color: var(--muted); }
-.case-reading { border-inline-start: 3px solid var(--gold); padding-inline-start: 22px; }
 
 /* Kufi for the interface; Naskh for reading and source quotations. */
 h1, h2, h3, h4 { font-family: var(--font-arabic-sans), Tahoma, sans-serif; font-weight: 600; }
@@ -2516,4 +2515,51 @@ a, button, summary {
 @media (prefers-reduced-motion: reduce) {
   /* Preserve emphasis without moving surfaces or animating underlines. */
   .main-nav > a::after { transition: none; }
+}
+
+.case-passage {
+  padding: clamp(16px, 3vw, 24px);
+  margin-block: 16px;
+  border: 1px solid #d8dee6;
+  border-radius: 8px;
+}
+
+.case-passage h3, .case-argument h3 {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.case-passage-status {
+  color: #4b5e73;
+  margin-block: 8px 12px;
+}
+
+.case-passage dl div {
+  margin-block: 12px;
+}
+
+.case-passage dt {
+  font-weight: 700;
+}
+
+.case-passage dd {
+  line-height: 1.95;
+}
+
+.case-argument {
+  padding-block: 18px;
+  border-block-end: 1px solid #d8dee6;
+}
+
+.case-argument > p {
+  margin-block: 8px 14px;
+}
+
+.case-evidence {
+  margin-block: 12px 18px;
+}
+
+.case-citations {
+  padding-inline-start: 1.4rem;
+  list-style: disc;
 }

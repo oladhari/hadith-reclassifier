@@ -70,26 +70,31 @@ assert.ok(shirt.includes("/api/media/1316"));
 const grouped = await page("/sources/219", "مرجع داخل الموسوعة");
 for (const id of [219, 220, 221])
   assert.ok(grouped.includes(`/api/media/${id}`));
-const inTopic = await page("/cases/uthman-shirt", "الأدلة وصفحات الكتب");
-assert.ok(inTopic.includes("/api/media/1316"));
-assert.ok(!inTopic.includes("/api/media/1315"));
-assert.ok(inTopic.includes("<img"));
-assert.ok(!inTopic.includes("SRC-"));
-assert.ok(inTopic.includes('data-evidence-analysis="1316"'));
-assert.ok(!inTopic.includes('data-evidence-analysis="1315"'));
-const siege = await page("/cases/uthman-siege", "كيف ترتبط الأدلة بسؤال الحصار؟");
-for (const id of [1315, 1316]) assert.ok(siege.includes(`data-evidence-analysis="${id}"`));
-assert.ok(siege.includes("محمد بن أبي بكر"));
-assert.ok(!siege.includes("ما الذي لا يحسمه هذا النص؟"));
-assert.ok(!siege.includes('data-evidence-analysis="2380"'));
-const readings = JSON.parse(await readFile(new URL("../src/content/evidence-analysis.json", import.meta.url), "utf8"));
+const studies = JSON.parse(await readFile(new URL("../src/content/case-studies.json", import.meta.url), "utf8"));
 const selected = JSON.parse(await readFile(new URL("../src/content/public-evidence.json", import.meta.url), "utf8"));
-for (const [slug, ids] of Object.entries(selected.cases)) {
- const html = await page(`/cases/${slug}`, "وجه الاستدلال");
- assert.deepEqual([...html.matchAll(/data-evidence-analysis="(\d+)"/g)].map(m => Number(m[1])).sort((a,b) => a-b), [...ids].sort((a,b) => a-b));
- for (const id of ids) {
-  assert.ok(readings.media[id]?.reading && readings.media[id]?.argument && readings.media[id]?.qualification);
- }
+const catalogue = JSON.parse(await readFile(new URL("../src/content/media-catalogue.json", import.meta.url), "utf8"));
+assert.deepEqual(Object.keys(studies).sort(), Object.keys(themes.cases).sort());
+for (const [slug, study] of Object.entries(studies)) {
+  const html = await page(`/cases/${slug}`, "شرح الحجة وأدلتها");
+  assert.ok(html.includes(study.finding), slug);
+  const ids = new Set(study.sections.flatMap(section => (section.evidence || []).map(item => item.id)));
+  for (const id of selected.cases[slug] || []) assert.ok(ids.has(id), `${slug}: missing existing evidence ${id}`);
+  for (const id of ids) {
+    const target = catalogue[id]?.visible ? `/library/${catalogue[id].canonical_id}` : `/sources/${id}`;
+    assert.ok(html.includes(`href="${target}"`), `${slug}: missing evidence link ${target}`);
+  }
+  for (const passage of study.passages || []) {
+    assert.ok(html.indexOf(passage.chain) < html.indexOf('id="archive-matches"'), slug);
+    if (passage.corpus) assert.ok(html.includes(`href="/corpus/${passage.corpus.collection}/${passage.corpus.number}"`));
+  }
+}
+const hawab = await page("/cases/hawab", "إنكار القطان واحتمال الاختلاط");
+assert.ok(hawab.includes("طريق ابن عباس"));
+assert.ok(hawab.includes('href="/api/media/648#page=247"'));
+assert.ok(hawab.includes('href="/api/media/760#page=2"'));
+const ghadir = await page("/cases/ghadir", "ملفات القناة الثلاثة");
+for (const [id, pageNumber] of [[742, 2], [743, 8], [744, 3]]) {
+  assert.ok(ghadir.includes(`href="/api/media/${id}#page=${pageNumber}"`));
 }
 assert.equal((await fetch(base + "/sources/999999")).status, 404);
 await page("/design/palette.html", "الخيار المطبّق حاليًا");
