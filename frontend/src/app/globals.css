@@ -2555,11 +2555,75 @@ a, button, summary {
   margin-block: 8px 14px;
 }
 
-.case-evidence {
-  margin-block: 12px 18px;
-}
-
 .case-citations {
   padding-inline-start: 1.4rem;
   list-style: disc;
+}
+
+.case-evidence {
+  margin-block: 12px 18px;
+  padding: 14px 18px;
+  border: 1px solid #d8dee6;
+  border-radius: 8px;
+  background: #f8f9fb;
+  scroll-margin-top: 5rem;
+}
+
+.case-evidence h4 {
+  margin: 0 0 4px;
+  font-size: 1.08rem;
+}
+
+.case-evidence > p {
+  margin: 0 0 10px;
+}
+
+.case-preview-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.case-preview-actions > a,
+.case-preview-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.case-preview-toggle {
+  min-height: 44px;
+  padding: 5px 12px;
+  border: 1px solid #bcc9d8;
+  border-radius: 6px;
+  background: #e9eef5;
+  color: #203047;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.case-preview-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.case-preview-panel {
+  margin-block: 12px 2px;
+}
+
+.case-preview-panel img,
+.case-preview-panel iframe {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #d8dee6;
+  background: white;
+}
+
+.case-preview-panel img {
+  height: auto;
+}
+
+.case-preview-panel iframe {
+  height: clamp(450px, 78vh, 850px);
 }

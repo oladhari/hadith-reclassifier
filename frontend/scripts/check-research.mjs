@@ -71,17 +71,29 @@ const grouped = await page("/sources/219", "مرجع داخل الموسوعة")
 for (const id of [219, 220, 221])
   assert.ok(grouped.includes(`/api/media/${id}`));
 const studies = JSON.parse(await readFile(new URL("../src/content/case-studies.json", import.meta.url), "utf8"));
+const archiveIndex = new Map(JSON.parse(await readFile(new URL("../src/content/archive-index.json", import.meta.url), "utf8")).map(item => [item.id, item]));
 const selected = JSON.parse(await readFile(new URL("../src/content/public-evidence.json", import.meta.url), "utf8"));
 const catalogue = JSON.parse(await readFile(new URL("../src/content/media-catalogue.json", import.meta.url), "utf8"));
 assert.deepEqual(Object.keys(studies).sort(), Object.keys(themes.cases).sort());
 for (const [slug, study] of Object.entries(studies)) {
   const html = await page(`/cases/${slug}`, "شرح الحجة وأدلتها");
   assert.ok(html.includes(study.finding), slug);
-  const ids = new Set(study.sections.flatMap(section => (section.evidence || []).map(item => item.id)));
+  assert.doesNotMatch(JSON.stringify(study), /القناة/u, `${slug}: speak in the website's editorial voice`);
+  const evidence = study.sections.flatMap(section => section.evidence || []);
+  const ids = new Set(evidence.map(item => item.id));
   for (const id of selected.cases[slug] || []) assert.ok(ids.has(id), `${slug}: missing existing evidence ${id}`);
-  for (const id of ids) {
+  for (const { id, page: pdfPage = 1 } of evidence) {
     const target = catalogue[id]?.visible ? `/library/${catalogue[id].canonical_id}` : `/sources/${id}#media-source-${id}`;
     assert.ok(html.includes(`href="${target}"`), `${slug}: missing evidence link ${target}`);
+    const kind = archiveIndex.get(id)?.kind;
+    if (kind === "pdf" || kind === "image") {
+      const original = `/api/media/${id}${kind === "pdf" ? `#page=${pdfPage}` : ""}`;
+      const start = html.indexOf(`id="evidence-${id}"`);
+      const card = html.slice(start, html.indexOf('class="case-preview-panel"', start));
+      assert.match(card, /aria-expanded="false"/, `${slug}: evidence ${id} should start collapsed`);
+      assert.ok(card.includes(`href="${original}" target="_blank"`), `${slug}: missing original in new tab ${id}`);
+      if (kind === "pdf") await readFile(new URL(`../public/evidence/cases/${id}-${pdfPage}.webp`, import.meta.url));
+    }
   }
   for (const passage of study.passages || []) {
     assert.ok(html.indexOf(passage.chain) < html.indexOf('id="archive-matches"'), slug);
@@ -98,7 +110,7 @@ assert.ok(collectedHawab.includes('href="/api/media/858#page=6"'));
 const qays = await page("/library/1000348", "موضع الشاهد في القضية");
 assert.ok(qays.includes("سمّى يحيى القطان حديث الحوأب"));
 assert.ok(qays.includes('href="/cases/hawab#evidence-1000348"'));
-const ghadir = await page("/cases/ghadir", "ملفات القناة الثلاثة");
+const ghadir = await page("/cases/ghadir", "ملفات الغدير الثلاثة");
 const ghadirLibrary = await page("/library/742", "موضع الشاهد في القضية");
 for (const [id, pageNumber] of [[742, 2], [743, 8], [744, 3]]) {
   const href = `href="/api/media/${id}#page=${pageNumber}"`;
