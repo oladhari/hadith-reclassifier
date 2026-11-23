@@ -1,36 +1,8 @@
 import Link from "next/link";
-import studies from "@/content/case-studies.json";
+import type { Study } from "@/lib/case-studies";
 import { proofHref } from "@/lib/evidence-links";
 import { hadithHref } from "@/lib/hadith-query";
 import { ProofLink } from "./proof-link";
-
-type Citation = { label: string; url: string };
-type Evidence = {
-  id: number;
-  title: string;
-  explanation: string;
-  page?: number;
-};
-type Passage = {
-  source: string;
-  status: string;
-  chain: string;
-  text: string;
-  corpus?: { collection: string; number: number };
-  citation?: Citation;
-};
-type Study = {
-  finding: string;
-  passages?: Passage[];
-  sections: {
-    title: string;
-    paragraphs: string[];
-    evidence?: Evidence[];
-    citations?: Citation[];
-  }[];
-};
-
-export const caseStudies: Record<string, Study> = studies;
 
 export function CasePassages({ study }: { study: Study }) {
   return study.passages?.map((passage) => (
@@ -60,7 +32,7 @@ export async function CaseStudyEvidence({ study }: { study: Study }) {
           {section.evidence?.map(evidence => {
             const href = links.get(evidence.id);
             return (
-              <div key={evidence.id} className="case-evidence">
+              <div key={evidence.id} id={`evidence-${evidence.id}`} className="case-evidence">
                 {href ? <ProofLink href={href} title={evidence.title} description={evidence.explanation} /> :
                   <><h4>{evidence.title}</h4><p>{evidence.explanation}</p></>}
                 {href && evidence.page && <a className="text-link" href={`/api/media/${evidence.id}#page=${evidence.page}`}>صفحة {evidence.page} من ملف PDF الأصلي ←</a>}

@@ -73,6 +73,7 @@ export default async function AssetPage({ params, searchParams }: {
       </div>)}
     </details>}
     {chapter && <div className="chapter-heading"><h2>{chapter.title}</h2><p>{chapter.summary}</p><Link href={`/library/${id}#media-player`}>عرض التسجيل الكامل ←</Link></div>}
+    <SourceCommentary id={item.id} />
     <div className={`asset-viewer${item.kind === "document" ? " document-viewer" : ""}${entry.collection_images ? " grouped-image-viewer" : ""}`} id="media-player">
       {entry.collection_images ? <ImageCollection images={entry.collection_images} /> : item.kind === "image" ? <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={entry.title} /></a>
         : speech ? <ResearchPlayer id={item.id} mediaId={entry.preferred_media_id} kind={item.kind as "video" | "audio"} poster={(thumbnails as Record<string, string>)[entry.preferred_media_id || id]} start={start} end={end} />
@@ -91,7 +92,6 @@ export default async function AssetPage({ params, searchParams }: {
       <ol>{entry.collection_sources.map((source, index) => <li key={source.id}><a href={`/api/media/${source.id}`} target="_blank" rel="noreferrer">{entry.collection_images ? `فتح الصورة الأصلية ${index + 1}` : `فتح الملف الأصلي ${index + 1} (${source.page_count} صفحات)`} ←</a></li>)}</ol>
       {!entry.collection_images && <table><thead><tr><th>صفحة المجموعة</th><th>الملف الأصلي</th><th>صفحته</th></tr></thead><tbody>{entry.collection_page_map?.map(row => <tr key={row.page}><td>{row.page}</td><td>{entry.collection_sources!.findIndex(source => source.id === row.source_id) + 1}</td><td>{row.source_page}</td></tr>)}</tbody></table>}
     </details>}
-    <SourceCommentary id={item.id} />
     <BundleLinks ids={entry.bundles} />
     {documentText && <details className="transcript-panel" data-document-text={item.id}><summary>اقرأ النص المستخرج من الوثيقة</summary>
       <p className="muted">نص مستخرج آليًا للبحث؛ تُراجع الصورة أو صفحات PDF عند الاقتباس، خصوصًا مع التظليل والأغلفة المضافة.</p>

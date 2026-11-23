@@ -92,9 +92,15 @@ const hawab = await page("/cases/hawab", "إنكار القطان واحتمال
 assert.ok(hawab.includes("طريق ابن عباس"));
 assert.ok(hawab.includes('href="/api/media/648#page=247"'));
 assert.ok(hawab.includes('href="/api/media/760#page=2"'));
+const qays = await page("/library/1000348", "موضع الشاهد في القضية");
+assert.ok(qays.includes("سمّى يحيى القطان حديث الحوأب"));
+assert.ok(qays.includes('href="/cases/hawab#evidence-1000348"'));
 const ghadir = await page("/cases/ghadir", "ملفات القناة الثلاثة");
+const ghadirLibrary = await page("/library/742", "موضع الشاهد في القضية");
 for (const [id, pageNumber] of [[742, 2], [743, 8], [744, 3]]) {
-  assert.ok(ghadir.includes(`href="/api/media/${id}#page=${pageNumber}"`));
+  const href = `href="/api/media/${id}#page=${pageNumber}"`;
+  assert.ok(ghadir.includes(href));
+  assert.ok(ghadirLibrary.includes(href));
 }
 assert.equal((await fetch(base + "/sources/999999")).status, 404);
 await page("/design/palette.html", "الخيار المطبّق حاليًا");

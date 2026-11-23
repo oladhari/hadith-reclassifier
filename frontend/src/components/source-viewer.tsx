@@ -25,6 +25,7 @@ export async function MediaOriginal({ item, sourcePageId }: { item: ArchiveItem;
         {metadata?.visible && <p>{metadata.description}</p>}
         {sources[item.id] && <p>{sources[item.id].detail}</p>}
       </div>
+      <SourceCommentary id={item.id} />
       {metadata?.collection_images ? <ImageCollection images={metadata.collection_images} /> : item.kind === "image" ? (
         <a href={src} target="_blank" rel="noreferrer">
           <img
@@ -50,7 +51,6 @@ export async function MediaOriginal({ item, sourcePageId }: { item: ArchiveItem;
         {!metadata?.collection_images && <a href={metadata?.asset_url ? src : `${src}?download=1`} download={metadata?.asset_url ? `${metadata.title.replace(/[\\/:*?"<>|]/g, "-")}.pdf` : undefined}>{metadata?.converted_document ? "تنزيل PDF" : metadata?.asset_url ? "تنزيل الملف المجمّع" : "تنزيل الأصل"} • {fileSize(metadata?.asset_size || item.size)}</a>}
         {detailsHref && detailsHref !== `/sources/${sourcePageId}` && <ProofLink href={detailsHref} title={metadata?.visible ? metadata.title : await sourceTitle(item.id)} action="فتح صفحة الدليل" />}
       </div>
-      <SourceCommentary id={item.id} />
       {!metadata?.collection_images && <EvidenceReading id={item.id} />}
     </div>
   );

@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { ArrowUpLeft } from "lucide-react";
 import { cases } from "@/lib/research";
 import { topics } from "@/lib/topics";
-import { caseStudies, CasePassages, CaseStudyEvidence } from "@/components/case-study";
+import { caseStudies } from "@/lib/case-studies";
+import { CasePassages, CaseStudyEvidence } from "@/components/case-study";
 import { StatusNote } from "@/components/research-ui";
 import { ThemedLibrary } from "@/components/themed-library";
 export function generateStaticParams() {
