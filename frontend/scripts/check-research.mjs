@@ -82,11 +82,17 @@ for (const [slug, study] of Object.entries(studies)) {
   const evidence = study.sections.flatMap(section => section.evidence || []);
   const ids = new Set(evidence.map(item => item.id));
   for (const id of selected.cases[slug] || []) assert.ok(ids.has(id), `${slug}: missing existing evidence ${id}`);
-  for (const { id, page: pdfPage = 1 } of evidence) {
+  for (const { id, page: pdfPage = 1, highlights } of evidence) {
     const target = catalogue[id]?.visible ? `/library/${catalogue[id].canonical_id}` : `/sources/${id}#media-source-${id}`;
     assert.ok(html.includes(`href="${target}"`), `${slug}: missing evidence link ${target}`);
     const kind = archiveIndex.get(id)?.kind;
     if (kind === "pdf" || kind === "image") {
+      assert.ok(highlights?.length, `${slug}: no highlighted passage for evidence ${id}`);
+      for (const { left, top, width, height } of highlights) {
+        assert.ok([left, top, width, height].every(Number.isFinite));
+        assert.ok(left >= 0 && top >= 0 && width > 0 && height > 0 && left + width <= 100 && top + height <= 100,
+          `${slug}: highlight extends outside evidence ${id}`);
+      }
       const original = `/api/media/${id}${kind === "pdf" ? `#page=${pdfPage}` : ""}`;
       const start = html.indexOf(`id="evidence-${id}"`);
       const card = html.slice(start, html.indexOf('class="case-preview-panel"', start));
@@ -100,6 +106,9 @@ for (const [slug, study] of Object.entries(studies)) {
     if (passage.corpus) assert.ok(html.includes(`href="/corpus/${passage.corpus.collection}/${passage.corpus.number}"`));
   }
 }
+const sharedPage = slug => studies[slug].sections.flatMap(section => section.evidence || []).find(item => item.id === 942);
+assert.equal(sharedPage("hawab").page, sharedPage("siffin").page);
+assert.notDeepEqual(sharedPage("hawab").highlights, sharedPage("siffin").highlights);
 const hawab = await page("/cases/hawab", "إنكار القطان واحتمال الاختلاط");
 assert.ok(hawab.includes("طريق ابن عباس"));
 assert.ok(hawab.includes('href="/api/media/648#page=247"'));

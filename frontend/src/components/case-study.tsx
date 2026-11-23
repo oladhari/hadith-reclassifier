@@ -51,7 +51,7 @@ export async function CaseStudyEvidence({ study }: { study: Study }) {
                 <h4>{evidence.title}</h4>
                 <p>{evidence.explanation}</p>
                 {target && (kind === "pdf" || kind === "image") ? (
-                  <CaseEvidencePreview title={evidence.title} original={original}
+                  <CaseEvidencePreview title={evidence.title} original={original} highlights={evidence.highlights}
                     pdfPageImage={kind === "pdf" ? `/evidence/cases/${evidence.id}-${page}.webp` : undefined}>
                     <ProofLink href={target} title="بيانات المرجع وصفحاته" action="عرض المرجع" newTab />
                   </CaseEvidencePreview>

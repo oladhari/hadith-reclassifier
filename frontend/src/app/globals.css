@@ -2627,3 +2627,56 @@ a, button, summary {
 .case-preview-panel iframe {
   height: clamp(450px, 78vh, 850px);
 }
+
+.case-preview-toolbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px 14px;
+  margin-block-end: 8px;
+  font-size: 0.9rem;
+}
+
+.case-preview-toolbar > span {
+  font-weight: 700;
+}
+
+.case-preview-toolbar button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.case-highlight-viewport {
+  direction: ltr;
+  max-height: clamp(330px, 65vh, 720px);
+  overflow: auto;
+  border: 1px solid #d8dee6;
+  border-radius: 4px;
+}
+
+.case-highlight-page {
+  position: relative;
+  isolation: isolate;
+}
+
+.case-highlight-page img {
+  border: 0;
+}
+
+.case-highlight {
+  position: absolute;
+  pointer-events: none;
+  background: #ffe35c;
+  opacity: 0.58;
+  mix-blend-mode: multiply;
+  border-block-end: 1px solid #b78d13;
+  border-radius: 2px;
+}
+
+@media (max-width: 600px) {
+  .case-highlight-page {
+    width: var(--case-page-width, 100%);
+  }
+}
