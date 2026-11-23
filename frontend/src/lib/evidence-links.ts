@@ -2,6 +2,7 @@ import "server-only";
 import selected from "@/content/public-evidence.json";
 import studies from "@/content/filter-case-studies.json";
 import seed from "@/content/editorial-seed.json";
+import { caseStudies } from "./case-studies";
 import { getMediaCatalogue } from "./media-catalogue";
 import { sourceRecord } from "./local-sources";
 import { getArchive } from "./archive";
@@ -11,6 +12,7 @@ import { getArchive } from "./archive";
 export const referencedProofIds = new Set([
   ...Object.values(selected.cases).flat(), ...studies.flatMap(study => study.source_media),
   ...seed.cases.flatMap(item => item.evidence),
+  ...Object.values(caseStudies).flatMap(study => study.sections.flatMap(section => section.evidence?.map(item => item.id) ?? [])),
 ]);
 export async function proofHref(id: number): Promise<string | null> {
   const catalogue = await getMediaCatalogue();

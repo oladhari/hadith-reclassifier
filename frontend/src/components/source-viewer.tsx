@@ -17,7 +17,7 @@ export async function MediaOriginal({ item, sourcePageId }: { item: ArchiveItem;
   const detailsHref = await proofHref(item.id);
   const src = metadata?.asset_url || `/api/media/${metadata?.preferred_media_id || item.id}`;
   return (
-    <div className={`source-original ${item.kind}`}>
+    <div className={`source-original ${item.kind}`} id={sourcePageId === undefined ? undefined : `media-source-${item.id}`}>
       <div className="source-file-heading">
         <strong>
           {metadata?.visible ? metadata.title : sources[item.id]?.title || evidenceLabels[item.id] || `${kindNames[item.kind]} الدليل`}

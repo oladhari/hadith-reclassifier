@@ -31,9 +31,10 @@ export async function CaseStudyEvidence({ study }: { study: Study }) {
           {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
           {section.evidence?.map(evidence => {
             const href = links.get(evidence.id);
+            const target = href?.startsWith("/sources/") ? `${href}#media-source-${evidence.id}` : href;
             return (
               <div key={evidence.id} id={`evidence-${evidence.id}`} className="case-evidence">
-                {href ? <ProofLink href={href} title={evidence.title} description={evidence.explanation} /> :
+                {target ? <ProofLink href={target} title={evidence.title} description={evidence.explanation} /> :
                   <><h4>{evidence.title}</h4><p>{evidence.explanation}</p></>}
                 {href && evidence.page && <a className="text-link" href={`/api/media/${evidence.id}#page=${evidence.page}`}>صفحة {evidence.page} من ملف PDF الأصلي ←</a>}
               </div>

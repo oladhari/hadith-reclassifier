@@ -80,7 +80,7 @@ for (const [slug, study] of Object.entries(studies)) {
   const ids = new Set(study.sections.flatMap(section => (section.evidence || []).map(item => item.id)));
   for (const id of selected.cases[slug] || []) assert.ok(ids.has(id), `${slug}: missing existing evidence ${id}`);
   for (const id of ids) {
-    const target = catalogue[id]?.visible ? `/library/${catalogue[id].canonical_id}` : `/sources/${id}`;
+    const target = catalogue[id]?.visible ? `/library/${catalogue[id].canonical_id}` : `/sources/${id}#media-source-${id}`;
     assert.ok(html.includes(`href="${target}"`), `${slug}: missing evidence link ${target}`);
   }
   for (const passage of study.passages || []) {
@@ -92,6 +92,9 @@ const hawab = await page("/cases/hawab", "إنكار القطان واحتمال
 assert.ok(hawab.includes("طريق ابن عباس"));
 assert.ok(hawab.includes('href="/api/media/648#page=247"'));
 assert.ok(hawab.includes('href="/api/media/760#page=2"'));
+const collectedHawab = await page("/sources/858", "موضع الشاهد في القضية");
+assert.ok(collectedHawab.includes('id="media-source-858"'));
+assert.ok(collectedHawab.includes('href="/api/media/858#page=6"'));
 const qays = await page("/library/1000348", "موضع الشاهد في القضية");
 assert.ok(qays.includes("سمّى يحيى القطان حديث الحوأب"));
 assert.ok(qays.includes('href="/cases/hawab#evidence-1000348"'));
