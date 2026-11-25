@@ -43,7 +43,6 @@ assert.equal(themes.totalPosts, 2477);
 assert.equal(themes.textPosts, 1113);
 assert.equal(themes.scope, "telegram_text_and_captions_only");
 assert.equal(themes.topics.length, 8);
-assert.equal(Object.keys(themes.cases).length, 17);
 for (const group of [...themes.topics, ...Object.values(themes.cases)]) {
   assert.equal(group.postCount, group.posts.length);
   assert.equal(new Set(group.posts.map((p) => p.id)).size, group.posts.length);
@@ -71,10 +70,12 @@ const grouped = await page("/sources/219", "مرجع داخل الموسوعة")
 for (const id of [219, 220, 221])
   assert.ok(grouped.includes(`/api/media/${id}`));
 const studies = JSON.parse(await readFile(new URL("../src/content/case-studies.json", import.meta.url), "utf8"));
+const seed = JSON.parse(await readFile(new URL("../src/content/editorial-seed.json", import.meta.url), "utf8"));
 const archiveIndex = new Map(JSON.parse(await readFile(new URL("../src/content/archive-index.json", import.meta.url), "utf8")).map(item => [item.id, item]));
 const selected = JSON.parse(await readFile(new URL("../src/content/public-evidence.json", import.meta.url), "utf8"));
 const catalogue = JSON.parse(await readFile(new URL("../src/content/media-catalogue.json", import.meta.url), "utf8"));
 assert.deepEqual(Object.keys(studies).sort(), Object.keys(themes.cases).sort());
+assert.deepEqual(Object.keys(studies).sort(), seed.cases.map(item => item.slug).sort());
 for (const [slug, study] of Object.entries(studies)) {
   const html = await page(`/cases/${slug}`, "شرح الحجة وأدلتها");
   assert.ok(html.includes(study.finding), slug);

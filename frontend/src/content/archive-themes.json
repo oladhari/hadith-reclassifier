@@ -11005,6 +11005,107 @@
           "normalizedTextHash": "5850d16e4595a967c8ee5fddacd17ffcb71eff571e0c62ba9160de23c1c80251"
         }
       ]
+    },
+    "ali-hijra": {
+      "terms": [
+        "هجرة علي",
+        "هاجر علي",
+        "المهاجرون الأولون",
+        "المهاجرين الأولين",
+        "السابقون الأولون",
+        "السابقين الأولين",
+        "بات علي",
+        "نام علي",
+        "المبيت على فراش",
+        "المبيت في فراش"
+      ],
+      "requiredTerms": [
+        "علي"
+      ],
+      "postCount": 11,
+      "distinctTextCount": 11,
+      "posts": [
+        {
+          "id": 702,
+          "matchedTerms": [
+            "السابقين الأولين"
+          ],
+          "normalizedTextHash": "5973c1011eb8198794ae5658a72a2b486b241be587c3303ef7a41bf2136b8836"
+        },
+        {
+          "id": 945,
+          "matchedTerms": [
+            "السابقين الأولين"
+          ],
+          "normalizedTextHash": "c701995e1ba047d12a57748c4a00c7b3dbba89e9bc7253b1a15258ce253fb2f8"
+        },
+        {
+          "id": 1156,
+          "matchedTerms": [
+            "نام علي"
+          ],
+          "normalizedTextHash": "6f9eddf12760f487d39796b3c70b8b3b1de61a7b5ee37b8437cdbf77c6baf88d"
+        },
+        {
+          "id": 1228,
+          "matchedTerms": [
+            "المهاجرون الأولون",
+            "المهاجرين الأولين",
+            "السابقون الأولون",
+            "السابقين الأولين"
+          ],
+          "normalizedTextHash": "d532d4442b9c6ebf5aad35eeedb440975886f37701bb72f7a68faf1cd61964af"
+        },
+        {
+          "id": 1229,
+          "matchedTerms": [
+            "المهاجرين الأولين"
+          ],
+          "normalizedTextHash": "b092b37ed9baba0027ae42d9caf983366680e90f24b660b4e4064f8b8b4a8a34"
+        },
+        {
+          "id": 1618,
+          "matchedTerms": [
+            "المهاجرين الأولين"
+          ],
+          "normalizedTextHash": "3c1698bd4f4ebd68de0ca1f9bd6f520a125547ac2a3a2a2f1142f280c1a35860"
+        },
+        {
+          "id": 1772,
+          "matchedTerms": [
+            "المبيت على فراش"
+          ],
+          "normalizedTextHash": "07aabb8fc07ad0da3c0685fa234d891b04bf295a156b5fc302b468832c8c8cc1"
+        },
+        {
+          "id": 1892,
+          "matchedTerms": [
+            "السابقين الأولين"
+          ],
+          "normalizedTextHash": "d7410dc7c7b7807c84624a10345f8b537d58f4c77c3dd31ccd77fc2af750c63d"
+        },
+        {
+          "id": 2005,
+          "matchedTerms": [
+            "السابقين الأولين"
+          ],
+          "normalizedTextHash": "6d6ab6dd30002eba2c367567e1f80743a7ccfbd048130b814d48c31dc1e58114"
+        },
+        {
+          "id": 2181,
+          "matchedTerms": [
+            "السابقين الأولين"
+          ],
+          "normalizedTextHash": "3215844debf9468c7f52bcc62ecb3175aa8548ac47549f07b8fc0453d5b3d308"
+        },
+        {
+          "id": 2220,
+          "matchedTerms": [
+            "بات علي"
+          ],
+          "normalizedTextHash": "d2dfdfec18f48e7dcaefc0c3c349ee340c13da0b0639cc9bbd19df059a126406"
+        }
+      ]
     }
   }
 }
