@@ -32,3 +32,10 @@ export type Study = {
 
 export const caseStudies: Record<string, Study> = studies;
 
+export function evidenceAnchor(study: Study, evidence: Evidence): string {
+  const first = study.sections.flatMap(section => section.evidence ?? [])
+    .find(item => item.id === evidence.id);
+  const base = `evidence-${evidence.id}`;
+  return first === evidence ? base : `${base}-${evidence.page ?? 1}`;
+}
+

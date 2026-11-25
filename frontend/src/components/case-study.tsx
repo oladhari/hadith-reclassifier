@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Study } from "@/lib/case-studies";
+import { evidenceAnchor, type Study } from "@/lib/case-studies";
 import { getArchive } from "@/lib/archive";
 import { proofHref } from "@/lib/evidence-links";
 import { hadithHref } from "@/lib/hadith-query";
@@ -46,8 +46,9 @@ export async function CaseStudyEvidence({ study }: { study: Study }) {
             const kind = media.get(evidence.id)?.kind;
             const page = evidence.page ?? 1;
             const original = `/api/media/${evidence.id}${kind === "pdf" ? `#page=${page}` : ""}`;
+            const anchor = evidenceAnchor(study, evidence);
             return (
-              <div key={evidence.id} id={`evidence-${evidence.id}`} className="case-evidence">
+              <div key={anchor} id={anchor} className="case-evidence">
                 <h4>{evidence.title}</h4>
                 <p>{evidence.explanation}</p>
                 {target && (kind === "pdf" || kind === "image") ? (

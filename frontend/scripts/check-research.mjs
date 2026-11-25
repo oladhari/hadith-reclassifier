@@ -82,6 +82,7 @@ for (const [slug, study] of Object.entries(studies)) {
   assert.doesNotMatch(JSON.stringify(study), /القناة/u, `${slug}: speak in the website's editorial voice`);
   const evidence = study.sections.flatMap(section => section.evidence || []);
   const ids = new Set(evidence.map(item => item.id));
+  const visited = new Set();
   for (const id of selected.cases[slug] || []) assert.ok(ids.has(id), `${slug}: missing existing evidence ${id}`);
   for (const { id, page: pdfPage = 1, highlights } of evidence) {
     const target = catalogue[id]?.visible ? `/library/${catalogue[id].canonical_id}` : `/sources/${id}#media-source-${id}`;
@@ -95,7 +96,11 @@ for (const [slug, study] of Object.entries(studies)) {
           `${slug}: highlight extends outside evidence ${id}`);
       }
       const original = `/api/media/${id}${kind === "pdf" ? `#page=${pdfPage}` : ""}`;
-      const start = html.indexOf(`id="evidence-${id}"`);
+      const anchor = visited.has(id) ? `evidence-${id}-${pdfPage}` : `evidence-${id}`;
+      visited.add(id);
+      const locator = `id="${anchor}"`;
+      const start = html.indexOf(locator);
+      assert.ok(start >= 0 && html.indexOf(locator, start + locator.length) < 0, `${slug}: expected one ${anchor}`);
       const card = html.slice(start, html.indexOf('class="case-preview-panel"', start));
       assert.match(card, /aria-expanded="false"/, `${slug}: evidence ${id} should start collapsed`);
       assert.ok(card.includes(`href="${original}" target="_blank"`), `${slug}: missing original in new tab ${id}`);
@@ -120,6 +125,12 @@ assert.ok(collectedHawab.includes('href="/api/media/858#page=6"'));
 const qays = await page("/library/1000348", "موضع الشاهد في القضية");
 assert.ok(qays.includes("سمّى يحيى القطان حديث الحوأب"));
 assert.ok(qays.includes('href="/cases/hawab#evidence-1000348"'));
+const kufanLibrary = await page("/library/2311", "موضع الشاهد في القضية");
+for (const pdfPage of [4, 1, 7, 6, 2, 3, 5, 8]) {
+  const anchor = pdfPage === 4 ? "evidence-2311" : `evidence-2311-${pdfPage}`;
+  assert.ok(kufanLibrary.includes(`href="/api/media/2311#page=${pdfPage}"`));
+  assert.ok(kufanLibrary.includes(`href="/cases/kufan#${anchor}"`));
+}
 const ghadir = await page("/cases/ghadir", "ملفات الغدير الثلاثة");
 const ghadirLibrary = await page("/library/742", "موضع الشاهد في القضية");
 for (const [id, pageNumber] of [[742, 2], [743, 8], [744, 3]]) {

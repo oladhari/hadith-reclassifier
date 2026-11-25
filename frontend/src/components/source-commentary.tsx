@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { caseStudies } from "@/lib/case-studies";
+import { caseStudies, evidenceAnchor } from "@/lib/case-studies";
 import { getMediaCatalogue } from "@/lib/media-catalogue";
 import { cases } from "@/lib/research";
 
@@ -8,20 +8,23 @@ export async function SourceCommentary({ id }: { id: number }) {
   if (entry?.manual_video_hidden) return null;
 
   const originals = new Set([id, entry?.canonical_id, ...(entry?.collection_sources?.map(source => source.id) ?? [])]);
-  const readings = cases.flatMap(item => caseStudies[item.slug].sections.flatMap(section =>
-    (section.evidence ?? []).filter(evidence => originals.has(evidence.id)).map(evidence => ({ item, evidence })),
-  ));
+  const readings = cases.flatMap(item => {
+    const study = caseStudies[item.slug];
+    return study.sections.flatMap(section => (section.evidence ?? [])
+      .filter(evidence => originals.has(evidence.id))
+      .map(evidence => ({ item, evidence, anchor: evidenceAnchor(study, evidence) })));
+  });
   if (readings.length) {
     return (
       <section className="evidence-reading source-commentary" data-source-commentary={id}>
         <h2>موضع الشاهد في القضية</h2>
-        {readings.map(({ item, evidence }) => (
-          <div key={`${item.slug}-${evidence.id}`}>
+        {readings.map(({ item, evidence, anchor }) => (
+          <div key={`${item.slug}-${anchor}`}>
             <h3>{evidence.title}</h3>
             <p>{evidence.explanation}</p>
             <div className="related-actions">
               {evidence.page && <a className="text-link" href={`/api/media/${evidence.id}#page=${evidence.page}`}>صفحة {evidence.page} من ملف PDF الأصلي ←</a>}
-              <Link className="text-link" href={`/cases/${item.slug}#evidence-${evidence.id}`}>{item.title} ←</Link>
+              <Link className="text-link" href={`/cases/${item.slug}#${anchor}`}>{item.title} ←</Link>
             </div>
           </div>
         ))}
